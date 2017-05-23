@@ -5,14 +5,32 @@
 
 <%@ include file="/WEB-INF/views/header.jsp"%>
 
+<<<<<<< Upstream, based on branch 'master' of https://github.com/kick07230723/5AM.git
 
+=======
+<<<<<<< Upstream, based on branch 'master' of https://github.com/kick07230723/5AM.git
+>>>>>>> 10338c5 sg
 <!-- MENU SECTION END-->
 <div class="content-wrapper">
 	<div class="container">
 		<div class="row pad-botm">
 			<div class="col-md-12">
 				<h4 class="header-line">고객관리 호연</h4>
+<<<<<<< Upstream, based on branch 'master' of https://github.com/kick07230723/5AM.git
 
+=======
+=======
+     <!-- MENU SECTION END-->
+  	<div class="content-wrapper">
+		<div class="container">
+			<div class="row pad-botm">
+				<div class="col-md-12">
+					<h4 class="header-line">FORM EXAMPLES</h4>
+				
+				</div>
+
+>>>>>>> 435e064 sg
+>>>>>>> 10338c5 sg
 			</div>
 
 		</div>
