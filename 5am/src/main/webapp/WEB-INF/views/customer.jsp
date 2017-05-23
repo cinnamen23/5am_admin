@@ -11,14 +11,8 @@
 			<div class="row pad-botm">
 				<div class="col-md-12">
 					<h4 class="header-line">FORM EXAMPLES</h4>
-<<<<<<< Upstream, based on branch 'master' of https://github.com/kick07230723/5AM.git
 					나나나나나나
-=======
-<<<<<<< Upstream, based on branch 'master' of https://github.com/kick07230723/5AM.git
-=======
-					가가가가가가가가가
->>>>>>> 47a7b48 c
->>>>>>> fe27c49 c
+
 
 				</div>
 
