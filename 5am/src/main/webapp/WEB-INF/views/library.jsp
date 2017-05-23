@@ -17,7 +17,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="alert alert-info">
-						마구니가 꼈구나 <br />
+						마구니가 꼈구나 <br/>
 						
 						<a target="_blank" href="http://www.binarytheme.com/"></a>
 					</div>
