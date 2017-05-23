@@ -9,7 +9,7 @@
 		<div class="container">
 			<div class="row pad-botm">
 				<div class="col-md-12">
-					<h4 class="header-line">자료실   성준찡은 마구니가 무서우어ㅛ</h4>
+					<h4 class="header-line">자료를 다운 받는 자료실입니다</h4>
 
 				</div>
 
