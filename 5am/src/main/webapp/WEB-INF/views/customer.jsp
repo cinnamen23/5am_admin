@@ -10,8 +10,7 @@
 		<div class="container">
 			<div class="row pad-botm">
 				<div class="col-md-12">
-					<h4 class="header-line">FORM EXAMPLES !!!!!@#hgjyg!@#!!!! </h4>
-					승규한테 보내기
+					<h4 class="header-line">FORM EXAMPLES</h4>
 
 				</div>
 
