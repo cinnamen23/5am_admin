@@ -9,7 +9,7 @@
          <div class="container">
         <div class="row pad-botm">
             <div class="col-md-12">
-                <h4 class="header-line">INDEX PAGE 성준찡</h4>
+                <h4 class="header-line">INDEX PAGE  성준찡</h4>
                 
                             </div>
 
