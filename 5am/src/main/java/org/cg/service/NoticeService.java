@@ -9,6 +9,8 @@ public interface NoticeService {
 	
 	public List<NoticeVO> getList(Criteria cri) throws Exception;
 	
-	public int count() throws Exception;
+	public int count(Criteria cri) throws Exception;
+	
+	public NoticeVO getRead(NoticeVO vo) throws Exception;
 	
 }

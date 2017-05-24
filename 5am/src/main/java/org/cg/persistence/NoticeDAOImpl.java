@@ -27,9 +27,16 @@ public class NoticeDAOImpl implements NoticeDAO{
 
 
 	@Override
-	public int count() throws Exception {
+	public int count(Criteria cri) throws Exception {
 		
-		return sess.selectOne(namespace+".count");
+		return sess.selectOne(namespace+".count",cri);
+	}
+
+
+	@Override
+	public NoticeVO read(NoticeVO vo) throws Exception {
+		
+		return sess.selectOne(namespace+".read", vo);
 	}
 
 }

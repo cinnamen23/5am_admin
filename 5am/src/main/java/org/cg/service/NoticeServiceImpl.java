@@ -24,9 +24,15 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public int count() throws Exception {
+	public int count(Criteria cri) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.count();
+		return dao.count(cri);
+	}
+
+	@Override
+	public NoticeVO getRead(NoticeVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.read(vo);
 	}
 
 }

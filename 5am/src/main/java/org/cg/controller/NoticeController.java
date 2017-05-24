@@ -32,7 +32,7 @@ public class NoticeController {
 			
 			logger.info(list);
 			model.addAttribute("list", list);
-			model.addAttribute("pageMaker", new PageMaker(cri, nservice.count()));
+			model.addAttribute("pageMaker", new PageMaker(cri, nservice.count(cri)));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -40,6 +40,18 @@ public class NoticeController {
 		
 		
 		
+	}
+	
+	@GetMapping("/nview")
+	public void view(@ModelAttribute("vo") NoticeVO vo,Model model){
+		try {
+			
+			NoticeVO read = nservice.getRead(vo);
+			model.addAttribute("read", read);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 
