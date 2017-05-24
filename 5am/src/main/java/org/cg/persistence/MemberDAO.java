@@ -1,5 +1,5 @@
 package org.cg.persistence;
 
-public interface CustomerDAO {
+public interface MemberDAO {
 
 }

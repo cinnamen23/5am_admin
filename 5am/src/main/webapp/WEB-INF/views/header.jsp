@@ -50,7 +50,7 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a href="http://localhost:8080/customer/list">고객관리</a></li>
+                            <li><a href="http://localhost:8080/member/list">고객관리</a></li>
                             <!--  class="menu-top-active"  활성화 -->
                            
                             <li><a href="http://localhost:8080/statistics/list">통계</a></li>

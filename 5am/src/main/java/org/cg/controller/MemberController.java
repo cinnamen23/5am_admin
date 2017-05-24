@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/customer")
-public class CustomerController {
-	Logger logger= Logger.getLogger(CustomerController.class);
+@RequestMapping("/member")
+public class MemberController {
+	Logger logger= Logger.getLogger(MemberController.class);
 	
 	@GetMapping("/list")
 	public void getCustomer(){

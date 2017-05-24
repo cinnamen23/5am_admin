@@ -5,7 +5,7 @@
 
     <%@ include file="/WEB-INF/views/header.jsp" %>
 
-	<div class="content-wrapper">
+   <div class="content-wrapper">
 		<div class="container">
 			<div class="row pad-botm">
 				<div class="col-md-12">
