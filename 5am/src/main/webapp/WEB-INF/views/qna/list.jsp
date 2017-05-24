@@ -37,34 +37,64 @@
                                     </thead>
                                     <tbody>
                                         
-                                        <c:forEach items="${list}" var="QuestionVO"> 
+                                        
+                                     	<c:forEach items="${list}" var="QuestionVO"> 
                                         <tr class="gradeA odd">
-                                        	<td class="sorting_1">"${QuestionVO.title}" </td>
-                                            <td class=" ">"${QuestionVO.content}"</td>
-                                            <td class=" ">"${QuestionVO.writer}"</td>
-                                            <td class="center ">"${QuestionVO.regdate}"</td>
-                                            <td class="center ">"${QuestionVO.updatedate}"</td>
+                                        
+                                        	<td class="sorting_1" >${QuestionVO.qno} </td>
+                                            <td><a class="goQview" href="${QuestionVO.qno}">${QuestionVO.title}</a></td>
+                                            <td class=" ">${QuestionVO.content}</td>
+                                            <td class=" ">${QuestionVO.writer}</td>
+                                            <td class="center ">${QuestionVO.regdate}</td>
+                                            <td class="center ">${QuestionVO.updatedate}</td>
                                         
                                         </tr>
                                         </c:forEach>
-                                        
-                                        
-                                    	<tr class="gradeA odd">
-                                            <td class="sorting_1">Gecko</td>
-                                            <td class=" ">Version1.0</td>
-                                            <td class=" ">Win 98+ / OSX.2+</td>
-                                            <td class="center ">1.7</td>
-                                            <td class="center ">A</td>
-                                        
-                                        </tr><tr class="gradeA even">
-                                            <td class="sorting_1">Gecko</td>
-                                            <td class=" ">Version1.5</td>
-                                            <td class=" ">Win 98+ / OSX.2+</td>
-                                            <td class="center ">1.8</td>
-                                            <td class="center ">A</td>
                                        
                                        </tbody>
-                                </table><div class="row"><div class="col-sm-6"><div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate"><ul class="pagination"><li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous"><a href="#">Previous</a></li><li class="paginate_button active" aria-controls="dataTables-example" tabindex="0"><a href="#">1</a></li><li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">2</a></li><li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">3</a></li><li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">4</a></li><li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">5</a></li><li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">6</a></li><li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><a href="#">Next</a></li></ul></div></div></div></div>
+                                </table>
+                                
+                                                             
+                                
+                                
+                                <div class="row">
+                                <div class="col-sm-6">
+                                <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">Showing 1 to 10 of 57 entries</div></div>
+                                </div>
+                                <div class="col-sm-6">
+                                <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
+                                
+                                 <!-- 페이징 삽입 -->
+                                <nav aria-label="Page navigation">
+									<ul class="pagination">
+										<c:if test="${pageMaker.prev}">
+											<li><a class="prev" href="${pageMaker.start-1}"
+												aria-label="Previous"> <span aria-hidden=false>&laquo;</span>
+											</a></li>
+										</c:if>
+					
+										<c:forEach begin="${pageMaker.start}" end="${pageMaker.end}"
+											var="idx">
+											<li class="${pageMaker.current ==idx?'active':''}">
+											<a class="curr" href="${idx}">${idx}</a></li>
+										</c:forEach>
+					
+										<c:if test="${pageMaker.next}">
+											<li><a class="next" href="${pageMaker.end+1}" aria-label="Next">
+													<span aria-hidden="${pageMaker.next}">&raquo;</span>
+											</a></li>
+										</c:if>
+					
+									</ul>
+								</nav>
+                                
+                                <!-- 페이징 삽입 -->  
+                                
+                                
+                                </div>
+                                </div>
+                                </div>
+                                </div>
                             </div>
                             
                         </div>
@@ -91,5 +121,54 @@
 		</div>
 	</div>
 	<!-- CONTENT-WRAPPER SECTION END-->
+	
+	<form id="f1">   <!-- hbno  hpage type keyword 4가지의 속성을 여기에 숨겨놨다가 보낸다  -->
+	<input id="hqno" type="hidden" name="qno">
+	<input id="hpage" type="hidden" name="page" value="${cri.page}">
+	<input type="hidden" name="type" value="${cri.type}">
+	<input type="hidden" name="keyword" value="${cri.keyword}">
+	</form>
+	
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	
+	<script>
+	
+	
+	$(document).ready(function() {
+		
+		$(".goQview").on("click", function(e) {
+			e.preventDefault();
+			$("#hqno").val($(this).attr("href"));
+			$("#f1").attr("action", "/qna/qview").submit(); 
+
+		});
+		
+		
+		$(".prev").on("click", function(e) {
+			e.preventDefault();
+			$("#hpage").val($(this).attr("href"));
+			$("#f1").attr("action", "/qna/list").submit();
+
+		});
+		
+		$(".curr").on("click", function(e) {
+			e.preventDefault();
+			$("#hpage").val($(this).attr("href"));
+			$("#f1").attr("action", "/qna/list").submit();
+
+		});
+		
+		$(".next").on("click", function(e) {
+			e.preventDefault();
+			$("#hpage").val($(this).attr("href"));
+			$("#f1").attr("action", "/qna/list").submit();
+
+		});
+		
+	});
+	</script>
+	
+	
+	
 	
 <%@ include file="/WEB-INF/views/footer.jsp" %>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.cg.domain.Criteria;
 import org.cg.domain.QuestionVO;
 import org.cg.persistence.QnaDAO;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,15 @@ public class QnaServiceImpl implements QnaService {
 	QnaDAO dao;
 	
 	@Override
-	public List<QuestionVO> getQList() {
+	public List<QuestionVO> getQList(Criteria cri) {
 		
-		return dao.getQList();
+		return dao.getQList(cri);
+	}
+
+	@Override
+	public int getTotal() {
+		// TODO Auto-generated method stub
+		return dao.getTotal();
 	}
 
 }

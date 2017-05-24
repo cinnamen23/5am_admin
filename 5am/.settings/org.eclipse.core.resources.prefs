@@ -2,3 +2,4 @@ eclipse.preferences.version=1
 encoding//src/main/webapp/WEB-INF/views/footer.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/header.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/member/list.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/qna/qview.jsp=UTF-8

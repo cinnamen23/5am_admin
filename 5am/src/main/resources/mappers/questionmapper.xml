@@ -6,7 +6,19 @@
   <mapper namespace="org.cg.persistence.QnaDAO">
   
   <select id="QuestionList" parameterType="org.cg.domain.Criteria" resultType="org.cg.domain.QuestionVO">
-  select * from tbl_question  
+  <!-- select * from tbl_question -->  
+  
+   <![CDATA[
+select * from (SELECT rownum rnum,qno, title, content, writer, regdate,updatedate FROM 
+( SELECT qno, title, CONTENT, writer, regdate,UPDATEDATE FROM tbl_question order by qno desc) 
+tbl_question where rownum <= #{pageNum}) 
+where rnum >=#{skip}
+  ]]>
   </select>
+  
+  <select id="getTotal" resultType="int">
+  select count(*) from tbl_question
+  </select>
+  
   
   </mapper>
