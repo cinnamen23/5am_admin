@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -20,10 +21,19 @@ public class ConnectionTest {
 	@Inject
 	DataSource ds; 
 	
+	
+	@Inject
+	SqlSessionTemplate sess;
+	
 	@Test
 	public void conTest() throws SQLException{
 		
 		logger.info(ds.getConnection());
 		ds.getConnection();
+	}
+	
+	@Test
+	public void time(){
+		logger.info(sess.selectOne("time.time"));
 	}
 }

@@ -16,5 +16,17 @@
 		<property name="password" value="admin5am"></property>
 	</bean>
 
+<bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+<property name="mapperLocations" value="classpath:/mappers/*.xml"></property>
+<property name="dataSource" ref="dataSource"></property>
+
+</bean>
+
+<bean name="sqlSessionTemplete" class="org.mybatis.spring.SqlSessionTemplate">
+<constructor-arg ref="sqlSessionFactory">
+</constructor-arg>
+
+</bean>
 
 </beans>
