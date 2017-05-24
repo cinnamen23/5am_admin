@@ -2,8 +2,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+<<<<<<< HEAD
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+=======
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+>>>>>>> branch 'master' of https://github.com/kick07230723/5AM.git
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
@@ -18,19 +22,25 @@
 		<property name="password" value="admin5am"></property>
 	</bean>
 
-<bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
-<property name="mapperLocations" value="classpath:/mappers/*.xml"></property>
-<property name="dataSource" ref="dataSource"></property>
+	<bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+		<property name="mapperLocations" value="classpath:/mappers/*.xml"></property>
+		<property name="dataSource" ref="dataSource"></property>
 
-</bean>
+	</bean>
 
-<bean name="sqlSessionTemplete" class="org.mybatis.spring.SqlSessionTemplate">
-<constructor-arg ref="sqlSessionFactory">
-</constructor-arg>
+	<bean name="sqlSessionTemplete" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory">
+		</constructor-arg>
 
-</bean>
+	</bean>
 
+<<<<<<< HEAD
 <context:component-scan base-package="org.cg.persistence"></context:component-scan>
 <context:component-scan base-package="org.cg.service"></context:component-scan>
+=======
+
+	<context:component-scan base-package="org.cg.persistence"></context:component-scan>
+	<context:component-scan base-package="org.cg.service"></context:component-scan>
+>>>>>>> branch 'master' of https://github.com/kick07230723/5AM.git
 </beans>

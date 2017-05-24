@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.cg.persistence.MemberDAO">
+
+	<select id="listAll" resultType="org.cg.domain.MemberVO">
+		select * from tbl_Member
+	</select>
+
+	<select id="totalCount" resultType="Int">
+		select count(*) from tbl_Member
+
+	</select>
+
+	<insert id="create" parameterType="org.cg.domain.MemberVO">
+
+		insert into	tbl_Member(mid,mpw,mname,mage,mgender,maddr) values
+		("${mid}","${mpw}","${mname}","${mage}","${mgender}","${maddr}")
+	</insert>
+
+	<delete id="delete" parameterType="org.cg.domain.MemberVO">
+		delete from tbl_Member where mid="${mid}"
+
+	</delete>
+
+
+</mapper>

@@ -16,6 +16,13 @@ public class ConnectionTest {
 
 	private static final Logger logger =Logger.getLogger(ConnectionTest.class) ;
 	
+<<<<<<< HEAD
+=======
+	
+	
+	@Inject
+	DataSource ds; 
+>>>>>>> branch 'master' of https://github.com/kick07230723/5AM.git
 	
 	
 	@Inject
@@ -28,5 +35,19 @@ public class ConnectionTest {
 	dao.getQList();
 	}
 	
+<<<<<<< HEAD
 	
+=======
+	@Test
+	public void time(){
+		logger.info(sess.selectOne("time.time"));
+	}
+	
+	@Test
+	public void read(){
+		
+		String namespace = "org.cg.persistence.MemberDAO";
+		sess.selectList(namespace  + ".listAll");
+	}
+>>>>>>> branch 'master' of https://github.com/kick07230723/5AM.git
 }
