@@ -38,13 +38,13 @@ public class LibraryDAOImpl implements LibraryDAO {
 	}
 
 	@Override
-	public List<LibraryVO> getList() {
-		return  sess.selectList(namespace+".getList");
+	public List<LibraryVO> getList(Criteria cri) {
+		return  sess.selectList(namespace+".getList",cri);
 	}
 
 	@Override
-	public int getTotal(Criteria cri) {
-		return 0;
+	public int getTotal() {
+		return sess.selectOne(namespace+".getTotal");
 	}
 
 }

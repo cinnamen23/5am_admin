@@ -26,7 +26,28 @@
                         <div class="panel-heading panel">목록  </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="dataTables-example_length"><label><select name="dataTables-example_length" aria-controls="dataTables-example" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div><div class="col-sm-6"><div id="dataTables-example_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" aria-controls="dataTables-example"></label></div></div></div><table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
+                                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                <div class="row">
+                                <div class="col-sm-6">
+                                <div class="dataTables_length" id="dataTables-example_length">
+                                <label>
+                                
+                                </div></div><div class="col-sm-6"><div id="dataTables-example_filter" class="dataTables_filter">
+                <label>
+                <form class="form" method="get" action="/notice/list">
+				<input class="hopage" type="hidden" name="page"value="${pageMaker.current}"> 
+				<input class="view"type="hidden" name="nno"> 
+                <select name="type" class="type">
+				<option value="n" ${cri.type eq null?'selected':''}>---</option>
+				<option value="t" ${cri.type eq 't'?'selected':''}>title</option>
+				<option value="c" ${cri.type eq 'c'?'selected':''}>content</option>
+				<option value="w" ${cri.type eq 'w'?'selected':''}>writer</option>
+			    </select> 
+			    <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keyword" value="${cri.keyword}"><button id="btnn" class="btn btn-info">Search</button>
+			    </form>
+			    </label>
+                               
+                                </div></div></div><table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
                                     <thead>
                                         <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" aria-sort="ascending" style="width: 189px;">번호</th><th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 291px;">글제목</th><th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 264px;">글쓴이</th><th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 160px;">동록일자</th>
                                     </thead>
@@ -35,7 +56,7 @@
                                      <c:forEach var="list" items="${list}">
                                     <tr class="gradeA odd">
                                             <td class="sorting_1">${list.nno}</td>
-                                            <td class=" ">${list.ntitle}</td>
+                                            <td><a class="tt" href="${list.nno}">${list.ntitle}</a></td>
                                             <td class="center ">${list.nwriter}</td>
                                             <td class="center ">${list.regdate}</td>
                                          
@@ -56,27 +77,27 @@
                                 <c:forEach begin="${pageMaker.start}" end="${pageMaker.end}" 
                                 var="pagege">
                                 <a href="${pagege}">
-			                 	<li class="paginate_button" aria-controls="dataTables-example" tabindex="0">${pagege}</li></a>
+			                 	<li class='${pagege == pageMaker.current?"paginate_button active":""}' aria-controls="dataTables-example" tabindex="0">${pagege}</a></li>
 			                 	</c:forEach> 
                                 <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><c:if test="${pageMaker.next}"><a href="${pageMaker.end+1}">다음</a></c:if></li>
                                 </ul>
                                 </div>
-                           		<div>
+          <%--                  		<div>
 		<form class="form" method="get" action="/notice/list">
 			<input class="hopage" type="hidden" name="page"value="${pageMaker.current}"> 
-				<input class="view"type="hidden" name="bno"> 
-				<%-- <select name="type" class="type">
+				<input class="view"type="hidden" name="nno"> 
+				 <select name="type" class="type">
 				<option value="n" ${cri.type eq null?'selected':''}>---</option>
 				<option value="t" ${cri.type eq 't'?'selected':''}>title</option>
 				<option value="c" ${cri.type eq 'c'?'selected':''}>content</option>
 				<option value="w" ${cri.type eq 'w'?'selected':''}>writer</option>
-			</select>  --%>
-			<%-- <input type="text" class="text" name="keyword"
-				value="${cri.keyword}"> --%>
+			</select>  
+			<input type="text" class="text" name="keyword"
+				value="${cri.keyword}">
 		<!-- 	<button id="btnn" class="btn btn-info">Search</button> -->
 
 		</form>
-	</div>	
+	</div>	 --%>
                                 </div>
                                 </div>
                                 </div>
@@ -109,21 +130,21 @@ $(".pagination a").on("click", function(e) {
 	$(".form").submit();
 })
 
-/* $(".tt").on("click", function(e) {
+ $(".tt").on("click", function(e) {
 
 	e.preventDefault();
 
 	$(".view").val($(this).attr("href"));
 
-	$(".form").attr("action", "/view").submit();
-}) */
+	$(".form").attr("action", "/notice/nview").submit();
+}) 
 
-/* $("#btnn").on("click", function(e) {
+ $("#btnn").on("click", function(e) {
 	e.preventDefault();
 	$(".hopage").val("1");
 	$(".form").submit();
 
-}) */
+}) 
 })
 </script>	
 <%@ include file="/WEB-INF/views/footer.jsp" %>

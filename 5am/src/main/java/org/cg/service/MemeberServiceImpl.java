@@ -16,8 +16,8 @@ public class MemeberServiceImpl implements MemberService {
 	MemberDAO dao;
 
 	@Override
-	public List<MemberVO> listAll() {
-		return dao.listAll();
+	public List<MemberVO> listAll(Criteria cri) {
+		return dao.listAll(cri);
 	}
 
 	@Override
@@ -33,8 +33,7 @@ public class MemeberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int totalCount() {
-		
+	public int totalCount() {		
 		return dao.totalCount();
 	}
 

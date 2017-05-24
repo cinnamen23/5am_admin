@@ -20,9 +20,9 @@ public class MemberDAOImpl implements MemberDAO {
 	
 
 	@Override
-	public List<MemberVO> listAll() {
+	public List<MemberVO> listAll(Criteria cri) {
 
-		return sess.selectList(namespace + ".listAll");
+		return sess.selectList(namespace + ".listAll",cri);
 	}
 
 	

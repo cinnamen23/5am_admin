@@ -18,6 +18,8 @@
 			</div>
 
 		</div>
+		<div class="row">
+			<div class="col-md-12">
 
 				<div class="row">
 					<div class="col-md-12">
@@ -28,7 +30,7 @@
 								<div class="table-responsive">
 									<div id="dataTables-example_wrapper"
 										class="dataTables_wrapper form-inline" role="grid">
-										<div class="row"><div class="col-sm-6"></div>
+										<div class="row">
 											<div class="col-sm-6">
 												<div class="dataTables_length"
 													id="dataTables-example_length">
@@ -64,20 +66,25 @@
 												</c:forEach>
 
 											</tbody>
-										</table> 
+										</table>
 										<div>${pageMaker}</div>
 										<div>${cri}</div>
 										<div class="row">
 					
 											<div class="col-sm-6">
-												<div class="dataTables_paginate paging_simple_numbers"	id="dataTables-example_paginate">
+												<div class="dataTables_paginate paging_simple_numbers"
+													id="dataTables-example_paginate">
 													<ul class="pagination">
-														<li class="paginate_button" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous">
-															<c:if test="${pageMaker.prev}">
+														<li class="paginate_button"
+															aria-controls="dataTables-example" tabindex="0"
+															id="dataTables-example_previous"><c:if
+																test="${pageMaker.prev}">
 																<a href="${pageMaker.start-1}">이전</a>
 															</c:if></li>
-														<c:forEach begin="${pageMaker.start}" end="${pageMaker.end}" var="pagege">
-																<li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="${pagege}">${pagege}</a></li>
+														<c:forEach begin="${pageMaker.start}"
+															end="${pageMaker.end}" var="pagege">
+																<li class="paginate_button"
+																aria-controls="dataTables-example" tabindex="0"><a href="${pagege}">${pagege}</a></li>
 															
 														</c:forEach>
 														<li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next">
@@ -87,9 +94,9 @@
 													</ul>
 												</div>
 												<div>
-													<form class="form" method="get" action="/library/list">
-														<input class="hopage" type="hidden" name="page"	value="${pageMaker.current}">
-														 <input class="view" type="hidden" name="bno">
+													<form class="form" method="get" action="/notice/list">
+														<input class="hopage" type="hidden" name="page"	value="${pageMaker.current}"> <input class="view"
+															type="hidden" name="bno">
 														<%-- <select name="type" class="type">
 				<option value="n" ${cri.type eq null?'selected':''}>---</option>
 				<option value="t" ${cri.type eq 't'?'selected':''}>title</option>
@@ -105,6 +112,10 @@
 											</div>
 										</div>
 									</div>
+								</div>
+
+							</div>
+						</div>
 						<!--End Advanced Tables -->
 					</div>
 				</div>
@@ -113,29 +124,25 @@
 						href="http://www.binarytheme.com/"></a>
 				</div>
 			</div>
-			</div>
+
 		</div>
 	</div>
 </div>
 <!-- CONTENT-WRAPPER SECTION END-->
-	<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
 <script>
 $(document).ready(function(e) {
 	
-
+	$(".")
 	
 
-	$(".pagination a").on("click", function(e) {
-	
-		e.preventDefault();
-	
-		$(".hopage").val($(this).attr("href"));
-	
-		$(".form").submit();
-	})
+$(".pagination a").on("click", function(e) {
+
+	e.preventDefault();
+
+	$(".hopage").val($(this).attr("href"));
+
+	$(".form").submit();
+})
 })
 </script>
 <%@ include file="/WEB-INF/views/footer.jsp"%>

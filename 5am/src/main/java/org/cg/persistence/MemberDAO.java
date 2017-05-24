@@ -9,7 +9,7 @@ import org.cg.domain.MemberVO;
 
 public interface MemberDAO {
 	
-	public List<MemberVO> listAll();
+	public List<MemberVO> listAll(Criteria cri);
 
 	public int totalCount();
 	

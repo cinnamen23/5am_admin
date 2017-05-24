@@ -11,6 +11,8 @@ public class LibraryVO {
 	private int lno;
 	private String ltitle, lcontent, lfile;
 	private Timestamp regdate, updatedate;
+	
+	
 	public int getLno() {
 		return lno;
 	}

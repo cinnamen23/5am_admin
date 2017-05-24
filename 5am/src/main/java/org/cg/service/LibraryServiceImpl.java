@@ -36,13 +36,13 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
-	public List<LibraryVO> getList() throws Exception {
-		return dao.getList();
+	public List<LibraryVO> getList(Criteria cri) throws Exception {
+		return dao.getList(cri);
 	}
 
 	@Override
-	public Integer getTotal(Criteria cri) throws Exception {
-		return null;
+	public Integer getTotal() throws Exception {
+		return dao.getTotal();
 	}
 
 }
