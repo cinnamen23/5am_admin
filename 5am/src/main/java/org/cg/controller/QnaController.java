@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class QnaController {
 	Logger logger= Logger.getLogger(QnaController.class);
 	
-	@GetMapping
+	@GetMapping("/list")
 	public void getQna(){
 		
 	}

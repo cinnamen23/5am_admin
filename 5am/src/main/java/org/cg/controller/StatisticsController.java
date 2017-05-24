@@ -11,7 +11,7 @@ public class StatisticsController {
 	Logger logger= Logger.getLogger(QnaController.class);
 
 	
-	@GetMapping
+	@GetMapping("/list")
 	public void getStatistics(){
 		
 	}

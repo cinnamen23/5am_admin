@@ -50,11 +50,11 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a href="http://localhost:8080/customer">고객관리</a></li>
+                            <li><a href="http://localhost:8080/customer/list">고객관리</a></li>
                             <!--  class="menu-top-active"  활성화 -->
                            
-                            <li><a href="http://localhost:8080/statistics">통계</a></li>
-                            <li><a href="http://localhost:8080/notice">공지 사항</a></li>
+                            <li><a href="http://localhost:8080/statistics/list">통계</a></li>
+                            <li><a href="http://localhost:8080/notice/list">공지 사항</a></li>
                             <!-- <li>
                                 <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">공지사항 <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
@@ -63,9 +63,9 @@
                                 </ul>
                             </li> 
                             리스트 안의 리스트	-->
-                            <li><a href="http://localhost:8080/qna">Q&A</a></li>
-                             <li><a href="http://localhost:8080/admaker">광고 제작</a></li>
-                            <li><a href="http://localhost:8080/library">자료실</a></li>
+                            <li><a href="http://localhost:8080/qna/list">Q&A</a></li>
+                             <li><a href="http://localhost:8080/admaker/list">광고 제작</a></li>
+                            <li><a href="http://localhost:8080/library/list">자료실</a></li>
 
                         </ul>
                     </div>

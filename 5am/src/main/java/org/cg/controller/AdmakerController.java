@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AdmakerController {
 	Logger logger= Logger.getLogger(AdmakerController.class);
 	
-	@GetMapping
+	@GetMapping("/list")
 	public void getAdmaker(){
 		
 	}

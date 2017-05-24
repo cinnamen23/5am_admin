@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class NoticeController {
 	Logger logger= Logger.getLogger(NoticeController.class);
 	
-	@GetMapping
+	@GetMapping("/list")
 	public void getNotice(){
 		
 	}
