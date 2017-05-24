@@ -48,4 +48,11 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 
+
+	@Override
+	public void update(MemberVO vo) {
+sess.update(namespace+".update",vo);		
+	}
+
+
 }

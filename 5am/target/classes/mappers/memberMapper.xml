@@ -16,23 +16,21 @@
 	</select>
 
 	<select id="totalCount" resultType="Int">
-		select count(*) from
-		tbl_Member
-
+		select count(*) from tbl_Member
 	</select>
 
 	<insert id="create" parameterType="org.cg.domain.MemberVO">
-
-		insert into
-		tbl_Member(mid,mpw,mname,mage,mgender,maddr) values
-		("${mid}","${mpw}","${mname}","${mage}","${mgender}","${maddr}")
+		insert into	tbl_Member(mid,mpw,mname,mage,mgender,maddr) values ("${mid}","${mpw}","${mname}","${mage}","${mgender}","${maddr}")
 	</insert>
 
 	<delete id="delete" parameterType="org.cg.domain.MemberVO">
-		delete from tbl_Member where
-		mid="${mid}"
+		delete from tbl_Member where mid="${mid}"
 
 	</delete>
+	
+	<update id="update" parameterType="org.cg.domain.MemberVO">
+		UPDATE tbl_Member SET mpw = "${mpw}", mname="${mname}",mage="${mage}",mgender="${mgender}", maddr="${maddr}" WHERE mid = "${mid}"
+	</update>
 
 
 </mapper>

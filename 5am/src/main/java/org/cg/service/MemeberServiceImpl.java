@@ -25,20 +25,19 @@ public class MemeberServiceImpl implements MemberService {
 		dao.creat(vo);
 	}
 
-	
-
 	@Override
 	public void delete(String mid) {
 		dao.delete(mid);
 	}
 
 	@Override
-	public int totalCount() {		
+	public int totalCount() {
 		return dao.totalCount();
 	}
 
-	
-
-	
+	@Override
+	public void update(MemberVO vo) {
+		dao.update(vo);
+	}
 
 }

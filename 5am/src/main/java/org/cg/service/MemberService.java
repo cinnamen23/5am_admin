@@ -9,9 +9,11 @@ public interface MemberService {
 	
 	public int totalCount();
 	
+	public void regist(MemberVO vo);
+	
 	public List<MemberVO> listAll(Criteria cri);
 
-	public void regist(MemberVO vo);
+	public void update(MemberVO vo);
 		
 	public void delete(String mid);
 	
