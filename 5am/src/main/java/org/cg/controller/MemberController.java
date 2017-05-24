@@ -3,10 +3,13 @@ package org.cg.controller;
 import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
+import org.cg.domain.Criteria;
+import org.cg.domain.PageMaker;
 import org.cg.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -19,10 +22,11 @@ public class MemberController {
 	MemberService service;
 
 	@GetMapping("/list")
-	public void mainGet(Model model) {
+	public void mainGet(@ModelAttribute("cri") Criteria cri,Model model) {
 
 		logger.info("get member list .....");
 
-		model.addAttribute("list", service.listAll());
+		model.addAttribute("list", service.listAll(cri));
+		model.addAttribute("pageMaker", new PageMaker(cri, service.totalCount()));
 	}
 }

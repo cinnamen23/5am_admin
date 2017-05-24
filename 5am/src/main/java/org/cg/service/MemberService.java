@@ -9,7 +9,7 @@ public interface MemberService {
 	
 	public int totalCount();
 	
-	public List<MemberVO> listAll();
+	public List<MemberVO> listAll(Criteria cri);
 
 	public void regist(MemberVO vo);
 		

@@ -6,23 +6,31 @@
 
 <mapper namespace="org.cg.persistence.MemberDAO">
 
-	<select id="listAll" resultType="org.cg.domain.MemberVO">
-		select * from tbl_Member
+	<select id="listAll" resultType="org.cg.domain.MemberVO"
+		parameterType="org.cg.domain.Criteria">
+		<![CDATA[
+		select * from (SELECT rownum rnum ,mid, mname,mage, mgender, regdate, updatedate FROM 
+		( SELECT mid, mname,mage, mgender, regdate, updatedate FROM tbl_member order by regdate desc) 
+		tbl_member where rownum <= #{pageNum}) where rnum >= #{skip}
+		  ]]>
 	</select>
 
 	<select id="totalCount" resultType="Int">
-		select count(*) from tbl_Member
+		select count(*) from
+		tbl_Member
 
 	</select>
 
 	<insert id="create" parameterType="org.cg.domain.MemberVO">
 
-		insert into	tbl_Member(mid,mpw,mname,mage,mgender,maddr) values
+		insert into
+		tbl_Member(mid,mpw,mname,mage,mgender,maddr) values
 		("${mid}","${mpw}","${mname}","${mage}","${mgender}","${maddr}")
 	</insert>
 
 	<delete id="delete" parameterType="org.cg.domain.MemberVO">
-		delete from tbl_Member where mid="${mid}"
+		delete from tbl_Member where
+		mid="${mid}"
 
 	</delete>
 
