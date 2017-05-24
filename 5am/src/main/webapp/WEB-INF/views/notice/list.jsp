@@ -56,7 +56,7 @@
                                 <c:forEach begin="${pageMaker.start}" end="${pageMaker.end}" 
                                 var="pagege">
                                 <a href="${pagege}">
-			                 	<li class="paginate_button" aria-controls="dataTables-example" tabindex="0">${pagege}</li></a>
+			                 	<li class="paginate_button" aria-controls="dataTables-example" tabindex="0">${pagege}</a></li>
 			                 	</c:forEach> 
                                 <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><c:if test="${pageMaker.next}"><a href="${pageMaker.end+1}">다음</a></c:if></li>
                                 </ul>
