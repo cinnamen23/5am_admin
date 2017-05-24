@@ -18,9 +18,9 @@ public interface LibraryDAO {
 	
 	public void delete(int dno);
 	
-	public List<LibraryVO> getList();
+	public List<LibraryVO> getList(Criteria cri);
 	
-	public int getTotal(Criteria cri);
+	public int getTotal();
 	
 
 }

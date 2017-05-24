@@ -2,16 +2,26 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="library">
 
-	<!-- parameterType="Integer" --> 
-	<select id="getList" resultType="org.cg.domain.LibraryVO">
-		select * from tbl_library
+	 <select id="getTotal" resultType="Integer">
+		 select count(lno) from tbl_library
+	 </select>
+
+	<select id="getList" resultType="org.cg.domain.LibraryVO" parameterType="org.cg.domain.Criteria">
+	<![CDATA[
+		select * from (SELECT rownum rnum ,lno, ltitle, lcontent, lfile,regdate, updatedate FROM
+		( SELECT lno, ltitle, lcontent,lfile, regdate, UPDATEDATE FROM tbl_library order by lno desc)
+		tbl_library where rownum <= #{pageNum} )
+		where rnum >= #{skip}
+	]]>
 	</select>
 
 	<select id="create" parameterType="org.cg.domain.LibraryVO">
-		insert into tbl_library(lno, ltitle, lcontent, lfile) values(seq_library_lno.nextval, #{ltitle},#{lcontent},#{lfile} )
+		insert into tbl_library(lno,
+		ltitle, lcontent, lfile) values(seq_library_lno.nextval,
+		#{ltitle},#{lcontent},#{lfile} )
 	</select>
 
 </mapper>

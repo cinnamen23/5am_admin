@@ -13,7 +13,7 @@ public interface LibraryService {
 	public void update(LibraryVO vo) throws Exception;
 	public void delete(Integer lno) throws Exception;
 	
-	public List<LibraryVO> getList()throws Exception;
-	public Integer getTotal(Criteria cri)throws Exception;
+	public List<LibraryVO> getList(Criteria cri)throws Exception;
+	public Integer getTotal() throws Exception;
 	
 }
