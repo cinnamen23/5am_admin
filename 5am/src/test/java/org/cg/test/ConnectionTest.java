@@ -18,6 +18,8 @@ public class ConnectionTest {
 
 	private static final Logger logger =Logger.getLogger(ConnectionTest.class) ;
 	
+	
+	
 	@Inject
 	DataSource ds; 
 	
@@ -35,5 +37,12 @@ public class ConnectionTest {
 	@Test
 	public void time(){
 		logger.info(sess.selectOne("time.time"));
+	}
+	
+	@Test
+	public void read(){
+		
+		String namespace = "org.cg.persistence.MemberDAO";
+		sess.selectList(namespace  + ".listAll");
 	}
 }
