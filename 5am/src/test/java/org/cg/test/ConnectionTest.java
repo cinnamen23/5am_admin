@@ -18,7 +18,7 @@ public class ConnectionTest {
 	private static final Logger logger =Logger.getLogger(ConnectionTest.class) ;
 	
 	@Inject
-	DataSource ds;
+	DataSource ds; 
 	
 	@Test
 	public void conTest() throws SQLException{
