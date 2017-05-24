@@ -26,10 +26,6 @@ public class ConnectionTest {
 	
 	
 	
-	@Test
-	public void qListTest(){
-	dao.getQList();
-	}
 	
 	
 }
