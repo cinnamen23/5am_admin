@@ -3,6 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <select id="QuestionList" resultType="org.cg.domain.QuestionVO">
-  select *from tbl_question 
+  <mapper namespace="org.cg.persistence.QnaDAO">
+  
+  <select id="QuestionList" parameterType="org.cg.domain.Criteria" resultType="org.cg.domain.QuestionVO">
+  select * from tbl_question  
   </select>
+  
+  </mapper>
