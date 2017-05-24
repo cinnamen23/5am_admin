@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="org.cg.persistence.NoticeDAO">
+  <select id="list" resultType="org.cg.domain.NoticeVO" parameterType="org.cg.domain.Criteria">
+  <![CDATA[
+select * from (SELECT rownum rnum,nno, ntitle, ncontent, nwriter, regdate,updatedate FROM 
+( SELECT nno, ntitle, NCONTENT, nwriter, regdate,UPDATEDATE FROM tbl_notice order by nno desc) 
+tbl_notice where rownum <= #{pageNum}) 
+where rnum >= #{skip}
+  ]]>
+  </select>
+  
+  <select id="count" resultType="int">
+  select count(nno) from TBL_NOTICE
+  </select>
+  </mapper>
+  

@@ -16,7 +16,7 @@ public class PageMaker {
 		this.end = end;
 		this.total = total;
 		this.current = cri.getPage();
-		this.size = cri.getPageNum();
+		this.size = cri.getPageSize();
 		this.cri = cri;
 		calc();
 		

@@ -6,6 +6,7 @@ import javax.annotation.processing.SupportedSourceVersion;
 
 
 public class LibraryVO {
+
 	
 	private int lno;
 	private String ltitle, lcontent, lfile;
@@ -57,4 +58,7 @@ public class LibraryVO {
 	
 	
 
+=======
+		
+>>>>>>> 83dc4c1 똥 투척
 }

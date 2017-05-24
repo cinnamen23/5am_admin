@@ -28,11 +28,11 @@ public class Criteria {
 		if (this.pageNum < 0 || this.pageNum > 10) {
 			this.pageNum = 10;
 		}
-		return pageNum;
+		return (this.page) * this.pageNum ;
 	}
 
-	public int getPageStart() {
-		return (this.page - 1) * pageNum;
+	public int getPageSize() {
+		return 10;
 	}
 
 	public void setPageNum(int pageNum) {
@@ -60,7 +60,7 @@ public class Criteria {
 
 	public int getSkip() {
 
-		return (this.page - 1) * this.pageNum;
+		return (this.page - 1) * this.pageNum +1;
 	}
 
 	public void setSkip(int skip) {
