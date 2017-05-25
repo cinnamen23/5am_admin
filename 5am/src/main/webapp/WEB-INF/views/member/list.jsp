@@ -68,23 +68,20 @@
                                 <div class="row">
                                 <div class="col-sm-6">
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                 <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
                                 <ul class="pagination">
                                 <li class="paginate_button" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous">
-                                <c:if test="${pageMaker.prev}"><a class="a1" href="${pageMaker.start-1}">이전</a></c:if></li>
+                                <c:if test="${pageMaker.prev}"><a class="a1" href="${pageMaker.start-1}">&laquo;</a></c:if></li>
                                 <c:forEach begin="${pageMaker.start}" end="${pageMaker.end}" var="pagege">
                                 <a class="a1" href="${pagege}">
 			                 	<li class="${pageMaker.current ==pagege?'active':''}" aria-controls="dataTables-example" tabindex="0">${pagege}</a></li>
 			                 	</c:forEach> 
                                 <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next">
-                                <c:if test="${pageMaker.next}"><a class="a1" href="${pageMaker.end+1}">다음</a></c:if></li>
+                                <c:if test="${pageMaker.next}"><a class="a1" href="${pageMaker.end+1}">&raquo;</a></c:if></li>
                                 </ul>
                                 </div>
-                           		
-				
-			
-                                </div>
+                           		</div>
                                 </div>
                                 </div>
                             </div>
@@ -209,7 +206,8 @@
 		          <div class="form-group">
 		            <label for="message-text" class="form-control-label">나이</label>
 		            <input type="text" class="form-control" id="mage" name="mage" value="">
-		          </div><div class="form-group">
+		          </div>
+		          <div class="form-group">
 		            <div class="form-group">
 								<label>성별</label> <select id="mgender" name="mgender" class="form-control">
 									<option value="m">남자</option>
@@ -222,12 +220,10 @@
 		            <label for="message-text" class="form-control-label">주소</label>
 		            <input type="text"class="form-control" id="maddr" name="maddr" value="">
 		          </div>
-		          </div>
-		          
-		          <input type="hidden" id="mid" name="mid" value="">
+		         <input type="hidden" id="mid" name="mid" value="">
 		          
 		        </form>
-		        
+		       </div>
 		        
 		      </div>
 		      <div class="modal-footer">
@@ -241,11 +237,15 @@
 		
 	<!-- 모달창1 끝-->
 	
-	</div>
+	
 			<form class="form" method="get" action="/member/list">
 				<input class="hpage" type="hidden" name="page" value="${pageMaker.current}">
 				<input class="hpage2" type="hidden" name="page2" value="${pageMaker2.current}">
 				<input class="hmqno" type="hidden" name="mqno" value="">
+ 			</form>
+ 			
+ 			<form class="fd">
+ 				<input type="hidden" id="dmid" name="mid" value="">
  			</form>
 	
 	<script  src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -285,22 +285,22 @@
 			formObj.submit();
 		})
 		
-		$(".membermodi").on("click",function(){
-		
-		console.log("수정......");
-		console.dir(this);
-		console.log($(this).parent());
-		
-		var pass =$(this).parent();
-		var passmid = pass.attr("data-mid");
-		var passmname = pass.attr("data-mname");
-		var passmage = pass.attr("data-mage");
-		var passmaddr = pass.attr("data-maddr");
-		$("#mname").val(passmname);
-		$("#mage").val(passmage);
-		$("#mid").val(passmid);
-		$("#maddr").val(passmaddr);
-		
+		$(".membermodi").on("click",function(e){
+			e.preventDefault();
+			console.log("수정......");
+			console.dir(this);
+			console.log($(this).parent());
+			
+			var pass =$(this).parent();
+			var passmid = pass.attr("data-mid");
+			var passmname = pass.attr("data-mname");
+			var passmage = pass.attr("data-mage");
+			var passmaddr = pass.attr("data-maddr");
+			$("#mname").val(passmname);
+			$("#mage").val(passmage);
+			$("#mid").val(passmid);
+			$("#maddr").val(passmaddr);
+			
 		})
 		
 		$("#modifyBtn").on("click", function(e) {
@@ -313,6 +313,24 @@
 			formObj.attr('method','post');
 			formObj.submit();
 		})
+		
+		$(".memberdel").on("click", function(e) {		
+			
+			e.preventDefault();
+			console.log("delete......");
+			
+			var pass =$(this).parent();
+			var passmid = pass.attr("data-mid");
+			$("#dmid ").val(passmid);
+		 
+			var formObj = $(".fd");
+			
+			formObj.attr('action','/member/del');
+			formObj.attr('method','post');
+			formObj.submit();
+		})
+		
+		
 	
 	})
 	</script>	

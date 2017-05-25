@@ -1,9 +1,6 @@
 package org.cg.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
-
 import javax.inject.Inject;
-
 import org.apache.log4j.Logger;
 import org.cg.domain.Criteria;
 import org.cg.domain.Criteria2;
@@ -53,11 +50,20 @@ public class MemberController {
 	}
 	
 	@PostMapping("/modi")
-	public String mquestionmodi(MemberVO vo){
-		logger.info("mquestionmodi get ......");
+	public String memberModi(MemberVO vo){
+		logger.info("memberModi post ......");
 		logger.info(vo);
 		service.update(vo);
 		
-		return "redirect:/member/list";
+		return "redirect:list";
+	}
+	
+	@PostMapping("/del")
+	public String memberDel(MemberVO vo){
+		logger.info("memberDel post ......");
+		logger.info(vo);
+		service.delete(vo);
+		
+		return "redirect:list";
 	}
 }
