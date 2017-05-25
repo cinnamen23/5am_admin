@@ -38,15 +38,15 @@
                                 </div></div><div class="col-sm-6"><div id="dataTables-example_filter" class="dataTables_filter">
                 
                 <form class="form" method="get" action="/library/list">
-				<input class="hopage" type="hidden" name="page"value="${pageMaker.current}"> 
-				<input class="view"type="hidden" name="lno"> 
-                <select name="type" class="type">
-					<option value="n" ${cri.type eq null?'selected':''}>---</option>
-					<option value="t" ${cri.type eq 't'?'selected':''}>title</option>
-					<option value="c" ${cri.type eq 'c'?'selected':''}>content</option>
-			    </select> 
-			    <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keyword" value="${cri.keyword}"><button id="btnn" class="btn btn-info">Search</button>
-			    </form>
+					<input class="hopage" type="hidden" name="page"value="${pageMaker.current}"> 
+					<input class="view"type="hidden" name="lno"> 
+	                <select name="type" class="type">
+						<option value="n" ${cri.type eq null?'selected':''}>---</option>
+						<option value="t" ${cri.type eq 't'?'selected':''}>title</option>
+						<option value="c" ${cri.type eq 'c'?'selected':''}>content</option>
+				    </select> 
+				    <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keyword" value="${cri.keyword}">
+				    <button id="btnn" class="btn btn-primary">Search</button>
                                
                                 </div></div></div><table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
                                     <thead>
@@ -69,8 +69,10 @@
                                 </table>
                                 <div class="row">
 	                                <div class="col-sm-6">
-	                                	<div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all"> 총게시물 수는 ${pageMaker.total}개 입니다</div>
+	                                	<div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
+	                                	 <button type="submit" class="btn btn-primary regiBtn">등록</button> </div>
 	                                </div>
+			    </form>
 	                                <div class="col-sm-6">
 		                                <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
 			                                <ul class="pagination">
@@ -105,35 +107,36 @@
 <script>
 $(document).ready(function(e) {
 	
+//등록
+	$(".regiBtn").on("click", function(e){
+		e.preventDefault();
+		$(".form").attr("action", "/library/regi").submit();
+	})
+	
+	
+//상세보기
 	 $(".tt").on("click", function(e) {
-
 			e.preventDefault();
-
 			$(".view").val($(this).attr("href"));
-
 			$(".form").attr("action", "/library/view").submit();
 		}) 
-
+		
+//검색
 		 $("#btnn").on("click", function(e) {
 			e.preventDefault();
 			if($(".type").val()=='n'){
 				alert("검색 타입을 정해주세요")
 			}
 			else{
-				
 			$(".hopage").val("1");
 			$(".form").submit();
 			}
-
 		}) 
 	
-
+//페이지
 	$(".pagination a").on("click", function(e) {
-	
 		e.preventDefault();
-	
 		$(".hopage").val($(this).attr("href"));
-	
 		$(".form").submit();
 	})
 })

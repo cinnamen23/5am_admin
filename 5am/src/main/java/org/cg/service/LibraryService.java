@@ -10,7 +10,7 @@ public interface LibraryService {
 	
 	public void create(LibraryVO vo) throws Exception;
 	public LibraryVO read(Integer lno) throws Exception;
-	public void update(LibraryVO vo) throws Exception;
+	public LibraryVO update(LibraryVO vo) throws Exception;
 	public void delete(Integer lno) throws Exception;
 	
 	public List<LibraryVO> getList(Criteria cri)throws Exception;

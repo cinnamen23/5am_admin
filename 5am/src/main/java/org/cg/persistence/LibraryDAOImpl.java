@@ -28,13 +28,13 @@ public class LibraryDAOImpl implements LibraryDAO {
 	}
 
 	@Override
-	public void update(LibraryVO vo) {
-
+	public LibraryVO update(LibraryVO vo) {
+		return sess.selectOne(namespace+".update", vo);
 	}
 
 	@Override
 	public void delete(int lno) {
-
+		sess.delete(namespace+".delete", lno);
 	}
 
 	@Override

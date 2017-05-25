@@ -14,7 +14,7 @@ public interface LibraryDAO {
 	
 	public LibraryVO read(int lno);
 	
-	public void update(LibraryVO vo);
+	public LibraryVO update(LibraryVO vo);
 	
 	public void delete(int lno);
 	

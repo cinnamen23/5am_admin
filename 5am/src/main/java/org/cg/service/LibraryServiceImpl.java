@@ -26,13 +26,13 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
-	public void update(LibraryVO vo) throws Exception {
-
+	public LibraryVO update(LibraryVO vo) throws Exception {
+		return dao.update(vo);
 	}
 
 	@Override
 	public void delete(Integer lno) throws Exception {
-
+		dao.delete(lno);
 	}
 
 	@Override

@@ -37,8 +37,15 @@
                                 
                                 </div></div>
                                 <div class="col-md-12">
-                                <h4>등록일</h4>${lib.regdate}
-                                <h4>수정일</h4>${lib.updatedate}
+				                                등록일 : ${lib.regdate} <br>
+				                                수정일 : ${lib.updatedate}
+                             
+                               <form class="form" action="/library/list" method="get">
+	                              	<input type="hidden" name="page" value="${cri.page}" >
+									<input type="hidden" name="lno" value="${lib.lno}">
+									<input type="hidden" name="type" value="${cri.type}" >
+									<input type="hidden" name="keyword" value="${cri.keyword}" >
+                               </form>
                                
 	                                <div id="dataTables-example_filter" class="dataTables_filter">
 	
@@ -48,7 +55,6 @@
 			                            <div class="alert alert-info">
 			                                <h3>${lib.lcontent} <br></h3>
 			                                <a href="#" class="alert-link">${lib.lfile}<br></a>
-			                                
 			                            	파일을 다운 받으려면 위의 링크를 클릭하세요
 			                            </div>
 			                           <br>
@@ -61,11 +67,12 @@
                                 <div class="row">
                                 <div class="col-md-12">
                                 <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
-                                <a href="#" class="btn btn-primary">수정</a>
-                                <a href="#" class="btn btn-danger">삭제</a></div>
+                                <a href="#" class="btn btn-primary modifyBtn">수정</a>
+                                <a href="#" class="btn btn-primary deleteBtn">삭제</a></div>
                                 </div>
                                 <div class="col-md-12">
                                 <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
+                                <a href="#" class="btn btn-info listBtn">목록</a>
                                 
                                 
                                 </div>
@@ -77,7 +84,6 @@
                             
                         </div>
                     </div>
-                                <a href="#" style="margin:10px" class="btn btn-success">목록</a>
                     <!--End Advanced Tables -->
                 </div>
             </div>
@@ -89,6 +95,26 @@
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
 <script>
-
+$(document).ready(function(e) {
+	
+//삭제
+	$(".deleteBtn").on("click", function(e){
+		e.preventDefault();
+		console.log("삭제")
+		
+		
+		if(confirm("정말 삭제하시겠습니까??") == true){    //확인
+			$(".form").attr("method","post").attr("action","/library/delete").submit();
+		}else{   //취소
+		    return;
+		}
+		})
+	
+//등록
+	$(".listBtn").on("click", function(e){
+		e.preventDefault();
+		$(".form").submit();
+	})
+})
 </script>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
