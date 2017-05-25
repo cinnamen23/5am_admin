@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <%@ include file="/WEB-INF/views/header.jsp"%>
 
@@ -21,8 +23,9 @@
       </div>
       
       
+        <form id="f1">
       <div class="modal-body">
-        <form >
+      
           <div class="form-group">
             <label for="recipient-name" class="form-control-label">Replyer:</label>
             <input type="text" class="form-control" id="title" name="title" value="${vo.title}">
@@ -33,18 +36,18 @@
           </div>
           
            <input type="hidden" id="qno" name="qno" value="${vo.qno}">
-          
-        </form>
-        
         
       </div>
+        </form>
+
       <div class="modal-footer">
-        <button  id="modifyBtn" type="button" class="btn btn-secondary" data-dismiss="modal">수정</button>
+        <button  id="modifyBtn" class="btn btn-secondary" data-dismiss="modal">수정</button>
         <button  type="button" class="btn btn-primary" data-dismiss="modal">취소</button>
+		</div>
+
       </div>
     </div>
   </div>
-</div>
 </div>
 
 <!-- 모달창1 끝-->
@@ -123,18 +126,24 @@
 	</div>
 </div>
 
+
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	
+
 <script>
 
 $(document).ready(function() {
 	
 	$('#modifyBtn').on("click", function(e) {
 
+		console.log("modifyBtn in-----------------------------------");
+		
 		e.preventDefault();
 
 		var formObj = $('#f1');
 
-		formObj.attr('action', '/modify');
-		formObj.attr('method', 'get');
+		formObj.attr('action', '/qna/qview');
+		formObj.attr('method', 'post');
 		formObj.submit();  /* #f1 에 들어있는거 bno page type keyword */
 
 	});

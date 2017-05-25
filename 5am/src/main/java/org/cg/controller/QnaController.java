@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -49,6 +50,17 @@ public class QnaController {
 		model.addAttribute("vo",vo);
 		
 	}
+	
+	@PostMapping("/qview")
+	public void modiQuestion(QuestionVO vo,Model model){
+		
+		logger.info("qna/qview post..........");
+		
+		logger.info(vo);
+		
+	}
+	
+	
 	
 	
 
