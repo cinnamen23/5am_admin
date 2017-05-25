@@ -68,7 +68,7 @@
                                 <div class="col-md-12">
                                 <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
                                 <a href="#" class="btn btn-primary modifyBtn">수정</a>
-                                <a href="#" class="btn btn-primary deleteBtn">삭제</a></div>
+                                <a href="#" class="btn btn-info deleteBtn">삭제</a></div>
                                 </div>
                                 <div class="col-md-12">
                                 <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
@@ -96,6 +96,12 @@
   crossorigin="anonymous"></script>
 <script>
 $(document).ready(function(e) {
+	
+	//수정
+	$(".modifyBtn").on("click", function(e){
+		e.preventDefault();
+		$(".form").attr("action","/library/update").submit();
+	})
 	
 //삭제
 	$(".deleteBtn").on("click", function(e){

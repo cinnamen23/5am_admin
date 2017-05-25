@@ -26,6 +26,19 @@ public class LibraryController {
 	LibraryService service;
 	
 	
+	@PostMapping("/update")
+	public String postUpdate( Model model, LibraryVO vo) throws Exception{
+		logger.info(vo);
+		service.update(vo);
+		return "redirect:/library/list";
+	}
+	
+	@GetMapping("/update")
+	public void getUpdate(@ModelAttribute("cri") Criteria cri, Model model, Integer lno) throws Exception{
+		LibraryVO library= service.read(lno);
+		model.addAttribute("lib",library);
+	}
+	
 	@PostMapping("/delete")
 	public String postDelete(Integer lno) throws Exception{
 		service.delete(lno);
@@ -40,7 +53,7 @@ public class LibraryController {
 	
 	
 	@GetMapping("/regi")
-	public void getRegi(Model model) throws Exception{
+	public void getRegi(@ModelAttribute("cri") Criteria cri, Model model) throws Exception{
 		
 	}
 	

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
 
@@ -36,7 +37,7 @@
                                 <label>
                                 
                                 </div></div><div class="col-sm-6"><div id="dataTables-example_filter" class="dataTables_filter">
-                
+                <label>
                 <form class="form" method="get" action="/library/list">
 					<input class="hopage" type="hidden" name="page"value="${pageMaker.current}"> 
 					<input class="view"type="hidden" name="lno"> 
@@ -46,7 +47,11 @@
 						<option value="c" ${cri.type eq 'c'?'selected':''}>content</option>
 				    </select> 
 				    <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keyword" value="${cri.keyword}">
-				    <button id="btnn" class="btn btn-primary">Search</button>
+				    <button id="btnn" class="btn btn-info">Search</button>
+				</label>    
+				    
+
+				    
                                
                                 </div></div></div><table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
                                     <thead>
@@ -57,12 +62,12 @@
                                     </thead>
                                     <tbody>
                                         
+                   
                                      <c:forEach var="list" items="${list}">
                                     <tr class="gradeA odd">
                                             <td class="sorting_1">${list.lno}</td>
                                             <td><a class="tt" href="${list.lno}">${list.ltitle}</a></td>
                                             <td class="center ">${list.regdate}</td>
-                                         
                                         </tr>
                                         </c:forEach>   
                                         </tbody>
@@ -70,6 +75,9 @@
                                 <div class="row">
 	                                <div class="col-sm-6">
 	                                	<div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
+			     <c:if test ="${fn:length(list) eq 0}" >
+	                 	<h2>검색 내용이 없습니다</h2>
+	             </c:if> 
 	                                	 <button type="submit" class="btn btn-primary regiBtn">등록</button> </div>
 	                                </div>
 			    </form>
@@ -86,7 +94,6 @@
 			                                <a href="${pageMaker.end+1}">다음</a></c:if></li>
 			                                </ul>
 		                                </div>
-	
 	                                </div>
                                 </div>
                                 </div>
