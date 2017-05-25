@@ -46,7 +46,7 @@ public class Criteria2 {
 		return keyword2;
 	}
 
-	public void setKeyword(String keyword2) {
+	public void setKeyword2(String keyword2) {
 		this.keyword2 = keyword2;
 	}
 

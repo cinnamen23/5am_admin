@@ -37,9 +37,9 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public int totalCount() {
+	public int totalCount(Criteria cri) {
 
-		return sess.selectOne(namespace + ".totalCount");
+		return sess.selectOne(namespace + ".totalCount",cri);
 	}
 
 	@Override
@@ -53,8 +53,8 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public int qtotalCount() {
-		return sess.selectOne(namespace + ".qtotalCount");
+	public int qtotalCount(Criteria2 cri2) {
+		return sess.selectOne(namespace + ".qtotalCount",cri2);
 	}
 
 	@Override

@@ -31,7 +31,34 @@
                         <div class="panel-heading panel">회원 목록  </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="dataTables-example_length"></div></div><div class="col-sm-6"><div id="dataTables-example_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" aria-controls="dataTables-example"></label></div></div></div><table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
+                                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                <div class="row">
+                                <div class="col-sm-6">
+                                <div class="dataTables_length" id="dataTables-example_length">
+                                </div>
+                                </div>
+                                <div class="col-sm-6">
+                                <div id="dataTables-example_filter" class="dataTables_filter">
+                         <label>
+				              <form class="f1" method="get" action="/member/list">
+								<input class="hopage" type="hidden" name="page" value="1"> 
+					                <select name="type" class="type">
+									<option value="x" ${cri.type eq null?'selected':''}>---</option>
+									<option value="i" ${cri.type eq 'i'?'selected':''}>회원ID</option>
+									<option value="n" ${cri.type eq 'n'?'selected':''}>이름</option>
+									<option value="a" ${cri.type eq 'a'?'selected':''}>나이</option>
+									<option value="g" ${cri.type eq 'g'?'selected':''}>성별</option>
+									<option value="d" ${cri.type eq 'd'?'selected':''}>주소</option>
+								    </select> 
+							    <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keyword" value="${cri.keyword}">
+							    
+							    <button id="btnn" class="btn btn-info">Search</button>
+							  </form>
+						</label>
+                                </div>
+                                </div>
+                                </div>
+                                <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
                                     <thead>
                                         <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" aria-sort="ascending" style="width: 70px;">회원ID</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 40px;">이름</th>
@@ -117,7 +144,31 @@
                         <div class="panel-heading panel">고객 질문 현황 </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="dataTables-example_length"></div></div><div class="col-sm-6"><div id="dataTables-example_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" aria-controls="dataTables-example"></label></div></div></div><table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
+                                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                <div class="row">
+                                <div class="col-sm-6">
+                                <div class="dataTables_length" id="dataTables-example_length">
+                                </div>
+                                </div>
+                                <div class="col-sm-6">
+                                <div id="dataTables-example_filter" class="dataTables_filter">
+                          <label>
+				              <form class="f1" method="get" action="/member/list">
+								<input class="hopage" type="hidden" name="page2"value="1"> 
+				                <select name="type2" class="type">
+									<option value="x" ${cri2.type2 eq null?'selected':''}>---</option>
+									<option value="i" ${cri2.type2 eq 'i'?'selected':''}>ID</option>
+									<option value="t" ${cri2.type2 eq 't'?'selected':''}>제목</option>
+									<option value="c" ${cri2.type2 eq 'c'?'selected':''}>내용</option>
+								</select> 
+							    <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keyword2" value="${cri2.keyword2}">
+							    <button id="btnn" class="btn btn-info">Search</button>
+							  </form>
+						</label>
+                                </div>
+                                </div>
+                                </div>
+                                <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
                                     <thead>
                                      <tr role="row">
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 5px;">#</th>
@@ -157,10 +208,7 @@
                                 <c:if test="${pageMaker2.next}"><a class="a2" href="${pageMaker2.end+1}">다음</a></c:if></li>
                                 </ul>
                                 </div>
-                           		
-				
-			
-                                </div>
+                           		</div>
                                 </div>
                                 </div>
                             </div>
@@ -242,6 +290,10 @@
 				<input class="hpage" type="hidden" name="page" value="${pageMaker.current}">
 				<input class="hpage2" type="hidden" name="page2" value="${pageMaker2.current}">
 				<input class="hmqno" type="hidden" name="mqno" value="">
+				<input class="htype" type="hidden" name="type" value="${cri.type}">
+				<input class="hkeyword" type="hidden" name="keyword" value="${cri.keyword}">
+				<input class="htype2" type="hidden" name="type2" value="${cri2.type2}">
+				<input class="hkeyword2" type="hidden" name="keyword2" value="${cri2.keyword2}">
  			</form>
  			
  			<form class="fd">

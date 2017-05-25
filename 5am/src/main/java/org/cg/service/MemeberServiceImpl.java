@@ -33,8 +33,8 @@ public class MemeberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int totalCount() {
-		return dao.totalCount();
+	public int totalCount(Criteria cri) {
+		return dao.totalCount(cri);
 	}
 
 	@Override
@@ -48,8 +48,8 @@ public class MemeberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int qtotalCount() {
-		return dao.qtotalCount();
+	public int qtotalCount(Criteria2 cri2) {
+		return dao.qtotalCount(cri2);
 	}
 
 	@Override

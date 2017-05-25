@@ -80,12 +80,7 @@ public class MemberTest {
 		logger.info(service.qlistAll(cri2));
 	}
 	
-	@Test
-	public void qTotalTest(){
-		
-		service.qtotalCount();
-		logger.info(service.qtotalCount());
-	}
+	
 	
 
 }

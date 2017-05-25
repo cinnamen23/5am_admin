@@ -9,7 +9,7 @@ import org.cg.domain.MemberVO;
 
 public interface MemberService {
 	
-	public int totalCount();
+	public int totalCount(Criteria cri);
 	
 	public void regist(MemberVO vo);
 	
@@ -21,7 +21,7 @@ public interface MemberService {
 	
 	public List<MQuestionVO> qlistAll(Criteria2 cri2);
 	
-	public int qtotalCount();
+	public int qtotalCount(Criteria2 cri2);
 	
 	public void qregist(MQuestionVO vo);
 	

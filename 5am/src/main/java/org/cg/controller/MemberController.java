@@ -26,33 +26,36 @@ public class MemberController {
 	MemberService service;
 
 	@GetMapping("/list")
-	public void mainGet(@ModelAttribute("cri") Criteria cri,@ModelAttribute("cri2") Criteria2 cri2,Model model) {
+	public void mainGet(@ModelAttribute("cri") Criteria cri,@ModelAttribute("cri2") Criteria2 cri2, Model model) {
 
 		logger.info("get member list .....");
+		logger.info(cri);
+		
+		
 
 		model.addAttribute("list", service.listAll(cri));
-		model.addAttribute("pageMaker", new PageMaker(cri, service.totalCount()));
-		model.addAttribute("pageMaker2", new PageMaker2(cri2, service.qtotalCount()));
+		model.addAttribute("pageMaker", new PageMaker(cri, service.totalCount(cri)));
+		model.addAttribute("pageMaker2", new PageMaker2(cri2, service.qtotalCount(cri2)));
 		
 		model.addAttribute("qlist", service.qlistAll(cri2));
 	}
 	
 	@GetMapping("/mquestionview")
-	public void mquestionview(@ModelAttribute("cri") Criteria cri,Model model,MQuestionVO vo){
+	public void mquestionview(@ModelAttribute("cri") Criteria cri,@ModelAttribute("cri2") Criteria2 cri2,Model model,MQuestionVO vo){
 		
 		logger.info("mquestionview get ......");
-		logger.info(vo);
-		logger.info(cri);
-		
+				
 		vo = service.qread(vo.getMqno());
-		model.addAttribute("vo", vo);	
+		model.addAttribute("vo", vo);
+		model.addAttribute("cri", cri);
+		model.addAttribute("cri2", cri2);
+		
 		
 	}
 	
 	@PostMapping("/modi")
 	public String memberModi(MemberVO vo){
-		logger.info("memberModi post ......");
-		logger.info(vo);
+	
 		service.update(vo);
 		
 		return "redirect:list";
@@ -60,8 +63,7 @@ public class MemberController {
 	
 	@PostMapping("/del")
 	public String memberDel(MemberVO vo){
-		logger.info("memberDel post ......");
-		logger.info(vo);
+	
 		service.delete(vo);
 		
 		return "redirect:list";

@@ -11,7 +11,7 @@ import org.cg.domain.MemberVO;
 
 public interface MemberDAO {
 	
-	public int totalCount();
+	public int totalCount(Criteria cri);
 	
 	public void creat(MemberVO vo);
 	
@@ -23,7 +23,7 @@ public interface MemberDAO {
 	
 	public List<MQuestionVO> qlistAll(Criteria2 cri2);
 	
-	public int qtotalCount();
+	public int qtotalCount(Criteria2 cri2);
 	
 	public void qcreat(MQuestionVO vo);
 	

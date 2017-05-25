@@ -7,15 +7,58 @@
 <mapper namespace="org.cg.persistence.MemberDAO">
 
 	<select id="listAll" resultType="org.cg.domain.MemberVO" parameterType="org.cg.domain.Criteria">
-		<![CDATA[
+		
 		select * from (SELECT rownum rnum ,mid, mname,mage,maddr, mgender, regdate, updatedate FROM 
-		( SELECT mid, mname,mage,maddr, mgender, regdate, updatedate FROM tbl_member order by regdate desc) 
-		tbl_member where rownum <= #{pageNum}) where rnum >= #{skip}
-		  ]]>
+		( SELECT mid, mname,mage,maddr, mgender, regdate, updatedate FROM tbl_member where mage>0
+		
+		<choose>
+			<when test='type=="x"'>
+			 
+			</when>
+			<when test='type=="i"'>
+			  and (mid like '%'|| #{keyword} ||'%')
+			</when>
+			<when test='type=="n"'>
+			  and (mname like '%'|| #{keyword} ||'%')
+			</when>
+			<when test='type=="a"'>
+			  and (mage like '%'|| #{keyword} ||'%')
+			</when>
+			<when test='type=="g"'>
+			  and (mgender like '%'|| #{keyword} ||'%')
+			</when>
+			<when test='type=="d"'>
+			  and (maddr like '%'|| #{keyword} ||'%')
+			</when>
+		</choose>
+		order by regdate desc) 
+		  <![CDATA[ tbl_member where rownum <= #{pageNum}) where rnum >= #{skip} ]]>
 	</select>
 
-	<select id="totalCount" resultType="Int">
-		select count(*) from tbl_Member
+	<select id="totalCount" resultType="Int" parameterType="org.cg.domain.Criteria">
+		select count(*) from tbl_Member where mage>0 
+		<choose>
+			<when test='type=="x"'>
+			 
+			</when>
+			<when test='type=="i"'>
+			  and (mid like '%'|| #{keyword} ||'%')
+			</when>
+			<when test='type=="n"'>
+			  and (mname like '%'|| #{keyword} ||'%')
+			</when>
+			<when test='type=="a"'>
+			  and (mage like '%'|| #{keyword} ||'%')
+			</when>
+			<when test='type=="g"'>
+			  and (mgender like '%'|| #{keyword} ||'%')
+			</when>
+			<when test='type=="d"'>
+			  and (maddr like '%'|| #{keyword} ||'%')
+			</when>
+		</choose>
+		
+		
 	</select>
 
 	<insert id="create" parameterType="org.cg.domain.MemberVO">
@@ -32,15 +75,52 @@
 	</update>
 	
 	<select id="qlistAll" resultType="org.cg.domain.MQuestionVO" parameterType="org.cg.domain.Criteria2">
-		<![CDATA[
+		
 		select * from (SELECT rownum rnum ,mqno, mid, sid, title, question, regdate, updatedate FROM 
-		( SELECT mqno, mid, sid, title, question, regdate, updatedate FROM tbl_Mquestion order by regdate desc) 
+		( SELECT mqno, mid, sid, title, question, regdate, updatedate FROM tbl_Mquestion where mqno>0
+		
+		<choose>
+			<when test='type2=="x"'>
+			 
+			</when>
+			<when test='type2=="i"'>
+			  and (mid like '%'|| #{keyword2} ||'%')
+			</when>
+			<when test='type2=="t"'>
+			  and (title like '%'|| #{keyword2} ||'%')
+			</when>
+			<when test='type2=="c"'>
+			  and (question like '%'|| #{keyword2} ||'%')
+			</when>
+			
+		</choose>
+		
+		<![CDATA[
+		 order by regdate desc) 
 		tbl_Mquestion where rownum <= #{pageNum2}) where rnum >= #{skip2}
 		  ]]>
 	</select>
 	
-	<select id="qtotalCount" resultType="Int">
-		select count(*) from tbl_Mquestion
+	<select id="qtotalCount" resultType="Int" parameterType="org.cg.domain.Criteria2">
+		select count(*) from tbl_Mquestion where mqno>0
+		
+		<choose>
+			<when test='type2=="x"'>
+			 
+			</when>
+			<when test='type2=="i"'>
+			  and (mid like '%'|| #{keyword2} ||'%')
+			</when>
+			<when test='type2=="t"'>
+			  and (title like '%'|| #{keyword2} ||'%')
+			</when>
+			<when test='type2=="c"'>
+			  and (question like '%'|| #{keyword2} ||'%')
+			</when>
+			
+		</choose>
+		
+		
 	</select>
 	
 	<select id="qread" resultType="org.cg.domain.MQuestionVO">
