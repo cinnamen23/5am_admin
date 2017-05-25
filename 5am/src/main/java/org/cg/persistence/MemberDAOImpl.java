@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.cg.domain.Criteria;
 import org.cg.domain.Criteria2;
+import org.cg.domain.MAnswerVO;
 import org.cg.domain.MQuestionVO;
 import org.cg.domain.MemberVO;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -62,6 +63,11 @@ public class MemberDAOImpl implements MemberDAO {
 		sess.insert(namespace + ".qcreate", vo);
 		
 	}
+	
+	@Override
+	public MQuestionVO qread(int mqno) {
+		return sess.selectOne(namespace+".qread", mqno);
+	}
 
 	@Override
 	public void qupdate(MQuestionVO vo) {
@@ -74,11 +80,31 @@ public class MemberDAOImpl implements MemberDAO {
 		sess.delete(namespace + ".qdelete", vo);
 		
 	}
+	
+	@Override
+	public void acreat(MAnswerVO vo) {
+		sess.insert(namespace + ".acreate", vo);
+		
+	}
 
 	@Override
-	public MQuestionVO qread(int mqno) {
-		return sess.selectOne(namespace+".qread", mqno);
+	public List<MAnswerVO> aread(int mqno) {
+		return sess.selectList(namespace+".aread", mqno);
+
 	}
+
+	@Override
+	public void aupdate(MAnswerVO vo) {
+		sess.update(namespace + ".aupdate", vo);
+		
+	}
+
+	@Override
+	public void adelete(MAnswerVO vo) {
+		sess.delete(namespace + ".adelete", vo);		
+	}
+
+	
 	
 	
 

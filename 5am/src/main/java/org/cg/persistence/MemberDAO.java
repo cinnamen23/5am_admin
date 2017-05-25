@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.cg.domain.Criteria;
 import org.cg.domain.Criteria2;
+import org.cg.domain.MAnswerVO;
 import org.cg.domain.MQuestionVO;
 import org.cg.domain.MemberVO;
 
@@ -32,6 +33,14 @@ public interface MemberDAO {
 	public void qupdate(MQuestionVO vo);
 		
 	public void qdelete(MQuestionVO vo);
+		
+	public void acreat(MAnswerVO vo);
+	
+	public List<MAnswerVO> aread(int mqno);
+	
+	public void aupdate(MAnswerVO vo);
+		
+	public void adelete(MAnswerVO vo);
 	
 	
 	

@@ -119,23 +119,34 @@
 			</when>
 			
 		</choose>
-		
-		
+			
 	</select>
 	
 	<select id="qread" resultType="org.cg.domain.MQuestionVO">
-	SELECT * FROM tbl_Mquestion where mqno=#{mqno}
+		SELECT * FROM tbl_Mquestion where mqno=#{mqno}
+	</select>
+		
+	<delete id="qdelete">
+		DELETE TBL_MQUESTION where MQNO=#{mqno}
+	</delete>
+	
+	<insert id="acreate" parameterType="org.cg.domain.MAnswerVO">
+		INSERT INTO tbl_Manswer(mano, mqno, title, content) VALUES (seq_Manswer_mano.nextval, #{mqno}, '${title}', '${content}')
+	</insert>
+	
+	<select id="aread" resultType="org.cg.domain.MAnswerVO">
+		SELECT * FROM tbl_Manswer where mqno=#{mqno}
 	</select>
 	
+	<update id="aupdate" parameterType="org.cg.domain.MAnswerVO">
+		UPDATE tbl_Manswer SET mqno='${mqno}', title='${title}', content='${content}' WHERE mano = '${mano}'
+	</update>
+	
+	<delete id="adelete">
+		DELETE tbl_Manswer where mano=#{mano}
+	</delete>
 	
 	
-	<select id="qlist" resultType="org.cg.domain.MQuestionVO" parameterType="org.cg.domain.Criteria">
-		<![CDATA[
-		select * from (SELECT rownum rnum ,mano, mqno,title,content, regdate, updatedate FROM 
-		( SELECT mano, mqno,title,content, regdate, updatedate FROM TBL_MANSWER order by regdate desc) 
-		TBL_MANSWER where rownum <= #{pageNum}) where rnum >= #{skip} and mqno= 3
-		  ]]>
-	</select>
 	
 
 

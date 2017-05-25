@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.cg.domain.Criteria;
 import org.cg.domain.Criteria2;
+import org.cg.domain.MAnswerVO;
 import org.cg.domain.MQuestionVO;
 import org.cg.domain.MemberVO;
 import org.cg.persistence.MemberDAO;
@@ -70,6 +71,27 @@ public class MemeberServiceImpl implements MemberService {
 	@Override
 	public MQuestionVO qread(int mqno) {
 		return dao.qread(mqno);
+	}
+
+
+	@Override
+	public void acreat(MAnswerVO vo) {
+		dao.acreat(vo);		
+	}
+
+	@Override
+	public List<MAnswerVO> aread(int mqno) {
+		return dao.aread(mqno);
+	}
+
+	@Override
+	public void aupdate(MAnswerVO vo) {
+		dao.aupdate(vo);		
+	}
+
+	@Override
+	public void adelete(MAnswerVO vo) {
+		dao.adelete(vo);		
 	}
 
 }

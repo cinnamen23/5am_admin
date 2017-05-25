@@ -33,11 +33,10 @@
                             <div class="table-responsive">
                                 <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
                                 <div class="row">
-                                <div class="col-sm-6">
-                                <div class="dataTables_length" id="dataTables-example_length">
-                                </div>
-                                </div>
-                                <div class="col-sm-6">
+                                
+                              
+                                
+                                <div class="col-sm-100">
                                 <div id="dataTables-example_filter" class="dataTables_filter">
                          <label>
 				              <form class="f1" method="get" action="/member/list">
@@ -52,7 +51,7 @@
 								    </select> 
 							    <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keyword" value="${cri.keyword}">
 							    
-							    <button id="btnn" class="btn btn-info">Search</button>
+							    <button id="btnn" class="btn btn-warning">Search</button>
 							  </form>
 						</label>
                                 </div>
@@ -62,12 +61,12 @@
                                     <thead>
                                         <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" aria-sort="ascending" style="width: 70px;">회원ID</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 40px;">이름</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 30px;">나이</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 30px;">성별</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 100px;">주소</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 140px;">등록날짜</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 140px;">최근수정날짜</th>
-                                    	<th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 30px;">관리</th></tr>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 40px;">나이</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 40px;">성별</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 300px;">주소</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 100px;">등록날짜</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 100px;">최근수정날짜</th>
+                                    	<th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 40px;">관리</th></tr>
                                     	
                                     </thead>
                                     <tbody>
@@ -78,7 +77,7 @@
                                             <td class="center " >${list.mname}</td>
                                             <td class="center ">${list.mage}</td>
                                             <td class="center ">${list.mgender}</td>
-                                            <td class="center ">${list.maddr}</td>
+                                            <td class="center " style="font-size: 11px;">${list.maddr}</td>
                                             <td class="center ">${list.regdate}</td>
                                             <td class="center ">${list.updatedate}</td>
                                             <td class="center" data-mname="${list.mname}" data-mage="${list.mage}" data-mgender="${list.mgender}" data-mid="${list.mid}" data-maddr="${list.maddr}">
@@ -137,8 +136,8 @@
              </div>
              
              <div class="row">
-             
-            here for customer question
+             <div class="col-md-12">
+            
             
             <div class="panel panel-warning">
                         <div class="panel-heading panel">고객 질문 현황 </div>
@@ -162,7 +161,7 @@
 									<option value="c" ${cri2.type2 eq 'c'?'selected':''}>내용</option>
 								</select> 
 							    <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keyword2" value="${cri2.keyword2}">
-							    <button id="btnn" class="btn btn-info">Search</button>
+							    <button id="btnn" class="btn btn-warning">Search</button>
 							  </form>
 						</label>
                                 </div>
@@ -216,7 +215,7 @@
                         </div>
                     </div>
              
-             
+             	</div>
              </div>
              
              
