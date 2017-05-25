@@ -13,6 +13,7 @@ public interface NoticeDAO {
 	
 	public NoticeVO read(NoticeVO vo) throws Exception;
 	
+	public void insert(NoticeVO vo)throws Exception;
 	
 	
 }

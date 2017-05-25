@@ -13,4 +13,5 @@ public interface NoticeService {
 	
 	public NoticeVO getRead(NoticeVO vo) throws Exception;
 	
+	public void register(NoticeVO vo)throws Exception;
 }

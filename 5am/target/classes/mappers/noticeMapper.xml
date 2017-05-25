@@ -45,5 +45,9 @@ where rnum >= #{skip}
   <select id="read" parameterType="org.cg.domain.NoticeVO" resultType="org.cg.domain.NoticeVO">
   select * from tbl_notice where nno = #{nno}
   </select>
+  
+  <insert id="insert" parameterType="org.cg.domain.NoticeVO">
+  insert into TBL_NOTICE(NNO,ntitle,NCONTENT,nwriter) values (seq_notice_nno.nextval,#{ntitle},#{ncontent},#{nwriter})
+  </insert>
   </mapper>
   

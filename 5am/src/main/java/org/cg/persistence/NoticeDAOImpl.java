@@ -39,4 +39,11 @@ public class NoticeDAOImpl implements NoticeDAO{
 		return sess.selectOne(namespace+".read", vo);
 	}
 
+
+	@Override
+	public void insert(NoticeVO vo) throws Exception {
+		sess.insert(namespace+".insert", vo);
+		
+	}
+
 }

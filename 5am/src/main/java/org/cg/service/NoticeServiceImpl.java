@@ -35,4 +35,10 @@ public class NoticeServiceImpl implements NoticeService {
 		return dao.read(vo);
 	}
 
+	@Override
+	public void register(NoticeVO vo) throws Exception {
+		dao.insert(vo);
+		
+	}
+
 }

@@ -13,7 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/notice")
@@ -42,6 +44,8 @@ public class NoticeController {
 		
 	}
 	
+
+	
 	@GetMapping("/nview")
 	public void view(@ModelAttribute("vo") NoticeVO vo,Model model){
 		try {
@@ -54,5 +58,29 @@ public class NoticeController {
 		}
 	}
 	
+	@GetMapping("/regi")
+	public void regi(){
+	}
+	
+	@PostMapping("/regi")
+	public String registerPost(NoticeVO vo, RedirectAttributes rttr) {
+
+		try {
+			if (vo.getNtitle() == "" || vo.getNcontent() == "" || vo.getNwriter() == "") {
+				rttr.addFlashAttribute("fail", "fail");
+				return "redirect:/notice/regi";
+			} else {
+				nservice.register(vo);
+				rttr.addFlashAttribute("msg", "success");
+
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "redirect:/notice/list";
+
+	}
 
 }

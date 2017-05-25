@@ -68,7 +68,11 @@
                                  <div>${cri}</div>
                                 <div class="row">
                                 <div class="col-sm-6">
-                                <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">Showing 1 to 10 of 57 entries</div>
+                                <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
+                                <form action="/notice/regi" method="get">
+							    <button type="submit" class="btn btn-info">등록</button>
+							    </form>
+							    </div>
                                 </div>
                                 <div class="col-sm-6">
                                 <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
@@ -119,6 +123,15 @@
   crossorigin="anonymous"></script>
 <script>
 $(document).ready(function(e) {
+	
+	var result3 = '${msg}';
+	if (result3 == "success") {
+		history.pushState(null, null);
+		alert("새글이 등록되었습니다.");
+		window.onpopstate = function(e) {
+			history.go(1);
+		};
+	}
 	
 
 $(".pagination a").on("click", function(e) {
