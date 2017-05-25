@@ -280,9 +280,10 @@
 		    </div>
 		  </div>
 		</div>
+		<!-- 모달창1 끝-->
 		</div>
 		
-	<!-- 모달창1 끝-->
+	
 	
 	
 			<form class="form" method="get" action="/member/list">
