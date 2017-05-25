@@ -22,9 +22,9 @@ public class QnaDAOImpl implements QnaDAO {
 		return sess.selectList(namespace+".QuestionList",cri);
 	}
 	@Override
-	public int getTotal() {
+	public int getTotal(Criteria cri) {
 		
-		return sess.selectOne(namespace+".getTotal");
+		return sess.selectOne(namespace+".getTotal",cri);
 	}
 	@Override
 	public QuestionVO qReadOne(QuestionVO vo) {
@@ -39,6 +39,11 @@ public class QnaDAOImpl implements QnaDAO {
 	@Override
 	public void qDelete(QuestionVO vo) {
 		sess.delete(namespace+".delete",vo);
+	}
+	@Override
+	public void qInsert(QuestionVO vo) {
+		sess.insert(namespace+".insert",vo);
+		
 	}
 	
 

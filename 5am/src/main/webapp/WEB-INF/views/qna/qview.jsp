@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< Upstream, based on branch 'master' of https://github.com/kick07230723/5AM.git
 
-=======
->>>>>>> f81f128 hy 0525 after
 <%@ include file="/WEB-INF/views/header.jsp"%>
 
 
 <h2>${vo}</h2>
-
+<h2>${pageMaker}</h2>
+<h2>${cri}</h2>
 
 <!-- 모달창1 시작-->
 <div class="panel panel-default">

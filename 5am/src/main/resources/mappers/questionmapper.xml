@@ -8,16 +8,41 @@
   <select id="QuestionList" parameterType="org.cg.domain.Criteria" resultType="org.cg.domain.QuestionVO">
   <!-- select * from tbl_question -->  
   
-   <![CDATA[
+  
 select * from (SELECT rownum rnum,qno, title, content, writer, regdate,updatedate FROM 
-( SELECT qno, title, CONTENT, writer, regdate,UPDATEDATE FROM tbl_question order by qno desc) 
+( SELECT qno, title, CONTENT, writer, regdate,UPDATEDATE FROM tbl_question where qno>0 
+ <choose>
+  <when test='type=="t"'>
+  and (title like '%'|| #{keyword} ||'%')
+  </when>
+  <when test='type=="c"'>
+  and (content like '%'|| #{keyword} ||'%')
+  </when>
+  <when test='type=="w"'>
+  and (writer like '%'|| #{keyword} ||'%')
+  </when>
+  </choose>
+order by qno desc) 
+
+ <![CDATA[
 tbl_question where rownum <= #{pageNum}) 
 where rnum >=#{skip}
   ]]>
   </select>
   
-  <select id="getTotal" resultType="int">
-  select count(*) from tbl_question
+  <select id="getTotal" parameterType="org.cg.domain.Criteria" resultType="int">
+  select count(*) from tbl_question where qno>0
+  <choose>
+  <when test='type=="t"'>
+  and (title like '%'|| #{keyword} ||'%')
+  </when>
+  <when test='type=="c"'>
+  and (content like '%'|| #{keyword} ||'%')
+  </when>
+  <when test='type=="w"'>
+  and (writer like '%'|| #{keyword} ||'%')
+  </when>
+  </choose>
   </select>
   
   
@@ -34,6 +59,11 @@ where rnum >=#{skip}
 		delete from tbl_question where qno='${qno}'
 
 	</delete>
+  
+  <insert id="insert" parameterType="org.cg.domain.QuestionVO">
+  insert into tbl_question(qno,title,CONTENT,writer) values (seq_question_qno.nextval,#{title},#{content},#{writer})
+  </insert>
+  
   
   
   

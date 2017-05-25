@@ -37,21 +37,34 @@
                                 
                                 <div id="dataTables-example_filter" class="dataTables_filter">
                                 
+                                <%-- <!-- f1 -->
+								<form id="f1">   <!-- hbno  hpage type keyword 4가지의 속성을 여기에 숨겨놨다가 보낸다  -->
+									<input id="hqno" type="hidden" name="qno">
+									<input id="hpage" type="hidden" name="page" value="${cri.page}">
+									<input type="hidden" name="type" value="${cri.type}">
+									<input type="hidden" name="keyword" value="${cri.keyword}">
+								</form>
+                                <!-- f1 --> --%>
+                                
+                                
+                                
                                 <!-- 검색창 -->
                                 
                                 <label>
-				                <form class="form" method="get" action="/notice/list">
-								<input class="hopage" type="hidden" name="page"value="${pageMaker.current}"> 
-								<input class="view"type="hidden" name="nno"> 
+				                <form id="f1" >
+								<input id="hqno" type="hidden" name="qno">
+								
+								<input id="hpage" type="hidden" name="page" value="${cri.page}">
 				                
-				                <select name="type" class="type">
+				                <select name="type" class="type" >
 								<option value="n" ${cri.type eq null?'selected':''}>---</option>
 								<option value="t" ${cri.type eq 't'?'selected':''}>title</option>
 								<option value="c" ${cri.type eq 'c'?'selected':''}>content</option>
 								<option value="w" ${cri.type eq 'w'?'selected':''}>writer</option>
 							    </select> 
 							    
-							    <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keyword" value="${cri.keyword}"><button id="btnn" class="btn btn-info">Search</button>
+							    <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keyword" value="${cri.keyword}">
+							    <button id="btnn"  class="btn btn-info">Search</button>
 							    </form>
 							    </label>
                                 
@@ -95,8 +108,13 @@
                                 
                                 <div class="row">
                                 <div class="col-sm-6">
-                                <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">Showing 1 to 10 of 57 entries</div></div>
+                                <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">ㅁㅁㅁㅁㅁㅁㅁ
+                                <form action="/qna/regi" method="get">
+							    <button type="submit" class="btn btn-info">등록</button>
+							    </form>
                                 </div>
+                                </div>
+                                
                                 <div class="col-sm-6">
                                 <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
                                 
@@ -127,6 +145,8 @@
                                 <!-- 페이징 삽입 -->  
                                 
                                 
+                                
+                                </div>
                                 </div>
                                 </div>
                                 </div>
@@ -140,9 +160,10 @@
             </div>    
            </div>
          </div>
-			
-			
-			
+
+			 <h2>${pageMaker}</h2>
+             <h2>${cri}</h2>
+             
 			
 			
 			<div class="row">
@@ -160,12 +181,7 @@
 	</div>
 	<!-- CONTENT-WRAPPER SECTION END-->
 	
-	<form id="f1">   <!-- hbno  hpage type keyword 4가지의 속성을 여기에 숨겨놨다가 보낸다  -->
-	<input id="hqno" type="hidden" name="qno">
-	<input id="hpage" type="hidden" name="page" value="${cri.page}">
-	<input type="hidden" name="type" value="${cri.type}">
-	<input type="hidden" name="keyword" value="${cri.keyword}">
-	</form>
+
 	
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	
@@ -173,6 +189,18 @@
 	
 	
 	$(document).ready(function() {
+		
+		
+		$("#btnn").on("click", function(e) {
+			e.preventDefault();
+			 $("#hpage").val("1");
+			$("#f1").attr('method', 'get');
+			$("#f1").attr("action", "/qna/list").submit(); 
+ 
+		});
+		
+		
+		
 		
 		$(".goQview").on("click", function(e) {
 			e.preventDefault();

@@ -9,13 +9,15 @@ public interface QnaDAO {
 	
 	public List<QuestionVO> getQList(Criteria cri);
 	
-	public int getTotal();
+	public int getTotal(Criteria cri);
 	
 	public QuestionVO qReadOne(QuestionVO vo);
 	
 	public void qUpdate(QuestionVO vo);
 	
 	public void qDelete(QuestionVO vo);
+	
+	public void qInsert(QuestionVO vo);
 	
 	
 }

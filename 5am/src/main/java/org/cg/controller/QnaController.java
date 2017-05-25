@@ -34,16 +34,20 @@ public class QnaController {
 		
 		logger.info("qna/list get..........");
 		
+		logger.info(cri);
+		
 		List<QuestionVO> list=qservice.getQList(cri);
 		
 		model.addAttribute("list",list);
-		model.addAttribute("pageMaker",new PageMaker(cri, qservice.getTotal()));
+		model.addAttribute("pageMaker",new PageMaker(cri, qservice.getTotal(cri)));
 		
 	}
 	
 	
 	@GetMapping("/qview")
 	public void getQview(@ModelAttribute("cri") Criteria cri,QuestionVO vo,Model model){
+		
+		
 		
 		logger.info("qna/qview get..........");
 		
@@ -83,6 +87,20 @@ public class QnaController {
 		
 		qservice.qDelete(vo);
 		
+		
+		return "redirect:list";
+	}
+	
+	@GetMapping("/regi")
+	public void qRegiget(){
+		logger.info("regi get............");
+		
+	}
+	
+	@PostMapping("/regi")
+	public String qRegipost(QuestionVO vo){
+	
+		qservice.qInsert(vo);
 		
 		return "redirect:list";
 	}

@@ -23,8 +23,8 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
-	public int getTotal() {
-		return dao.getTotal();
+	public int getTotal(Criteria cri) {
+		return dao.getTotal(cri);
 	}
 
 	@Override
@@ -41,6 +41,11 @@ public class QnaServiceImpl implements QnaService {
 	@Override
 	public void qDelete(QuestionVO vo) {
 			dao.qDelete(vo);
+	}
+
+	@Override
+	public void qInsert(QuestionVO vo) {
+			dao.qInsert(vo);
 	}
 
 }

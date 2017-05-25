@@ -22,6 +22,19 @@ public class QnaTest {
 
 
 	@Test
+	public void qInsertTest(){
+		QuestionVO vo = new QuestionVO();
+		vo.setTitle("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+		vo.setContent("목요일목요일목요일목요일목요일목요일목요일목요일");
+		vo.setWriter("클래스 아이디 구분 .....");
+		for(int i=0; i<10;i++){
+		sess.insert("org.cg.persistence.QnaDAO.insert",vo);
+		}
+		
+	}
+	
+	
+	@Test
 	public void qUpdateTest(){
 		QuestionVO vo = new QuestionVO();
 		vo.setQno(30);
