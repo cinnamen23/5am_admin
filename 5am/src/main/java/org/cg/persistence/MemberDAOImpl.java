@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.cg.domain.Criteria;
+import org.cg.domain.Criteria2;
 import org.cg.domain.MQuestionVO;
 import org.cg.domain.MemberVO;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -47,8 +48,13 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public List<MQuestionVO> qlistAll(Criteria cri) {
-		return sess.selectList(namespace + ".qlistAll", cri);
+	public List<MQuestionVO> qlistAll(Criteria2 cri2) {
+		return sess.selectList(namespace + ".qlistAll", cri2);
+	}
+
+	@Override
+	public int qtotalCount() {
+		return sess.selectOne(namespace + ".qtotalCount");
 	}
 
 }

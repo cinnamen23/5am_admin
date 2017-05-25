@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.cg.domain.Criteria;
+import org.cg.domain.Criteria2;
 import org.cg.domain.MQuestionVO;
 import org.cg.domain.MemberVO;
 import org.cg.persistence.MemberDAO;
@@ -42,8 +43,13 @@ public class MemeberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<MQuestionVO> qlistAll(Criteria cri) {
-		return dao.qlistAll(cri);
+	public List<MQuestionVO> qlistAll(Criteria2 cri2) {
+		return dao.qlistAll(cri2);
+	}
+
+	@Override
+	public int qtotalCount() {
+		return dao.totalCount();
 	}
 
 }

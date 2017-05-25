@@ -3,7 +3,7 @@ package org.cg.test;
 import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
-import org.cg.domain.Criteria;
+import org.cg.domain.Criteria2;
 import org.cg.domain.MemberVO;
 import org.cg.persistence.LibraryDAO;
 import org.cg.service.MemberService;
@@ -71,13 +71,13 @@ public class MemberTest {
 	@Test
 	public void QuestionReadRTest(){
 		
-		Criteria cri = new Criteria();
-		cri.setPageNum(10);
-		cri.setSkip(0);
+		Criteria2 cri2 = new Criteria2();
+		cri2.setPageNum2(10);
+		cri2.setSkip2(0);
 		
-		service.qlistAll(cri);
+		service.qlistAll(cri2);
 		
-		logger.info(service.qlistAll(cri));
+		logger.info(service.qlistAll(cri2));
 	}
 
 }

@@ -31,12 +31,16 @@
 		UPDATE tbl_Member SET mpw = '${mpw}', mname='${mname}',mage='${mage}',mgender='${mgender}', maddr='${maddr}' WHERE mid = '${mid}'
 	</update>
 	
-	<select id="qlistAll" resultType="org.cg.domain.MQuestionVO" parameterType="org.cg.domain.Criteria">
+	<select id="qlistAll" resultType="org.cg.domain.MQuestionVO" parameterType="org.cg.domain.Criteria2">
 		<![CDATA[
 		select * from (SELECT rownum rnum ,mqno, mid, sid, title, question, regdate, updatedate FROM 
 		( SELECT mqno, mid, sid, title, question, regdate, updatedate FROM tbl_Mquestion order by regdate desc) 
-		tbl_Mquestion where rownum <= #{pageNum}) where rnum >= #{skip}
+		tbl_Mquestion where rownum <= #{pageNum2}) where rnum >= #{skip2}
 		  ]]>
+	</select>
+	
+	<select id="qtotalCount" resultType="Int">
+		select count(*) from tbl_Mquestion
 	</select>
 
 

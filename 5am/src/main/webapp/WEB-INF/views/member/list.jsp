@@ -65,18 +65,19 @@
                                 <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
                                 <ul class="pagination">
                                 <li class="paginate_button" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous">
-                                <c:if test="${pageMaker.prev}"><a href="${pageMaker.start-1}">이전</a></c:if></li>
+                                <c:if test="${pageMaker.prev}"><a class="a1" href="${pageMaker.start-1}">이전</a></c:if></li>
                                 <c:forEach begin="${pageMaker.start}" end="${pageMaker.end}" var="pagege">
-                                <a href="${pagege}">
+                                <a class="a1" href="${pagege}">
 			                 	<li class="${pageMaker.current ==pagege?'active':''}" aria-controls="dataTables-example" tabindex="0">${pagege}</a></li>
 			                 	</c:forEach> 
                                 <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next">
-                                <c:if test="${pageMaker.next}"><a href="${pageMaker.end+1}">다음</a></c:if></li>
+                                <c:if test="${pageMaker.next}"><a class="a1" href="${pageMaker.end+1}">다음</a></c:if></li>
                                 </ul>
                                 </div>
                            		
 				<form class="form" method="get" action="/member/list">
-					<input class="hopage" type="hidden" name="page" value="${pageMaker.current}"> 
+					<input class="hopage" type="hidden" name="page" value="${pageMaker.current}">
+					<input class="hopage2" type="hidden" name="page2" value="${pageMaker2.current}">  
 				</form>
 			
                                 </div>
@@ -117,29 +118,26 @@
                             <div class="table-responsive">
                                 <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="dataTables-example_length"></div></div><div class="col-sm-6"><div id="dataTables-example_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" aria-controls="dataTables-example"></label></div></div></div><table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
                                     <thead>
-                                        <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" aria-sort="ascending" style="width: 70px;">회원ID</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 40px;">이름</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 30px;">나이</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 30px;">성별</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 140px;">등록날짜</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 140px;">최근수정날짜</th>
-                                    
+                                     <tr role="row">
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 5px;">#</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 30px;">id</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 400px;">제목</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 100px;">등록날짜</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 100px;">최근수정날짜</th>
+                                     </tr>
                                     </thead>
-                                    <tbody>
+                                  <tbody>
                                         
                                      <c:forEach var="qlist" items="${qlist}">
-                                    <tr class="gradeA odd">
-                                            <td class="sorting_1">${qlist.mqno}</td>
-                                            <td class=" ">${qlist.mid}</td>
-                                            <td class="center ">${qlist.title}</td>
-                                            <td class="center ">${qlist.question}</td>
-                                            <td class="center ">${qlist.regdate}</td>
-                                            <td class="center ">${qlist.updatedate}</td>
-                                            
-
-                                        </tr>
-                                        </c:forEach>   
-                                        </tbody>
+	                                    <tr class="gradeA odd">
+	                                            <td class="sorting_1">${qlist.mqno}</td>
+	                                            <td class="center ">${qlist.mid}</td>
+	                                            <td class="center "><a href="/member/mquestionview">${qlist.title}</a></td>
+	                                            <td class="center ">${qlist.regdate}</td>
+	                                            <td class="center ">${qlist.updatedate}</td>
+	                                    </tr>
+                                     </c:forEach>   
+                                  </tbody>
                                 </table>
                             
                                 <div class="row">
@@ -149,19 +147,17 @@
                                 <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
                                 <ul class="pagination">
                                 <li class="paginate_button" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous">
-                                <c:if test="${pageMaker.prev}"><a href="${pageMaker.start-1}">이전</a></c:if></li>
-                                <c:forEach begin="${pageMaker.start}" end="${pageMaker.end}" var="pagege">
-                                <a href="${pagege}">
-			                 	<li class="${pageMaker.current ==pagege?'active':''}" aria-controls="dataTables-example" tabindex="0">${pagege}</a></li>
+                                <c:if test="${pageMaker2.prev}"><a class="a2" href="${pageMaker2.start-1}">이전</a></c:if></li>
+                                <c:forEach begin="${pageMaker2.start}" end="${pageMaker2.end}" var="pagege">
+                                <a class="a2" href="${pagege}">
+			                 	<li class="${pageMaker2.current ==pagege?'active':''}" aria-controls="dataTables-example" tabindex="0">${pagege}</a></li>
 			                 	</c:forEach> 
                                 <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next">
-                                <c:if test="${pageMaker.next}"><a href="${pageMaker.end+1}">다음</a></c:if></li>
+                                <c:if test="${pageMaker2.next}"><a class="a2" href="${pageMaker2.end+1}">다음</a></c:if></li>
                                 </ul>
                                 </div>
                            		
-				<form class="form" method="get" action="/member/list">
-					<input class="hopage" type="hidden" name="page" value="${pageMaker.current}"> 
-				</form>
+				
 			
                                 </div>
                                 </div>
@@ -186,13 +182,22 @@
   			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
 	<script>
-	$(document).ready(function(e) {
+	$(document).ready(function(e) { 
 	
-		$(".pagination a").on("click", function(e) {
+		$(".pagination .a1").on("click", function(e) {
 		
 			e.preventDefault();
 		
 			$(".hopage").val($(this).attr("href"));
+		
+			$(".form").submit();
+		})
+		
+		$(".pagination .a2").on("click", function(e) {
+		
+			e.preventDefault();
+		
+			$(".hopage2").val($(this).attr("href"));
 		
 			$(".form").submit();
 		})

@@ -4,7 +4,9 @@ import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
 import org.cg.domain.Criteria;
+import org.cg.domain.Criteria2;
 import org.cg.domain.PageMaker;
+import org.cg.domain.PageMaker2;
 import org.cg.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,13 +24,20 @@ public class MemberController {
 	MemberService service;
 
 	@GetMapping("/list")
-	public void mainGet(@ModelAttribute("cri") Criteria cri,Model model) {
+	public void mainGet(@ModelAttribute("cri") Criteria cri,@ModelAttribute("cri2") Criteria2 cri2,Model model) {
 
 		logger.info("get member list .....");
 
 		model.addAttribute("list", service.listAll(cri));
 		model.addAttribute("pageMaker", new PageMaker(cri, service.totalCount()));
+		model.addAttribute("pageMaker2", new PageMaker2(cri2, service.qtotalCount()));
 		
-		model.addAttribute("qlist", service.qlistAll(cri));
+		model.addAttribute("qlist", service.qlistAll(cri2));
+	}
+	
+	@GetMapping("/mquestionview")
+	public void mquestionview(){
+		
+		
 	}
 }
