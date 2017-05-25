@@ -11,6 +11,7 @@ public interface QnaDAO {
 	
 	public int getTotal();
 	
+	public QuestionVO qReadOne(QuestionVO vo);
 	
 	
 }

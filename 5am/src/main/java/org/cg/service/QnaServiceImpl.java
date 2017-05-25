@@ -24,8 +24,12 @@ public class QnaServiceImpl implements QnaService {
 
 	@Override
 	public int getTotal() {
-		// TODO Auto-generated method stub
 		return dao.getTotal();
+	}
+
+	@Override
+	public QuestionVO qReadOne(QuestionVO vo) {
+		return dao.qReadOne(vo);
 	}
 
 }

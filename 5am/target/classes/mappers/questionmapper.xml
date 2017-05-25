@@ -21,4 +21,9 @@ where rnum >=#{skip}
   </select>
   
   
+  <select id="getDetail" parameterType="org.cg.domain.QuestionVO" resultType="org.cg.domain.QuestionVO">
+  select * from tbl_question where qno=${qno}
+  </select>
+  
+  
   </mapper>

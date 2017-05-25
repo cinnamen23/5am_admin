@@ -10,4 +10,7 @@ public interface QnaService {
 	public List<QuestionVO> getQList(Criteria cri);
 	
 	public int getTotal();
+	
+	public QuestionVO qReadOne(QuestionVO vo);
+	
 }

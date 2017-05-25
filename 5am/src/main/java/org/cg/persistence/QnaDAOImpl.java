@@ -26,6 +26,11 @@ public class QnaDAOImpl implements QnaDAO {
 		
 		return sess.selectOne(namespace+".getTotal");
 	}
+	@Override
+	public QuestionVO qReadOne(QuestionVO vo) {
+		
+		return sess.selectOne(namespace+".getDetail",vo);
+	}
 	
 
 }

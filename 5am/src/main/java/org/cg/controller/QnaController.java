@@ -39,14 +39,14 @@ public class QnaController {
 	
 	
 	@GetMapping("/qview")
-	public void getQview(@ModelAttribute("cri") Criteria cri,Model model){
+	public void getQview(@ModelAttribute("cri") Criteria cri,QuestionVO vo,Model model){
 		
 		logger.info("qna/qview get..........");
 		
-		List<QuestionVO> list=qservice.getQList(cri);
+		vo=qservice.qReadOne(vo);
 		
-		model.addAttribute("list",list);
-		model.addAttribute("pageMaker",new PageMaker(cri, qservice.getTotal()));
+		
+		model.addAttribute("vo",vo);
 		
 	}
 	
