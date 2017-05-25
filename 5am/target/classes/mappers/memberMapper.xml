@@ -6,8 +6,7 @@
 
 <mapper namespace="org.cg.persistence.MemberDAO">
 
-	<select id="listAll" resultType="org.cg.domain.MemberVO"
-		parameterType="org.cg.domain.Criteria">
+	<select id="listAll" resultType="org.cg.domain.MemberVO" parameterType="org.cg.domain.Criteria">
 		<![CDATA[
 		select * from (SELECT rownum rnum ,mid, mname,mage, mgender, regdate, updatedate FROM 
 		( SELECT mid, mname,mage, mgender, regdate, updatedate FROM tbl_member order by regdate desc) 
@@ -20,17 +19,25 @@
 	</select>
 
 	<insert id="create" parameterType="org.cg.domain.MemberVO">
-		insert into	tbl_Member(mid,mpw,mname,mage,mgender,maddr) values ("${mid}","${mpw}","${mname}","${mage}","${mgender}","${maddr}")
+		insert into	tbl_Member(mid,mpw,mname,mage,mgender,maddr) values ('${mid}','${mpw}','${mname}','${mage}','${mgender}','${maddr}')
 	</insert>
 
 	<delete id="delete" parameterType="org.cg.domain.MemberVO">
-		delete from tbl_Member where mid="${mid}"
+		delete from tbl_Member where mid='${mid}'
 
 	</delete>
 	
 	<update id="update" parameterType="org.cg.domain.MemberVO">
-		UPDATE tbl_Member SET mpw = "${mpw}", mname="${mname}",mage="${mage}",mgender="${mgender}", maddr="${maddr}" WHERE mid = "${mid}"
+		UPDATE tbl_Member SET mpw = '${mpw}', mname='${mname}',mage='${mage}',mgender='${mgender}', maddr='${maddr}' WHERE mid = '${mid}'
 	</update>
+	
+	<select id="qlistAll" resultType="org.cg.domain.MQuestionVO" parameterType="org.cg.domain.Criteria">
+		<![CDATA[
+		select * from (SELECT rownum rnum ,mqno, mid, sid, title, question, regdate, updatedate FROM 
+		( SELECT mqno, mid, sid, title, question, regdate, updatedate FROM tbl_Mquestion order by regdate desc) 
+		tbl_Mquestion where rownum <= #{pageNum}) where rnum >= #{skip}
+		  ]]>
+	</select>
 
 
 </mapper>

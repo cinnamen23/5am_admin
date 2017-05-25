@@ -28,5 +28,7 @@ public class MemberController {
 
 		model.addAttribute("list", service.listAll(cri));
 		model.addAttribute("pageMaker", new PageMaker(cri, service.totalCount()));
+		
+		model.addAttribute("qlist", service.qlistAll(cri));
 	}
 }

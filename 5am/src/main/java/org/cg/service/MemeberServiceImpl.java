@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.cg.domain.Criteria;
+import org.cg.domain.MQuestionVO;
 import org.cg.domain.MemberVO;
 import org.cg.persistence.MemberDAO;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,8 @@ public class MemeberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void delete(String mid) {
-		dao.delete(mid);
+	public void delete(MemberVO vo) {
+		dao.delete(vo);
 	}
 
 	@Override
@@ -38,6 +39,11 @@ public class MemeberServiceImpl implements MemberService {
 	@Override
 	public void update(MemberVO vo) {
 		dao.update(vo);
+	}
+
+	@Override
+	public List<MQuestionVO> qlistAll(Criteria cri) {
+		return dao.qlistAll(cri);
 	}
 
 }

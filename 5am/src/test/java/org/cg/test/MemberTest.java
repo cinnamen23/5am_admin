@@ -52,15 +52,32 @@ public class MemberTest {
 	public void uTest(){
 		MemberVO vo = new MemberVO();
 		vo.setMid("id7");
+		vo.setMname("testupdate");
 		vo.setMpw("password");
+		vo.setMgender("m");
+		vo.setMaddr("NY");
 
 		service.update(vo);
 	}
 	
 	@Test
 	public void dTest(){
+		MemberVO vo = new MemberVO();
+
+		vo.setMid("id4");
+		service.delete(vo);
+	}
+	
+	@Test
+	public void QuestionReadRTest(){
 		
-		service.delete("id4");
+		Criteria cri = new Criteria();
+		cri.setPageNum(10);
+		cri.setSkip(0);
+		
+		service.qlistAll(cri);
+		
+		logger.info(service.qlistAll(cri));
 	}
 
 }
