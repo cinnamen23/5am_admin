@@ -5,18 +5,43 @@
 
 <mapper namespace="library">
 
-	 <select id="getTotal" resultType="Integer">
-		 select count(lno) from tbl_library
-	 </select>
+	  <select id="read" parameterType="Integer" resultType="org.cg.domain.LibraryVO">
+		  select * from tbl_library where lno = #{lno}
+	  </select>
+	  
 
-	<select id="getList" resultType="org.cg.domain.LibraryVO" parameterType="org.cg.domain.Criteria">
-	<![CDATA[
+	  
+	 <select id="getList" parameterType="org.cg.domain.Criteria" resultType="org.cg.domain.LibraryVO">
 		select * from (SELECT rownum rnum ,lno, ltitle, lcontent, lfile,regdate, updatedate FROM
-		( SELECT lno, ltitle, lcontent,lfile, regdate, UPDATEDATE FROM tbl_library order by lno desc)
+		( SELECT lno, ltitle, lcontent,lfile, regdate, UPDATEDATE FROM tbl_library where lno>0
+		  <choose>
+			  <when test='type=="t"'>
+			  and (ltitle like '%'|| #{keyword} ||'%')
+			  </when>
+			  <when test='type=="c"'>
+			  and (lcontent like '%'|| #{keyword} ||'%')
+			  </when>
+		  </choose>
+		order by lno desc)
+		
+	<![CDATA[
 		tbl_library where rownum <= #{pageNum} )
 		where rnum >= #{skip}
 	]]>
 	</select>
+	  
+		<select id="getTotal" resultType="int" parameterType="org.cg.domain.Criteria">
+		  select count(lno) from tbl_library where lno>0
+		   <choose>
+			  <when test='type=="t"'>
+			  and (ltitle like '%'|| #{keyword} ||'%')
+			  </when>
+			  <when test='type=="c"'>
+			  and (lcontent like '%'|| #{keyword} ||'%')
+			  </when>
+		  </choose>
+	  </select>
+	  
 
 	<select id="create" parameterType="org.cg.domain.LibraryVO">
 		insert into tbl_library(lno,

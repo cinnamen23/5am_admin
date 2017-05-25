@@ -12,15 +12,15 @@ public interface LibraryDAO {
 	
 	public void create(LibraryVO vo);
 	
-	public LibraryVO read(int dno);
+	public LibraryVO read(int lno);
 	
 	public void update(LibraryVO vo);
 	
-	public void delete(int dno);
+	public void delete(int lno);
 	
 	public List<LibraryVO> getList(Criteria cri);
 	
-	public int getTotal();
+	public int getTotal(Criteria cri);
 	
 
 }

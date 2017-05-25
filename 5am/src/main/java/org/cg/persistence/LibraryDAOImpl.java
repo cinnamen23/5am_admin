@@ -19,12 +19,12 @@ public class LibraryDAOImpl implements LibraryDAO {
 	
 	@Override
 	public void create(LibraryVO vo) {
-		sess.insert(namespace+".create");
+		sess.insert(namespace+".create",vo);
 	}
 
 	@Override
-	public LibraryVO read(int dno) {
-		return null;
+	public LibraryVO read(int lno) {
+		return sess.selectOne(namespace+".read",lno);
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class LibraryDAOImpl implements LibraryDAO {
 	}
 
 	@Override
-	public void delete(int dno) {
+	public void delete(int lno) {
 
 	}
 
@@ -43,8 +43,8 @@ public class LibraryDAOImpl implements LibraryDAO {
 	}
 
 	@Override
-	public int getTotal() {
-		return sess.selectOne(namespace+".getTotal");
+	public int getTotal(Criteria cri) {
+		return sess.selectOne(namespace+".getTotal",cri);
 	}
 
 }

@@ -23,10 +23,21 @@ public class LibraryController {
 	LibraryService service;
 	Logger logger= Logger.getLogger(LibraryController.class);
 	
+	
+	@GetMapping("/view")
+	public void getView(@ModelAttribute("cri") Criteria cri, Integer lno, Model model)throws Exception{
+		logger.info("hhhhi");
+		LibraryVO library= service.read(lno);
+		logger.info(library);
+		model.addAttribute("lib",library);
+
+	}
+	
+	
 	@GetMapping("/list")
 	public void getLibrary(@ModelAttribute("cri") Criteria cri, Model model)throws Exception{
 		List<LibraryVO> list=service.getList(cri);
-		model.addAttribute("pageMaker", new PageMaker(cri, service.getTotal()));
+		model.addAttribute("pageMaker", new PageMaker(cri, service.getTotal(cri)));
 		
 		model.addAttribute("list",list);
 	}

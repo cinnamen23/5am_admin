@@ -22,7 +22,7 @@ public class LibraryServiceImpl implements LibraryService {
 
 	@Override
 	public LibraryVO read(Integer lno) throws Exception {
-		return null;
+		return dao.read(lno);
 	}
 
 	@Override
@@ -41,8 +41,8 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
-	public Integer getTotal() throws Exception {
-		return dao.getTotal();
+	public Integer getTotal(Criteria cri) throws Exception {
+		return dao.getTotal(cri);
 	}
 
 }
