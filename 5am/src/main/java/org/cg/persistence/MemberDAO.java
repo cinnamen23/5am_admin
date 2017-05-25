@@ -25,6 +25,16 @@ public interface MemberDAO {
 	
 	public int qtotalCount();
 	
+	public void qcreat(MQuestionVO vo);
+	
+	public MQuestionVO qread(int mqno);
+	
+	public void qupdate(MQuestionVO vo);
+		
+	public void qdelete(MQuestionVO vo);
+	
+	
+	
 	
 
 }

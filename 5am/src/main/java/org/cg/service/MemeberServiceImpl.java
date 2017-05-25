@@ -49,7 +49,27 @@ public class MemeberServiceImpl implements MemberService {
 
 	@Override
 	public int qtotalCount() {
-		return dao.totalCount();
+		return dao.qtotalCount();
+	}
+
+	@Override
+	public void qregist(MQuestionVO vo) {
+		dao.qcreat(vo);		
+	}
+
+	@Override
+	public void qupdate(MQuestionVO vo) {
+		dao.qupdate(vo);		
+	}
+
+	@Override
+	public void qdelete(MQuestionVO vo) {
+		dao.qdelete(vo);		
+	}
+
+	@Override
+	public MQuestionVO qread(int mqno) {
+		return dao.qread(mqno);
 	}
 
 }

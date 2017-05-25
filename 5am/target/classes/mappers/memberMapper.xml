@@ -8,8 +8,8 @@
 
 	<select id="listAll" resultType="org.cg.domain.MemberVO" parameterType="org.cg.domain.Criteria">
 		<![CDATA[
-		select * from (SELECT rownum rnum ,mid, mname,mage, mgender, regdate, updatedate FROM 
-		( SELECT mid, mname,mage, mgender, regdate, updatedate FROM tbl_member order by regdate desc) 
+		select * from (SELECT rownum rnum ,mid, mname,mage,maddr, mgender, regdate, updatedate FROM 
+		( SELECT mid, mname,mage,maddr, mgender, regdate, updatedate FROM tbl_member order by regdate desc) 
 		tbl_member where rownum <= #{pageNum}) where rnum >= #{skip}
 		  ]]>
 	</select>
@@ -28,7 +28,7 @@
 	</delete>
 	
 	<update id="update" parameterType="org.cg.domain.MemberVO">
-		UPDATE tbl_Member SET mpw = '${mpw}', mname='${mname}',mage='${mage}',mgender='${mgender}', maddr='${maddr}' WHERE mid = '${mid}'
+		UPDATE tbl_Member SET mpw = '${mpw}', mname='${mname}',mage='${mage}',mgender='${mgender}', maddr='${maddr}', updatedate=sysdate WHERE mid = '${mid}'
 	</update>
 	
 	<select id="qlistAll" resultType="org.cg.domain.MQuestionVO" parameterType="org.cg.domain.Criteria2">
@@ -42,6 +42,21 @@
 	<select id="qtotalCount" resultType="Int">
 		select count(*) from tbl_Mquestion
 	</select>
+	
+	<select id="qread" resultType="org.cg.domain.MQuestionVO">
+	SELECT * FROM tbl_Mquestion where mqno=#{mqno}
+	</select>
+	
+	
+	
+	<select id="qlist" resultType="org.cg.domain.MQuestionVO" parameterType="org.cg.domain.Criteria">
+		<![CDATA[
+		select * from (SELECT rownum rnum ,mano, mqno,title,content, regdate, updatedate FROM 
+		( SELECT mano, mqno,title,content, regdate, updatedate FROM TBL_MANSWER order by regdate desc) 
+		TBL_MANSWER where rownum <= #{pageNum}) where rnum >= #{skip} and mqno= 3
+		  ]]>
+	</select>
+	
 
 
 </mapper>

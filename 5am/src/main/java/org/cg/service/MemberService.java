@@ -22,6 +22,14 @@ public interface MemberService {
 	public List<MQuestionVO> qlistAll(Criteria2 cri2);
 	
 	public int qtotalCount();
+	
+	public void qregist(MQuestionVO vo);
+	
+	public MQuestionVO qread(int mqno);
+
+	public void qupdate(MQuestionVO vo);
+		
+	public void qdelete(MQuestionVO vo);
 
 	
 

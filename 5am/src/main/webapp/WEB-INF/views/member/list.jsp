@@ -37,20 +37,27 @@
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 40px;">이름</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 30px;">나이</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 30px;">성별</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 100px;">주소</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 140px;">등록날짜</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 140px;">최근수정날짜</th>
-                                    
+                                    	<th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 30px;">관리</th></tr>
+                                    	
                                     </thead>
                                     <tbody>
                                         
                                      <c:forEach var="list" items="${list}">
-                                    <tr class="gradeA odd">
+                                    <tr class="gradeA odd" id="membertable">
                                             <td class="sorting_1">${list.mid}</td>
-                                            <td class=" ">${list.mname}</td>
+                                            <td class="center " >${list.mname}</td>
                                             <td class="center ">${list.mage}</td>
                                             <td class="center ">${list.mgender}</td>
+                                            <td class="center ">${list.maddr}</td>
                                             <td class="center ">${list.regdate}</td>
                                             <td class="center ">${list.updatedate}</td>
+                                            <td class="center" data-mname="${list.mname}" data-mage="${list.mage}" data-mgender="${list.mgender}" data-mid="${list.mid}" data-maddr="${list.maddr}">
+                                            <a class="membermodi" href="" data-toggle="modal" data-target="#exampleModal"><i class="glyphicon glyphicon-wrench"></i></a>
+                                            <a class="memberdel" href=""><i class="glyphicon glyphicon-remove"></i></a>
+                                            </td>
                                             
                                          
                                         </tr>
@@ -75,10 +82,7 @@
                                 </ul>
                                 </div>
                            		
-				<form class="form" method="get" action="/member/list">
-					<input class="hopage" type="hidden" name="page" value="${pageMaker.current}">
-					<input class="hopage2" type="hidden" name="page2" value="${pageMaker2.current}">  
-				</form>
+				
 			
                                 </div>
                                 </div>
@@ -132,7 +136,7 @@
 	                                    <tr class="gradeA odd">
 	                                            <td class="sorting_1">${qlist.mqno}</td>
 	                                            <td class="center ">${qlist.mid}</td>
-	                                            <td class="center "><a href="/member/mquestionview">${qlist.title}</a></td>
+	                                            <td class="center "><a class="qtitle" href="${qlist.mqno}">${qlist.title}</a></td>
 	                                            <td class="center ">${qlist.regdate}</td>
 	                                            <td class="center ">${qlist.updatedate}</td>
 	                                    </tr>
@@ -176,7 +180,73 @@
 	<!-- CONTENT-WRAPPER SECTION END-->
 	</div>
 	
+	<!-- 모달창1 시작-->
+		<div class="panel panel-default">
+		
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		     
+		     
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">새 댓글 달기
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button></h5>
+		      </div>
+		      
+		      
+		      <div class="modal-body">
+		        <form class="fm">
+		        	<div class="form-group">
+		            <label for="recipient-name" class="form-control-label">이름 </label>
+		            <input type="text" class="form-control" id="mpw" name="mpw" value="비밀번호를 입력하세요.">
+		          </div>
+		          <div class="form-group">
+		            <label for="recipient-name" class="form-control-label">이름 </label>
+		            <input type="text" class="form-control" id="mname" name="mname" value="">
+		          </div>
+		          <div class="form-group">
+		            <label for="message-text" class="form-control-label">나이</label>
+		            <input type="text" class="form-control" id="mage" name="mage" value="">
+		          </div><div class="form-group">
+		            <div class="form-group">
+								<label>성별</label> <select id="mgender" name="mgender" class="form-control">
+									<option value="m">남자</option>
+									<option value="w">여자</option>
+									
+								</select>
+							</div>
+		          </div>
+		          <div class="form-group">
+		            <label for="message-text" class="form-control-label">주소</label>
+		            <input type="text"class="form-control" id="maddr" name="maddr" value="">
+		          </div>
+		          </div>
+		          
+		          <input type="hidden" id="mid" name="mid" value="">
+		          
+		        </form>
+		        
+		        
+		      </div>
+		      <div class="modal-footer">
+		        <button  id="modifyBtn" type="button" class="btn btn-secondary" data-dismiss="modal">수정</button>
+		        <button  type="button" class="btn btn-primary" data-dismiss="modal">취소</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		</div>
+		
+	<!-- 모달창1 끝-->
+	
 	</div>
+			<form class="form" method="get" action="/member/list">
+				<input class="hpage" type="hidden" name="page" value="${pageMaker.current}">
+				<input class="hpage2" type="hidden" name="page2" value="${pageMaker2.current}">
+				<input class="hmqno" type="hidden" name="mqno" value="">
+ 			</form>
 	
 	<script  src="https://code.jquery.com/jquery-3.2.1.min.js"
   			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -188,7 +258,7 @@
 		
 			e.preventDefault();
 		
-			$(".hopage").val($(this).attr("href"));
+			$(".hpage").val($(this).attr("href"));
 		
 			$(".form").submit();
 		})
@@ -197,9 +267,51 @@
 		
 			e.preventDefault();
 		
-			$(".hopage2").val($(this).attr("href"));
+			$(".hpage2").val($(this).attr("href"));
 		
 			$(".form").submit();
+		})
+		
+		$(".qtitle").on("click", function(e) {
+		
+			e.preventDefault();
+		
+			$(".hmqno").val($(this).attr("href"));
+			 
+			var formObj = $(".form");
+			
+			formObj.attr('action','/member/mquestionview');
+			formObj.attr('method','get');
+			formObj.submit();
+		})
+		
+		$(".membermodi").on("click",function(){
+		
+		console.log("수정......");
+		console.dir(this);
+		console.log($(this).parent());
+		
+		var pass =$(this).parent();
+		var passmid = pass.attr("data-mid");
+		var passmname = pass.attr("data-mname");
+		var passmage = pass.attr("data-mage");
+		var passmaddr = pass.attr("data-maddr");
+		$("#mname").val(passmname);
+		$("#mage").val(passmage);
+		$("#mid").val(passmid);
+		$("#maddr").val(passmaddr);
+		
+		})
+		
+		$("#modifyBtn").on("click", function(e) {
+		
+			e.preventDefault();
+		 
+			var formObj = $(".fm");
+			
+			formObj.attr('action','/member/modi');
+			formObj.attr('method','post');
+			formObj.submit();
 		})
 	
 	})

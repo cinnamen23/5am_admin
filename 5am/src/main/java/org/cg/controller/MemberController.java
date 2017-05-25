@@ -1,10 +1,14 @@
 package org.cg.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+
 import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
 import org.cg.domain.Criteria;
 import org.cg.domain.Criteria2;
+import org.cg.domain.MQuestionVO;
+import org.cg.domain.MemberVO;
 import org.cg.domain.PageMaker;
 import org.cg.domain.PageMaker2;
 import org.cg.service.MemberService;
@@ -12,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -36,8 +41,23 @@ public class MemberController {
 	}
 	
 	@GetMapping("/mquestionview")
-	public void mquestionview(){
+	public void mquestionview(@ModelAttribute("cri") Criteria cri,Model model,MQuestionVO vo){
 		
+		logger.info("mquestionview get ......");
+		logger.info(vo);
+		logger.info(cri);
 		
+		vo = service.qread(vo.getMqno());
+		model.addAttribute("vo", vo);	
+		
+	}
+	
+	@PostMapping("/modi")
+	public String mquestionmodi(MemberVO vo){
+		logger.info("mquestionmodi get ......");
+		logger.info(vo);
+		service.update(vo);
+		
+		return "redirect:/member/list";
 	}
 }

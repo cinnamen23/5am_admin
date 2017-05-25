@@ -57,4 +57,29 @@ public class MemberDAOImpl implements MemberDAO {
 		return sess.selectOne(namespace + ".qtotalCount");
 	}
 
+	@Override
+	public void qcreat(MQuestionVO vo) {
+		sess.insert(namespace + ".qcreate", vo);
+		
+	}
+
+	@Override
+	public void qupdate(MQuestionVO vo) {
+		sess.update(namespace + ".qupdate", vo);
+		
+	}
+
+	@Override
+	public void qdelete(MQuestionVO vo) {
+		sess.delete(namespace + ".qdelete", vo);
+		
+	}
+
+	@Override
+	public MQuestionVO qread(int mqno) {
+		return sess.selectOne(namespace+".qread", mqno);
+	}
+	
+	
+
 }
