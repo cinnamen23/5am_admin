@@ -25,5 +25,17 @@ where rnum >=#{skip}
   select * from tbl_question where qno=${qno}
   </select>
   
+  <update id="update" parameterType="org.cg.domain.QuestionVO">
+		UPDATE tbl_question SET title = '${title}', CONTENT='${content}',UPDATEDATE=sysdate WHERE qno ='${qno}'
+	</update>
+  
+  
+  <delete id="delete" parameterType="org.cg.domain.QuestionVO">
+		delete from tbl_question where qno='${qno}'
+
+	</delete>
+  
+  
+  
   
   </mapper>

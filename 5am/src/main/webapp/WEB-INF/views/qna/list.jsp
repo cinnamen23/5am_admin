@@ -5,7 +5,7 @@
 <html lang="ko">
 
     <%@ include file="/WEB-INF/views/header.jsp" %>
-
+<link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 	<div class="content-wrapper">
 		<div class="container">
 			<div class="row pad-botm">
@@ -15,17 +15,50 @@
 				</div>
 
 			</div>
-			
-			
-			
+		
 			<div class="row">
+                <div class="col-md-12">
+                
+                	<div class="row">
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
                     <div class="panel panel-success">
                         <div class="panel-heading panel">목록  </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="dataTables-example_length"><label><select name="dataTables-example_length" aria-controls="dataTables-example" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div><div class="col-sm-6"><div id="dataTables-example_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" aria-controls="dataTables-example"></label></div></div></div>
+                            
+                                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                <div class="row">
+                                <div class="col-sm-6">
+                                <div class="dataTables_length" id="dataTables-example_length">
+                               
+                               
+                                </div></div><div class="col-sm-6">
+                                
+                                <div id="dataTables-example_filter" class="dataTables_filter">
+                                
+                                <!-- 검색창 -->
+                                
+                                <label>
+				                <form class="form" method="get" action="/notice/list">
+								<input class="hopage" type="hidden" name="page"value="${pageMaker.current}"> 
+								<input class="view"type="hidden" name="nno"> 
+				                
+				                <select name="type" class="type">
+								<option value="n" ${cri.type eq null?'selected':''}>---</option>
+								<option value="t" ${cri.type eq 't'?'selected':''}>title</option>
+								<option value="c" ${cri.type eq 'c'?'selected':''}>content</option>
+								<option value="w" ${cri.type eq 'w'?'selected':''}>writer</option>
+							    </select> 
+							    
+							    <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keyword" value="${cri.keyword}"><button id="btnn" class="btn btn-info">Search</button>
+							    </form>
+							    </label>
+                                
+                                <!-- 검색창 -->
+                                
+                                
+                                </div></div></div>
                                 
                                 
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
@@ -104,7 +137,9 @@
                     </div>
                     <!--End Advanced Tables -->
                 </div>
-            </div>
+            </div>    
+           </div>
+         </div>
 			
 			
 			

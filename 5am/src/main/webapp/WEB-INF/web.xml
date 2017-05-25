@@ -44,7 +44,10 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+<<<<<<< Upstream, based on branch 'master' of https://github.com/kick07230723/5AM.git
 
 
 
+=======
+>>>>>>> 82d2117 커밋커밋
 </web-app>

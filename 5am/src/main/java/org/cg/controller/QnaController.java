@@ -10,11 +10,14 @@ import org.cg.domain.PageMaker;
 import org.cg.domain.QuestionVO;
 import org.cg.service.QnaService;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/qna")
@@ -46,19 +49,44 @@ public class QnaController {
 		
 		vo=qservice.qReadOne(vo);
 		
+		logger.info(vo);
 		
 		model.addAttribute("vo",vo);
+		model.addAttribute("cri",cri);
 		
 	}
 	
 	@PostMapping("/qview")
-	public void modiQuestion(QuestionVO vo,Model model){
+	
+	public String modiQuestion(QuestionVO vo,Criteria cri,RedirectAttributes rttr){
 		
 		logger.info("qna/qview post..........");
 		
 		logger.info(vo);
 		
+		qservice.qUpdate(vo);
+		
+		rttr. addAttribute("qno",vo.getQno());
+		rttr. addAttribute("page",cri.getPage());
+		rttr. addAttribute("type",cri.getType());       //없어서 안가나보다   
+		rttr. addAttribute("keyword",cri.getKeyword()); //없어서 안가나보다
+		
+		return "redirect:qview";
+		
 	}
+	
+	
+	@GetMapping("/delete")
+	public String qDelete(QuestionVO vo){
+		logger.info("delete get.................");
+		logger.info(vo);
+		
+		qservice.qDelete(vo);
+		
+		
+		return "redirect:list";
+	}
+	
 	
 	
 	

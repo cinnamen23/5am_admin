@@ -32,4 +32,15 @@ public class QnaServiceImpl implements QnaService {
 		return dao.qReadOne(vo);
 	}
 
+	@Override
+	public void qUpdate(QuestionVO vo) {
+			dao.qUpdate(vo);
+		
+	}
+
+	@Override
+	public void qDelete(QuestionVO vo) {
+			dao.qDelete(vo);
+	}
+
 }

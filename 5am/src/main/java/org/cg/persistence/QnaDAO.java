@@ -13,5 +13,9 @@ public interface QnaDAO {
 	
 	public QuestionVO qReadOne(QuestionVO vo);
 	
+	public void qUpdate(QuestionVO vo);
+	
+	public void qDelete(QuestionVO vo);
+	
 	
 }

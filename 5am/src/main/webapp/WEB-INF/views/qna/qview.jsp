@@ -39,6 +39,7 @@
           </div>
           
            <input type="hidden" id="qno" name="qno" value="${vo.qno}">
+            <input type="hidden" id="qwriter" name="writer" value="${vo.writer}">
         
       </div>
         </form>
@@ -106,7 +107,7 @@
                                             <td class="center ">${vo.updatedate}</td>
                                             <td class="center">
                                             <a href="" data-toggle="modal" data-target="#exampleModal"><i class="glyphicon glyphicon-wrench"></i></a>
-                                            <a href=""><i class="glyphicon glyphicon-remove"></i></a>
+                                            <a href="/qna/delete?qno=${vo.qno}"><i class="glyphicon glyphicon-remove"></i></a>
                                             </td>                                        
                                         </tr>
                                        

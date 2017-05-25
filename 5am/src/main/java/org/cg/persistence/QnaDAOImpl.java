@@ -31,6 +31,15 @@ public class QnaDAOImpl implements QnaDAO {
 		
 		return sess.selectOne(namespace+".getDetail",vo);
 	}
+	@Override
+	public void qUpdate(QuestionVO vo) {
+		sess.update(namespace+".update",vo);
+		
+	}
+	@Override
+	public void qDelete(QuestionVO vo) {
+		sess.delete(namespace+".delete",vo);
+	}
 	
 
 }
