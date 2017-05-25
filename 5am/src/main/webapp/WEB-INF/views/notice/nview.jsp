@@ -11,7 +11,7 @@
 		<div class="container">
 			<div class="row pad-botm">
 				<div class="col-md-12">
-					<h4 class="header-line">공지 사항</h4>
+					<h4 class="header-line"><a href="/notice/list">공지 사항</a></h4>
 					
 				</div>
 
@@ -24,9 +24,9 @@
                     <!-- Advanced Tables -->
                     <div class="panel panel-info">
                         <div class="panel-heading panel">${read.ntitle}
+                        <p  style="float: right; font: 8px">작성자: ${read.nwriter}</p>
                         </div>
-                        <div class="panel-body">
-                        <p  style="float: right; font: 8px">${read.nwriter}</p>
+                        <div class="panel-body" >
                             <div class="table-responsive">
                                 <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
                                 <div class="row">
@@ -40,18 +40,37 @@
 			    </label>
                                
                                 </div></div></div>
-                                <div class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
-                                  
-                                  <div class="col-md-6 col-sm-6 col-xs-6" >
-                 
-                         <div style="height: 100px">
-                                  <p class="center " style="float: right;">${read.updatedate}</p>
+                                <div  id="dataTables-example" aria-describedby="dataTables-example_info">
+                                  <div style="height: 50px;"  >
+                                <p style="float: right; font-size:12px;">최종수정시간: ${read.updatedate}</p>
                                  </div>
-                        <div>
-                                  <p>  ${read.ncontent}</p>
+                                   
+                                  <div class="col-md-12 col-sm-10 col-xs-12" style="margin: auto;" >
+                 
+                         
+                                  <div>
+                                  <p style="line-height:300%; letter-spacing: 2px; margin: auto" >  ${read.ncontent}</p>
                                   </div>   
-                            
-                          
+                                  <div style="height: 150px">
+                                  </div>
+                             <form action="/notice/list" method="get">
+                             <input type="hidden" name="page" value="${cri.page}">
+                             <input type="hidden" name="nno" value="${read.nno}">
+                             <input type="hidden" name="type" value="${cri.type}">
+                             <input type="hidden" name="keyword" value="${cri.keyword}">
+                             <button type="submit" class="btn btn-info"  style="float: left;">리스트</button>
+                             </form>
+                              <form action="/notice/update" method="get">
+                             <input type="hidden" name="page" value="${cri.page}">
+                             <input type="hidden" name="nno" value="${read.nno}">
+                             <input type="hidden" name="type" value="${cri.type}">
+                             <input type="hidden" name="keyword" value="${cri.keyword}">
+                            <button type="submit" class="btn btn-info" style="float: right; margin: 5px;;" >수정</button> 
+                             </form>
+                            <form action="/notice/delete" method="get" id="deleteForm">
+                            <input type="hidden" name="nno" value="${read.nno}">
+                             <button class="btn btn-info" id="deleteBtn" style="float: right; margin: 5px;">삭제</button>   
+                             </form>
                             </div>
                             
                             
@@ -64,6 +83,8 @@
                                 </div>
                         
                                 </div>
+                                 
+                          
                             </div>
                             
                         </div>
@@ -83,6 +104,29 @@
 <script>
 $(document).ready(function(e) {
 	
+	var result = '${update}';
+	if (result == "success") {
+		history.pushState(null, null);
+		alert("글이 수정되었습니다.");
+		window.onpopstate = function(e) {
+			history.go(1);
+		};
+	}
+	
+	
+	
+	$("#deleteBtn").on("click",function(e){
+		if (confirm("정말 삭제하시겠습니까??") == true){   
+		    $("#deleteForm").submit();
+		}else{   //취소
+		    return;
+		}
+
+
+		
+		
+		
+	})
 	
 })
 </script>	

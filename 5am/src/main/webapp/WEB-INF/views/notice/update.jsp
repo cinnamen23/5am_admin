@@ -18,33 +18,44 @@
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div class="panel panel-info">
-						<div class="panel-heading">공지사항 등록</div>
+						<div class="panel-heading">공지사항 수정</div>
 						<div class="panel-body">
-							<form role="form" method="post" action="/notice/regi" class="regiform" >
+							<form role="form"  action="/notice/nview" class="updateForm" >
+								<input type="hidden" name="page" value="${cri.page}">
+                            	<input type="hidden" name="nno" value="${read.nno}">
+                           		<input type="hidden" name="type" value="${cri.type}">
+                            	<input type="hidden" name="keyword" value="${cri.keyword}">
+                            	
 								<div class="form-group">
 									<label>제목</label> <input class="form-control"
-										type="text" name="ntitle" value="공지사항 제목을 작성해주세요" />
+										type="text" name="ntitle" value="${read.ntitle}" id="title" />
 									
 								</div>
 								<div class="form-group">
 									<label>내용</label>
-									<textarea class="form-control" rows="12" name="ncontent">내용을 작성해주세요</textarea>
+									<textarea class="form-control" rows="12" name="ncontent" id="content">${read.ncontent}</textarea>
 								</div>
 								<div class="form-group">
 									<label>글쓴이</label> <input class="form-control"
-										type="text" name="nwriter" value="작성자를 작성해주세요"/>
+										type="text" name="nwriter" value="${read.nwriter}"id="writer"/>
 									
 								</div>
 								
 
 
 								
-							<button type="submit" class="btn btn-info" id="regi">등록</button>
-							<button class="btn btn-info"><a href="/notice/list">취소</a></button>
+							<button type="submit" class="btn btn-info" style="float: left; margin: 5px" id="btnRegi">등록</button>
+							
 							</form>
 						
 							
-							
+							<form action="/notice/nview" method="get">
+							<input type="hidden" name="page" value="${cri.page}">
+                            <input type="hidden" name="nno" value="${read.nno}">
+                            <input type="hidden" name="type" value="${cri.type}">
+                            <input type="hidden" name="keyword" value="${cri.keyword}">
+							<button class="btn btn-info" style="float: left; margin: 5px">취소</button>
+							</form>
 							
 							
 						
@@ -66,25 +77,11 @@
 <script>
 $(document).ready(function(e) {
 	
-	var result = '${fail}';
-	if (result == 'fail') {
-		
-		alert("빈칸을 채워주세요")
-	}
 	
-	$("#regi").on("click",function(e){
 		
-		var result3 = '${msg}';
-		if (result3 == "success") {
-			history.pushState(null, null);
-			alert("새글이 등록되었습니다.");
-			window.onpopstate = function(e) {
-				history.go(1);
-			};
-		}
-	})
+		
+		
 	
-
 	
 	
 	

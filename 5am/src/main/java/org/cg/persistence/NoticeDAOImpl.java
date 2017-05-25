@@ -46,4 +46,17 @@ public class NoticeDAOImpl implements NoticeDAO{
 		
 	}
 
+
+	@Override
+	public void update(NoticeVO vo) throws Exception {
+		sess.update(namespace+".update", vo);
+	}
+
+
+	@Override
+	public void delete(NoticeVO vo) throws Exception {
+		sess.delete(namespace+".delete",vo);
+		
+	}
+
 }

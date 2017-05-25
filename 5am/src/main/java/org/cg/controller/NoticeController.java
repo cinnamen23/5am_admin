@@ -30,11 +30,14 @@ public class NoticeController {
 	public void getNotice(@ModelAttribute("cri") Criteria cri,Model model){
 		
 		try {
+			
+			
 			List<NoticeVO> list = nservice.getList(cri);
 			
 			logger.info(list);
 			model.addAttribute("list", list);
 			model.addAttribute("pageMaker", new PageMaker(cri, nservice.count(cri)));
+			model.addAttribute("count", nservice.count(cri));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,9 +52,14 @@ public class NoticeController {
 	@GetMapping("/nview")
 	public void view(@ModelAttribute("vo") NoticeVO vo,Model model){
 		try {
-			
+			if (vo.getNtitle() != null) {
+				model.addAttribute("update", "success");
+				nservice.update(vo);
+			}
+			Criteria cri = new Criteria();
 			NoticeVO read = nservice.getRead(vo);
 			model.addAttribute("read", read);
+			model.addAttribute("cri", cri);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -82,5 +90,58 @@ public class NoticeController {
 		return "redirect:/notice/list";
 
 	}
+	
+	@GetMapping("/update")
+	public void update(@ModelAttribute("vo") NoticeVO vo,Model model){
+		
+		NoticeVO read;
+		Criteria cri = new Criteria();
+		try {
+			read = nservice.getRead(vo);
+			model.addAttribute("read", read);
+			model.addAttribute("cri", cri);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+	}
+	
+	@PostMapping("/update")
+	public void updatePost(NoticeVO vo, RedirectAttributes rttr){
+		
+	
+			if (vo.getNtitle() == "" || vo.getNcontent() == "" || vo.getNwriter() == "") {
+				rttr.addFlashAttribute("fail", "fail");
+				
+			} else {
+				try {
+					nservice.update(vo);
+					rttr.addFlashAttribute("msg", "success");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 
+
+
+}
+	}
+	
+	@GetMapping("/delete")
+	public String delete(NoticeVO vo,RedirectAttributes rttr){
+		try {
+			nservice.delete(vo);
+			rttr.addFlashAttribute("delete", "success");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:/notice/list";
+	}
+	
 }

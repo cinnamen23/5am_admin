@@ -41,4 +41,16 @@ public class NoticeServiceImpl implements NoticeService {
 		
 	}
 
+	@Override
+	public void update(NoticeVO vo) throws Exception {
+		dao.update(vo);
+		
+	}
+
+	@Override
+	public void delete(NoticeVO vo) throws Exception {
+		dao.delete(vo);
+		
+	}
+
 }

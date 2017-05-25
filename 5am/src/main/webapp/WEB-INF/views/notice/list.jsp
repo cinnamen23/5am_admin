@@ -11,7 +11,7 @@
 		<div class="container">
 			<div class="row pad-botm">
 				<div class="col-md-12">
-					<h4 class="header-line">공지 사항</h4>
+					<h4 class="header-line"><a href="/notice/list">공지 사항</a></h4>
 					
 				</div>
 
@@ -64,8 +64,8 @@
                                         </c:forEach>   
                                         </tbody>
                                 </table>
-                                <div>${pageMaker}</div>
-                                 <div>${cri}</div>
+                                <div>검색결과 : ${count} 건이 검색되었습니다.</div>
+                               
                                 <div class="row">
                                 <div class="col-sm-6">
                                 <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
@@ -127,7 +127,16 @@ $(document).ready(function(e) {
 	var result3 = '${msg}';
 	if (result3 == "success") {
 		history.pushState(null, null);
-		alert("새글이 등록되었습니다.");
+		alert("글이 수정되었습니다.");
+		window.onpopstate = function(e) {
+			history.go(1);
+		};
+	}
+	
+	var result1 = '${delete}';
+	if (result1 == "success") {
+		history.pushState(null, null);
+		alert("글이 삭제되었습니다.");
 		window.onpopstate = function(e) {
 			history.go(1);
 		};
