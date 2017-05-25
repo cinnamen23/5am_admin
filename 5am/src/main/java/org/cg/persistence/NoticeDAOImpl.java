@@ -59,4 +59,11 @@ public class NoticeDAOImpl implements NoticeDAO{
 		
 	}
 
+
+	@Override
+	public void updateHit(NoticeVO vo) throws Exception {
+		sess.update(namespace+".updateHit", vo);
+		
+	}
+
 }

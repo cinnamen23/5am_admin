@@ -43,6 +43,7 @@
                                 <div  id="dataTables-example" aria-describedby="dataTables-example_info">
                                   <div style="height: 50px;"  >
                                 <p style="float: right; font-size:12px;">최종수정시간: ${read.updatedate}</p>
+                                <p style="float: right; font-size:12px;">조회수: ${read.hit}</p>
                                  </div>
                                    
                                   <div class="col-md-12 col-sm-10 col-xs-12" style="margin: auto;" >

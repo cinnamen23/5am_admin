@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -58,8 +59,11 @@ public class NoticeController {
 			}
 			Criteria cri = new Criteria();
 			NoticeVO read = nservice.getRead(vo);
+			nservice.updateHit(vo);
+			
 			model.addAttribute("read", read);
 			model.addAttribute("cri", cri);
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -71,12 +75,14 @@ public class NoticeController {
 	}
 	
 	@PostMapping("/regi")
-	public String registerPost(NoticeVO vo, RedirectAttributes rttr) {
-
+	public String registerPost(NoticeVO vo, RedirectAttributes rttr, MultipartFile file) {
+			
 		try {
 			if (vo.getNtitle() == "" || vo.getNcontent() == "" || vo.getNwriter() == "") {
 				rttr.addFlashAttribute("fail", "fail");
+				logger.info(file.getOriginalFilename());
 				return "redirect:/notice/regi";
+				
 			} else {
 				nservice.register(vo);
 				rttr.addFlashAttribute("msg", "success");

@@ -19,4 +19,6 @@ public interface NoticeDAO {
 	
 	public void delete(NoticeVO vo)throws Exception;
 	
+	public void updateHit(NoticeVO vo)throws Exception;
+	
 }

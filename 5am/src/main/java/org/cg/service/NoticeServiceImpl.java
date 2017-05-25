@@ -53,4 +53,10 @@ public class NoticeServiceImpl implements NoticeService {
 		
 	}
 
+	@Override
+	public void updateHit(NoticeVO vo) throws Exception {
+		dao.updateHit(vo);
+		
+	}
+
 }

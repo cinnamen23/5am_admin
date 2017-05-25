@@ -18,4 +18,6 @@ public interface NoticeService {
 	public void update(NoticeVO vo)throws Exception;
 	
 	public void delete(NoticeVO vo)throws Exception;
+	
+	public void updateHit(NoticeVO vo)throws Exception;
 }

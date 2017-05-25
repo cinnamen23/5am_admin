@@ -6,8 +6,8 @@
   <mapper namespace="org.cg.persistence.NoticeDAO">
   <select id="list" resultType="org.cg.domain.NoticeVO" parameterType="org.cg.domain.Criteria">
  
-select * from (SELECT rownum rnum,nno, ntitle, ncontent, nwriter, regdate,updatedate FROM 
-( SELECT nno, ntitle, NCONTENT, nwriter, regdate,UPDATEDATE FROM tbl_notice where nno>0
+select * from (SELECT rownum rnum,nno, ntitle, ncontent, nwriter, regdate,updatedate,hit FROM 
+( SELECT nno, ntitle, NCONTENT, nwriter, regdate,UPDATEDATE,hit FROM tbl_notice where nno>0
   <choose>
   <when test='type=="t"'>
   and (ntitle like '%'|| #{keyword} ||'%')
@@ -47,7 +47,7 @@ where rnum >= #{skip}
   </select>
   
   <insert id="insert" parameterType="org.cg.domain.NoticeVO">
-  insert into TBL_NOTICE(NNO,ntitle,NCONTENT,nwriter) values (seq_notice_nno.nextval,#{ntitle},#{ncontent},#{nwriter})
+  insert into TBL_NOTICE(NNO,ntitle,NCONTENT,nwriter,nimage) values (seq_notice_nno.nextval,#{ntitle},#{ncontent},#{nwriter},#{nimage})
   </insert>
   
   <update id="update" parameterType="org.cg.domain.NoticeVO">
@@ -57,5 +57,9 @@ where rnum >= #{skip}
   <delete id="delete" parameterType="org.cg.domain.NoticeVO">
   delete  from TBL_NOTICE where nno = #{nno}
   </delete>
+  
+  <update id="updateHit" parameterType="org.cg.domain.NoticeVO">
+	update tbl_notice set hit = hit+1 where nno = #{nno}
+  </update>
   </mapper>
   

@@ -32,6 +32,8 @@
         </constructor-arg>
 
     </bean>
+    
+    
 
 
     <context:component-scan base-package="org.cg.persistence"></context:component-scan>

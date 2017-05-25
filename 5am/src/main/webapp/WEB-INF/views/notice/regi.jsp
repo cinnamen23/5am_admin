@@ -20,7 +20,7 @@
 					<div class="panel panel-info">
 						<div class="panel-heading">공지사항 등록</div>
 						<div class="panel-body">
-							<form role="form" method="post" action="/notice/regi" class="regiform" >
+							<form role="form" method="post" action="/notice/regi" class="regiform" enctype="multipart/form-data">
 								<div class="form-group">
 									<label>제목</label> <input class="form-control"
 										type="text" name="ntitle" value="공지사항 제목을 작성해주세요" />
@@ -33,6 +33,12 @@
 								<div class="form-group">
 									<label>글쓴이</label> <input class="form-control"
 										type="text" name="nwriter" value="작성자를 작성해주세요"/>
+									
+								</div>
+								
+								<div class="form-group">
+									<label>이미지 첨부파일</label> 
+									<input class="form-control" type="file" name="nimage"/>
 									
 								</div>
 								
