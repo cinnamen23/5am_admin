@@ -3,6 +3,41 @@
 
 <%@ include file="/WEB-INF/views/header.jsp"%>
 
+<style>
+.file_input label {
+    position:relative;
+    cursor:pointer;
+    display:inline-block;
+    vertical-align:middle;
+    overflow:hidden;
+    width:100px;
+    height:30px;
+    background:#777;
+    color:#fff;
+    text-align:center;
+    line-height:30px;
+}
+.file_input label input {
+    position:absolute;
+    width:0;
+    height:0;
+    overflow:hidden;
+}
+.file_input input[type=text] {
+    vertical-align:middle;
+    display:inline-block;
+    width:400px;
+    height:28px;
+    line-height:28px;
+    font-size:11px;
+    padding:0;
+    border:0;
+    border:1px solid #777;
+}
+
+
+</style>
+
 
    <!-- MENU SECTION END-->
   	<div class="content-wrapper">
@@ -20,7 +55,7 @@
 						<div class="panel-heading">공지사항 등록</div>
 						<div class="panel-body">
 							
-							<form role="form" method="post" action="/qna/regi" class="regiform" >
+							<form role="form" method="post" action="/qna/regi" class="regiform" enctype="multipart/form-data">
 								<div class="form-group">
 									<label>제목</label> <input class="form-control"
 										type="text" name="title" value="궁금한 사항을 작성해주세요" onfocus="this.value=''"/>
@@ -36,15 +71,24 @@
 									
 								</div>
 								
+								
+
+								<div class="file_input">
+								    <label>
+								        File Attach
+								        <input type="file" name="file" multiple="multiple">
+								    </label>
+								    <input type="text" readonly="readonly" title="File Route">
+								</div>
 
 
+
+								
 								
 							<button type="submit" class="btn btn-success">등록</button>
 							<button class="btn btn-success"><a href="/qna/list">취소</a></button>
 							</form>
 						
-							
-							
 							
 							
 						
@@ -67,12 +111,25 @@ $(document).ready(function(e) {
 		
 		alert("빈칸을 채워주세요")
 	}
-	
 
 	
+	/* 멀티파트처리 하는거  */
+	$('.file_input input[type=file]').change(function() {
+	    var fileName = $(this).val();
+	    var fileCount = $(this).get(0).files.length;
+	    if($(this).get(0).files.length == 1){
+	        $('.file_input input[type=text]').val(fileName);
+	    }
+	    else {
+	        $('.file_input input[type=text]').val('파일 '+fileCount+'개');
+	    }
+	});
+
+
 	
-	
-})
+
+
+});
 
             
  </script>      
