@@ -76,8 +76,8 @@
 	
 	<select id="qlistAll" resultType="org.cg.domain.MQuestionVO" parameterType="org.cg.domain.Criteria2">
 		
-		select * from (SELECT rownum rnum ,mqno, mid, sid, title, question, regdate, updatedate FROM 
-		( SELECT mqno, mid, sid, title, question, regdate, updatedate FROM tbl_Mquestion where mqno>0
+		select * from (SELECT rownum rnum ,mqno, mid, sid, title, question, regdate, updatedate,checked FROM 
+		( SELECT mqno, mid, sid, title, question, regdate, updatedate,checked FROM tbl_Mquestion where mqno>0
 		
 		<choose>
 			<when test='type2=="x"'>
@@ -134,13 +134,21 @@
 		INSERT INTO tbl_Manswer(mano, mqno, title, content) VALUES (seq_Manswer_mano.nextval, #{mqno}, '${title}', '${content}')
 	</insert>
 	
+	<update id="achecked" parameterType="org.cg.domain.MAnswerVO">
+		UPDATE TBL_MQUESTION SET checked = CHECKED+1 where MQNO=${mqno}
+	</update>
+	
 	<select id="aread" resultType="org.cg.domain.MAnswerVO">
-		SELECT * FROM tbl_Manswer where mqno=#{mqno}
+		SELECT * FROM tbl_Manswer where mqno=#{mqno} order by updatedate desc
 	</select>
 	
 	<update id="aupdate" parameterType="org.cg.domain.MAnswerVO">
 		UPDATE tbl_Manswer SET mqno='${mqno}', title='${title}', content='${content}' WHERE mano = '${mano}'
 	</update>
+	
+	<delete id="adeleteall" parameterType="org.cg.domain.MQuestionVO">
+		DELETE tbl_Manswer where mqno='${mqno}'
+	</delete>
 	
 	<delete id="adelete" parameterType="org.cg.domain.MAnswerVO">
 		DELETE tbl_Manswer where mano='${mano}'

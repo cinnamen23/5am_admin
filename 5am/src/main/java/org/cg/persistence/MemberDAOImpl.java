@@ -104,6 +104,17 @@ public class MemberDAOImpl implements MemberDAO {
 		sess.delete(namespace + ".adelete", vo);		
 	}
 
+	@Override
+	public void achecked(MAnswerVO vo) {
+		sess.update(namespace + ".achecked", vo);		
+	}
+
+	@Override
+	public void adeleteall(MQuestionVO vo) {
+
+		sess.delete(namespace+".adeleteall", vo);
+	}
+
 	
 	
 	

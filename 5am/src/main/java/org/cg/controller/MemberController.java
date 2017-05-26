@@ -12,6 +12,7 @@ import org.cg.domain.PageMaker;
 import org.cg.domain.PageMaker2;
 import org.cg.service.MemberService;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -79,11 +80,13 @@ public class MemberController {
 
 	}
 
+	@Transactional
 	@PostMapping("/mquestiondel")
 	public String mquestiondel(MQuestionVO vo) {
 
 		logger.info(".......mquestion delete .......");
 
+		service.adeleteall(vo);
 		service.qdelete(vo);
 
 		return "redirect:list";
@@ -126,6 +129,7 @@ public class MemberController {
 	
 	}
 	
+	@Transactional
 	@GetMapping("/manswerregi")
 	public String manswerregiGet(@ModelAttribute("cri") Criteria cri, @ModelAttribute("cri2") Criteria2 cri2, Model model, MAnswerVO vo ,RedirectAttributes rttr){
 		
@@ -133,6 +137,7 @@ public class MemberController {
 		logger.info(vo);
 		
 		service.acreat(vo);
+		service.achecked(vo);
 		rttr.addAttribute("mqno",vo.getMqno());
 		rttr.addAttribute("page",cri.getPage());
 		rttr.addAttribute("type",cri.getType());

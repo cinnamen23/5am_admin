@@ -92,10 +92,9 @@
 	                        <h5>${list.content} </h5>
 	                        <div class="col-md-12 col-sm-12 col-xs-12" style="margin: auto;" >
 	                        
-	                        
-                            <a class="manswermodi" href="" data-toggle="modal" data-target="#exampleModal" 
-                            data-mano="${list.mano}" data-title="${list.title}" data-content="${list.content}"><i class="glyphicon glyphicon-wrench"></i></a>      
-                            <a class="manswerdel" href="" data-mano="${list.mano}" ><i class="glyphicon glyphicon-trash"></i></a>      
+	                        <a class="manswerdel" href="" data-mano="${list.mano}" style="float: right;"><i class="glyphicon glyphicon-trash"></i></a>      
+	                        <a class="manswermodi" href="" data-toggle="modal" data-target="#exampleModal" 
+                            data-mano="${list.mano}" data-title="${list.title}" data-content="${list.content}" style="float: right; margin-right:10px;"><i class="glyphicon glyphicon-wrench"></i></a>      
                              </div>
 	                        
 	                        </div>

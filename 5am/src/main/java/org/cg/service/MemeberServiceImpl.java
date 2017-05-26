@@ -94,4 +94,15 @@ public class MemeberServiceImpl implements MemberService {
 		dao.adelete(vo);		
 	}
 
+	@Override
+	public void achecked(MAnswerVO vo) {
+		dao.achecked(vo);
+	}
+
+	@Override
+	public void adeleteall(MQuestionVO vo) {
+
+		dao.adeleteall(vo);
+	}
+
 }

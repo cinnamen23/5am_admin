@@ -36,11 +36,17 @@ public interface MemberDAO {
 		
 	public void acreat(MAnswerVO vo);
 	
+	public void achecked(MAnswerVO vo);
+	
 	public List<MAnswerVO> aread(int mqno);
 	
 	public void aupdate(MAnswerVO vo);
 		
 	public void adelete(MAnswerVO vo);
+	
+	public void adeleteall(MQuestionVO vo);
+	
+	
 	
 	
 	

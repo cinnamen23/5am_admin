@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class MQuestionVO {
 	
-	int mqno;
+	int mqno,checked;
 	String mid,	sid, title, question;
 	Timestamp regdate, updatedate;
 	
@@ -50,12 +50,18 @@ public class MQuestionVO {
 	public void setUpdatedate(Timestamp updatedate) {
 		this.updatedate = updatedate;
 	}
+	
+	public int getChecked() {
+		return checked;
+	}
+	public void setChecked(int checked) {
+		this.checked = checked;
+	}
+	
 	@Override
 	public String toString() {
-		return "MQuestionVO [mqno=" + mqno + ", mid=" + mid + ", sid=" + sid + ", title=" + title + ", question="
-				+ question + ", regdate=" + regdate + ", updatedate=" + updatedate + "]";
+		return "MQuestionVO [mqno=" + mqno + ", checked=" + checked + ", mid=" + mid + ", sid=" + sid + ", title="
+				+ title + ", question=" + question + ", regdate=" + regdate + ", updatedate=" + updatedate + "]";
 	}
 
-	
-	
 }
