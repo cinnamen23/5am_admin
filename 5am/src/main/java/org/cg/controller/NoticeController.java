@@ -51,13 +51,13 @@ public class NoticeController {
 
 	
 	@GetMapping("/nview")
-	public void view(@ModelAttribute("vo") NoticeVO vo,Model model){
+	public void view(@ModelAttribute("vo") NoticeVO vo,Model model,@ModelAttribute("cri") Criteria cri){
 		try {
 			if (vo.getNtitle() != null) {
 				model.addAttribute("update", "success");
 				nservice.update(vo);
 			}
-			Criteria cri = new Criteria();
+			
 			NoticeVO read = nservice.getRead(vo);
 			nservice.updateHit(vo);
 			
@@ -76,9 +76,10 @@ public class NoticeController {
 	
 	@PostMapping("/regi")
 	public String registerPost(NoticeVO vo, RedirectAttributes rttr, MultipartFile file) {
-			
+			logger.info("들어오냐?");
 		try {
-			if (vo.getNtitle() == "" || vo.getNcontent() == "" || vo.getNwriter() == "") {
+			
+			if (vo.getNtitle() == "" || vo.getNcontent() == "" || vo.getNwriter() == ""|| vo.getNimage() =="") {
 				rttr.addFlashAttribute("fail", "fail");
 				logger.info(file.getOriginalFilename());
 				return "redirect:/notice/regi";

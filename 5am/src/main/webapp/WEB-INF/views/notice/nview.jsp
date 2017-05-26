@@ -40,16 +40,21 @@
 			    </label>
                                
                                 </div></div></div>
-                                <div  id="dataTables-example" aria-describedby="dataTables-example_info">
-                                  <div style="height: 50px;"  >
-                                <p style="float: right; font-size:12px;">최종수정시간: ${read.updatedate}</p>
+                                <div  id="dataTables-example" aria-describedby="dataTables-example_info" style="height: 20px;"> 
+                                  <div class="col-md-12 col-sm-12 col-xs-12"  style="height: 20px;">
                                 <p style="float: right; font-size:12px;">조회수: ${read.hit}</p>
+                                </div>  
+                                  <div style="height: 20px;" class="col-md-12 col-sm-12 col-xs-12" >
+                                  <p style="float: right; font-size:12px;">등록시간: ${read.regdate}</p>
                                  </div>
-                                   
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                 <p style="float: right; font-size:12px;">최종수정시간: ${read.updatedate}</p>
+                                </div>
+                                 
                                   <div class="col-md-12 col-sm-10 col-xs-12" style="margin: auto;" >
                  
                          
-                                  <div>
+                                  <div >
                                   <p style="line-height:300%; letter-spacing: 2px; margin: auto" >  ${read.ncontent}</p>
                                   </div>   
                                   <div style="height: 150px">

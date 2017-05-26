@@ -69,7 +69,7 @@
                                         </c:forEach>   
                                         </tbody>
                                 </table>
-                                <div>검색결과 : ${count} 건이 검색되었습니다.</div>
+                                <div>결과 : ${count} 건이 있습니다.</div>
                                
                                 <div class="row">
                                 <div class="col-sm-6">
@@ -169,6 +169,7 @@ $(".pagination a").on("click", function(e) {
  $("#btnn").on("click", function(e) {
 	e.preventDefault();
 	$(".hopage").val("1");
+
 	$(".form").submit();
 
 }) 
