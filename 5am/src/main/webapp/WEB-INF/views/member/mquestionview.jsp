@@ -6,13 +6,7 @@
 <html lang="ko">
 
     <%@ include file="/WEB-INF/views/header.jsp" %>
-    
-    <h6>${vo}</h6><br>
-    <h6>${avo}</h6><br>
-    <h6>${cri}</h6><br>
-    <h6>${cri2}</h6><br>
-    
-    
+ 
 
 <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 	<div class="content-wrapper">
@@ -85,7 +79,7 @@
 	                <div class="col-md-12" >
 	                    <div class="panel panel-warning">
 	                    
-	                        <div class="panel-heading panel">판매자 답변 : ${list.title} 
+	                        <div class="panel-heading panel" >판매자 답변 : ${list.title} 
 	                        <p style="float: right; font: 8px">작성자: ${list.sid}</p>
 	                        </div>
 	                        <div class="col-md-12" >
@@ -113,9 +107,32 @@
 	             </c:forEach>
 	             <div class="row">
 	                <div class="col-md-12" >
-	                here for answer
-	                    
-	                    
+	                
+	                <div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="panel panel-primary">
+						 <div class="panel-heading panel" style="margin-bottom: 0px;">답변을 등록합니다.</div>
+						<div class="panel-body">
+							
+							<form role="form" class="fmar" >
+								<div class="form-group">
+									<label>제목</label> 
+									<input class="form-control ltitle" type="text " name="title" placeholder="답변의 제목을 써주세요">
+									
+								</div>
+								<div class="form-group">
+									<label>답변 내용</label>
+									<textarea class="form-control lcontent" rows="7" name="content" placeholder="질문에 대한 답변을 적어 주세요."></textarea>
+								</div>
+								<input type="hidden" name="mqno" value="${vo.mqno}">
+																
+                                <a id="manswerregi" href="#" class="btn btn-primary" style="float: right;">등록</a>
+							</form>
+						
+						</div>
+					</div>
+				</div>
+			</div> 
 	                    </div>
 	                    
 	                </div>
@@ -193,48 +210,61 @@
 <script>
 $(document).ready(function(e) {
 	
-	$("#modifyBtn").on("click", function(e) {
-		
-		e.preventDefault();
-		console.log("버튼 실행 ????");
-	 
-		var formObj = $(".manswermodiform");
-		
-		formObj.attr('action','/member/manswermodi');
-		formObj.attr('method','get');
-		formObj.submit();
-	})	
-	
-	$(".manswermodi").on("click",function(e){
+		$("#modifyBtn").on("click", function(e) {
+			
 			e.preventDefault();
-			console.log("수정......");
-			console.log($(this));
-			
-			var passmano = $(this).attr("data-mano");
-			var passtitle = $(this).attr("data-title");
-			var passcontent = $(this).attr("data-content");
-			
-			console.log(passmano);
-			
-			$("#mano").val(passmano);
-			$("#title").val(passtitle);
-			$("#content").val(passcontent);
-			
-			
-		})
-		
-	$(".manswerdel").on("click",function(e){
-			e.preventDefault();
-			console.log("answer delete")
-			console.log($(this));
-			
-			var passmano = $(this).attr("data-mano");
-			console.log(passmano);
-			$("#mano").val(passmano);
+			console.log("버튼 실행 ????");
+		 
 			var formObj = $(".manswermodiform");
 			
-								
+			formObj.attr('action','/member/manswermodi');
+			formObj.attr('method','get');
+			formObj.submit();
+		})	
+	
+		$(".manswermodi").on("click",function(e){
+				e.preventDefault();
+				console.log("수정......");
+				console.log($(this));
+				
+				var passmano = $(this).attr("data-mano");
+				var passtitle = $(this).attr("data-title");
+				var passcontent = $(this).attr("data-content");
+				
+				console.log(passmano);
+				
+				$("#mano").val(passmano);
+				$("#title").val(passtitle);
+				$("#content").val(passcontent);
+				
+				
+			})
+		
+		$(".manswerdel").on("click",function(e){
+				e.preventDefault();
+				console.log("answer delete")
+				console.log($(this));
+				
+				var passmano = $(this).attr("data-mano");
+				console.log(passmano);
+				$("#mano").val(passmano);
+				var formObj = $(".manswermodiform");
+				
+									
 				formObj.attr('action','/member/manswerdel');
+				formObj.attr('method','get');
+				formObj.submit();
+					
+			})
+		
+		$("#manswerregi").on("click",function(e){
+				e.preventDefault();
+				console.log("answer register")
+				console.log($(this));
+				
+				var formObj = $(".fmar");
+				
+				formObj.attr('action','/member/manswerregi');
 				formObj.attr('method','get');
 				formObj.submit();
 				

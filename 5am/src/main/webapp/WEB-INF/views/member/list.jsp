@@ -217,10 +217,7 @@
              
              	</div>
              </div>
-             
-             
-	
-	
+       
 	<!-- CONTENT-WRAPPER SECTION END-->
 	</div>
 	
@@ -289,9 +286,6 @@
 		<!-- 모달창1 끝-->
 		</div>
 		
-	
-	
-	
 			<form class="form" method="get" action="/member/list">
 				<input class="hpage" type="hidden" name="page" value="${pageMaker.current}">
 				<input class="hpage2" type="hidden" name="page2" value="${pageMaker2.current}">

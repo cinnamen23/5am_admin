@@ -125,5 +125,26 @@ public class MemberController {
 		return "redirect:mquestionview";
 	
 	}
+	
+	@GetMapping("/manswerregi")
+	public String manswerregiGet(@ModelAttribute("cri") Criteria cri, @ModelAttribute("cri2") Criteria2 cri2, Model model, MAnswerVO vo ,RedirectAttributes rttr){
+		
+		logger.info("manswerregi=====get========================================");
+		logger.info(vo);
+		
+		service.acreat(vo);
+		rttr.addAttribute("mqno",vo.getMqno());
+		rttr.addAttribute("page",cri.getPage());
+		rttr.addAttribute("type",cri.getType());
+		rttr.addAttribute("keyword",cri.getKeyword());
+		rttr.addAttribute("page2",cri2.getPage2());
+		rttr.addAttribute("type2",cri2.getType2());
+		rttr.addAttribute("keyword2",cri2.getKeyword2());
+		
+		return "redirect:mquestionview";
+		
+	}
+
+	
 
 }
