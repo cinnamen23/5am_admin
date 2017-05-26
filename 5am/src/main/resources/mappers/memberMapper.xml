@@ -142,8 +142,8 @@
 		UPDATE tbl_Manswer SET mqno='${mqno}', title='${title}', content='${content}' WHERE mano = '${mano}'
 	</update>
 	
-	<delete id="adelete">
-		DELETE tbl_Manswer where mano=#{mano}
+	<delete id="adelete" parameterType="org.cg.domain.MAnswerVO">
+		DELETE tbl_Manswer where mano='${mano}'
 	</delete>
 	
 	

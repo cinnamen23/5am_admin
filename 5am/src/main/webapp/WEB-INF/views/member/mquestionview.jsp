@@ -6,6 +6,13 @@
 <html lang="ko">
 
     <%@ include file="/WEB-INF/views/header.jsp" %>
+    
+    <h6>${vo}</h6><br>
+    <h6>${avo}</h6><br>
+    <h6>${cri}</h6><br>
+    <h6>${cri2}</h6><br>
+    
+    
 
 <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 	<div class="content-wrapper">
@@ -30,7 +37,10 @@
                         
                         </div>
                         <div class="col-md-12">
-                        <p style="float: right; font-size:12px; ">최종수정시간: ${vo.updatedate}</p>
+                        <p style="float: right; font-size:12px; ">최초 등록 날짜: ${vo.regdate}</p>
+                        </div>
+                        <div class="col-md-12">
+                        <p style="float: right; font-size:12px; ">최종 수정 날짜: ${vo.updatedate}</p>
                         </div>
                         <div class="panel-body" >
                         
@@ -79,15 +89,19 @@
 	                        <p style="float: right; font: 8px">작성자: ${list.sid}</p>
 	                        </div>
 	                        <div class="col-md-12" >
-	                        <h7 style="float: right; font-size:12px;">최종수정시간: ${list.updatedate}</h7>
+	                        <h7 style="float: right; font-size:12px;">최초 등록 날짜: ${list.regdate}</h7>
+	                        </div>
+	                        <div class="col-md-12" >
+	                        <h7 style="float: right; font-size:12px;">최종 수정 날짜: ${list.updatedate}</h7>
 	                        </div>
 	                        <div class="panel-body" >
 	                        <h5>${list.content} </h5>
 	                        <div class="col-md-12 col-sm-12 col-xs-12" style="margin: auto;" >
 	                        
 	                        
-                            <a class="manswermodi" href="" data-toggle="modal" data-target="#exampleModal"><i class="glyphicon glyphicon-wrench"></i></a>      
-                            <a class="manswerdel" href="" ><i class="glyphicon glyphicon-trash"></i></a>      
+                            <a class="manswermodi" href="" data-toggle="modal" data-target="#exampleModal" 
+                            data-mano="${list.mano}" data-title="${list.title}" data-content="${list.content}"><i class="glyphicon glyphicon-wrench"></i></a>      
+                            <a class="manswerdel" href="" data-mano="${list.mano}" ><i class="glyphicon glyphicon-trash"></i></a>      
                              </div>
 	                        
 	                        </div>
@@ -114,6 +128,7 @@
 	
 	<!--modal begin  -->
 	<div class="panel panel-default">
+	
 		
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
@@ -121,7 +136,7 @@
 		     
 		     
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">새 댓글 달기
+		        <h5 class="modal-title" id="exampleModalLabel">답변 수정
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
 		        </button></h5>
@@ -129,85 +144,101 @@
 		      
 		      
 		      <div class="modal-body">
-		        <form class="manswermodiform" action="/member/manswermodi" method="post">
-		        	<div class="form-group">
-		            <label for="recipient-name" class="form-control-label">이름 </label>
-		            <input type="text" class="form-control" id="mpw" name="mpw" value="비밀번호를 입력하세요.">
-		          </div>
-		          <div class="form-group">
-		            <label for="recipient-name" class="form-control-label">이름 </label>
-		            <input type="text" class="form-control" id="mname" name="mname" value="">
-		          </div>
-		          <div class="form-group">
-		            <label for="message-text" class="form-control-label">나이</label>
-		            <input type="text" class="form-control" id="mage" name="mage" value="">
-		          </div>
-		          <div class="form-group">
-		            <div class="form-group">
-								<label>성별</label> <select id="mgender" name="mgender" class="form-control">
-									<option value="m">남자</option>
-									<option value="w">여자</option>
-									
-								</select>
-							</div>
-		          </div>
-		          <div class="form-group">
-		            <label for="message-text" class="form-control-label">주소</label>
-		            <input type="text"class="form-control" id="maddr" name="maddr" value="">
-		          </div>
-		         <input type="hidden" id="mid" name="mid" value="">
-		          
-		        </form>
-		       </div>
+		      
+		        <form class="manswermodiform">
+			        <div class="form-group">
+			        <label for="recipient-name" class="form-control-label">고객질문 내용</label>
+			        <p>${vo.question}</p>			        
+			        </div>
 		        
-		      </div>
+		        	<div class="form-group">
+		            <label for="recipient-name" class="form-control-label">답변 제목</label>
+		            <input type="text" class="form-control" id="title" name="title" value="">
+		          	</div>
+		          	
+		          	<div class="form-group">
+		            <label for="recipient-name" class="form-control-label">답변내용 </label>
+		            <textarea id="content" class="form-control" name="content" rows="4" ></textarea>		            
+		          	</div>
+		        
+			        <input type="hidden" id="mqno" name="mqno" value="${vo.mqno}">
+			        <input type="hidden" id="mano" name="mano">
+			        <input type="hidden" id="mid" name="page" value="${cri.page}">
+			        <input type="hidden" id="mid" name="page2" value="${cri2.page2}">
+			        <input type="hidden" id="mid" name="type" value="${cri.type}">
+			        <input type="hidden" id="mid" name="type2" value="${cri2.type2}">
+			        <input type="hidden" id="mid" name="keyword" value="${cri.keyword}">
+			        <input type="hidden" id="mid" name="keyword2" value="${cri2.keyword2}">
+			    </form>	          
+		        
+		       </div>
+		      
 		      <div class="modal-footer">
-		        <button  id="modifyBtn" type="button" class="btn btn-secondary" data-dismiss="modal">수정</button>
+		        <button  id="modifyBtn" type="button" class="btn btn-secondary" data-dismiss="modal">등록</button>
 		        <button  type="button" class="btn btn-primary" data-dismiss="modal">취소</button>
 		      </div>
+		      
 		    </div>
 		  </div>
 		</div>
+	</div>
 	<!-- modal end -->
 	
 	<form action="/member/manswerdel" method="post" class="manswerdelform">
 	    <input type="hidden" name="mano" value="${list.mano}">
 	</form>
 	
-
-	<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	
 <script>
 $(document).ready(function(e) {
 	
-	var result = '${update}';
-	if (result == "success") {
-		history.pushState(null, null);
-		alert("글이 수정되었습니다.");
-		window.onpopstate = function(e) {
-			history.go(1);
-		};
-	}
+	$("#modifyBtn").on("click", function(e) {
+		
+		e.preventDefault();
+		console.log("버튼 실행 ????");
+	 
+		var formObj = $(".manswermodiform");
+		
+		formObj.attr('action','/member/manswermodi');
+		formObj.attr('method','get');
+		formObj.submit();
+	})	
 	
-	
-	
-	$("#modifyBtn").on("click",function(e){
-		if (confirm("정말 수정하시겠습니까??") == true){   
-		    $(".manswermodiform").submit();
-		}else{   
-		    return;
-		}
-	})
-	
+	$(".manswermodi").on("click",function(e){
+			e.preventDefault();
+			console.log("수정......");
+			console.log($(this));
+			
+			var passmano = $(this).attr("data-mano");
+			var passtitle = $(this).attr("data-title");
+			var passcontent = $(this).attr("data-content");
+			
+			console.log(passmano);
+			
+			$("#mano").val(passmano);
+			$("#title").val(passtitle);
+			$("#content").val(passcontent);
+			
+			
+		})
+		
 	$(".manswerdel").on("click",function(e){
-		if (confirm("정말 삭제하시겠습니까??") == true){   
-		    $(".manswerdelform").submit();
-		}else{   
-		    return;
-		}
-	})
+			e.preventDefault();
+			console.log("answer delete")
+			console.log($(this));
+			
+			var passmano = $(this).attr("data-mano");
+			console.log(passmano);
+			$("#mano").val(passmano);
+			var formObj = $(".manswermodiform");
+			
+								
+				formObj.attr('action','/member/manswerdel');
+				formObj.attr('method','get');
+				formObj.submit();
+				
+		})
 	
 })
 </script>	

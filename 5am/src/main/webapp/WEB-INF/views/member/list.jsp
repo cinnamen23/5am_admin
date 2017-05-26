@@ -233,7 +233,7 @@
 		     
 		     
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">새 댓글 달기
+		        <h5 class="modal-title" id="exampleModalLabel">회원 정보 변경  ${cri}
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
 		        </button></h5>
@@ -243,7 +243,7 @@
 		      <div class="modal-body">
 		        <form class="fm">
 		        	<div class="form-group">
-		            <label for="recipient-name" class="form-control-label">이름 </label>
+		            <label for="recipient-name" class="form-control-label">비밀번호 </label>
 		            <input type="text" class="form-control" id="mpw" name="mpw" value="비밀번호를 입력하세요.">
 		          </div>
 		          <div class="form-group">
@@ -268,7 +268,13 @@
 		            <input type="text"class="form-control" id="maddr" name="maddr" value="">
 		          </div>
 		         <input type="hidden" id="mid" name="mid" value="">
-		          
+		         <input type="hidden" id="mid" name="page" value="${cri.page}">
+		         <input type="hidden" id="mid" name="page2" value="${cri2.page2}">
+		         <input type="hidden" id="mid" name="type" value="${cri.type}">
+		         <input type="hidden" id="mid" name="type2" value="${cri2.type2}">
+		         <input type="hidden" id="mid" name="keyword" value="${cri.keyword}">
+		         <input type="hidden" id="mid" name="keyword2" value="${cri2.keyword2}">
+		         
 		        </form>
 		       </div>
 		        
