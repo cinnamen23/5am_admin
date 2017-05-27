@@ -15,6 +15,7 @@ import org.cg.domain.QAnswerVO;
 import org.cg.domain.QuestionVO;
 import org.cg.service.QnaService;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -94,12 +95,13 @@ public class QnaController {
 		
 	}
 	
-	
+	@Transactional
 	@GetMapping("/delete")
 	public String qDelete(QuestionVO vo){
 		logger.info("delete get.................");
 		logger.info(vo);
 		
+		qservice.aDeleteAll(vo);
 		qservice.qDelete(vo);
 		
 		

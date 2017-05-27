@@ -96,8 +96,8 @@ where rnum >=#{skip}
   
   
   
-  <delete id="adeleteall" parameterType="org.cg.domain.QAnswerVO" >
-  delete from tbl_answer where aqno=${aqno}
+  <delete id="adeleteall" parameterType="org.cg.domain.QuestionVO" >
+  delete from tbl_answer where aqno=${qno}
   </delete>
   
   

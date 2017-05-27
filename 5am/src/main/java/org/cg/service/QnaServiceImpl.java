@@ -74,7 +74,7 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
-	public void aDeleteAll(QAnswerVO vo) {
+	public void aDeleteAll(QuestionVO vo) {
 
 		dao.aDeleteAll(vo);
 	}

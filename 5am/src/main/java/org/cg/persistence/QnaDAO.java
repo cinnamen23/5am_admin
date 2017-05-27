@@ -33,7 +33,7 @@ public interface QnaDAO {
 	
 	public void aUpdate(QAnswerVO vo);
 	
-	public void aDeleteAll(QAnswerVO vo);
+	public void aDeleteAll(QuestionVO vo);
 	
 	
 }

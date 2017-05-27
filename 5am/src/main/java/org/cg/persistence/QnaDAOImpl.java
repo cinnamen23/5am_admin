@@ -65,7 +65,7 @@ public class QnaDAOImpl implements QnaDAO {
 		
 	}
 	@Override
-	public void aDeleteAll(QAnswerVO vo) {
+	public void aDeleteAll(QuestionVO vo) {
 		sess.delete(namespace+".adeleteall",vo);
 		
 	}
