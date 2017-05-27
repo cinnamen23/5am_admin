@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import org.apache.log4j.Logger;
 import org.cg.domain.Criteria;
 import org.cg.domain.PageMaker;
+import org.cg.domain.QAnswerVO;
 import org.cg.domain.QuestionVO;
 import org.cg.service.QnaService;
 import org.springframework.stereotype.Controller;
@@ -52,25 +53,31 @@ public class QnaController {
 	public void getQview(@ModelAttribute("cri") Criteria cri,QuestionVO vo,Model model){
 		
 		
-		
 		logger.info("qna/qview get..........");
 		
 		vo=qservice.qReadOne(vo);
+		
+		
+//		답변
+		List<QAnswerVO> alist= qservice.getAList(vo);
 		
 		logger.info(vo);
 		
 		model.addAttribute("vo",vo);
 		model.addAttribute("cri",cri);
+		model.addAttribute("alist",alist);
 		
 	}
 	
 	@PostMapping("/qview")
-	
 	public String modiQuestion(QuestionVO vo,Criteria cri,RedirectAttributes rttr){
+		
 		
 		logger.info("qna/qview post..........");
 		
+		
 		logger.info(vo);
+		
 		
 		qservice.qUpdate(vo);
 		
@@ -78,6 +85,7 @@ public class QnaController {
 		rttr. addAttribute("page",cri.getPage());
 		rttr. addAttribute("type",cri.getType());       //없어서 안가나보다   
 		rttr. addAttribute("keyword",cri.getKeyword()); //없어서 안가나보다
+
 		
 		return "redirect:qview";
 		
@@ -156,7 +164,19 @@ public class QnaController {
 		return "redirect:list";
 	}
 	
+//	======================================ANSWER=========================//
 	
+		@PostMapping("/amodi")
+		public String modiAnswer(Criteria cri,QuestionVO vo,RedirectAttributes rttr){
+			
+			logger.info("amodi post.........");
+			
+			
+			
+
+			
+			return "redirect:qview";
+		}
 	
 	
 	

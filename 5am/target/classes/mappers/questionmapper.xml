@@ -50,19 +50,52 @@ where rnum >=#{skip}
   select * from tbl_question where qno=${qno}
   </select>
   
-  <update id="update" parameterType="org.cg.domain.QuestionVO">
+  <update id="qupdate" parameterType="org.cg.domain.QuestionVO">
 		UPDATE tbl_question SET title = '${title}', CONTENT='${content}',UPDATEDATE=sysdate WHERE qno ='${qno}'
 	</update>
   
   
-  <delete id="delete" parameterType="org.cg.domain.QuestionVO">
+  <delete id="qdelete" parameterType="org.cg.domain.QuestionVO">
 		delete from tbl_question where qno='${qno}'
 
 	</delete>
   
-  <insert id="insert" parameterType="org.cg.domain.QuestionVO">
+  <insert id="qinsert" parameterType="org.cg.domain.QuestionVO">
   insert into tbl_question(qno,title,CONTENT,writer) values (seq_question_qno.nextval,#{title},#{content},#{writer})
   </insert>
+  
+  
+  
+  <!-- ==============================answer쪽 맵퍼입니다========================================= -->
+  <!-- ==============================answer쪽 맵퍼입니다========================================= -->
+  <!-- ==============================answer쪽 맵퍼입니다========================================= -->  
+  <!-- ==============================answer쪽 맵퍼입니다========================================= -->
+  
+  
+    <select id="getAnsList" parameterType="org.cg.domain.QuestionVO" resultType="org.cg.domain.QAnswerVO">
+  select * from tbl_answer where aqno=${qno}
+  </select>
+  
+  
+  
+  
+	<update id="aupdate" parameterType="org.cg.domain.QAnswerVO">
+		UPDATE tbl_answer SET aCONTENT='${acontent}',aUPDATEDATE=sysdate WHERE aano ='${aano}'
+	</update>
+
+  <delete id="adelete" parameterType="org.cg.domain.QAnswerVO">
+		delete from tbl_answer where aano=${aano}
+
+	</delete>
+
+  <insert id="ainsert" parameterType="org.cg.domain.QAnswerVO">
+  
+  insert into tbl_answer(aano,aqno,acontent,awriter)values(seq_answer_ano.nextval,200,'${acontent}','${awriter}')
+ 
+  </insert>
+  
+  
+  
   
   
   

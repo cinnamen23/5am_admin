@@ -3,6 +3,7 @@ package org.cg.service;
 import java.util.List;
 
 import org.cg.domain.Criteria;
+import org.cg.domain.QAnswerVO;
 import org.cg.domain.QuestionVO;
 
 public interface QnaService {
@@ -18,4 +19,17 @@ public interface QnaService {
 	public void qDelete(QuestionVO vo);
 
 	public void qInsert(QuestionVO vo);
+	
+//	answer==========
+	
+	public List<QAnswerVO> getAList(QuestionVO vo);
+	
+	public void aInsert(QAnswerVO vo);
+	
+	public void aDelete(QAnswerVO vo);
+	
+	public void aUpdate(QAnswerVO vo);
+	
+	
+	
 }

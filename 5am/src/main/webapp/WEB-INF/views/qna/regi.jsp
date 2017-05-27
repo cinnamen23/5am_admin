@@ -44,7 +44,7 @@
 		<div class="container">
 			<div class="row pad-botm">
 				<div class="col-md-12">
-					<h4 class="header-line">공지사항</h4>
+					<h4 class="header-line">질문 등록</h4>
 
 				</div>
 
@@ -86,7 +86,7 @@
 								
 								
 							<button type="submit" class="btn btn-success">등록</button>
-							<button class="btn btn-success"><a href="/qna/list">취소</a></button>
+							<button class="btn btn-success"><a href="/qna/list" style="color: white">취소</a></button>
 							</form>
 						
 							

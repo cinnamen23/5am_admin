@@ -10,7 +10,7 @@
 		<div class="container">
 			<div class="row pad-botm">
 				<div class="col-md-12">
-					<h4 class="header-line">QnA 승규</h4>
+					<h4 class="header-line" ><a href="/qna/list" style="color: black">Q&A</a></h4>
 
 				</div>
 
@@ -36,16 +36,6 @@
                                 </div></div><div class="col-sm-6">
                                 
                                 <div id="dataTables-example_filter" class="dataTables_filter">
-                                
-                                <%-- <!-- f1 -->
-								<form id="f1">   <!-- hbno  hpage type keyword 4가지의 속성을 여기에 숨겨놨다가 보낸다  -->
-									<input id="hqno" type="hidden" name="qno">
-									<input id="hpage" type="hidden" name="page" value="${cri.page}">
-									<input type="hidden" name="type" value="${cri.type}">
-									<input type="hidden" name="keyword" value="${cri.keyword}">
-								</form>
-                                <!-- f1 --> --%>
-                                
                                 
                                 
                                 <!-- 검색창 -->
@@ -205,7 +195,7 @@
 		$(".goQview").on("click", function(e) {
 			e.preventDefault();
 			$("#hqno").val($(this).attr("href"));
-			$("#f1").attr("action", "/qna/qview").submit(); 
+			$("#f1").attr("action", "/qna/qview").attr("method", "get").submit(); 
 
 		});
 		

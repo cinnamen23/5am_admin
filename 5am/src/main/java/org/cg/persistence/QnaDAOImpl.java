@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.cg.domain.Criteria;
+import org.cg.domain.QAnswerVO;
 import org.cg.domain.QuestionVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -33,18 +34,37 @@ public class QnaDAOImpl implements QnaDAO {
 	}
 	@Override
 	public void qUpdate(QuestionVO vo) {
-		sess.update(namespace+".update",vo);
+		sess.update(namespace+".qupdate",vo);
 		
 	}
 	@Override
 	public void qDelete(QuestionVO vo) {
-		sess.delete(namespace+".delete",vo);
+		sess.delete(namespace+".qdelete",vo);
 	}
 	@Override
 	public void qInsert(QuestionVO vo) {
-		sess.insert(namespace+".insert",vo);
+		sess.insert(namespace+".qinsert",vo);
 		
 	}
+	@Override
+	public List<QAnswerVO> getAList(QuestionVO vo) {
+		
+		return sess.selectList(namespace+".getAnsList",vo);
+	}
+	@Override
+	public void aInsert(QAnswerVO vo) {
+			sess.insert(namespace+".ainsert",vo);
+	}
+	@Override
+	public void aDelete(QAnswerVO vo) {
+		sess.delete(namespace+".adelete",vo);
+	}
+	@Override
+	public void aUpdate(QAnswerVO vo) {
+		sess.update(namespace+".aupdate",vo);
+		
+	}
+	
 	
 
 }

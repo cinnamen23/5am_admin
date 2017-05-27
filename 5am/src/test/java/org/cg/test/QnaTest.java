@@ -21,6 +21,13 @@ public class QnaTest {
 	SqlSessionTemplate sess;
 
 
+
+	@Test
+	public void acrudTest(){
+		
+		
+	}
+
 	@Test
 	public void qInsertTest(){
 		QuestionVO vo = new QuestionVO();
