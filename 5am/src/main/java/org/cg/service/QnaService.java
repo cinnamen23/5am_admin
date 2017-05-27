@@ -30,6 +30,7 @@ public interface QnaService {
 	
 	public void aUpdate(QAnswerVO vo);
 	
+	public void aDeleteAll(QAnswerVO vo);
 	
 	
 }

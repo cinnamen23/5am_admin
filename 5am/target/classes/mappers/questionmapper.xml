@@ -90,11 +90,15 @@ where rnum >=#{skip}
 
   <insert id="ainsert" parameterType="org.cg.domain.QAnswerVO">
   
-  insert into tbl_answer(aano,aqno,acontent,awriter)values(seq_answer_ano.nextval,200,'${acontent}','${awriter}')
+  insert into tbl_answer(aano,aqno,acontent,awriter)values(seq_answer_ano.nextval,${aqno},'${acontent}','${awriter}')
  
   </insert>
   
   
+  
+  <delete id="adeleteall" parameterType="org.cg.domain.QAnswerVO" >
+  delete from tbl_answer where aqno=${aqno}
+  </delete>
   
   
   

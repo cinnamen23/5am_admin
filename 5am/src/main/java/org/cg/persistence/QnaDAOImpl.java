@@ -64,6 +64,11 @@ public class QnaDAOImpl implements QnaDAO {
 		sess.update(namespace+".aupdate",vo);
 		
 	}
+	@Override
+	public void aDeleteAll(QAnswerVO vo) {
+		sess.delete(namespace+".adeleteall",vo);
+		
+	}
 	
 	
 

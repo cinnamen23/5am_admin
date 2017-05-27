@@ -3,11 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/header.jsp"%>
 
-
-<h2>${vo}</h2>
-<h2>${pageMaker}</h2>
-<h2>${cri}</h2>
-
 <!-- Q수정쪽 모달창1 시작-->
 <div class="panel panel-default">
 
@@ -145,8 +140,8 @@
 				<div class="row">
                 <div class="col-md-12" >
                     <!-- Advanced Tables -->
-                    <div class="panel panel-info">
-                        <div class="panel-heading panel">${vo.title}
+                    <div class="panel panel-success">
+                        <div class="panel-heading panel">글번호: ${vo.qno} 제목: ${vo.title}
                         <p  style="float: right; font: 8px">작성자: ${vo.writer}</p>
                         </div>
                         <div class="panel-body" >
@@ -215,12 +210,9 @@
 		
 
 		
-		${alist}
-		
 		<!-- /. AnswerROW 2 -->
 		<c:forEach items="${alist}" var="AnswerVO">
 		
-		<h2>${AnswerVO}</h2>
 
 		<div class="row">
 				<div class="col-md-12">
@@ -228,7 +220,7 @@
 				<div class="row">
                 <div class="col-md-12" >
                     <!-- Advanced Tables -->
-                    <div class="panel panel-info">
+                    <div class="panel panel-danger">
                         <div class="panel-heading panel">답글
                         <p  style="float: right; font: 8px">작성자: ${AnswerVO.awriter}</p>
                         </div>
@@ -266,7 +258,7 @@
                               <a href="" id="amodifyIcon" data-aano="${AnswerVO.aano}" data-content="${AnswerVO.acontent}" data-writer="${AnswerVO.awriter}"  data-toggle="modal" data-target="#exampleModal2" style="float: right; margin: 5px;"><i class="glyphicon glyphicon-wrench"></i></a>
                             	 
                            	<!-- 삭제 아이콘-->
-                             <a href="/qna/delete?qno=${vo.qno}" style="float: right; margin: 5px;"><i class="glyphicon glyphicon-trash" style="float: right; margin: 5px;"></i></a>
+                             <a href="/qna/adelete?aano=${AnswerVO.aano}&qno=${vo.qno}" style="float: right; margin: 5px;"><i class="glyphicon glyphicon-trash" style="float: right; margin: 5px;"></i></a>
                              
                             </div>
                             </div>
@@ -286,6 +278,43 @@
 		
 		</c:forEach>
 		<!-- /. AnswerROW 2 -->		
+		
+		
+		
+		<h2>등록창</h2>
+		
+		 <div class="row">
+	                <div class="col-md-12" >
+	                
+	                <div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="panel panel-success">
+						 <div class="panel-heading panel" style="margin-bottom: 0px;">답변을 등록합니다.</div>
+						<div class="panel-body">
+							
+							
+							<form role="form" class="fmar" id="f4">
+							
+							<input type="hidden" name="awriter" value="운영자">
+							<input type="hidden" name="aqno" value="${vo.qno}">
+								
+								<div class="form-group">
+									<label>답변 내용</label>
+									<textarea class="form-control lcontent" rows="7" name="acontent" placeholder="질문에 대한 답변을 적어 주세요."></textarea>
+								</div>
+																
+                                <a id="ansregi" href="#" class="btn btn-primary" style="float: right;">등록</a>
+							</form>
+						
+						</div>
+					</div>
+				</div>
+			</div> 
+	                    </div>
+	                    
+	                </div>
+		
+		
 		
 		
 		
@@ -377,6 +406,25 @@ $(document).ready(function() {
 	
 		
 	});
+	
+
+	$('#ansregi').on("click", function(e) {
+
+		console.log("ansregi in-----------------------------------");
+		
+		e.preventDefault();
+
+		var formObj = $('#f4');
+
+		formObj.attr('action', '/qna/aregi');
+		formObj.attr('method', 'post');
+		formObj.submit(); 
+		
+		/* location.href="/qna/list";  바로 그냥 폼 안쏘고 가는방법*/
+	
+		
+	});
+	
 	
 	
 	

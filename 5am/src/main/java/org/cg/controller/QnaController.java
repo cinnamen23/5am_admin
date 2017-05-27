@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import oracle.jdbc.proxy.annotation.Post;
+
 @Controller
 @RequestMapping("/qna")
 public class QnaController {
@@ -80,6 +82,7 @@ public class QnaController {
 		
 		
 		qservice.qUpdate(vo);
+		
 		
 		rttr. addAttribute("qno",vo.getQno());
 		rttr. addAttribute("page",cri.getPage());
@@ -171,14 +174,58 @@ public class QnaController {
 			
 			logger.info("amodi post.........");
 			
-			
-			
+		// QAnswerVO 를 받는순간 에러 나는데 왜 에러가 나는지 도저히 모르겠음 //	
 
 			
 			return "redirect:qview";
 		}
 	
-	
-	
+		
+		
+		@GetMapping("/adelete")
+		public String delAnswer(QuestionVO vo,Criteria cri,int aano,RedirectAttributes rttr){
+			
+			logger.info("AnswerDelete get................");
+			
+			logger.info(vo);
+			logger.info(aano);
+			logger.info(cri);
+			
+			//QAnswerVO 를 받으면 에러가 나기때문에 이방법으로 한것 //
+			//에러가 왜나는지 정말 궁금함 //
+			QAnswerVO avo = new QAnswerVO();
+			avo.setAano(aano);
+			
+			
+			qservice.aDelete(avo);
+			
+			
+			rttr.addAttribute("qno",vo.getQno());
+			rttr.addAttribute("keyword",cri.getKeyword());
+			rttr.addAttribute("type",cri.getType());
+			
+			return "redirect:qview";
+			
+		}
+		
+		
+		@PostMapping("/aregi")
+		public String regiAnswer(QAnswerVO avo,Criteria cri,RedirectAttributes rttr){
+			
+			logger.info("regiAnswer Post........................");
+			logger.info(avo);
+			qservice.aInsert(avo);
+
+			rttr.addAttribute("qno",avo.getAqno());
+			rttr.addAttribute("page",cri.getPage());
+			rttr.addAttribute("type",cri.getPage());
+			rttr.addAttribute("keyword",cri.getKeyword());			
+			
+			return "redirect:qview";
+		}
+		
+		
+		
+		
 
 }

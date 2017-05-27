@@ -98,7 +98,7 @@
                                 
                                 <div class="row">
                                 <div class="col-sm-6">
-                                <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">ㅁㅁㅁㅁㅁㅁㅁ
+                                <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
                                 <form action="/qna/regi" method="get">
 							    <button type="submit" class="btn btn-info">등록</button>
 							    </form>
@@ -151,22 +151,7 @@
            </div>
          </div>
 
-			 <h2>${pageMaker}</h2>
-             <h2>${cri}</h2>
-             
 			
-			
-			<div class="row">
-				<div class="col-md-12">
-					<div class="alert alert-success">
-						This is blank page for your customization. So use this page and
-						start your project now. <br /> Happy downloading <br /> Keep
-						Looking <a target="_blank" href="http://www.binarytheme.com/">binarytheme.com</a>
-						for cool stuff.
-					</div>
-				</div>
-
-			</div>
 		</div>
 	</div>
 	<!-- CONTENT-WRAPPER SECTION END-->
