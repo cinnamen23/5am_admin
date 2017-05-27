@@ -37,7 +37,7 @@
                                 Hello</h1>
                             <br />
                             <p>
-                                Just sign in and we all send you on your way</p>
+                                Just sign in and we all send you on your way</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -70,7 +70,7 @@
                                 	<input type="checkbox" name="useCookie"> Remember Me
                                 	</label>
                                 </div>
-                                    <a href="/store/register" class="btn btn-default">회원 가입</a>&nbsp;&nbsp;
+                                    <a href="/store/storeregi" class="btn btn-default">회원 가입</a>&nbsp;&nbsp;
                                     <button type="submit" class="btn btn-default">
                                         Sign In</button>
                                 </div>

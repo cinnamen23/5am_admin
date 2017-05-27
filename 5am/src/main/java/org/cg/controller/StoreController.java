@@ -45,6 +45,11 @@ public class StoreController {
 		
 	}
 	
+	@GetMapping("/storeregi")
+	public void storeregiGET(){
+		
+	}
+	
 	
 	
 	
