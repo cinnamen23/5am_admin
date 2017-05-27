@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.cg.domain.Criteria;
 import org.cg.domain.PageMaker;
 import org.cg.domain.QAnswerVO;
+import org.cg.domain.QfileVO;
 import org.cg.domain.QuestionVO;
 import org.cg.service.QnaService;
 import org.springframework.stereotype.Controller;
@@ -114,16 +115,26 @@ public class QnaController {
 		
 	}
 	
+	@Transactional
 	@PostMapping("/regi")
 	public String qRegipost(QuestionVO vo,MultipartFile[] file) throws IOException{
 	
 		logger.info("regi post...........");
+		
+		
+		//댓글등록		
+		qservice.qInsert(vo);
+		//댓글등록
+		
+		
 		
 		List<String> flist = new ArrayList<String>();
 		
 		
 		//파일업로드 부분
 		for(int i=0;i<file.length;i++){
+		
+		QfileVO fvo = new QfileVO();
 		
 		logger.info("originalName: " + file[i].getOriginalFilename());
 		logger.info("size: " + file[i].getSize());
@@ -137,6 +148,11 @@ public class QnaController {
 		FileCopyUtils.copy(file[i].getBytes(), target);
 		
 		flist.add(saveName);
+
+		fvo.setFilename(saveName);
+		fvo.setFqno(vo.getQno());
+		qservice.fInsert(fvo);
+		
 		}
 		//파일업로드 부분
 		
@@ -161,9 +177,7 @@ public class QnaController {
 		new File("c:\\zzz\\upload\\"+flist.get(i).replace('/', File.separatorChar)).delete();
 		}
 		
-		//댓글등록		
-		qservice.qInsert(vo);
-		//댓글등록
+		
 		
 		
 		return "redirect:list";

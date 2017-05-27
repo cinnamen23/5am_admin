@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.cg.domain.Criteria;
 import org.cg.domain.QAnswerVO;
+import org.cg.domain.QfileVO;
 import org.cg.domain.QuestionVO;
 
 public interface QnaDAO {
@@ -34,6 +35,10 @@ public interface QnaDAO {
 	public void aUpdate(QAnswerVO vo);
 	
 	public void aDeleteAll(QuestionVO vo);
+	
+//  qfile
+	
+	public void fInsert(QfileVO vo);
 	
 	
 }

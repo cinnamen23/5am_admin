@@ -15,15 +15,17 @@
 				</div>
 
 			</div>
-		
+			
 			<div class="row">
                 <div class="col-md-12">
+                
                 
                 	<div class="row">
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
                     <div class="panel panel-success">
                         <div class="panel-heading panel">목록  </div>
+                        
                         <div class="panel-body">
                             <div class="table-responsive">
                             
@@ -31,7 +33,7 @@
                                 <div class="row">
                                 <div class="col-sm-6">
                                 <div class="dataTables_length" id="dataTables-example_length">
-                               
+                              
                                
                                 </div></div><div class="col-sm-6">
                                 
@@ -146,14 +148,13 @@
                         </div>
                     </div>
                     <!--End Advanced Tables -->
-                </div>
+                </div> <!-- 하나 안쪽 div -->
             </div>    
-           </div>
+           </div>  <!--리스트+등록 페이징 div  -->
          </div>
 
 			
 		</div>
-	</div>
 	<!-- CONTENT-WRAPPER SECTION END-->
 	
 

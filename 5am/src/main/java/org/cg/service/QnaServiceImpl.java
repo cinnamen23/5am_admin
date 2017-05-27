@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.cg.domain.Criteria;
 import org.cg.domain.QAnswerVO;
+import org.cg.domain.QfileVO;
 import org.cg.domain.QuestionVO;
 import org.cg.persistence.QnaDAO;
 import org.springframework.stereotype.Service;
@@ -77,6 +78,11 @@ public class QnaServiceImpl implements QnaService {
 	public void aDeleteAll(QuestionVO vo) {
 
 		dao.aDeleteAll(vo);
+	}
+
+	@Override
+	public void fInsert(QfileVO vo) {
+		dao.fInsert(vo);
 	}
 
 }

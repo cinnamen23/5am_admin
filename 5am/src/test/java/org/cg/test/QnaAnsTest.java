@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
 import org.cg.domain.QAnswerVO;
+import org.cg.domain.QfileVO;
 import org.cg.domain.QuestionVO;
 import org.cg.persistence.QnaDAO;
 import org.junit.Test;
@@ -21,6 +22,20 @@ public class QnaAnsTest {
 	QnaDAO dao;
 	@Inject
 	SqlSessionTemplate sess;
+	
+	
+	@Test
+	public void qfileSave(){
+	
+		QfileVO vo = new QfileVO();
+		
+		vo.setFqno(204);
+		vo.setFilename("손나은.jpg");
+		
+		dao.fInsert(vo);
+		
+	}
+	
 	
 	
 	

@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.cg.domain.Criteria;
 import org.cg.domain.QAnswerVO;
+import org.cg.domain.QfileVO;
 import org.cg.domain.QuestionVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -67,6 +68,11 @@ public class QnaDAOImpl implements QnaDAO {
 	@Override
 	public void aDeleteAll(QuestionVO vo) {
 		sess.delete(namespace+".adeleteall",vo);
+		
+	}
+	@Override
+	public void fInsert(QfileVO vo) {
+		sess.insert(namespace+".qfileinsert",vo);
 		
 	}
 	

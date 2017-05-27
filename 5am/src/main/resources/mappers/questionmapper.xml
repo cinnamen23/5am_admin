@@ -62,6 +62,7 @@ where rnum >=#{skip}
   
   <insert id="qinsert" parameterType="org.cg.domain.QuestionVO">
   insert into tbl_question(qno,title,CONTENT,writer) values (seq_question_qno.nextval,#{title},#{content},#{writer})
+  
   </insert>
   
   
@@ -100,9 +101,17 @@ where rnum >=#{skip}
   delete from tbl_answer where aqno=${qno}
   </delete>
   
+ 
+  
+  <!-- ==============================qfile쪽 맵퍼입니다========================================= -->
+  <!-- ==============================qfile쪽 맵퍼입니다========================================= -->
+  <!-- ==============================qfile쪽 맵퍼입니다========================================= -->  
+  <!-- ==============================qfile쪽 맵퍼입니다========================================= -->
   
   
-  
+  <insert id="qfileinsert" parameterType="org.cg.domain.QfileVO">
+  insert into tbl_qfile(fno,fqno,filename)values(seq_qfile_fno.nextval,seq_question_qno.currval,'${filename}')
+  </insert>
   
   
   </mapper>
