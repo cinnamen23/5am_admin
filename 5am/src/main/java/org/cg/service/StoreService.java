@@ -7,4 +7,7 @@ public interface StoreService {
 
 	public StoreVO login(LoginDTO dto) throws Exception;
 	
+	public void storeregister(StoreVO vo);
+
+	
 }

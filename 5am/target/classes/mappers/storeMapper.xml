@@ -10,6 +10,8 @@
 		select sid , spw , sname from tbl_store where sid = #{sid} and spw = #{spw}
 	</select>
 
-
+	<insert id="storeregi">
+		INSERT INTO TBL_STORE(sid, spw,sname,saddr,lat,lng,sphone,semail) VALUES('${sid}', '${spw}','${sname}','${saddr}','${lat}','${lng}','${sphone}','${semail}')
+	</insert>
 
 </mapper>

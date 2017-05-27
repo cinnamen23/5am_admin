@@ -42,7 +42,7 @@
                     </div>
                     <div class="form-group">
                         <label for="inputName" class="col-md-3 control-label">
-                            UserID:</label>
+                UserID:</label>
                         <div class="col-md-9">
                             <div class="input-icon right">
                                 <input id="inputName" type="text" placeholder="로그인에 사용 할 ID를 입력하세요" class="form-control" name="sid" /></div>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-group">
                         <label for="inputPassword" class="col-md-3 control-label">
-                            Password:</label>
+                Password:</label>
                         <div class="col-md-9">
                             <div class="input-icon right">
 
@@ -64,7 +64,7 @@
                         <div class="col-md-9">
                             <div class="input-icon right">
 
-                                <input id="inputName" type="text" placeholder="가게 이름을 입력하세요" class="form-control" name="sid" /></div>
+                                <input id="inputName" type="text" placeholder="가게 이름을 입력하세요" class="form-control" name="sname" /></div>
                         </div>
                     </div>
                     
@@ -79,12 +79,47 @@
 								<div id="postcodify"></div>
 								
 								<!-- 주소와 우편번호를 입력할 <input>들을 생성하고 적당한 name과 id를 부여한다 -->
-								<input class="form-control" type="text" name="" id="postcode" value="" /><br />
-								<input class="form-control" type="text" name="" id="address" value="" /><br />
-								<input class="form-control" type="text" name="" id="details" value="" /><br />
-								<input class="form-control" type="text" name="" id="extra_info" value="" /><br />
-                               
-                                
+								
+								<div class="form-group">
+                        <label for="inputName" class="col-md-3 control-label">
+                	우편번호:</label>
+                        <div class="col-md-9">
+                            <div class="input-icon right">
+								<input class="form-control" type="text" name="zipcode" id="postcode" value="" />
+							</div>
+						</div>
+					</div>
+								
+								<div class="form-group">
+                        <label for="inputName" class="col-md-3 control-label">
+               	 주 소 :</label>
+                        <div class="col-md-9">
+                            <div class="input-icon right">
+								<input class="form-control" type="text" name="saddr1" id="address" value="" />
+								</div>
+						</div>
+					</div>
+								
+								<div class="form-group">
+                        <label for="inputName" class="col-md-3 control-label">
+          	      상세 주소:</label>
+                        <div class="col-md-9">
+                            <div class="input-icon right">
+								<input class="form-control" type="text" name="saddr2" id="extra_info" value="" />
+								</div>
+						</div>
+					</div>
+								
+								<div class="form-group">
+                        <label for="inputName" class="col-md-3 control-label">
+             	상세 주소:</label>
+                        <div class="col-md-9">
+                            <div class="input-icon right">
+								<input class="form-control" type="text" name="saddr3" id="details" value="" />
+								</div>
+						</div>
+					</div>
+					            
                            </div>
                         </div>
                     </div>
@@ -96,7 +131,7 @@
                         <div class="col-md-9">
                             <div class="input-icon right">
 
-                                <input id="inputName" type="text" placeholder="연락 가능한 전화 번호를 입력하세요" class="form-control" name="sid" /></div>
+                                <input id="inputName" type="text" placeholder="연락 가능한 전화 번호를 입력하세요" class="form-control" name="sphone" /></div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -105,7 +140,7 @@
                         <div class="col-md-9">
                             <div class="input-icon right">
 
-                                <input id="inputName" type="text" placeholder="연락 가능한 e-mail 주소를 입력하세요" class="form-control" name="sid" /></div>
+                                <input id="inputName" type="text" placeholder="연락 가능한 e-mail 주소를 입력하세요" class="form-control" name="semail" /></div>
                         </div>
                     </div>
                     
@@ -116,6 +151,7 @@
                                     &nbsp;
                                 </div>
                                 <div class="col-lg-9">
+                               
                                 
                                     <button type="submit" class="btn btn-default">회원 가입</button>
                                 </div>
@@ -144,6 +180,7 @@
         insertAddress : "#address",
         insertDetails : "#details",
         insertExtraInfo : "#extra_info",
+        
         hideOldAddresses : false
     }); });
 </script>

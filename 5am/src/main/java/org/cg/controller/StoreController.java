@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/store")
@@ -46,14 +47,26 @@ public class StoreController {
 	}
 	
 	@GetMapping("/storeregi")
-	public void storeregiGET(){
+	public void storeregiGet(){
 		
 	}
 	
-	
-	
-	
-	
+	@PostMapping("/storeregi")
+	public String storeregiPost(StoreVO vo,@RequestParam("saddr1") String saddr1,@RequestParam("saddr3") String saddr3){
+		
+		logger.info("store register post!!!");
+		logger.info(vo);
+		logger.info(saddr1+" "+saddr3);
+		
+		String saddr = saddr1+" "+saddr3;
+		
+		vo.setSaddr(saddr);		
+		
+		service.storeregister(vo);
+		
+		return "redirect:login";
+		
+	}
 	
 	
 }
