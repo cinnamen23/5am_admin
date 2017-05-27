@@ -29,11 +29,25 @@
     <beans:property name="maxUploadSize" value="10485760"></beans:property>
     </beans:bean>
 
+	<beans:bean id="loginInterceptor" class="org.cg.interceptor.LoginInterceptor"></beans:bean>
+	<beans:bean id="authInterceptor" class="org.cg.interceptor.AuthInterceptor"></beans:bean>
 	
+	
+	<interceptors>	
+	
+		<interceptor>
+		<mapping path="/store/loginPost"/>
+		<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+		<mapping path="/index"/>	
+		<beans:ref bean="authInterceptor"/>
+		</interceptor>
+		
+	</interceptors>
 	
 
 	<context:component-scan base-package="org.cg.controller" />
-	
-	
 	
 </beans:beans>
