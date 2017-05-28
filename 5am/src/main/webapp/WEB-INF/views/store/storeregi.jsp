@@ -166,25 +166,27 @@
             <p>
                 Forgot Something ? 
             </p>
-        </div>
-    </div>
-    
-<!-- jQuery와 Postcodify를 로딩한다 -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+    	    
+			
+			        </div>
+			    </div>
+			<!-- jQuery와 Postcodify를 로딩한다 -->
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+			<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+			
+			<!-- "검색" 단추를 누르면 팝업 레이어가 열리도록 설정한다 -->
+			<script>
+			    $(function() { $("#postcodify").postcodify({
+			        insertPostcode5 : "#postcode",
+			        insertAddress : "#address",
+			        insertDetails : "#details",
+			        insertExtraInfo : "#extra_info",
+			        
+			        hideOldAddresses : false
+			    }); });
+			</script>
 
-<!-- "검색" 단추를 누르면 팝업 레이어가 열리도록 설정한다 -->
-<script>
-    $(function() { $("#postcodify").postcodify({
-        insertPostcode5 : "#postcode",
-        insertAddress : "#address",
-        insertDetails : "#details",
-        insertExtraInfo : "#extra_info",
-        
-        hideOldAddresses : false
-    }); });
-</script>
-
+              
     
 </body>
 </html>

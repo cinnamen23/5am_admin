@@ -38,7 +38,7 @@
 			</div>
 
 			<div class="right-div">
-				<a href="#" class="btn btn-danger pull-right">로그 아웃</a>
+				<a href="/store/logout" class="btn btn-danger pull-right">로그 아웃</a>
 			</div>
 		</div>
 	</div>

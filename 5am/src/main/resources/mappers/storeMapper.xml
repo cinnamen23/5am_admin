@@ -7,7 +7,7 @@
 <mapper namespace="org.cg.persistence.StoreDAO">
 
 	<select id="login" resultType="org.cg.domain.StoreVO">
-		select sid , spw , sname from tbl_store where sid = #{sid} and spw = #{spw}
+		select * from tbl_store where sid = #{sid} and spw = #{spw}
 	</select>
 
 	<insert id="storeregi">

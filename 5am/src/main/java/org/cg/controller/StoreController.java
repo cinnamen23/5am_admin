@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 @Controller
 @RequestMapping("/store")
@@ -46,8 +47,27 @@ public class StoreController {
 		
 	}
 	
+	@GetMapping("/logout")
+	public String logoutGet(HttpSession session ){
+		
+		logger.info("logout get !!!!!");
+		
+		Object obj = session.getAttribute("login");
+		
+		if (obj != null) {
+			StoreVO vo = (StoreVO) obj;
+			session.removeAttribute("login");
+			session.invalidate();
+			
+		
+		}
+		return "redirect:login";
+		
+	}
+	
 	@GetMapping("/storeregi")
 	public void storeregiGet(){
+		
 		
 	}
 	

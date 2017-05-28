@@ -12,7 +12,7 @@
 			<div class="row pad-botm">
 				<div class="col-md-12">
 					<h4 class="header-line">등록 회원</h4>
-					
+					${login }
 				</div>
 
 			</div>

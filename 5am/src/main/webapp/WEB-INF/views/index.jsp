@@ -7,28 +7,29 @@
 
  <div class="content-wrapper">
          <div class="container">
-        <div class="row pad-botm">
-            <div class="col-md-12">
-                <h4 class="header-line">INDEX PAGE  성준찡</h4>
-                
-                            </div>
-
-        </div>
+	        <div class="row pad-botm">
+	            <div class="col-md-12">
+	                ${login}           
+	                <h4 class="header-line">당신의 꿈을 여는 시간</h4> 
+	            </div>
+	        </div>
              
              <div class="row">
             
-                 <div class="col-md-3 col-sm-3 col-xs-6">
-                      <div class="alert alert-info back-widget-set text-center">
-                            <i class="fa fa-history fa-5x"></i>
-                            <h3>500+&nbsp; <i class="fa fa-dollar"></i></h3>
-                           Amount Pending For Approval
-                        </div>
-                    </div>
+                 
               <div class="col-md-3 col-sm-3 col-xs-6">
                       <div class="alert alert-success back-widget-set text-center">
                             <i class="fa fa-bars fa-5x"></i>
-                            <h3>300+ Tasks</h3>
-                            Pending For New Events
+                            <h3>300</h3>
+                           내 광고를 찜 한 고객 목록
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                      <div class="alert alert-info back-widget-set text-center">
+                            <i class="fa fa-history fa-5x"></i>
+                            <h3>500+&nbsp; <i class="fa fa-dollar"></i></h3>
+                           광고 남은 기간
                         </div>
                     </div>
                <div class="col-md-3 col-sm-3 col-xs-6">
@@ -84,54 +85,23 @@
               </div>
                  
                  <div class="col-md-4 col-sm-4 col-xs-12">
-                 <div class="panel panel-primary ">
-                        <div class="panel-heading">
-                            Recent Chat History
+                 
+                    
+                    <div class="alert alert-info text-center">
+                          <h3> 현재 로그인 된 사용자</h3> 
+                          <hr />
+                          <p>
+                         ${login.sid }</br>
+                         ${login.sname }</br>
+                         ${login.saddr }</br>
+                         ${login.sphone }</br>
+                         ${login.semail }</br>
+                         
+                        </p>
+                          <hr />
+                           <a href="#" class="btn btn-info">정보 수정</a> 
                         </div>
-                        <div class="panel-body chat-widget-main">
-                            <div class="chat-widget-left">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                           Lorem ipsum dolor.
-                            </div>
-                            <div class="chat-widget-name-left">
-                                <img class="media-object img-circle img-left-chat" src="assets/img/user2.png" />
-                                <h4>  Amanna Seiar</h4>
-                                <h5>Time 2:00 pm at 25th july</h5>
-                            </div>
-                            <hr />
-                            <div class="chat-widget-right">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                           Lorem ipsum dolor sit amet.
-                            </div>
-                            <div class="chat-widget-name-right">
-                                 <img class="media-object img-circle img-right-chat" src="assets/img/user2.png" />
-                                <h4>  Amanna Seiar</h4>
-                                <h5>Time 2:00 pm at 25th july</h5>
-                            </div>
-                            <hr />
-                            <div class="chat-widget-left">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                           Lorem ipsum dolor sit amet.
-                            </div>
-                            <div class="chat-widget-name-left">
-                                 <img class="media-object img-circle img-left-chat" src="assets/img/user2.png" />
-                                <h4>  Amanna Seiar</h4>
-                                <h5>Time 2:00 pm at 25th july</h5>
-                            </div>
-                            <hr />
-                            <div class="chat-widget-right">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                           Lorem ipsum dolor sit amet.
-                            </div>
-                            <div class="chat-widget-name-right">
-                               <img class="media-object img-circle img-right-chat" src="assets/img/user2.png" />
-                                <h4>  Amanna Seiar</h4>
-                                <h5>Time 2:00 pm at 25th july</h5>
-                            </div>
-                            <hr />
-                        </div>
-
-                    </div>
+                    
              </div>
              
                  </div>
@@ -286,19 +256,59 @@
                      
                  </div>
                  <div class="col-md-4 col-sm-4 col-xs-12" >
-                        <div class="alert alert-info text-center">
-                          <h3> IMPORTANT NOTICE</h3> 
-                          <hr />
-                            <i class="fa fa-warning fa-4x"></i>
-                          <p>
-                         Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-                           Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-                               Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-                               Lorem ipsum dolor sit amet.
-                        </p>
-                          <hr />
-                           <a href="#" class="btn btn-info">Read Full Detalis</a> 
+                 <div class="panel panel-primary ">
+                        <div class="panel-heading">
+                            Recent Chat History
                         </div>
+                        <div class="panel-body chat-widget-main">
+                            <div class="chat-widget-left">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                           Lorem ipsum dolor.
+                            </div>
+                            <div class="chat-widget-name-left">
+                                <img class="media-object img-circle img-left-chat" src="assets/img/user2.png" />
+                                <h4>  Amanna Seiar</h4>
+                                <h5>Time 2:00 pm at 25th july</h5>
+                            </div>
+                            <hr />
+                            <div class="chat-widget-right">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                           Lorem ipsum dolor sit amet.
+                            </div>
+                            <div class="chat-widget-name-right">
+                                 <img class="media-object img-circle img-right-chat" src="assets/img/user2.png" />
+                                <h4>  Amanna Seiar</h4>
+                                <h5>Time 2:00 pm at 25th july</h5>
+                            </div>
+                            <hr />
+                            <div class="chat-widget-left">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                           Lorem ipsum dolor sit amet.
+                            </div>
+                            <div class="chat-widget-name-left">
+                                 <img class="media-object img-circle img-left-chat" src="assets/img/user2.png" />
+                                <h4>  Amanna Seiar</h4>
+                                <h5>Time 2:00 pm at 25th july</h5>
+                            </div>
+                            <hr />
+                            <div class="chat-widget-right">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                           Lorem ipsum dolor sit amet.
+                            </div>
+                            <div class="chat-widget-name-right">
+                               <img class="media-object img-circle img-right-chat" src="assets/img/user2.png" />
+                                <h4>  Amanna Seiar</h4>
+                                <h5>Time 2:00 pm at 25th july</h5>
+                            </div>
+                            <hr />
+                        </div>
+
+                    </div>
+                 
+                 
+                 
+                 
+                        
                  </div>
              </div>
             <div class="row">

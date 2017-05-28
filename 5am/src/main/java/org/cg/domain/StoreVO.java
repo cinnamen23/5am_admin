@@ -1,9 +1,12 @@
 package org.cg.domain;
 
+import java.sql.Timestamp;
+
 public class StoreVO {
 	
 	private String sid,spw,sname,saddr,sphone,semail;
 	private Double lat,lng;
+	private Timestamp regdate,updatedate;
 	
 	public String getSid() {
 		return sid;
@@ -52,11 +55,25 @@ public class StoreVO {
 	}
 	public void setLng(Double lng) {
 		this.lng = lng;
+	}	
+	
+	public Timestamp getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Timestamp regdate) {
+		this.regdate = regdate;
+	}
+	public Timestamp getUpdatedate() {
+		return updatedate;
+	}
+	public void setUpdatedate(Timestamp updatedate) {
+		this.updatedate = updatedate;
 	}
 	@Override
 	public String toString() {
 		return "StoreVO [sid=" + sid + ", spw=" + spw + ", sname=" + sname + ", saddr=" + saddr + ", sphone=" + sphone
-				+ ", semail=" + semail + ", lat=" + lat + ", lng=" + lng + "]";
+				+ ", semail=" + semail + ", lat=" + lat + ", lng=" + lng + ", regdate=" + regdate + ", updatedate="
+				+ updatedate + "]";
 	}
 	
 	
