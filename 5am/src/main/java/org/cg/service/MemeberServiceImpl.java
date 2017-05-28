@@ -1,10 +1,10 @@
 package org.cg.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import org.cg.domain.Criteria;
 import org.cg.domain.Criteria2;
 import org.cg.domain.MAnswerVO;
 import org.cg.domain.MQuestionVO;
@@ -19,8 +19,8 @@ public class MemeberServiceImpl implements MemberService {
 	MemberDAO dao;
 
 	@Override
-	public List<MemberVO> listAll(Criteria cri) {
-		return dao.listAll(cri);
+	public List<MemberVO> listAll(HashMap<String, Object> map) {
+		return dao.listAll(map);
 	}
 
 	@Override
@@ -34,8 +34,8 @@ public class MemeberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int totalCount(Criteria cri) {
-		return dao.totalCount(cri);
+	public int totalCount(HashMap<String, Object> map) {
+		return dao.totalCount(map);
 	}
 
 	@Override

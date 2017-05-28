@@ -1,6 +1,9 @@
 package org.cg.controller;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.cg.domain.Criteria;
@@ -10,6 +13,7 @@ import org.cg.domain.MQuestionVO;
 import org.cg.domain.MemberVO;
 import org.cg.domain.PageMaker;
 import org.cg.domain.PageMaker2;
+import org.cg.domain.StoreVO;
 import org.cg.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,16 +34,29 @@ public class MemberController {
 	MemberService service;
 
 	@GetMapping("/list")
-	public void mainGet(@ModelAttribute("cri") Criteria cri, @ModelAttribute("cri2") Criteria2 cri2, Model model) {
+	public void mainGet(@ModelAttribute("cri") Criteria cri, @ModelAttribute("cri2") Criteria2 cri2, Model model, HttpSession session) {
 
 		logger.info(".......get member list .....");
 		logger.info(cri);
-
-		model.addAttribute("list", service.listAll(cri));
-		model.addAttribute("pageMaker", new PageMaker(cri, service.totalCount(cri)));
+		
+		
+		Object obj = session.getAttribute("login");
+		StoreVO vo = (StoreVO) obj;
+		logger.info("================================================================");
+		logger.info("================================================================");
+		
+		logger.info(vo);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("cri", cri);
+		map.put("vo", vo);		
+		
+		model.addAttribute("list", service.listAll(map));
+		model.addAttribute("pageMaker", new PageMaker(cri, service.totalCount(map)));
+		
+		model.addAttribute("qlist", service.qlistAll(cri2));
 		model.addAttribute("pageMaker2", new PageMaker2(cri2, service.qtotalCount(cri2)));
 
-		model.addAttribute("qlist", service.qlistAll(cri2));
+		
 	}
 
 	@PostMapping("/modi")

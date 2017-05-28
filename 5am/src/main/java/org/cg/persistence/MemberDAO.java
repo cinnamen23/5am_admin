@@ -1,8 +1,8 @@
 package org.cg.persistence;
 
+import java.util.HashMap;
 import java.util.List;
 
-import org.cg.domain.Criteria;
 import org.cg.domain.Criteria2;
 import org.cg.domain.MAnswerVO;
 import org.cg.domain.MQuestionVO;
@@ -12,11 +12,11 @@ import org.cg.domain.MemberVO;
 
 public interface MemberDAO {
 	
-	public int totalCount(Criteria cri);
+	public int totalCount(HashMap<String, Object> map);
 	
 	public void creat(MemberVO vo);
 	
-	public List<MemberVO> listAll(Criteria cri);
+	public List<MemberVO> listAll(HashMap<String, Object> map);
 	
 	public void update(MemberVO vo);
 		

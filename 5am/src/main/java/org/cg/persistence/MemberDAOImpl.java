@@ -1,10 +1,10 @@
 package org.cg.persistence;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import org.cg.domain.Criteria;
 import org.cg.domain.Criteria2;
 import org.cg.domain.MAnswerVO;
 import org.cg.domain.MQuestionVO;
@@ -17,13 +17,13 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Inject
 	private SqlSessionTemplate sess;
-
+	
 	private static final String namespace = "org.cg.persistence.MemberDAO";
 
 	@Override
-	public List<MemberVO> listAll(Criteria cri) {
-
-		return sess.selectList(namespace + ".listAll", cri);
+	public List<MemberVO> listAll(HashMap<String, Object> map) {
+		
+		return sess.selectList(namespace + ".listAll", map);
 	}
 
 	@Override
@@ -38,9 +38,9 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public int totalCount(Criteria cri) {
-
-		return sess.selectOne(namespace + ".totalCount",cri);
+	public int totalCount(HashMap<String, Object> map) {
+				
+		return sess.selectOne(namespace + ".totalCount", map);
 	}
 
 	@Override

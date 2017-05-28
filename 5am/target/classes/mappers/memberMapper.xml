@@ -6,7 +6,7 @@
 
 <mapper namespace="org.cg.persistence.MemberDAO">
 
-	<select id="listAll" resultType="org.cg.domain.MemberVO" parameterType="org.cg.domain.Criteria">
+	<select id="listAlla" resultType="org.cg.domain.MemberVO" parameterType="org.cg.domain.Criteria">
 		
 		select * from (SELECT rownum rnum ,mid, mname,mage,maddr, mgender, regdate, updatedate FROM 
 		( SELECT mid, mname,mage,maddr, mgender, regdate, updatedate FROM tbl_member where mage>0
@@ -34,8 +34,39 @@
 		order by regdate desc) 
 		  <![CDATA[ tbl_member where rownum <= #{pageNum}) where rnum >= #{skip} ]]>
 	</select>
+	
+	<select id="listAll" resultType="org.cg.domain.MemberVO" parameterType="hashmap">
+	
+	select rnum, mid, mname,mage,maddr, mgender, regdate, updatedate, cno, sid, cregdate  from 
+	(SELECT rownum rnum, m.mid, mname,mage,maddr, mgender, m.regdate, m.updatedate, cno, sid, c.regdate cregdate 
+	FROM TBL_MEMBER m LEFT OUTER JOIN TBL_CHOICE c ON m.mid = c.mid where sid='${vo.sid}' 
+  
+  		<choose>
+			<when test='type=="x"'>
+			 
+			</when>
+			<when test='type=="i"'>
+			  and (mid like '%'|| #{cri.keyword} ||'%')
+			</when>
+			<when test='type=="n"'>
+			  and (mname like '%'|| #{cri.keyword} ||'%')
+			</when>
+			<when test='type=="a"'>
+			  and (mage like '%'|| #{cri.keyword} ||'%')
+			</when>
+			<when test='type=="g"'>
+			  and (mgender like '%'|| #{cri.keyword} ||'%')
+			</when>
+			<when test='type=="d"'>
+			  and (maddr like '%'|| #{cri.keyword} ||'%')
+			</when>
+		</choose> 
+		<![CDATA[and rownum<= ${cri.pageNum} ) mc where rnum>= ${cri.skip} order by regdate desc]]>
+	
+	
+	</select>
 
-	<select id="totalCount" resultType="Int" parameterType="org.cg.domain.Criteria">
+	<select id="totalCounta" resultType="Int" parameterType="org.cg.domain.Criteria">
 		select count(*) from tbl_Member where mage>0 
 		<choose>
 			<when test='type=="x"'>
@@ -57,7 +88,31 @@
 			  and (maddr like '%'|| #{keyword} ||'%')
 			</when>
 		</choose>
-		
+	</select>
+	
+	<select id="totalCount" resultType="Int" parameterType="hashmap" >
+		select count(rnum) from (SELECT rownum rnum, m.mid, mname,mage,maddr, mgender, m.regdate, m.updatedate,
+		 cno, sid, c.regdate cregdate FROM TBL_MEMBER m LEFT OUTER JOIN TBL_CHOICE c ON m.mid = c.mid where sid='${vo.sid}') where rnum>0
+		  <choose>
+			<when test='type=="x"'>
+			 
+			</when>
+			<when test='type=="i"'>
+			  and (mid like '%'|| #{cri.keyword} ||'%')
+			</when>
+			<when test='type=="n"'>
+			  and (mname like '%'|| #{cri.keyword} ||'%')
+			</when>
+			<when test='type=="a"'>
+			  and (mage like '%'|| #{cri.keyword} ||'%')
+			</when>
+			<when test='type=="g"'>
+			  and (mgender like '%'|| #{cri.keyword} ||'%')
+			</when>
+			<when test='type=="d"'>
+			  and (maddr like '%'|| #{cri.keyword} ||'%')
+			</when>
+		</choose>
 		
 	</select>
 
