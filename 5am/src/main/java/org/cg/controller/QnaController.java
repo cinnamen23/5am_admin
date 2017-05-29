@@ -122,9 +122,9 @@ public class QnaController {
 		logger.info("regi post...........");
 		
 		
-		//댓글등록		
+		//질문등록		
 		qservice.qInsert(vo);
-		//댓글등록
+		//질문등록
 		
 		
 		
@@ -151,6 +151,10 @@ public class QnaController {
 
 		fvo.setFilename(saveName);
 		fvo.setFqno(vo.getQno());
+		
+		logger.info("월요일아침=================================================");
+		logger.info(fvo);
+		
 		qservice.fInsert(fvo);
 		
 		}
