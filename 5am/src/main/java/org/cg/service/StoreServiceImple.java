@@ -24,5 +24,11 @@ public class StoreServiceImple implements StoreService{
 
 		dao.storeregister(vo);
 	}
+
+	@Override
+	public void storemodify(StoreVO vo) {
+		dao.storemodify(vo);
+		
+	}
 	
 }

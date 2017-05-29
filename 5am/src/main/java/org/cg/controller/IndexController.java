@@ -38,10 +38,9 @@ public class IndexController {
 		model.addAttribute("totalCount", service.totalCount(map));
 		model.addAttribute("qzeroCount", service.qzeroCount(map));
 
-
-		
-		
 	}
+	
+	
 	
 
 }

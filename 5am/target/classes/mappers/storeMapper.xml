@@ -13,5 +13,9 @@
 	<insert id="storeregi">
 		INSERT INTO TBL_STORE(sid, spw,sname,saddr,lat,lng,sphone,semail,saddrm) VALUES('${sid}', '${spw}','${sname}','${saddr}','${lat}','${lng}','${sphone}','${semail}','${saddrm}')
 	</insert>
+	
+	<update id="storemodi" parameterType="org.cg.domain.StoreVO">
+		UPDATE TBL_STORE SET spw='${spw}',sname='${sname}',saddr='${saddr}',lat='${lat}',lng='${lng}',sphone='${sphone}',semail='${semail}',saddrm='${saddrm}' WHERE sid ='${sid}' 
+	</update>
 
 </mapper>

@@ -9,9 +9,7 @@
          <div class="container">
 	        <div class="row pad-botm">
 	            <div class="col-md-12">
-	               
-	                        ${login}
-	                <h4 class="header-line">당신의 꿈을 여는 시간</h4> 
+	               <h4 class="header-line">당신의 꿈을 여는 시간</h4> 
 	            </div>
 	        </div>
              
@@ -48,67 +46,72 @@
                         </div>
                     </div>
 
-        </div>              
-             <div class="row">
+        </div>
+		<div class="row">
 
-              <div class="col-md-8 col-sm-8 col-xs-12">
-                    <div id="carousel-example" class="carousel slide slide-bdr" data-ride="carousel" >
-                   
-                    <div class="carousel-inner">
-                        <div class="item active">
+			<div class="col-md-8 col-sm-8 col-xs-12">
+				<div id="carousel-example" class="carousel slide slide-bdr"
+					data-ride="carousel">
 
-                            <img src="assets/img/1.jpg" alt="" />
-                           
-                        </div>
-                        <div class="item">
-                            <img src="assets/img/2.jpg" alt="" />
-                          
-                        </div>
-                        <div class="item">
-                            <img src="assets/img/3.jpg" alt="" />
-                           
-                        </div>
-                    </div>
-                    <!--INDICATORS-->
-                     <ol class="carousel-indicators">
-                        <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-example" data-slide-to="1"></li>
-                        <li data-target="#carousel-example" data-slide-to="2"></li>
-                    </ol>
-                    <!--PREVIUS-NEXT BUTTONS-->
-                     <a class="left carousel-control" href="#carousel-example" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
-                </div>
-              </div>
-                 
-                 <div class="col-md-4 col-sm-4 col-xs-12">
-                 
-                    
-                    <div class="alert alert-info text-center" style="height: 380px">
-                          <h3> 현재 <${login.sid }>님이</br> 로그인 되었습니다.</h3> 
-                          <hr />
-                          <p>
-                        
-                         ${login.sname }</br>
-                         ${login.saddr }</br>
-                         ${login.sphone }</br>
-                         ${login.semail }</br>
-                         
-                        </p>
-                          <hr />
-                           <a href="#" class="btn btn-info">정보 수정</a> 
-                        </div>
-                    
-             </div>
-             
-                 </div>
-            
+					<div class="carousel-inner">
+						<div class="item active">
 
-             <div class="row">
+							<img src="assets/img/1.jpg" alt="" />
+
+						</div>
+						<div class="item">
+							<img src="assets/img/2.jpg" alt="" />
+
+						</div>
+						<div class="item">
+							<img src="assets/img/3.jpg" alt="" />
+
+						</div>
+					</div>
+					<!--INDICATORS-->
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-example" data-slide-to="0"
+							class="active"></li>
+						<li data-target="#carousel-example" data-slide-to="1"></li>
+						<li data-target="#carousel-example" data-slide-to="2"></li>
+					</ol>
+					<!--PREVIUS-NEXT BUTTONS-->
+					<a class="left carousel-control" href="#carousel-example"
+						data-slide="prev"> <span
+						class="glyphicon glyphicon-chevron-left"></span>
+					</a> <a class="right carousel-control" href="#carousel-example"
+						data-slide="next"> <span
+						class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				</div>
+			</div>
+
+			<div class="col-md-4 col-sm-4 col-xs-12">
+
+
+				<div class="alert alert-info text-center" style="height: 380px">
+					<h3>
+						현재 ${login.sid } 님이</br> 로그인 되었습니다.
+					</h3>
+					<hr />
+					<p>${login.sname }</br>
+					 ${login.saddr }</br> 
+					 ${login.sphone }</br> 
+					 ${login.semail }</br>
+
+					</p>
+					<hr />
+					<button type="button" class="btn btn-info"
+						onclick="location.href='/store/storemodi' ">정보 수정</button>
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+		<div class="row">
                  <div class="col-md-4 col-sm-4 col-xs-12">
  <div class="panel panel-default">
                         <div class="panel-heading">
@@ -129,65 +132,51 @@
              </div>
                   <div class="col-md-8 col-sm-8 col-xs-12">
                       
-                      
-                      <div id="map" style="width:100%;height:400px;"></div>
-
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=175962b9a13ff23b6ba95789998c261c&libraries=services"></script>
-<script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = {
-        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };  
-
-// 지도를 생성합니다    
-var map = new daum.maps.Map(mapContainer, mapOption); 
-
-// 주소-좌표 변환 객체를 생성합니다
-var geocoder = new daum.maps.services.Geocoder();
-
-// 주소로 좌표를 검색합니다
-geocoder.addr2coord('${login.saddrm}', function(status, result) {
-
-    // 정상적으로 검색이 완료됐으면 
-     if (status === daum.maps.services.Status.OK) {
-
-        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-
-        // 결과값으로 받은 위치를 마커로 표시합니다
-        var marker = new daum.maps.Marker({
-            map: map,
-            position: coords
-        });
-
-        // 인포윈도우로 장소에 대한 설명을 표시합니다
-        var infowindow = new daum.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">${login.sname}</div>'
-        });
-        infowindow.open(map, marker);
-
-        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        map.setCenter(coords);
-    } 
-});    
-</script>
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
+   <!-- 지도  -->                   
+                <div id="map" style="width:100%;height:400px;"></div>
+				
+				<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=175962b9a13ff23b6ba95789998c261c&libraries=services"></script>
+				<script>
+				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+				    mapOption = {
+				        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+				        level: 3 // 지도의 확대 레벨
+				    };  
+				
+				// 지도를 생성합니다    
+				var map = new daum.maps.Map(mapContainer, mapOption); 
+				
+				// 주소-좌표 변환 객체를 생성합니다
+				var geocoder = new daum.maps.services.Geocoder();
+				
+				// 주소로 좌표를 검색합니다
+				geocoder.addr2coord('${login.saddrm}', function(status, result) {
+				
+				    // 정상적으로 검색이 완료됐으면 
+				     if (status === daum.maps.services.Status.OK) {
+				
+				        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+				
+				        // 결과값으로 받은 위치를 마커로 표시합니다
+				        var marker = new daum.maps.Marker({
+				            map: map,
+				            position: coords
+				        });
+				
+				        // 인포윈도우로 장소에 대한 설명을 표시합니다
+				        var infowindow = new daum.maps.InfoWindow({
+				            content: '<div style="width:150px;text-align:center;padding:6px 0;">${login.sname}</div>'
+				        });
+				        infowindow.open(map, marker);
+				
+				        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+				        map.setCenter(coords);
+				    } 
+				});    
+				</script>
+				                      
+    <!-- 지도  --> 
+                        
              </div>
              
              </div>
@@ -409,8 +398,12 @@ geocoder.addr2coord('${login.saddrm}', function(status, result) {
             </div>
 
     </div>
+    
     </div>
      <!-- CONTENT-WRAPPER SECTION END-->
-	<!-- CONTENT-WRAPPER SECTION END-->
+    
+
+
+	
 	
 <%@ include file="/WEB-INF/views/footer.jsp" %>
