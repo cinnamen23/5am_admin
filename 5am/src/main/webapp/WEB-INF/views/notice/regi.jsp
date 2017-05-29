@@ -35,19 +35,19 @@
 										type="text" name="nwriter" value="작성자를 작성해주세요"/>
 									
 								</div>
-								
 								<div class="form-group">
 									<label>이미지 첨부파일</label> 
-									<input class="form-control" type="file" name="nimage"/>
+									<input class="form-control" type="file" name="file" id="file"/>
 									
 								</div>
 								
-
-
+								</form>
 								
+
+							
 							<button type="submit" class="btn btn-info" id="regi">등록</button>
 							<button class="btn btn-info"><a href="/notice/list">취소</a></button>
-							</form>
+							
 						
 							
 							
@@ -90,7 +90,13 @@ $(document).ready(function(e) {
 		}
 	})
 	
-
+	$("#regi").on("click",function(e){
+		
+		$(".regiform").submit();
+		
+	})
+	
+	
 	
 	
 	

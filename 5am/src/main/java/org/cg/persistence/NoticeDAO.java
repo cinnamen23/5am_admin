@@ -21,4 +21,7 @@ public interface NoticeDAO {
 	
 	public void updateHit(NoticeVO vo)throws Exception;
 	
+	public void uploadImage(NoticeVO vo)throws Exception;
+
+	
 }

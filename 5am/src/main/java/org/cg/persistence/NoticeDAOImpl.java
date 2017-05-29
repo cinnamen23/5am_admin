@@ -65,5 +65,10 @@ public class NoticeDAOImpl implements NoticeDAO{
 		sess.update(namespace+".updateHit", vo);
 		
 	}
+	
+	@Override
+	public void uploadImage(NoticeVO vo) throws Exception {
+		sess.update(namespace+".updateImg", vo);
+	}
 
 }

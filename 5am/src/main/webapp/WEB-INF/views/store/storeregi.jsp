@@ -65,7 +65,7 @@
                         <div class="col-md-9">
                             <div class="input-icon right">
 
-                                <input id="inputName" type="text" placeholder="가게 이름을 입력하세요" class="form-control" name="sid" /></div>
+                                <input id="inputName" type="text" placeholder="가게 이름을 입력하세요" class="form-control" name="sname" /></div>
                         </div>
                     </div>
                     
@@ -94,7 +94,7 @@
                             주 소:</label>
                         <div class="col-md-9">
                             <div class="input-icon right">		
-								<input class="form-control" type="text" name="" id="address" value="" /><br />
+								<input class="form-control" type="text" name="saddr1" id="address" value="" /><br />
 								</div>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                             상세 주소:</label>
                         <div class="col-md-9">
                             <div class="input-icon right">		
-								<input class="form-control" type="text" name="" id="extra_info" value="" /><br />
+								<input class="form-control" type="text" name="saddr2" id="extra_info" value="" /><br />
 								</div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                             상세 주소:</label>
                         <div class="col-md-9">
                             <div class="input-icon right">		
-								<input class="form-control" type="text" name="" id="details" value="" /><br />
+								<input class="form-control" type="text" name="saddr3" id="details" value="" /><br />
 								</div>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                         <div class="col-md-9">
                             <div class="input-icon right">
 
-                                <input id="inputName" type="text" placeholder="연락 가능한 전화 번호를 입력하세요" class="form-control" name="sid" /></div>
+                                <input id="inputName" type="text" placeholder="연락 가능한 전화 번호를 입력하세요" class="form-control" name="sphone" /></div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -140,7 +140,7 @@
                         <div class="col-md-9">
                             <div class="input-icon right">
 
-                                <input id="inputName" type="text" placeholder="연락 가능한 e-mail 주소를 입력하세요" class="form-control" name="sid" /></div>
+                                <input id="inputName" type="text" placeholder="연락 가능한 e-mail 주소를 입력하세요" class="form-control" name="semail" /></div>
                         </div>
                     </div>
                     

@@ -58,5 +58,10 @@ public class NoticeServiceImpl implements NoticeService {
 		dao.updateHit(vo);
 		
 	}
+	
+	@Override
+	public void uploadImage(NoticeVO vo) throws Exception {
+		dao.uploadImage(vo);
+	}
 
 }

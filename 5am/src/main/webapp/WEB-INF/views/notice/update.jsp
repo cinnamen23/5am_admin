@@ -41,12 +41,15 @@
 									
 								</div>
 								
-
-
-								
-							<button type="submit" class="btn btn-info" style="float: left; margin: 5px" id="btnRegi">등록</button>
-							
 							</form>
+							<form enctype="multipart/form-data" id="imgForm" method="post">
+								<div class="form-group">
+									<label>첨부파일</label> <input class="form-control" type="file" name="file" id="file"/>
+									<input type="hidden" name="nno" value="${read.nno}">
+									
+								</div>	
+							</form>
+							<button type="submit" class="btn btn-info" style="float: left; margin: 5px" id="btnRegi">등록</button>
 						
 							
 							<form action="/notice/nview" method="get">
@@ -77,17 +80,44 @@
 <script>
 $(document).ready(function(e) {
 	
-	
+	$("#btnRegi").on("click",function(event){
 		
 		
+		$(".updateForm").submit();
 		
 	
 	
 	
+	
+		})
+		
+		$("#file").change(function(event){
+			
+			event.preventDefault();
+			console.log("droped...");
+			var formData = new FormData();
+			formData.append("nno", $("input[name=nno]").val());
+			formData.append("file", $("input[name=file]")[0].files[0]);
+
+		
+			$.ajax({
+				url:"/notice/update",
+				data: formData,
+				processData:false,
+				contentType:false,
+				type:'post',
+				success: function(result){
+	            alert("업로드 성공!!");
+	                }
+
+
+
+			})
+			
+			
+		})
 	
 })
-
-            
  </script>          
 
     

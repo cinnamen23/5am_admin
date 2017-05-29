@@ -78,7 +78,7 @@ public class StoreController {
 		logger.info(vo);
 		logger.info(saddr1+" "+saddr3);
 		
-		String saddr = saddr1+" "+saddr3;
+		String saddr = saddr1+" "+saddr3;	
 		
 		vo.setSaddr(saddr);		
 		

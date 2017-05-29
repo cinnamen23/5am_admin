@@ -7,6 +7,18 @@
 
     <%@ include file="/WEB-INF/views/header.jsp" %>
 <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+
+<style>
+.img{
+width: auto;
+height: auto;
+max-width: 600px;
+max-height: 600px;
+}
+.list{
+list-style: none;
+}
+</style>
 	<div class="content-wrapper">
 		<div class="container">
 			<div class="row pad-botm">
@@ -54,7 +66,8 @@
                                   <div class="col-md-12 col-sm-10 col-xs-12" style="margin: auto;" >
                  
                          
-                                  <div >
+                                  <div class="uploadList">
+                                  
                                   <p style="line-height:300%; letter-spacing: 2px; margin: auto" >  ${read.ncontent}</p>
                                   </div>   
                                   <div style="height: 150px">
@@ -133,7 +146,15 @@ $(document).ready(function(e) {
 		
 		
 	})
-	
-})
+				
+						var str = "<li class='list'><img class='img' src='/display?fName="+"${read.nimage}"+"'></li>";
+						
+						$(".uploadList").append(str);
+					
+				
+				
+				
+				
+			})
 </script>	
 <%@ include file="/WEB-INF/views/footer.jsp" %>
