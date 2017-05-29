@@ -233,7 +233,7 @@
 		     
 		     
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">회원 정보 변경  ${cri}
+		        <h5 class="modal-title" id="exampleModalLabel">회원 정보 변경  
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
 		        </button></h5>
@@ -278,10 +278,10 @@
 		        </form>
 		       </div>
 		        
-		      </div>
 		      <div class="modal-footer">
-		        <button  id="modifyBtn" type="button" class="btn btn-secondary" data-dismiss="modal">수정</button>
+		        <button  id="modifyBtn" type="button" class="btn btn-primary" data-dismiss="modal">수정</button>
 		        <button  type="button" class="btn btn-primary" data-dismiss="modal">취소</button>
+		      </div>
 		      </div>
 		    </div>
 		  </div>

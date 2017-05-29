@@ -79,7 +79,8 @@ public class MemberController {
 	public String memberDel(MemberVO vo) {
 
 		logger.info(".......member delete .......");
-
+		
+		
 		service.delete(vo);
 
 		return "redirect:list";
