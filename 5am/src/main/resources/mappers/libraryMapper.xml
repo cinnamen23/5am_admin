@@ -5,8 +5,13 @@
 
 <mapper namespace="library">
 
+
+	  <update id="updateHit" parameterType="org.cg.domain.LibraryVO">
+		update tbl_library set hit = hit+1 where lno = #{lno}
+	  </update>
+
 	<select id="update" resultType="org.cg.domain.LibraryVO" parameterType="org.cg.domain.LibraryVO">
-		update tbl_library set ltitle=#{ltitle}, lcontent=#{lcontent}, lfile=#{lfile}, updatedate=sysdate where lno= #{lno}
+		update tbl_library set ltitle=#{ltitle}, lcontent=#{lcontent}, lfile=#{lfile}, lfileid=#{lfileid}, updatedate=sysdate where lno= #{lno}
 	</select>
 
 
@@ -20,8 +25,8 @@
 	  
 
 	 <select id="getList" parameterType="org.cg.domain.Criteria" resultType="org.cg.domain.LibraryVO">
-		select * from (SELECT rownum rnum ,lno, ltitle, lcontent, lfile,regdate, updatedate FROM
-		( SELECT lno, ltitle, lcontent,lfile, regdate, UPDATEDATE FROM tbl_library where lno>0
+		select * from (SELECT rownum rnum ,lno, ltitle, lcontent, lfile,regdate, updatedate,hit FROM
+		( SELECT lno, ltitle, lcontent,lfile, regdate, UPDATEDATE,hit FROM tbl_library where lno>0
 		  <choose>
 			  <when test='type=="t"'>
 			  and (ltitle like '%'|| #{keyword} ||'%')
@@ -52,8 +57,7 @@
 	  
 
 	<select id="create" parameterType="org.cg.domain.LibraryVO">
-		insert into tbl_library(lno, ltitle, lcontent, lfile) values(seq_library_lno.nextval,
-		#{ltitle},#{lcontent},#{lfile} )
+		insert into tbl_library(lno, ltitle, lcontent, lfile, lfileid) values(seq_library_lno.nextval, #{ltitle}, #{lcontent}, #{lfile}, #{lfileid} )
 	</select>
 
 </mapper>

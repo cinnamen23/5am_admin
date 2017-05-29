@@ -16,12 +16,22 @@
 
 			</div>
 			
+			
+			
+			
+			
+			
+			
+			
 			<div class="row">
                 <div class="col-md-12">
                 
                 
                 	<div class="row">
                 <div class="col-md-12">
+                
+                
+                
                     <!-- Advanced Tables -->
                     <div class="panel panel-success">
                         <div class="panel-heading panel">목록  </div>
@@ -30,6 +40,7 @@
                             <div class="table-responsive">
                             
                                 <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                
                                 <div class="row">
                                 <div class="col-sm-6">
                                 <div class="dataTables_length" id="dataTables-example_length">
@@ -66,6 +77,8 @@
                                 </div></div></div>
                                 
                                 
+                                
+                                
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
                                     <thead>
                                         <tr role="row">
@@ -76,6 +89,10 @@
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 160px;">등록날짜</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 113px;">갱신날짜</th></tr>
                                     </thead>
+                                    
+                                    
+                                    
+                                    
                                     <tbody>
                                         
                                         
@@ -143,13 +160,23 @@
                                 </div>
                                 </div>
                                 </div>
+                                
+                                
+                                
                             </div>
                             
                         </div>
+                        
+                        
+                        
                     </div>
                     <!--End Advanced Tables -->
                 </div> <!-- 하나 안쪽 div -->
+                
+                
+                
             </div>    
+          
            </div>  <!--리스트+등록 페이징 div  -->
          </div>
 

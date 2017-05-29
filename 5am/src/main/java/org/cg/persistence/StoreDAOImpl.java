@@ -26,4 +26,9 @@ public class StoreDAOImpl implements StoreDAO {
 		session.insert(namespace + ".storeregi", vo);
 	}
 
+	@Override
+	public void storemodify(StoreVO vo) {
+		session.update(namespace+".storemodi", vo);
+	}
+
 }

@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.cg.domain.Criteria;
 import org.cg.domain.LibraryVO;
+import org.cg.domain.NoticeVO;
 import org.springframework.stereotype.Repository;
 
 
 
 public interface LibraryDAO {
+	
+	public void updateHit(LibraryVO vo);
 	
 	public void create(LibraryVO vo);
 	
@@ -22,5 +25,5 @@ public interface LibraryDAO {
 	
 	public int getTotal(Criteria cri);
 	
-
+	
 }

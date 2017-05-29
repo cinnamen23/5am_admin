@@ -47,4 +47,10 @@ public class LibraryDAOImpl implements LibraryDAO {
 		return sess.selectOne(namespace+".getTotal",cri);
 	}
 
+	@Override
+	public void updateHit(LibraryVO vo) {
+		sess.selectOne(namespace+".updateHit", vo);
+	}
+
+
 }

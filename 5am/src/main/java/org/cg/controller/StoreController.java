@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class StoreController {
 	
 	private static final Logger logger = Logger.getLogger(StoreController.class);
+	private static final String LOGIN = "login";
 	
 	@Inject
 	private StoreService service;
@@ -71,9 +72,12 @@ public class StoreController {
 	}
 	
 	@PostMapping("/storeregi")
+
 	public String storeregiPost(StoreVO vo,@RequestParam("saddr1") String saddr1,@RequestParam("saddr3") String saddr3,@RequestParam("lat")String lat,@RequestParam("lng")String lng){
 		logger.info(lat);
+
 		logger.info("store register post!!!");
+		
 		logger.info(vo);
 		logger.info(saddr1+" "+saddr3);
 		
@@ -86,6 +90,32 @@ public class StoreController {
 		
 		return "redirect:login";
 		
+	}
+	
+	@GetMapping("/storemodi")
+	public void imodiGet(HttpSession session, Model model){
+		
+		Object obj = session.getAttribute("login");
+		StoreVO vo = (StoreVO) obj;
+		
+		model.addAttribute("vo", vo);
+		
+		
+	}
+	
+	@PostMapping("/storemodi")
+	public String storemodiPost(HttpSession session ,StoreVO vo,@RequestParam("saddr1") String saddr1,@RequestParam("saddr3") String saddr3){
+		logger.info("----------------------------------------------------------");
+		logger.info("storemodi post !!!!!!!!!!!!!!!!!!!!!!!");
+		String saddr = saddr1+" "+saddr3;	
+		
+		vo.setSaddrm(saddr1);
+		vo.setSaddr(saddr);	
+		
+		service.storemodify(vo);
+		session.setAttribute(LOGIN, vo);
+		
+		return "redirect:../index";
 	}
 	
 	

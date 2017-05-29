@@ -9,5 +9,7 @@ public interface StoreService {
 	
 	public void storeregister(StoreVO vo);
 
+	public void storemodify(StoreVO vo);
+
 	
 }

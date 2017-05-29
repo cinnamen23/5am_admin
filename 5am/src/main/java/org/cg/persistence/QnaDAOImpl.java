@@ -75,6 +75,19 @@ public class QnaDAOImpl implements QnaDAO {
 		sess.insert(namespace+".qfileinsert",vo);
 		
 	}
+	@Override
+	public List<QfileVO> getFileList(QuestionVO vo) {
+		
+		return sess.selectList(namespace+".qfilesearch", vo);
+	}
+	@Override
+	public void delOneFile(String fname) {
+			sess.delete(namespace+".qfileDelete", fname);
+	}
+	@Override
+	public void delAllFile(QuestionVO vo) {
+		sess.delete(namespace+".qfileAllDelete",vo);
+	}
 	
 	
 

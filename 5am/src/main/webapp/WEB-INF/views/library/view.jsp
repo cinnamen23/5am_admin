@@ -10,7 +10,6 @@
 	rel="stylesheet">
 
 <div class="content-wrapper">
-<div class="content-wrapper">
 		<div class="container">
 			<div class="row pad-botm">
 				<div class="col-md-12">
@@ -19,8 +18,6 @@
 				</div>
 
 			</div>
-			<div class="row">
-				<div class="col-md-12">
 				
 				<div class="row">
                 <div class="col-md-12">
@@ -36,29 +33,31 @@
                                 <label>
                                 
                                 </div></div>
-                                <div class="col-md-12">
-				                                등록일 : ${lib.regdate} <br>
-				                                수정일 : ${lib.updatedate}
+                                <div class="col-sm-6" style="float: right;">
+				                                등록시간 : ${lib.regdate} <br>
+				                                수정시간 : ${lib.updatedate}<br>
+				                                조회수 : ${lib.hit} 
+				                                </div></div>
                              
                                <form class="form" action="/library/list" method="get">
 	                              	<input type="hidden" name="page" value="${cri.page}" >
 									<input type="hidden" name="lno" value="${lib.lno}">
 									<input type="hidden" name="type" value="${cri.type}" >
 									<input type="hidden" name="keyword" value="${cri.keyword}" >
-                               </form>
+			                        <input type="hidden" class="lfid" value="${lib.lfileid}">
                                
 	                                <div id="dataTables-example_filter" class="dataTables_filter">
 	
-	
+
 			                            <div class="panel-body">
 			                            <h3><strong>다운로드 파일</strong></h3>
 			                            <div class="alert alert-info">
 			                                <h3>${lib.lcontent} <br></h3>
-			                                <a href="#" class="alert-link">${lib.lfile}<br></a>
+			                                <a href="http://localhost:8080/library/download?lfileid=${lib.lfileid}" class="alert-link ">${lib.lfile}<br></a>
 			                            	파일을 다운 받으려면 위의 링크를 클릭하세요
 			                            </div>
 			                           <br>
-			                             
+                               </form>
 			
 			                           </div>
 	                                </div>
@@ -67,7 +66,7 @@
                                 <div class="row">
                                 <div class="col-md-12">
                                 <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
-                                <a href="#" class="btn btn-primary modifyBtn">수정</a>
+                                <a href="#" class="btn btn-info modifyBtn">수정</a>
                                 <a href="#" class="btn btn-info deleteBtn">삭제</a></div>
                                 </div>
                                 <div class="col-md-12">
@@ -97,7 +96,10 @@
 <script>
 $(document).ready(function(e) {
 	
-	//수정
+	
+
+	
+//수정
 	$(".modifyBtn").on("click", function(e){
 		e.preventDefault();
 		$(".form").attr("action","/library/update").submit();

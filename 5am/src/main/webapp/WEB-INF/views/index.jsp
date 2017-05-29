@@ -109,7 +109,8 @@ max-height: 500px;
                          
                         </p>
                           <hr />
-                           <a href="#" class="btn btn-info">정보 수정</a> 
+                           <button type="button" class="btn btn-info"
+                        onclick="location.href='/store/storemodi' ">정보 수정</button>
                         </div>
                     
              </div>

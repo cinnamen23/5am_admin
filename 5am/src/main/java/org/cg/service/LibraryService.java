@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.cg.domain.Criteria;
 import org.cg.domain.LibraryVO;
+import org.cg.domain.NoticeVO;
 
 
 public interface LibraryService {
@@ -16,4 +17,7 @@ public interface LibraryService {
 	public List<LibraryVO> getList(Criteria cri)throws Exception;
 	public Integer getTotal(Criteria cri) throws Exception;
 	
+	public void updateHit(LibraryVO vo)throws Exception;
+	
+
 }

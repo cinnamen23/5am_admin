@@ -10,7 +10,6 @@
 	rel="stylesheet">
 
 <div class="content-wrapper">
-<div class="content-wrapper">
 		<div class="container">
 			<div class="row pad-botm">
 				<div class="col-md-12">
@@ -19,8 +18,6 @@
 				</div>
 
 			</div>
-			<div class="row">
-				<div class="col-md-12">
 				
 				<div class="row">
                 <div class="col-md-12">
@@ -32,7 +29,7 @@
 						 <div class="panel-heading panel"><h3>내용을 수정합니다</h3> </div>
 						<div class="panel-body">
 							
-							<form role="form" method="post" action="/notice/regi" class="form" >
+							<form role="form" method="post" action="/notice/regi" class="form" enctype="multipart/form-data">
 							<input type="hidden" name="lno" value="${lib.lno}">
 								<div class="form-group">
 									<label>수정할 제목</label> 
@@ -45,11 +42,11 @@
 								</div>
 								<div class="form-group">
 									<label>수정할 파일</label>
-									<input class="form-control lfile" type="file" name="lfile" value="${lib.lfile}">
+									<input class="form-control lfile" type="file" name="file" value="${lib.lfile}">
 								</div>
 								
                                 <a href="#" class="btn btn-primary saveBtn">저장</a>
-                                <a href="/library/list" class="btn btn-danger cancelBtn">취소</a>
+                                <a href="/library/list" class="btn btn-primary cancelBtn">취소</a>
 							</form>
 						
                                <form class="form2" action="/library/view" method="get">
@@ -58,7 +55,7 @@
 									<input type="hidden" name="type" value="${cri.type}" >
 									<input type="hidden" name="keyword" value="${cri.keyword}" >
                                </form>
-						
+						${lib }
 						</div>
 					</div>
 				</div>
