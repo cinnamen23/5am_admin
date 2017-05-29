@@ -11,7 +11,7 @@
 	  </update>
 
 	<select id="update" resultType="org.cg.domain.LibraryVO" parameterType="org.cg.domain.LibraryVO">
-		update tbl_library set ltitle=#{ltitle}, lcontent=#{lcontent}, lfile=#{lfile}, updatedate=sysdate where lno= #{lno}
+		update tbl_library set ltitle=#{ltitle}, lcontent=#{lcontent}, lfile=#{lfile}, lfileid=#{lfileid}, updatedate=sysdate where lno= #{lno}
 	</select>
 
 

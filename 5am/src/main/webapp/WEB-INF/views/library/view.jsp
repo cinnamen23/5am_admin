@@ -47,12 +47,12 @@
                                
 	                                <div id="dataTables-example_filter" class="dataTables_filter">
 	
-	
+
 			                            <div class="panel-body">
 			                            <h3><strong>다운로드 파일</strong></h3>
 			                            <div class="alert alert-info">
 			                                <h3>${lib.lcontent} <br></h3>
-			                                <a href="${lib.lfileid}" class="alert-link ">${lib.lfile}<br></a>
+			                                <a href="http://localhost:8080/library/download?lfileid=${lib.lfileid}" class="alert-link ">${lib.lfile}<br></a>
 			                            	파일을 다운 받으려면 위의 링크를 클릭하세요
 			                            </div>
 			                           <br>
@@ -97,44 +97,6 @@ $(document).ready(function(e) {
 	
 	
 
-//파일 다운
-	$(".alert-link").on("click", function(e){
-		e.preventDefault();
-		console.log($(".alert-link").val($(this).attr("href")));
-		console.log(fileid=$(".alert-link").val());
-		
-		
-        $.ajax({
-            url: '/library/view',
-           /*  data: formData, */
-            dataType: 'text',
-            processData: false,
-            contentType: false,
-            contentType: 'multipart/form-data',
-            type: 'POST',
-            success: function(data) {
-                console.log(data);
-                var str = "";
-                if (checkImageType(data)) {
-                    str = "<div><a href='displayFile?fileName=" + getImageLink(data) + "'>"
-                            + "<img src='displayFile?fileName=" + data + "' />" 
-                            + "</a><small data-src=" + data + ">X</small></div>";
-                } else {
-                    str = "<div><a href='displayFile?fileName=" + data + "'>" 
-                            + getOriginalName(data) 
-                            + "</a><small data-src=" + data + ">X</small></div>";
-                }
-                $(".uploadedList").append(str);
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log(jqXHR);
-                console.log(textStatus);
-                console.log(errorThrown);
-            }
-        });
-
-
-	})
 	
 //수정
 	$(".modifyBtn").on("click", function(e){
