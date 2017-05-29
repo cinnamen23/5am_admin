@@ -158,7 +158,7 @@
 
                                     <button id="regiBtn"  type="submit" class="btn btn-default" >회원 가입</button>
 
-                                    <button type="submit" class="btn btn-default">회원 가입</button>
+                                  
                                     <button type="button" class="btn btn-default" onclick="location.href='/store/login' ">취 소</button>
                                     
 

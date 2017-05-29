@@ -49,7 +49,7 @@ public class LibraryController {
 		HttpHeaders headers = new HttpHeaders();
 		
 		InputStream in = new FileInputStream("C:\\zzz\\upload\\" + lfileid);
-		new FileOutputStream("C:\\zzz\\down\\"+lfileid);
+	
 		
      	lfileid = lfileid.substring(lfileid.indexOf("_") + 1);
      	headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
