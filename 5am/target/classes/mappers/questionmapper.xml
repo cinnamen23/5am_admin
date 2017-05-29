@@ -118,4 +118,22 @@ where rnum >=#{skip}
   </insert>
   
   
+  <select id="qfilesearch" parameterType="org.cg.domain.QuestionVO" resultType="org.cg.domain.QfileVO">
+  select * from tbl_qfile where fqno=#{qno}
+  </select>
+  
+  
+  <delete id="qfileDelete" parameterType="String">
+  delete from tbl_qfile where filename=#{value}
+  </delete>
+  
+  
+  <delete id="qfileAllDelete" parameterType="String">
+  delete from tbl_qfile where fqno=${qno}
+  </delete>
+  
+  
+  
+  
+  
   </mapper>

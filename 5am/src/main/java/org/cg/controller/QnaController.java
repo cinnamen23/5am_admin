@@ -15,6 +15,8 @@ import org.cg.domain.QAnswerVO;
 import org.cg.domain.QfileVO;
 import org.cg.domain.QuestionVO;
 import org.cg.service.QnaService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -23,10 +25,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping("/qna")
@@ -65,11 +67,15 @@ public class QnaController {
 //		답변
 		List<QAnswerVO> alist= qservice.getAList(vo);
 		
+//      파일		
+		List<QfileVO> flist=qservice.getFileList(vo);
+		
 		logger.info(vo);
 		
 		model.addAttribute("vo",vo);
 		model.addAttribute("cri",cri);
 		model.addAttribute("alist",alist);
+		model.addAttribute("flist",flist);
 		
 	}
 	
@@ -102,12 +108,29 @@ public class QnaController {
 		logger.info("delete get.................");
 		logger.info(vo);
 		
+//		여기서 qno로 그 파일값 가져오는 쿼리 
+		List<QfileVO> qflist=qservice.getFileList(vo);
+		logger.info(qflist);
+		
+		for(int i=0;i<qflist.size();i++){
+			logger.info("=============================================================");
+			logger.info("=============================================================");
+			logger.info("======================"+qflist.get(i).getFilename()+"======================");
+			logger.info("=============================================================");
+			logger.info("=============================================================");
+			new File("c:\\zzz\\5am\\"+qflist.get(i).getFilename()).delete();
+		}
+		
+		
+		qservice.delAllFile(vo);
 		qservice.aDeleteAll(vo);
 		qservice.qDelete(vo);
-		
+		logger.info("여기 처리됬나요 ?????????????????");
 		
 		return "redirect:list";
+		
 	}
+	
 	
 	@GetMapping("/regi")
 	public void qRegiget(){
@@ -145,7 +168,7 @@ public class QnaController {
 		
 		String saveName = uid.toString() +"_"+file[i].getOriginalFilename();
 		
-		File target = new File("c:\\zzz\\upload",saveName);
+		File target = new File("c:\\zzz\\5am",saveName);
 		
 		FileCopyUtils.copy(file[i].getBytes(), target);
 		
@@ -169,18 +192,9 @@ public class QnaController {
 		
 		
 		
-		//10초 딜레이
-//		try {
-//			Thread.sleep(20000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-		
 		//삭제해보기
 //		for(int i=0;i<flist.size();i++){
-//		new File("c:\\zzz\\upload\\"+flist.get(i).replace('/', File.separatorChar)).delete();
+//		new File("c:\\zzz\\5am\\"+flist.get(i).replace('/', File.separatorChar)).delete();
 //		}
 		
 		
@@ -246,6 +260,37 @@ public class QnaController {
 			return "redirect:qview";
 		}
 		
+//		=================================파일업로드===========================================//
+		
+		@PostMapping("/upload")
+		public void uploadPost(@RequestParam("qno") int qno){
+			System.out.println("upload post....");
+			System.out.println("upload post....");
+			System.out.println("upload post....");
+			
+			List<String> flist=new ArrayList<String>();
+
+			flist.add("하하");
+			flist.add("호호");
+			flist.add("후후");
+			
+		}
+		
+		@PostMapping("/fdelete")
+		public ResponseEntity<String> deleteFile(String fname){
+			
+			logger.info("fdelete post...........");
+			logger.info(fname);
+			logger.info("fdelete post...........");
+			
+				new File("c:\\zzz\\5am\\"+fname.replace('/', File.separatorChar)).delete();
+			
+				qservice.delOneFile(fname);
+				
+				
+				
+			return new ResponseEntity<String>("delete", HttpStatus.OK) ;
+		}
 		
 		
 		

@@ -85,4 +85,19 @@ public class QnaServiceImpl implements QnaService {
 		dao.fInsert(vo);
 	}
 
+	@Override
+	public List<QfileVO> getFileList(QuestionVO vo) {
+		return dao.getFileList(vo);
+	}
+
+	@Override
+	public void delOneFile(String fname) {
+			dao.delOneFile(fname);
+	}
+
+	@Override
+	public void delAllFile(QuestionVO vo) {
+			dao.delAllFile(vo);
+	}
+
 }

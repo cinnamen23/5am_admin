@@ -40,5 +40,10 @@ public interface QnaDAO {
 	
 	public void fInsert(QfileVO vo);
 	
+	public List<QfileVO> getFileList(QuestionVO vo);
+	
+	public void delOneFile(String fname);
+	
+	public void delAllFile(QuestionVO vo);
 	
 }

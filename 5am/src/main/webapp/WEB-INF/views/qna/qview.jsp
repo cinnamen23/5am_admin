@@ -167,7 +167,14 @@
                                   <div class="col-md-12 col-sm-10 col-xs-12" style="margin: auto;" >
                  
                          
-                                  <div>
+                                  <div id="uploadList">
+
+                                  <c:forEach items="${flist}" var="file">
+                                  
+                                  <li><img id="img" src="/display?fName=${file.filename}" style="height: 400px"><button data-fname="${file.filename}">삭제</button></li>
+                                  </c:forEach>
+                                  
+                                  
                                   <p style="line-height:300%; letter-spacing: 2px; margin: auto" >  ${vo.content}</p>
                                   </div>   
                                   <div style="height: 150px">
@@ -426,6 +433,25 @@ $(document).ready(function() {
 		
 	});
 	
+	//삭제
+	
+	$("#uploadList li button").on("click",function(e){
+		var $target = $(e.target);
+		$target.parent().remove();
+		console.log($(this).attr("data-fname"));
+		
+		
+		var fname=e.currentTarget.dataset.fname
+		 $.ajax({
+			type:'post',
+			url:'/qna/fdelete',
+			data:{fname:$(this).attr("data-fname")},
+			success:function(re){
+				if(re=='delete')
+				alert("deleted");
+			}
+		}); 
+	});
 	
 	
 	
