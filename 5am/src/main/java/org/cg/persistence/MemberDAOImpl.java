@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.cg.domain.Criteria2;
 import org.cg.domain.MAnswerVO;
 import org.cg.domain.MQuestionVO;
 import org.cg.domain.MemberVO;
@@ -49,13 +48,13 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public List<MQuestionVO> qlistAll(Criteria2 cri2) {
-		return sess.selectList(namespace + ".qlistAll", cri2);
+	public List<MQuestionVO> qlistAll(HashMap<String, Object> map) {
+		return sess.selectList(namespace + ".qlistAll", map);
 	}
 
 	@Override
-	public int qtotalCount(Criteria2 cri2) {
-		return sess.selectOne(namespace + ".qtotalCount",cri2);
+	public int qtotalCount(HashMap<String, Object> map) {
+		return sess.selectOne(namespace + ".qtotalCount",map);
 	}
 
 	@Override
@@ -113,6 +112,11 @@ public class MemberDAOImpl implements MemberDAO {
 	public void adeleteall(MQuestionVO vo) {
 
 		sess.delete(namespace+".adeleteall", vo);
+	}
+
+	@Override
+	public int qzeroCount(HashMap<String, Object> map) {
+		return sess.selectOne(namespace+".qzeroCount", map);
 	}
 
 	

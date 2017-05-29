@@ -1,7 +1,17 @@
 package org.cg.controller;
 
+import java.util.HashMap;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
+import org.cg.domain.Criteria;
+import org.cg.domain.PageMaker;
+import org.cg.domain.StoreVO;
+import org.cg.service.MemberService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,8 +20,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 	Logger logger= Logger.getLogger(IndexController.class);
 	
+	@Inject
+	MemberService service;
+	
 	@GetMapping
-	public void getIndex(){
+	public void getIndex(HttpSession session, Model model){
+					
+		Object obj = session.getAttribute("login");
+		StoreVO vo = (StoreVO) obj;
+			
+		Criteria cri =  new Criteria();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("cri", cri);
+		map.put("vo", vo);
+		
+		model.addAttribute("totalCount", service.totalCount(map));
+		model.addAttribute("qzeroCount", service.qzeroCount(map));
+
+
 		
 		
 	}

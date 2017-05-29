@@ -119,18 +119,19 @@
                      
                  </div>
                  <div class="col-md-4 col-sm-4 col-xs-12" >
-                        <div class="alert alert-info text-center">
-                          <h3> 로그인 사용자 개인 정보 부분</h3> 
+                         <div class="alert alert-info text-center">
+                          <h3> 현재 로그인 된 사용자</h3> 
                           <hr />
-                            <i class="fa fa-warning fa-4x"></i>
                           <p>
-                         Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-                           Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-                               Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-                               Lorem ipsum dolor sit amet.
+                         ${login.sid }</br>
+                         ${login.sname }</br>
+                         ${login.saddr }</br>
+                         ${login.sphone }</br>
+                         ${login.semail }</br>
+                         
                         </p>
                           <hr />
-                           <a href="#" class="btn btn-info">Read Full Detalis</a> 
+                           <a href="#" class="btn btn-info">정보 수정</a> 
                         </div>
                  </div>
              </div>

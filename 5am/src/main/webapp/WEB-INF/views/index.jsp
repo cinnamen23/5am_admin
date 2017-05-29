@@ -9,7 +9,8 @@
          <div class="container">
 	        <div class="row pad-botm">
 	            <div class="col-md-12">
-	                ${login}           
+	               
+	                        ${login}
 	                <h4 class="header-line">당신의 꿈을 여는 시간</h4> 
 	            </div>
 	        </div>
@@ -20,8 +21,8 @@
               <div class="col-md-3 col-sm-3 col-xs-6">
                       <div class="alert alert-success back-widget-set text-center">
                             <i class="fa fa-bars fa-5x"></i>
-                            <h3>300</h3>
-                           내 광고를 찜 한 고객 목록
+                            <h3>${totalCount} 명</h3>
+                           내 광고를 찜 한 고객 수
                         </div>
                     </div>
                     
@@ -34,9 +35,9 @@
                     </div>
                <div class="col-md-3 col-sm-3 col-xs-6">
                       <div class="alert alert-warning back-widget-set text-center">
-                            <i class="fa fa-recycle fa-5x"></i>
-                            <h3>56+ Calls</h3>
-                           To Be Made For New Orders
+                            <i class="fa fa-question-circle fa-5x"></i>
+                            <h3>${qzeroCount} 건</h3>
+                           답변을 달지 않은 질문 갯수
                         </div>
                     </div>
                <div class="col-md-3 col-sm-3 col-xs-6">
@@ -87,11 +88,11 @@
                  <div class="col-md-4 col-sm-4 col-xs-12">
                  
                     
-                    <div class="alert alert-info text-center">
-                          <h3> 현재 로그인 된 사용자</h3> 
+                    <div class="alert alert-info text-center" style="height: 380px">
+                          <h3> 현재 <${login.sid }>님이</br> 로그인 되었습니다.</h3> 
                           <hr />
                           <p>
-                         ${login.sid }</br>
+                        
                          ${login.sname }</br>
                          ${login.saddr }</br>
                          ${login.sphone }</br>
@@ -127,77 +128,66 @@
      </div>
              </div>
                   <div class="col-md-8 col-sm-8 col-xs-12">
-                      <div class="panel panel-success">
-                        <div class="panel-heading">
-                           Responsive Table Example
-                        </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Username</th>
-                                             <th>User No.</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>100090</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>100090</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>100090</td>
-                                        </tr>
-                                         <tr>
-                                            <td>4</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>100090</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>100090</td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>100090</td>
-                                        </tr>
-                                          <tr>
-                                            <td>7</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>100090</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                      
+                      
+                      <div id="map" style="width:100%;height:400px;"></div>
+
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=175962b9a13ff23b6ba95789998c261c&libraries=services"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };  
+
+// 지도를 생성합니다    
+var map = new daum.maps.Map(mapContainer, mapOption); 
+
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new daum.maps.services.Geocoder();
+
+// 주소로 좌표를 검색합니다
+geocoder.addr2coord('${login.saddrm}', function(status, result) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === daum.maps.services.Status.OK) {
+
+        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new daum.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new daum.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">${login.sname}</div>'
+        });
+        infowindow.open(map, marker);
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+    } 
+});    
+</script>
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
              </div>
              
              </div>

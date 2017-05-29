@@ -5,9 +5,11 @@ import java.io.FileInputStream;
 import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping("/upload")
 public class UploadController {
 
 	@GetMapping(name = "/display", produces = { "image/jpg" })

@@ -3,7 +3,6 @@ package org.cg.persistence;
 import java.util.HashMap;
 import java.util.List;
 
-import org.cg.domain.Criteria2;
 import org.cg.domain.MAnswerVO;
 import org.cg.domain.MQuestionVO;
 import org.cg.domain.MemberVO;
@@ -22,9 +21,9 @@ public interface MemberDAO {
 		
 	public void delete(MemberVO vo);
 	
-	public List<MQuestionVO> qlistAll(Criteria2 cri2);
+	public List<MQuestionVO> qlistAll(HashMap<String, Object> map);
 	
-	public int qtotalCount(Criteria2 cri2);
+	public int qtotalCount(HashMap<String, Object> map);
 	
 	public void qcreat(MQuestionVO vo);
 	
@@ -46,10 +45,7 @@ public interface MemberDAO {
 	
 	public void adeleteall(MQuestionVO vo);
 	
+	public int qzeroCount(HashMap<String, Object> map);
 	
 	
-	
-	
-	
-
 }

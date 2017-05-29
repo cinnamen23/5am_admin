@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class StoreVO {
 	
-	private String sid,spw,sname,saddr,sphone,semail;
+	private String sid,spw,sname,saddr,sphone,semail,saddrm;
 	private Double lat,lng;
 	private Timestamp regdate,updatedate;
 	
@@ -69,11 +69,17 @@ public class StoreVO {
 	public void setUpdatedate(Timestamp updatedate) {
 		this.updatedate = updatedate;
 	}
+	public String getSaddrm() {
+		return saddrm;
+	}
+	public void setSaddrm(String saddrm) {
+		this.saddrm = saddrm;
+	}
 	@Override
 	public String toString() {
 		return "StoreVO [sid=" + sid + ", spw=" + spw + ", sname=" + sname + ", saddr=" + saddr + ", sphone=" + sphone
-				+ ", semail=" + semail + ", lat=" + lat + ", lng=" + lng + ", regdate=" + regdate + ", updatedate="
-				+ updatedate + "]";
+				+ ", semail=" + semail + ", saddrm=" + saddrm + ", lat=" + lat + ", lng=" + lng + ", regdate=" + regdate
+				+ ", updatedate=" + updatedate + "]";
 	}
 	
 	

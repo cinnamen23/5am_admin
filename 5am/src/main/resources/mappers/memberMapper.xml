@@ -42,23 +42,23 @@
 	FROM TBL_MEMBER m LEFT OUTER JOIN TBL_CHOICE c ON m.mid = c.mid where sid='${vo.sid}' 
   
   		<choose>
-			<when test='type=="x"'>
+			<when test='cri.type=="x"'>
 			 
 			</when>
-			<when test='type=="i"'>
-			  and (mid like '%'|| #{cri.keyword} ||'%')
+			<when test='cri.type=="i"'>
+			  and (mid like '%'|| '${cri.keyword}' ||'%')
 			</when>
-			<when test='type=="n"'>
-			  and (mname like '%'|| #{cri.keyword} ||'%')
+			<when test='cri.type=="n"'>
+			  and (mname like '%'|| '${cri.keyword}' ||'%')
 			</when>
-			<when test='type=="a"'>
-			  and (mage like '%'|| #{cri.keyword} ||'%')
+			<when test='cri.type=="a"'>
+			  and (mage like '%'|| '${cri.keyword}' ||'%')
 			</when>
-			<when test='type=="g"'>
-			  and (mgender like '%'|| #{cri.keyword} ||'%')
+			<when test='cri.type=="g"'>
+			  and (mgender like '%'|| '${cri.keyword}' ||'%')
 			</when>
-			<when test='type=="d"'>
-			  and (maddr like '%'|| #{cri.keyword} ||'%')
+			<when test='cri.type=="d"'>
+			  and (maddr like '%'|| '${cri.keyword}' ||'%')
 			</when>
 		</choose> 
 		<![CDATA[and rownum<= ${cri.pageNum} ) mc where rnum>= ${cri.skip} order by regdate desc]]>
@@ -73,19 +73,19 @@
 			 
 			</when>
 			<when test='type=="i"'>
-			  and (mid like '%'|| #{keyword} ||'%')
+			  and (mid like '%'|| ${keyword} ||'%')
 			</when>
 			<when test='type=="n"'>
-			  and (mname like '%'|| #{keyword} ||'%')
+			  and (mname like '%'|| ${keyword} ||'%')
 			</when>
 			<when test='type=="a"'>
-			  and (mage like '%'|| #{keyword} ||'%')
+			  and (mage like '%'|| ${keyword} ||'%')
 			</when>
 			<when test='type=="g"'>
-			  and (mgender like '%'|| #{keyword} ||'%')
+			  and (mgender like '%'|| ${keyword} ||'%')
 			</when>
 			<when test='type=="d"'>
-			  and (maddr like '%'|| #{keyword} ||'%')
+			  and (maddr like '%'|| ${keyword} ||'%')
 			</when>
 		</choose>
 	</select>
@@ -94,23 +94,23 @@
 		select count(rnum) from (SELECT rownum rnum, m.mid, mname,mage,maddr, mgender, m.regdate, m.updatedate,
 		 cno, sid, c.regdate cregdate FROM TBL_MEMBER m LEFT OUTER JOIN TBL_CHOICE c ON m.mid = c.mid where sid='${vo.sid}') where rnum>0
 		  <choose>
-			<when test='type=="x"'>
+			<when test='cri.type=="x"'>
 			 
 			</when>
-			<when test='type=="i"'>
-			  and (mid like '%'|| #{cri.keyword} ||'%')
+			<when test='cri.type=="i"'>
+			  and (mid like '%'|| '${cri.keyword}' ||'%')
 			</when>
-			<when test='type=="n"'>
-			  and (mname like '%'|| #{cri.keyword} ||'%')
+			<when test='cri.type=="n"'>
+			  and (mname like '%'|| '${cri.keyword}' ||'%')
 			</when>
-			<when test='type=="a"'>
-			  and (mage like '%'|| #{cri.keyword} ||'%')
+			<when test='cri.type=="a"'>
+			  and (mage like '%'|| '${cri.keyword}' ||'%')
 			</when>
-			<when test='type=="g"'>
-			  and (mgender like '%'|| #{cri.keyword} ||'%')
+			<when test='cri.type=="g"'>
+			  and (mgender like '%'|| '${cri.keyword}' ||'%')
 			</when>
-			<when test='type=="d"'>
-			  and (maddr like '%'|| #{cri.keyword} ||'%')
+			<when test='cri.type=="d"'>
+			  and (maddr like '%'|| '${cri.keyword}' ||'%')
 			</when>
 		</choose>
 		
@@ -129,51 +129,56 @@
 		UPDATE tbl_Member SET mpw = '${mpw}', mname='${mname}',mage='${mage}',mgender='${mgender}', maddr='${maddr}', updatedate=sysdate WHERE mid = '${mid}'
 	</update>
 	
-	<select id="qlistAll" resultType="org.cg.domain.MQuestionVO" parameterType="org.cg.domain.Criteria2">
+	<select id="qlistAll" resultType="org.cg.domain.MQuestionVO" parameterType="map">
 		
 		select * from (SELECT rownum rnum ,mqno, mid, sid, title, question, regdate, updatedate,checked FROM 
-		( SELECT mqno, mid, sid, title, question, regdate, updatedate,checked FROM tbl_Mquestion where mqno>0
+		( SELECT mqno, mid, sid, title, question, regdate, updatedate,checked FROM tbl_Mquestion where mqno>0 and sid='${vo.sid}'
 		
 		<choose>
-			<when test='type2=="x"'>
+			<when test='cri2.type2=="x"'>
 			 
 			</when>
-			<when test='type2=="i"'>
-			  and (mid like '%'|| #{keyword2} ||'%')
+			<when test='cri2.type2=="i"'>
+			  and (mid like '%'|| ${cri2.keyword2} ||'%')
 			</when>
-			<when test='type2=="t"'>
-			  and (title like '%'|| #{keyword2} ||'%')
+			<when test='cri2.type2=="t"'>
+			  and (title like '%'|| ${cri2.keyword2} ||'%')
 			</when>
-			<when test='type2=="c"'>
-			  and (question like '%'|| #{keyword2} ||'%')
+			<when test='cri2.type2=="c"'>
+			  and (question like '%'|| ${cri2.keyword2} ||'%')
 			</when>
 			
 		</choose>
 		
 		<![CDATA[
 		 order by regdate desc) 
-		tbl_Mquestion where rownum <= #{pageNum2}) where rnum >= #{skip2}
+		tbl_Mquestion where rownum <= ${cri2.pageNum2}) where rnum >= ${cri2.skip2}
 		  ]]>
 	</select>
 	
-	<select id="qtotalCount" resultType="Int" parameterType="org.cg.domain.Criteria2">
-		select count(*) from tbl_Mquestion where mqno>0
+	<select id="qtotalCount" resultType="Int" parameterType="map">
+		select count(*) from tbl_Mquestion where mqno>0 and sid='${vo.sid}'
 		
 		<choose>
-			<when test='type2=="x"'>
+			<when test='cri2.type2=="x"'>
 			 
 			</when>
-			<when test='type2=="i"'>
-			  and (mid like '%'|| #{keyword2} ||'%')
+			<when test='cri2.type2=="i"'>
+			  and (mid like '%'|| '${cri2.keyword2}' ||'%')
 			</when>
-			<when test='type2=="t"'>
-			  and (title like '%'|| #{keyword2} ||'%')
+			<when test='cri2.type2=="t"'>
+			  and (title like '%'|| '${cri2.keyword2}' ||'%')
 			</when>
-			<when test='type2=="c"'>
-			  and (question like '%'|| #{keyword2} ||'%')
+			<when test='cri2.type2=="c"'>
+			  and (question like '%'|| '${cri2.keyword2}' ||'%')
 			</when>
 			
 		</choose>
+			
+	</select>
+	
+	<select id="qzeroCount" resultType="Int" parameterType="map">
+		SELECT count(mqno) FROM TBL_MQUESTION where CHECKED=0 and sid='${vo.sid}'
 			
 	</select>
 	

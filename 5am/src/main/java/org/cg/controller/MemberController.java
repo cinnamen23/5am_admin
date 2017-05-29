@@ -48,13 +48,14 @@ public class MemberController {
 		logger.info(vo);
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("cri", cri);
-		map.put("vo", vo);		
+		map.put("vo", vo);
+		map.put("cri2", cri2);
 		
 		model.addAttribute("list", service.listAll(map));
 		model.addAttribute("pageMaker", new PageMaker(cri, service.totalCount(map)));
 		
-		model.addAttribute("qlist", service.qlistAll(cri2));
-		model.addAttribute("pageMaker2", new PageMaker2(cri2, service.qtotalCount(cri2)));
+		model.addAttribute("qlist", service.qlistAll(map));
+		model.addAttribute("pageMaker2", new PageMaker2(cri2, service.qtotalCount(map)));
 
 		
 	}

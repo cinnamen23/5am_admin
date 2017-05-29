@@ -11,7 +11,7 @@
 	</select>
 
 	<insert id="storeregi">
-		INSERT INTO TBL_STORE(sid, spw,sname,saddr,lat,lng,sphone,semail) VALUES('${sid}', '${spw}','${sname}','${saddr}','${lat}','${lng}','${sphone}','${semail}')
+		INSERT INTO TBL_STORE(sid, spw,sname,saddr,lat,lng,sphone,semail,saddrm) VALUES('${sid}', '${spw}','${sname}','${saddr}','${lat}','${lng}','${sphone}','${semail}','${saddrm}')
 	</insert>
 
 </mapper>

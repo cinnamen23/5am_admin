@@ -69,18 +69,16 @@ public class MemberTest {
 	}
 	
 	@Test
-	public void QuestionReadRTest(){
+	public void questionReadRTest(){
 		
 		Criteria2 cri2 = new Criteria2();
 		cri2.setPageNum2(10);
 		cri2.setSkip2(0);
 		
-		service.qlistAll(cri2);
+		//service.qlistAll(cri2);
 		
-		logger.info(service.qlistAll(cri2));
+		//logger.info(service.qlistAll(cri2));
 	}
-	
-	
 	
 
 }

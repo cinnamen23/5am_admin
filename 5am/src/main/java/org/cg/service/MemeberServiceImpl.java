@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.cg.domain.Criteria2;
 import org.cg.domain.MAnswerVO;
 import org.cg.domain.MQuestionVO;
 import org.cg.domain.MemberVO;
@@ -44,13 +43,13 @@ public class MemeberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<MQuestionVO> qlistAll(Criteria2 cri2) {
-		return dao.qlistAll(cri2);
+	public List<MQuestionVO> qlistAll(HashMap<String, Object> map) {
+		return dao.qlistAll(map);
 	}
 
 	@Override
-	public int qtotalCount(Criteria2 cri2) {
-		return dao.qtotalCount(cri2);
+	public int qtotalCount(HashMap<String, Object> map) {
+		return dao.qtotalCount(map);
 	}
 
 	@Override
@@ -103,6 +102,11 @@ public class MemeberServiceImpl implements MemberService {
 	public void adeleteall(MQuestionVO vo) {
 
 		dao.adeleteall(vo);
+	}
+
+	@Override
+	public int qzeroCount(HashMap<String, Object> map) {
+		return dao.qzeroCount(map);
 	}
 
 }
