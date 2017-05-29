@@ -10,7 +10,6 @@
 	rel="stylesheet">
 
 <div class="content-wrapper">
-<div class="content-wrapper">
 		<div class="container">
 			<div class="row pad-botm">
 				<div class="col-md-12">
@@ -19,8 +18,6 @@
 				</div>
 
 			</div>
-			<div class="row">
-				<div class="col-md-12">
 				
 				<div class="row">
                 <div class="col-md-12">
@@ -38,14 +35,15 @@
                                 </div></div>
                                 <div class="col-md-12">
 				                                등록일 : ${lib.regdate} <br>
-				                                수정일 : ${lib.updatedate}
+				                                수정일 : ${lib.updatedate}<br>
+				                                조회수 : ${lib.hit} 
                              
                                <form class="form" action="/library/list" method="get">
 	                              	<input type="hidden" name="page" value="${cri.page}" >
 									<input type="hidden" name="lno" value="${lib.lno}">
 									<input type="hidden" name="type" value="${cri.type}" >
 									<input type="hidden" name="keyword" value="${cri.keyword}" >
-                               </form>
+			                        <input type="hidden" class="lfid" value="${lib.lfileid}">
                                
 	                                <div id="dataTables-example_filter" class="dataTables_filter">
 	
@@ -54,11 +52,11 @@
 			                            <h3><strong>다운로드 파일</strong></h3>
 			                            <div class="alert alert-info">
 			                                <h3>${lib.lcontent} <br></h3>
-			                                <a href="#" class="alert-link">${lib.lfile}<br></a>
+			                                <a href="${lib.lfileid}" class="alert-link ">${lib.lfile}<br></a>
 			                            	파일을 다운 받으려면 위의 링크를 클릭하세요
 			                            </div>
 			                           <br>
-			                             
+                               </form>
 			
 			                           </div>
 	                                </div>
@@ -67,7 +65,7 @@
                                 <div class="row">
                                 <div class="col-md-12">
                                 <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
-                                <a href="#" class="btn btn-primary modifyBtn">수정</a>
+                                <a href="#" class="btn btn-info modifyBtn">수정</a>
                                 <a href="#" class="btn btn-info deleteBtn">삭제</a></div>
                                 </div>
                                 <div class="col-md-12">
@@ -97,7 +95,48 @@
 <script>
 $(document).ready(function(e) {
 	
-	//수정
+	
+
+//파일 다운
+	$(".alert-link").on("click", function(e){
+		e.preventDefault();
+		console.log($(".alert-link").val($(this).attr("href")));
+		console.log(fileid=$(".alert-link").val());
+		
+		
+        $.ajax({
+            url: '/library/view',
+           /*  data: formData, */
+            dataType: 'text',
+            processData: false,
+            contentType: false,
+            contentType: 'multipart/form-data',
+            type: 'POST',
+            success: function(data) {
+                console.log(data);
+                var str = "";
+                if (checkImageType(data)) {
+                    str = "<div><a href='displayFile?fileName=" + getImageLink(data) + "'>"
+                            + "<img src='displayFile?fileName=" + data + "' />" 
+                            + "</a><small data-src=" + data + ">X</small></div>";
+                } else {
+                    str = "<div><a href='displayFile?fileName=" + data + "'>" 
+                            + getOriginalName(data) 
+                            + "</a><small data-src=" + data + ">X</small></div>";
+                }
+                $(".uploadedList").append(str);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR);
+                console.log(textStatus);
+                console.log(errorThrown);
+            }
+        });
+
+
+	})
+	
+//수정
 	$(".modifyBtn").on("click", function(e){
 		e.preventDefault();
 		$(".form").attr("action","/library/update").submit();

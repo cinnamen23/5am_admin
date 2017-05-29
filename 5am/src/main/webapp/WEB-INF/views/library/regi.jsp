@@ -10,7 +10,6 @@
 	rel="stylesheet">
 
 <div class="content-wrapper">
-<div class="content-wrapper">
 		<div class="container">
 			<div class="row pad-botm">
 				<div class="col-md-12">
@@ -19,8 +18,6 @@
 				</div>
 
 			</div>
-			<div class="row">
-				<div class="col-md-12">
 				
 				<div class="row">
                 <div class="col-md-12">
@@ -32,7 +29,7 @@
 						 <div class="panel-heading panel"><h3>파일을 등록합니다</h3> </div>
 						<div class="panel-body">
 							
-							<form role="form" method="post" action="/notice/regi" class="form" >
+							<form  method="post" action="/library/regi" class="form" enctype="multipart/form-data" name="form">
 								<div class="form-group">
 									<label>제목</label> 
 									<input class="form-control ltitle" type="text " name="ltitle" value="자료의 제목을 작성해주세요" />
@@ -44,12 +41,15 @@
 								</div>
 								<div class="form-group">
 									<label>파일</label>
-									<input class="form-control lfile" type="file" name="lfile">
+									<input class="form-control lfile" type="file" name="file">
 								</div>
 								
                                 <a href="#" class="btn btn-primary saveBtn">저장</a>
-                                <a href="/library/list" class="btn btn-danger cancelBtn">취소</a>
+                                <a href="/library/list" class="btn btn-primary cancelBtn">취소</a>
 							</form>
+						
+						
+						
 						
 						</div>
 					</div>
@@ -91,10 +91,10 @@ $(document).ready(function(e) {
 			 alert("업로드할 파일을 찾아주세요");
 		 }
 		 if($file.val()!="" && $content.val()!="" && $title.val()!=""){
-			 alert("처리가 완료되었습니다.")
 
 			 $(".form").attr("method", "post").attr("action", "/library/regi").submit();
 		     history.pushState(null, null,"/library/list");
+			 alert("처리가 완료되었습니다.")
 
 		     window.onpopstate = function(e){
 		     history.go(1);}

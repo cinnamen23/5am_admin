@@ -1,9 +1,7 @@
 package org.cg.service;
 
 import java.util.List;
-
 import javax.inject.Inject;
-
 import org.cg.domain.Criteria;
 import org.cg.domain.LibraryVO;
 import org.cg.persistence.LibraryDAO;
@@ -44,5 +42,13 @@ public class LibraryServiceImpl implements LibraryService {
 	public Integer getTotal(Criteria cri) throws Exception {
 		return dao.getTotal(cri);
 	}
+
+	@Override
+	public void updateHit(LibraryVO vo) throws Exception {
+		dao.updateHit(vo);
+	}
+
+
+	
 
 }

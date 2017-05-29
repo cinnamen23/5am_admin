@@ -11,7 +11,6 @@
 	rel="stylesheet">
 
 <div class="content-wrapper">
-<div class="content-wrapper">
 		<div class="container">
 			<div class="row pad-botm">
 				<div class="col-md-12">
@@ -20,8 +19,6 @@
 				</div>
 
 			</div>
-			<div class="row">
-				<div class="col-md-12">
 				
 				<div class="row">
                 <div class="col-md-12">
@@ -56,17 +53,18 @@
                                 </div></div></div><table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
                                     <thead>
                                         <tr role="row">
-                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" aria-sort="ascending" style="width: 189px;">번호</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" aria-sort="ascending" style="width: 80px;">번호</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 291px;">글제목</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 160px;">동록일자</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 50px;">조회수</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 160px;">등록일자</th>
                                     </thead>
                                     <tbody>
-                                        
                    
                                      <c:forEach var="list" items="${list}">
                                     <tr class="gradeA odd">
                                             <td class="sorting_1">${list.lno}</td>
                                             <td><a class="tt" href="${list.lno}">${list.ltitle}</a></td>
+                                            <td class="center ">${list.hit}</td>
                                             <td class="center ">${list.regdate}</td>
                                         </tr>
                                         </c:forEach>   
@@ -78,7 +76,7 @@
 			     <c:if test ="${fn:length(list) eq 0}" >
 	                 	<h2>검색 내용이 없습니다</h2>
 	             </c:if> 
-	                                	 <button type="submit" class="btn btn-primary regiBtn">등록</button> </div>
+	                                	 <button type="submit" class="btn btn-info regiBtn">등록</button> </div>
 	                                </div>
 			    </form>
 	                                <div class="col-sm-6">

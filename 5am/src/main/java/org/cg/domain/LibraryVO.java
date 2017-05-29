@@ -8,16 +8,20 @@ import javax.annotation.processing.SupportedSourceVersion;
 public class LibraryVO {
 
 	
-	private int lno;
-	private String ltitle, lcontent, lfile;
+	private int lno, hit;
+	private String ltitle, lcontent, lfile, lfileid;
 	private Timestamp regdate, updatedate;
-	
-	
 	public int getLno() {
 		return lno;
 	}
 	public void setLno(int lno) {
 		this.lno = lno;
+	}
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
 	}
 	public String getLtitle() {
 		return ltitle;
@@ -37,6 +41,12 @@ public class LibraryVO {
 	public void setLfile(String lfile) {
 		this.lfile = lfile;
 	}
+	public String getLfileid() {
+		return lfileid;
+	}
+	public void setLfileid(String lfileid) {
+		this.lfileid = lfileid;
+	}
 	public Timestamp getRegdate() {
 		return regdate;
 	}
@@ -51,11 +61,9 @@ public class LibraryVO {
 	}
 	@Override
 	public String toString() {
-		return "LibraryVO [lno=" + lno + ", ltitle=" + ltitle + ", lcontent=" + lcontent + ", lfile=" + lfile
-				+ ", regdate=" + regdate + ", updatedate=" + updatedate + "]";
+		return "LibraryVO [lno=" + lno + ", hit=" + hit + ", ltitle=" + ltitle + ", lcontent=" + lcontent + ", lfile="
+				+ lfile + ", lfileid=" + lfileid + ", regdate=" + regdate + ", updatedate=" + updatedate + "]";
 	}
-	
-	
 	
 	
 	
