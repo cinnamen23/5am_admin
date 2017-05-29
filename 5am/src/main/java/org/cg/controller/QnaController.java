@@ -121,11 +121,13 @@ public class QnaController {
 	
 		logger.info("regi post...........");
 		
+		logger.info(vo);
 		
 		//질문등록		
 		qservice.qInsert(vo);
 		//질문등록
 		
+		logger.info(vo);		
 		
 		
 		List<String> flist = new ArrayList<String>();
@@ -168,18 +170,18 @@ public class QnaController {
 		
 		
 		//10초 딜레이
-		try {
-			Thread.sleep(20000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(20000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		
 		//삭제해보기
-		for(int i=0;i<flist.size();i++){
-		new File("c:\\zzz\\upload\\"+flist.get(i).replace('/', File.separatorChar)).delete();
-		}
+//		for(int i=0;i<flist.size();i++){
+//		new File("c:\\zzz\\upload\\"+flist.get(i).replace('/', File.separatorChar)).delete();
+//		}
 		
 		
 		

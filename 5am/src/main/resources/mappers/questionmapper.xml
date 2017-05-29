@@ -63,6 +63,10 @@ where rnum >=#{skip}
   <insert id="qinsert" parameterType="org.cg.domain.QuestionVO">
   insert into tbl_question(qno,title,CONTENT,writer) values (seq_question_qno.nextval,#{title},#{content},#{writer})
   
+  <selectKey keyProperty="qno" resultType="int" order="AFTER">  
+	SELECT seq_question_qno.currval FROM dual
+	</selectKey>
+
   </insert>
   
   
@@ -110,7 +114,7 @@ where rnum >=#{skip}
   
   
   <insert id="qfileinsert" parameterType="org.cg.domain.QfileVO">
-  insert into tbl_qfile(fno,fqno,filename)values(seq_qfile_fno.nextval,seq_question_qno.currval,'${filename}')
+  insert into tbl_qfile(fno,fqno,filename)values(seq_qfile_fno.nextval,${fqno},'${filename}')
   </insert>
   
   
