@@ -14,7 +14,7 @@
 			<div class="row pad-botm">
 				<div class="col-md-12">
 					<h4 class="header-line">고객 질문/답변</h4>
-					
+					${vo }
 				</div>
 
 			</div>
@@ -47,7 +47,7 @@
                                   <div style="height: 50px">
                                   </div>
                              
-                             <form action="/member/mquestiondel" method="post" id="deleteForm">
+                             <form  class="deleteForm">
 	                             <input type="hidden" name="mqno" value="${vo.mqno}">
 	                             <button class="btn btn-warning" id="deleteBtn" style="float: right;" >삭제</button>   
                              </form>
@@ -124,6 +124,8 @@
 									<textarea class="form-control lcontent" rows="7" name="content" placeholder="질문에 대한 답변을 적어 주세요."></textarea>
 								</div>
 								<input type="hidden" name="mqno" value="${vo.mqno}">
+								<input type="hidden" name="sid" value="${vo.sid}">
+								
 																
                                 <a id="manswerregi" href="#" class="btn btn-primary" style="float: right;">등록</a>
 							</form>
@@ -242,17 +244,41 @@ $(document).ready(function(e) {
 		$(".manswerdel").on("click",function(e){
 				e.preventDefault();
 				console.log("answer delete")
-				console.log($(this));
 				
-				var passmano = $(this).attr("data-mano");
-				console.log(passmano);
-				$("#mano").val(passmano);
-				var formObj = $(".manswermodiform");
+				if (confirm("정말 삭제하시겠습니까??") == true){   
+					console.log($(this));
+					
+					var passmano = $(this).attr("data-mano");
+					console.log(passmano);
+					$("#mano").val(passmano);
+					var formObj = $(".manswermodiform");
+					
+										
+					formObj.attr('action','/member/manswerdel');
+					formObj.attr('method','get');
+					formObj.submit();
+				}else{   //취소
+				    return;
+				}
 				
-									
-				formObj.attr('action','/member/manswerdel');
-				formObj.attr('method','get');
-				formObj.submit();
+					
+			})
+			
+			$("#deleteBtn").on("click",function(e){
+				e.preventDefault();
+				console.log("question delete")
+				
+				if (confirm("정말 삭제하시겠습니까??") == true){   
+					var formObj = $(".deleteForm");
+					
+					
+					formObj.attr('action','/member/mquestiondel');
+					formObj.attr('method','post');
+					formObj.submit();
+				}else{  
+				    return;
+				}
+				
 					
 			})
 		

@@ -369,20 +369,25 @@
 			formObj.submit();
 		})
 		
-		$(".memberdel").on("click", function(e) {		
-			
+		$(".memberdel").on("click", function(e) {
 			e.preventDefault();
-			console.log("delete......");
+			if (confirm("정말 삭제하시겠습니까??") == true){   
+				console.log("delete......");
+				
+				var pass =$(this).parent();
+				var passmid = pass.attr("data-mid");
+				$("#dmid ").val(passmid);
+			 
+				var formObj = $(".fd");
+				
+				formObj.attr('action','/member/del');
+				formObj.attr('method','post');
+				formObj.submit();
+			}else{   //취소
+			    return;
+			}
 			
-			var pass =$(this).parent();
-			var passmid = pass.attr("data-mid");
-			$("#dmid ").val(passmid);
-		 
-			var formObj = $(".fd");
 			
-			formObj.attr('action','/member/del');
-			formObj.attr('method','post');
-			formObj.submit();
 		})
 		
 		

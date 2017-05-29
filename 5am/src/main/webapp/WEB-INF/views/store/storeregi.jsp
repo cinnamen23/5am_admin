@@ -149,8 +149,8 @@
                                     &nbsp;
                                 </div>
                                 <div>
-                                <input type="hidden" class="in" name="lat">
-                                <input type="hidden" class="ia" name="lng">
+                                <input type="hidden" class="lat" name="lat">
+                                <input type="hidden" class="lng" name="lng">
                                 
                                 </div>
                                 <div class="col-lg-9">
@@ -208,7 +208,7 @@
 	    	type:'post',
 	    	dataType : 'jsonp',
 	    	data : {
-	    		apikey: 'abcbd0a7a1e715eded5b461a92903dae',
+	    		apikey: '175962b9a13ff23b6ba95789998c261c',
 	    			q: $("#address").val(),
 	    			output:'json'
 	    		
@@ -218,8 +218,8 @@
 	    			console.log(result)
 	    			result = result.channel;
 	        		console.log(result.item[0].point_x)
-	        		$(".in").val(result.item[0].point_x)
-	        		$(".ia").val(result.item[0].point_y)
+	        		$(".lat").val(result.item[0].point_x)
+	        		$(".lng").val(result.item[0].point_y)
 	        		$("#f1").submit();
 
 	    	

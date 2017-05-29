@@ -191,7 +191,7 @@
 	</delete>
 	
 	<insert id="acreate" parameterType="org.cg.domain.MAnswerVO">
-		INSERT INTO tbl_Manswer(mano, mqno, title, content) VALUES (seq_Manswer_mano.nextval, #{mqno}, '${title}', '${content}')
+		INSERT INTO tbl_Manswer(mano, mqno,sid, title, content) VALUES (seq_Manswer_mano.nextval, #{mqno}, '${sid}','${title}', '${content}')
 	</insert>
 	
 	<update id="achecked" parameterType="org.cg.domain.MAnswerVO">
