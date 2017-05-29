@@ -71,4 +71,11 @@ public class NoticeDAOImpl implements NoticeDAO{
 		sess.update(namespace+".updateImg", vo);
 	}
 
+
+	@Override
+	public List<NoticeVO> index(NoticeVO vo) throws Exception {
+		return sess.selectList(namespace+".index", vo);
+		
+	}
+
 }

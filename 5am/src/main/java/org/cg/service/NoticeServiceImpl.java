@@ -64,4 +64,10 @@ public class NoticeServiceImpl implements NoticeService {
 		dao.uploadImage(vo);
 	}
 
+	@Override
+	public List<NoticeVO> index(NoticeVO vo) throws Exception {
+		return dao.index(vo);
+		
+	}
+
 }

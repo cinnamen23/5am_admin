@@ -66,5 +66,15 @@ where rnum >= #{skip}
   update TBL_NOTICE set nimage=#{nimage},updatedate=sysdate where nno = #{nno}
   </update>
   
+  <select id="index" parameterType="org.cg.domain.NoticeVO" resultType="org.cg.domain.NoticeVO">
+select nimage from (SELECT rownum rnum,nimage FROM 
+( SELECT nimage FROM tbl_notice where nno>0 order by nno desc) 
+<![CDATA[
+tbl_notice where rownum <= 3) 
+where rnum >= 1
+  ]]>
+  
+  </select>
+  
   </mapper>
   

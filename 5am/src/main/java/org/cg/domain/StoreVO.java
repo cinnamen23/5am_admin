@@ -4,10 +4,8 @@ import java.sql.Timestamp;
 
 public class StoreVO {
 	
-	private String sid,spw,sname,saddr,sphone,semail,saddrm;
-	private Double lat,lng;
+	private String sid,spw,sname,saddr,sphone,semail,saddrm,lat,lng;
 	private Timestamp regdate,updatedate;
-	
 	public String getSid() {
 		return sid;
 	}
@@ -44,19 +42,24 @@ public class StoreVO {
 	public void setSemail(String semail) {
 		this.semail = semail;
 	}
-	public Double getLat() {
+	public String getSaddrm() {
+		return saddrm;
+	}
+	public void setSaddrm(String saddrm) {
+		this.saddrm = saddrm;
+	}
+	public String getLat() {
 		return lat;
 	}
-	public void setLat(Double lat) {
+	public void setLat(String lat) {
 		this.lat = lat;
 	}
-	public Double getLng() {
+	public String getLng() {
 		return lng;
 	}
-	public void setLng(Double lng) {
+	public void setLng(String lng) {
 		this.lng = lng;
-	}	
-	
+	}
 	public Timestamp getRegdate() {
 		return regdate;
 	}
@@ -69,18 +72,13 @@ public class StoreVO {
 	public void setUpdatedate(Timestamp updatedate) {
 		this.updatedate = updatedate;
 	}
-	public String getSaddrm() {
-		return saddrm;
-	}
-	public void setSaddrm(String saddrm) {
-		this.saddrm = saddrm;
-	}
 	@Override
 	public String toString() {
 		return "StoreVO [sid=" + sid + ", spw=" + spw + ", sname=" + sname + ", saddr=" + saddr + ", sphone=" + sphone
 				+ ", semail=" + semail + ", saddrm=" + saddrm + ", lat=" + lat + ", lng=" + lng + ", regdate=" + regdate
 				+ ", updatedate=" + updatedate + "]";
 	}
+	
 	
 	
 	

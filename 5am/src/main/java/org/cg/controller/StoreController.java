@@ -71,8 +71,8 @@ public class StoreController {
 	}
 	
 	@PostMapping("/storeregi")
-	public String storeregiPost(StoreVO vo,@RequestParam("saddr1") String saddr1,@RequestParam("saddr3") String saddr3){
-		
+	public String storeregiPost(StoreVO vo,@RequestParam("saddr1") String saddr1,@RequestParam("saddr3") String saddr3,@RequestParam("lat")String lat,@RequestParam("lng")String lng){
+		logger.info(lat);
 		logger.info("store register post!!!");
 		logger.info(vo);
 		logger.info(saddr1+" "+saddr3);

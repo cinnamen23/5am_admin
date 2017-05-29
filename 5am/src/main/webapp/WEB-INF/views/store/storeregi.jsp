@@ -21,7 +21,7 @@
     <div class="page-form">
         <div class="panel panel-blue">
             <div class="panel-body pan">
-                <form action="/store/storeregi" method="post" class="form-horizontal">
+                <form id="f1" action="/store/storeregi" method="post" class="form-horizontal">
                 <div class="form-body pal">
                     <div class="col-md-12 text-center">
                         <h2 style="margin-top: -90px; font-size: 48px;">
@@ -95,6 +95,7 @@
                         <div class="col-md-9">
                             <div class="input-icon right">		
 								<input class="form-control" type="text" name="saddr1" id="address" value="" /><br />
+							
 								</div>
                         </div>
                     </div>
@@ -140,7 +141,9 @@
                         <div class="col-md-9">
                             <div class="input-icon right">
 
-                                <input id="inputName" type="text" placeholder="연락 가능한 e-mail 주소를 입력하세요" class="form-control" name="semail" /></div>
+                                <input id="inputName" type="text" placeholder="연락 가능한 e-mail 주소를 입력하세요" class="form-control" name="semail" />
+                              	
+                                </div>
                         </div>
                     </div>
                     
@@ -150,9 +153,14 @@
                                 <div class="col-lg-3">
                                     &nbsp;
                                 </div>
+                                <div>
+                                <input type="hidden" class="in" name="lat">
+                                <input type="hidden" class="ia" name="lng">
+                                
+                                </div>
                                 <div class="col-lg-9">
                                 
-                                    <button type="submit" class="btn btn-default">회원 가입</button>
+                                    <button id="regiBtn"  type="submit" class="btn btn-default" >회원 가입</button>
                                 </div>
                             </div>
                         </div>
@@ -179,8 +187,50 @@
         insertAddress : "#address",
         insertDetails : "#details",
         insertExtraInfo : "#extra_info",
-        hideOldAddresses : false
+        hideOldAddresses : false,
+        success : function(result){
+        	
+        	console.log("result: " );
+        	console.log(result);
+        }
+        
+       
+        
     }); });
+    
+
+    $("#regiBtn").on("click",function(e){
+    	e.preventDefault();
+    	
+    	$.ajax({
+	    	url:'http://apis.daum.net/local/geo/addr2coord',
+	    	type:'post',
+	    	dataType : 'jsonp',
+	    	data : {
+	    		apikey: 'abcbd0a7a1e715eded5b461a92903dae',
+	    			q: $("#address").val(),
+	    			output:'json'
+	    		
+	    	},
+	    	success : function(result){
+	    			
+	    			console.log(result)
+	    			result = result.channel;
+	        		console.log(result.item[0].point_x)
+	        		$(".in").val(result.item[0].point_x)
+	        		$(".ia").val(result.item[0].point_y)
+	        		$("#f1").submit();
+
+	    	
+	    		
+	    		    		
+	    	}
+	    	
+	    })
+    })	
+    	 
+
+   
 </script>
 
     

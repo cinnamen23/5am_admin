@@ -1,17 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
 
-    <%@ include file="/WEB-INF/views/header.jsp" %>
 
+    <%@ include file="/WEB-INF/views/header.jsp" %>
+<style>
+.img{
+width: auto;
+height: auto;
+max-width: 1000px;
+max-height: 500px;
+}
+</style>
  <div class="content-wrapper">
          <div class="container">
 	        <div class="row pad-botm">
 	            <div class="col-md-12">
 	               
 	                        ${login}
-	                <h4 class="header-line">당신의 꿈을 여는 시간</h4> 
+	                <h4 class="header-line">당신의 꿈을 여는 시간 </h4> 
 	            </div>
 	        </div>
              
@@ -55,17 +64,17 @@
                     <div id="carousel-example" class="carousel slide slide-bdr" data-ride="carousel" >
                    
                     <div class="carousel-inner">
-                        <div class="item active">
-
-                            <img src="assets/img/1.jpg" alt="" />
+                        <div class="item active" id="index0">
+										
+                     
                            
                         </div>
-                        <div class="item">
-                            <img src="assets/img/2.jpg" alt="" />
+                        <div class="item" id="index1">
+                        
                           
                         </div>
-                        <div class="item">
-                            <img src="assets/img/3.jpg" alt="" />
+                        <div class="item" id="index2">
+                            
                            
                         </div>
                     </div>
@@ -412,5 +421,20 @@ geocoder.addr2coord('${login.saddrm}', function(status, result) {
     </div>
      <!-- CONTENT-WRAPPER SECTION END-->
 	<!-- CONTENT-WRAPPER SECTION END-->
-	
+
+
+<script
+src="https://code.jquery.com/jquery-3.2.1.min.js"
+integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+crossorigin="anonymous"></script>
+<script>
+var str0 = "<img class='img' src='/display?fName="+"${list[0].nimage}"+"' alt=''>";
+var str1 = "<img class='img' src='/display?fName="+"${list[1].nimage}"+"' alt=''>";
+var str2 = "<img class='img' src='/display?fName="+"${list[2].nimage}"+"' alt=''>";
+
+$("#index0").append(str0);
+$("#index1").append(str1);
+$("#index2").append(str2);
+
+</script>	
 <%@ include file="/WEB-INF/views/footer.jsp" %>

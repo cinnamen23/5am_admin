@@ -22,5 +22,7 @@ public interface NoticeService {
 	public void updateHit(NoticeVO vo)throws Exception;
 	
 	public void uploadImage(NoticeVO vo)throws Exception;
+	
+	public List<NoticeVO> index(NoticeVO vo)throws Exception;
 
 }

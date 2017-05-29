@@ -79,9 +79,14 @@ public class NoticeController {
 				
 			} else {
 				
+				
 				UUID uid = UUID.randomUUID();
 				
 				String fileName=file.getOriginalFilename();
+				
+				if(fileName==""){
+					vo.setNimage("");
+				}else{
 				
 				String fpohto=uid+fileName;
 				String spohto="_"+uid+fileName;
@@ -95,13 +100,17 @@ public class NoticeController {
 				
 				ImageIO.write(thumb,"jpg", new FileOutputStream("C:\\zzz\\5amresize\\"+spohto));
 				
+				
 				vo.setNimage(fpohto);
+				}
+			
 				nservice.register(vo);
+				
 				rttr.addFlashAttribute("msg", "success");
 
 			}
 		
-		return "redirect:list";
+		return "redirect:list?page=1";
 
 	}
 	
@@ -152,7 +161,7 @@ public class NoticeController {
 		
 			rttr.addFlashAttribute("delete", "success");
 		
-		return "redirect:list";
+		return "redirect:list?page=1&nno="+vo.getNno();
 	}
 	
 	

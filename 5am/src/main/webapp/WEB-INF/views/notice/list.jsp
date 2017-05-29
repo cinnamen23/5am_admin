@@ -132,7 +132,7 @@ $(document).ready(function(e) {
 	var result3 = '${msg}';
 	if (result3 == "success") {
 		history.pushState(null, null);
-		alert("글이 수정되었습니다.");
+		alert("글이 등록되었습니다.");
 		window.onpopstate = function(e) {
 			history.go(1);
 		};
