@@ -6,10 +6,8 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.List;
 import java.util.UUID;
-
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
-
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.apache.tomcat.jni.Library;
@@ -108,8 +106,6 @@ public class LibraryController {
 	public String postRegi(@ModelAttribute LibraryVO vo,  @RequestParam("file")MultipartFile file) throws Exception{
 		logger.info("hh"+file.getOriginalFilename());
 		vo.setLfile(file.getOriginalFilename());
-		
-//파일 업로드 = 특정 위치에 파일 복사
 		UUID uid = UUID.randomUUID();
 		String uidStr= uid.toString();
 	    String saveName= uidStr+"_"+file.getOriginalFilename();
@@ -121,14 +117,12 @@ public class LibraryController {
 		vo.setLfileid(saveName);
 		//글등록
 		service.create(vo);
-		
 		return "redirect:/library/list";
 	}
 	
 	
 	@GetMapping("/regi")
 	public void getRegi(@ModelAttribute("cri") Criteria cri, Model model) throws Exception{
-		
 	}
 	
 	
@@ -137,7 +131,6 @@ public class LibraryController {
 		LibraryVO library= service.read(lno);
 		service.updateHit(library);
 		model.addAttribute("lib",library);
-
 	}
 	
 	

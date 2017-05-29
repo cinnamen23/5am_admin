@@ -33,10 +33,11 @@
                                 <label>
                                 
                                 </div></div>
-                                <div class="col-md-12">
-				                                등록일 : ${lib.regdate} <br>
-				                                수정일 : ${lib.updatedate}<br>
+                                <div class="col-sm-6" style="float: right;">
+				                                등록시간 : ${lib.regdate} <br>
+				                                수정시간 : ${lib.updatedate}<br>
 				                                조회수 : ${lib.hit} 
+				                                </div></div>
                              
                                <form class="form" action="/library/list" method="get">
 	                              	<input type="hidden" name="page" value="${cri.page}" >
