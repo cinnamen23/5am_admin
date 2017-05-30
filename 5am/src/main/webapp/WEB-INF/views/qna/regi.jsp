@@ -87,10 +87,7 @@
 							<button type="submit" class="btn btn-success">등록</button>
 							<button class="btn btn-success"><a href="/qna/list" style="color: white">취소</a></button>
 							</form>
-						
-							
-							
-						
+			
 						</div>
 					</div>
 				</div>

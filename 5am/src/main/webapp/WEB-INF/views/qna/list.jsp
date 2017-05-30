@@ -46,7 +46,9 @@
                                 <div class="dataTables_length" id="dataTables-example_length">
                               
                                
-                                </div></div><div class="col-sm-6">
+                                </div></div>
+                                
+                                <div class="col-sm-6">
                                 
                                 <div id="dataTables-example_filter" class="dataTables_filter">
                                 
@@ -79,21 +81,22 @@
                                 
                                 
                                 
+                                
+                                
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
                                     <thead>
                                         <tr role="row">
-                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" aria-sort="ascending" style="width: 189px;">번호</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 291px;">제목</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 291px;">내용</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 264px;">글쓴이</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 160px;">등록날짜</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 113px;">갱신날짜</th></tr>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1"  aria-sort="ascending" style="width: 189px;">번호</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1"  style="width: 291px;">제목</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1"  style="width: 291px;">작성자</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1"  style="width: 160px;">등록날짜</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1"  style="width: 113px;">갱신날짜</th></tr>
                                     </thead>
                                     
-                                    
-                                    
-                                    
                                     <tbody>
+                                        
+                                        
+                                        
                                         
                                         
                                      	<c:forEach items="${list}" var="QuestionVO"> 
@@ -101,7 +104,6 @@
                                         
                                         	<td class="sorting_1" >${QuestionVO.qno} </td>
                                             <td><a class="goQview" href="${QuestionVO.qno}">${QuestionVO.title}</a></td>
-                                            <td class=" ">${QuestionVO.content}</td>
                                             <td class=" ">${QuestionVO.writer}</td>
                                             <td class="center ">${QuestionVO.regdate}</td>
                                             <td class="center ">${QuestionVO.updatedate}</td>
@@ -123,6 +125,7 @@
 							    </form>
                                 </div>
                                 </div>
+                                
                                 
                                 <div class="col-sm-6">
                                 <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
@@ -156,6 +159,8 @@
                                 
                                 
                                 </div>
+                                
+                                
                                 </div>
                                 </div>
                                 </div>
@@ -183,6 +188,11 @@
 			
 		</div>
 	<!-- CONTENT-WRAPPER SECTION END-->
+	
+	
+	
+	
+	
 	
 
 	
