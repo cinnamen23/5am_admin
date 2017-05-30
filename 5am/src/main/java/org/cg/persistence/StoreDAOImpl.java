@@ -52,4 +52,23 @@ public class StoreDAOImpl implements StoreDAO {
 		return session.selectOne(namespace+".checkSessionKey", value);
 	}
 
+	@Override
+	public StoreVO findId(String sname, String semail) {
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("sname", sname);
+		map.put("semail", semail);
+		
+		return session.selectOne(namespace+".findId", map);
+	}
+
+	@Override
+	public StoreVO findPw(String sid, String semail) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("sid", sid);
+		map.put("semail", semail);
+		
+		return session.selectOne(namespace+".findPw", map);
+	}
+
 }

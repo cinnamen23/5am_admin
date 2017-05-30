@@ -33,7 +33,8 @@
                     <div class="form-group">
 
                         <div class="col-md-6 text-center">
-                             <h4>아이디를 잊어버렸군요</h4>
+                             <h3>아이디를 잊어버렸군요</h3></br>
+                             <p>등록하신 이메일 주소로 아이디가 전송 됩니다. </p>
                             <br />
                         </div>
                          <div class="col-md-3 text-center"></div>
@@ -65,6 +66,8 @@
          
                                 </div>
                                     <button id="idSearch" class="btn btn-default"> 아이디 찾기</button>
+                                    <button type="button" class="btn btn-default" onclick="location.href='/store/login' ">취 소</button>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -86,10 +89,13 @@
   crossorigin="anonymous"></script>
     <script>
 	$(document).ready(function(e) { 
-		 $("#idSearch").on("click", function(e) {
+		 
+		$("#idSearch").on("click", function(e) {
 				e.preventDefault();
 				$("#f1").attr("method", "post").attr("action", "/store/forgotid").submit();
 		 })
+		 
+		 
 
 
 		

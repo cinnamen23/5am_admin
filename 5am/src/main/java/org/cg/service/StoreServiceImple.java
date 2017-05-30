@@ -43,4 +43,14 @@ public class StoreServiceImple implements StoreService {
 		return dao.checkSessionKey(value);
 	}
 
+	@Override
+	public StoreVO findId(String sname, String semail) {
+		return dao.findId(sname, semail);
+	}
+
+	@Override
+	public StoreVO findPw(String sid, String semail) {
+		return dao.findPw(sid, semail);
+	}
+
 }

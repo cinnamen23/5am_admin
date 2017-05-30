@@ -20,7 +20,14 @@
 	
 	<update id="keepLogin">
 		update tbl_store set sessionKey = #{sessionID}, sessionLimit = #{next} where sid = #{sid}
-	
 	</update>
+	
+	<select id="findId" resultType="org.cg.domain.StoreVO">
+		select * from tbl_store where sname = #{sname} and semail = #{semail}
+	</select>
+	
+	<select id="findPw" resultType="org.cg.domain.StoreVO">
+		select * from tbl_store where sid = #{sid} and semail = #{semail}
+	</select>
 
 </mapper>

@@ -25,7 +25,7 @@
                         </div>
         <div class="panel panel-blue">
             <div class="panel-body pan">
-                <form action="/store/loginPost" method="post" class="form-horizontal">
+                <form id ="f1" class="form-horizontal">
                 <div class="form-body pal">
                     <div class="col-md-9 text-center">
                         <br />
@@ -51,7 +51,7 @@
                         <div class="col-md-12">
                             <div class="input-icon right">
                                 <i class="fa fa-lock"></i>
-                                <input id="inputPassword" type="password"  placeholder="비밀번호를 입력하세요" class="form-control" name="spw" /></div>
+                                <input id="inputEmail" type="test"  placeholder="등록하신 이메일을 입력하세요" class="form-control" name="semail" /></div>
                         </div>
                     </div>
                     <div class="form-group mbn">
@@ -61,14 +61,9 @@
                                     &nbsp;
                                 </div>
                                 <div class="col-lg-9">
-                                <div >
-                                	<label>
-                                	<input type="checkbox" name="useCookie"> Remember Me
-                                	</label>
-                                </div>
-                                    <a href="/store/storeregi" class="btn btn-default">회원 가입</a>&nbsp;&nbsp;
-                                    <button type="submit" class="btn btn-default">
-                                        로그인</button>
+                                
+                                    <button id="findpw" class="btn btn-default"> 비밀번호 찾기</button>
+                                    <button type="button" class="btn btn-default" onclick="location.href='/store/login' ">취 소</button>
                                 </div>
                             </div>
                         </div>
@@ -83,29 +78,25 @@
             </p>
         </div>
     </div>
-    <script>
-	$(document).ready(function(e) { 
-		
-		var result = '${sregimsg}';
-		if (result == "success") {
-			history.pushState(null, null);
-			alert("회원가입이 왼료 되었습니다. 로그인 하세요.");
-			window.onpopstate = function(e) {
-				history.go(1);
-			};
-		}
-		
-		var result2 = '${logoutmsg}';
-		if (result2 == "success") {
-			history.pushState(null, null);
-			alert("로그아웃 되었습니다. 다시 로그인 하세요.");
-			window.onpopstate = function(e) {
-				history.go(1);
-			};
-		}
-		
-		
-	});
-	</script>
+    
+<script
+	  src="https://code.jquery.com/jquery-3.2.1.min.js"
+	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	  crossorigin="anonymous"></script>
+
+<script>
+		$(document).ready(function(e) { 
+			 
+			$("#findpw").on("click", function(e) {
+					e.preventDefault();
+					$("#f1").attr("method", "post").attr("action", "/store/forgotpw").submit();
+			 })
+			 
+			 
+	
+	
+			
+		});
+</script>
 </body>
 </html>

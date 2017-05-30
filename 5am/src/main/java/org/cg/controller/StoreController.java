@@ -14,6 +14,7 @@ import org.apache.log4j.Logger;
 import org.cg.domain.StoreVO;
 import org.cg.dto.LoginDTO;
 import org.cg.service.StoreService;
+import org.cg.util.SendEmail;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,30 +35,10 @@ public class StoreController {
 	@Inject
 	private StoreService service;
 	
-	@GetMapping("/forgotpw")
-	public void forgotpwGet (@ModelAttribute("dto") LoginDTO dto)throws Exception{
-		
-	}
-	
-	@PostMapping("/forgotid")
-	public String forgotidPost (String sname, String semail )throws Exception{
-		logger.info("forgotid@@");
-		logger.info(sname);
-		logger.info(semail);
-		
-		return "redirect:/store/login";
-	}
-	
-	@GetMapping("/forgotid")
-	public void forgotidGet ()throws Exception{
-		
-	}
 	
 	@GetMapping("/login")
 	public void loginGET(){
-		
-		
-		
+	
 	}
 	
 	@PostMapping("/loginPost")
@@ -167,6 +148,52 @@ public class StoreController {
 		
 		return "redirect:../index";
 	}
+	
+	@GetMapping("/forgotid")
+	public void forgotidGet ()throws Exception{
+		
+	}
+	
+	@PostMapping("/forgotid")
+	public String forgotidPost (String sname, String semail, StoreVO vo,RedirectAttributes rttr) throws Exception{
+		logger.info("forgotid@@");
+		logger.info(sname);
+		logger.info(semail);
+		
+		vo = service.findId(sname, semail);
+		
+		SendEmail mail = new SendEmail();
+		
+		mail.send("5AM에서 요청하신 아이디 입니다.", vo.getSemail(), vo.getSid());
+		
+		rttr.addFlashAttribute("sendId","success");
+		
+		return "redirect:login";
+	}
+	
+	@GetMapping("/forgotpw")
+	public void forgotpwGet ()throws Exception{
+		
+	}
+	
+	@PostMapping("/forgotpw")
+	public String forgotpwPost (String sid, String semail,StoreVO vo, RedirectAttributes rttr) throws Exception{
+		logger.info("forgotpw@@");
+		logger.info(sid);
+		logger.info(semail);
+		
+		vo = service.findPw(sid, semail);
+		
+		SendEmail mail = new SendEmail();
+		
+		mail.send("5AM에서 요청하신 비밀번호 입니다.", vo.getSemail(), vo.getSpw());
+		
+		rttr.addFlashAttribute("sendPw","success");
+		
+		return "redirect:login";
+	}
+	
+	
 	
 	
 }

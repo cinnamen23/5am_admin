@@ -108,6 +108,24 @@
 			};
 		}
 		
+		var result3 = '${sendId}';
+		if (result3 == "success") {
+			history.pushState(null, null);
+			alert("메일이 발송 되었습니다. 확인 후 로그인 하세요.");
+			window.onpopstate = function(e) {
+				history.go(1);
+			};
+		}
+		
+		var result3 = '${sendPw}';
+		if (result3 == "success") {
+			history.pushState(null, null);
+			alert("메일이 발송 되었습니다. 확인 후 로그인 하세요.");
+			window.onpopstate = function(e) {
+				history.go(1);
+			};
+		}
+		
 		
 	});
 	

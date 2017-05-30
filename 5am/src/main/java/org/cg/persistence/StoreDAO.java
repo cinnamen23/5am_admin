@@ -17,6 +17,10 @@ public interface StoreDAO {
 	
 	public StoreVO checkSessionKey(String value);
 	
+	public StoreVO findId(String sname, String semail);
+	
+	public StoreVO findPw(String sid, String semail);
+	
 	
 	
 }
