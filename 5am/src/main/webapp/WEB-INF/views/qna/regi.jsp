@@ -52,22 +52,22 @@
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div class="panel panel-success">
-						<div class="panel-heading">공지사항 등록</div>
+						<div class="panel-heading">질문 등록</div>
 						<div class="panel-body">
 							
 							<form role="form" method="post" action="/qna/regi" class="regiform" enctype="multipart/form-data">
 								<div class="form-group">
 									<label>제목</label> <input class="form-control"
-										type="text" name="title" value="궁금한 사항을 작성해주세요" onfocus="this.value=''"/>
+										id="qtitle" type="text" name="title" value="궁금한 사항을 작성해주세요" onfocus="this.value=''"/>
 									
 								</div>
 								<div class="form-group">
 									<label>내용</label>
-									<textarea class="form-control" rows="12" name="content"  onfocus="this.value=''">내용을 작성해주세요</textarea>
+									<textarea class="form-control" id="qcontent" rows="12" name="content"  onfocus="this.value=''">내용을 작성해주세요</textarea>
 								</div>
 								<div class="form-group">
 									<label>글쓴이</label> <input class="form-control"
-										type="text" name="writer" value="작성자를 작성해주세요" onfocus="this.value=''"/>
+										id="qwriter" type="text" name="writer" value="작성자를 작성해주세요" onfocus="this.value=''"/>
 									
 								</div>
 								
@@ -84,7 +84,7 @@
 
 								
 								
-							<button type="submit" class="btn btn-success">등록</button>
+							<button id="qregibtn" type="submit" class="btn btn-success">등록</button>
 							<button class="btn btn-success"><a href="/qna/list" style="color: white">취소</a></button>
 							</form>
 			
@@ -119,8 +119,27 @@ $(document).ready(function(e) {
 	    else {
 	        $('.file_input input[type=text]').val('파일 '+fileCount+'개');
 	    }
-	});
+	}); 
 
+	
+	$('#qregibtn').on("click", function(e) {
+
+			console.log($('#qTitle').val().length)
+			
+			if ($('#qTitle').val().length == 0) {
+				alert("제목을 입력해주세요....");
+			}else if($('#qcontent').val().length == 0){
+				alert("내용을 입력해주세요....");
+			}else if($('#qwriter').val().length == 0){
+				alert("작성자를 입력해주세요....");
+
+			}
+	
+			
+		
+		
+		
+	});
 
 	
 

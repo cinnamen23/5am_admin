@@ -3,6 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/header.jsp"%>
 
+
+<style>
+li{
+   list-style:none;
+   }
+</style>
+
+
 <!-- Q수정쪽 모달창1 시작-->
 <div class="panel panel-default">
 
@@ -169,9 +177,10 @@
                          
                                   <div id="uploadList">
 
+
                                   <c:forEach items="${flist}" var="file">
                                   
-                                  <li><img id="img" src="/display?fName=${file.filename}" style="height: 400px"><button data-fname="${file.filename}">삭제</button></li>
+                                  <li><img id="img" src="/display?fName=${file.filename}" style="height: 400px"><button id="fdelBtn" class="btn btn-success" data-fname="${file.filename}">삭제</button></li>
                                   </c:forEach>
                                   
                                   
@@ -183,11 +192,11 @@
                                   <!-- 리스트가기 -->
                                 <button id="golist" class="btn btn-danger">Go List </button>
                              
-                            <!-- 수정 (모달) -->
+                            <!--Q 수정 (모달) -->
                               <a href="" data-toggle="modal" data-target="#exampleModal" style="float: right; margin: 5px;"><i class="glyphicon glyphicon-wrench"></i></a>
                             	 
-                           	<!-- 삭제 아이콘-->
-                             <a href="/qna/delete?qno=${vo.qno}" style="float: right; margin: 5px;"><i class="glyphicon glyphicon-trash" style="float: right; margin: 5px;"></i></a>
+                           	<!--Q 삭제 아이콘-->
+                             <a id="qdelIcon" href="/qna/delete?qno=${vo.qno}" style="float: right; margin: 5px;"><i class="glyphicon glyphicon-trash" style="float: right; margin: 5px;"></i></a>
                              
                             </div>
                             
@@ -261,11 +270,11 @@
                                   </div>
                                   
                              
-                            <!-- 수정 (모달) -->
+                            <!--A 수정 (모달) -->
                               <a href="" id="amodifyIcon" data-aano="${AnswerVO.aano}" data-content="${AnswerVO.acontent}" data-writer="${AnswerVO.awriter}"  data-toggle="modal" data-target="#exampleModal2" style="float: right; margin: 5px;"><i class="glyphicon glyphicon-wrench"></i></a>
                             	 
-                           	<!-- 삭제 아이콘-->
-                             <a href="/qna/adelete?aano=${AnswerVO.aano}&qno=${vo.qno}" style="float: right; margin: 5px;"><i class="glyphicon glyphicon-trash" style="float: right; margin: 5px;"></i></a>
+                           	<!--A 삭제 아이콘-->
+                             <a id="adelIcon" href="/qna/adelete?aano=${AnswerVO.aano}&qno=${vo.qno}" style="float: right; margin: 5px;"><i class="glyphicon glyphicon-trash" style="float: right; margin: 5px;"></i></a>
                              
                             </div>
                             </div>
@@ -340,19 +349,37 @@
 <script>
 
 $(document).ready(function() {
+
+	var msg="${msg}";
+	if(msg=="success"){
+		history.pushState(null,null);
+		alert("수정이 완료되었습니다 . ")
+		window.onpopstate=function(e){
+			history.go(1);
+		}
+	}
+	
 	
 	
 	$('#qmodifyBtn').on("click", function(e) {
 
+		var result = confirm('수정을  하시겠습니까??'); 
+
+		
+		if(result){
+		
 		console.log("modifyBtn in-----------------------------------");
 		
-		e.preventDefault();
 
 		var formObj = $('#f1');
 
 		formObj.attr('action', '/qna/qview');
 		formObj.attr('method', 'post');
 		formObj.submit();  /* #f1 에 들어있는거 bno page type keyword */
+		}
+		
+		e.preventDefault();
+		
 
 	});
 	
@@ -361,8 +388,12 @@ $(document).ready(function() {
 		console.log("amodifyBtn in-----------------------------------");
 		
 		e.preventDefault();
+		
 		console.log($('#f3'));
 		
+		var result = confirm('수정을  하시겠습니까??'); 
+		
+		if(result){
 		var formObj = $('#f3');
 
 		
@@ -371,6 +402,7 @@ $(document).ready(function() {
 		formObj.attr('action', '/qna/amodi');
 		formObj.attr('method', 'post');
 		formObj.submit();
+		}		
 		
 	});
 	
@@ -436,6 +468,10 @@ $(document).ready(function() {
 	//삭제
 	
 	$("#uploadList li button").on("click",function(e){
+		
+		var result = confirm('사진을  지우시겠습니까??'); 
+		
+		if(result==true){
 		var $target = $(e.target);
 		$target.parent().remove();
 		console.log($(this).attr("data-fname"));
@@ -451,11 +487,44 @@ $(document).ready(function() {
 				alert("deleted");
 			}
 		}); 
+		
+		}
+		
 	});
 	
 	
 	
-});
+	$('#qdelIcon').on("click", function(e) {
+
+		
+		var result = confirm('질문을  지우시겠습니까??'); 
+		
+		if(result!=true){
+		e.preventDefault();		
+		}
+		
+	});
+	
+$('#adelIcon').on("click", function(e) {
+
+		
+		var result = confirm('답변을  지우시겠습니까??'); 
+		
+		if(result!=true){
+		e.preventDefault();		
+		}
+		
+	});
+	
+
+
+		
+		
+	});
+	
+	
+	
+	
 
 
 </script>

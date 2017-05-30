@@ -71,6 +71,10 @@ public class QnaController {
 		List<QfileVO> flist=qservice.getFileList(vo);
 		
 		logger.info(vo);
+		logger.info("=====1======");
+		logger.info("=====1======");
+		
+		logger.info(flist);
 		
 		model.addAttribute("vo",vo);
 		model.addAttribute("cri",cri);
@@ -96,7 +100,8 @@ public class QnaController {
 		rttr. addAttribute("page",cri.getPage());
 		rttr. addAttribute("type",cri.getType());       //없어서 안가나보다   
 		rttr. addAttribute("keyword",cri.getKeyword()); //없어서 안가나보다
-
+		rttr.addFlashAttribute("msg","success");
+		
 		
 		return "redirect:qview";
 		
@@ -140,7 +145,7 @@ public class QnaController {
 	
 	@Transactional
 	@PostMapping("/regi")
-	public String qRegipost(QuestionVO vo,MultipartFile[] file) throws IOException{
+	public String qRegipost(QuestionVO vo,MultipartFile[] file,RedirectAttributes rttr) throws IOException{
 	
 		logger.info("regi post...........");
 		
@@ -156,9 +161,19 @@ public class QnaController {
 		List<String> flist = new ArrayList<String>();
 		
 		
+		if(file.length==1&file[0].getSize()==0){
+			
+		}else{
+		
 		//파일업로드 부분
 		for(int i=0;i<file.length;i++){
 		
+			logger.info("=====2======");
+			logger.info("=====2======");
+			
+		logger.info(file);
+			
+			
 		QfileVO fvo = new QfileVO();
 		
 		logger.info("originalName: " + file[i].getOriginalFilename());
@@ -185,6 +200,7 @@ public class QnaController {
 		}
 		//파일업로드 부분
 		
+		}//ifelse 끝
 		
 		
 		logger.info("flist : "+flist);
@@ -198,9 +214,9 @@ public class QnaController {
 //		}
 		
 		
+		rttr.addFlashAttribute("msg","success");
 		
-		
-		return "redirect:list";
+		return "redirect:list?page=1";
 	}
 	
 //	======================================ANSWER=========================//
@@ -211,7 +227,8 @@ public class QnaController {
 			logger.info("amodi post.........");
 			
 		// QAnswerVO 를 받는순간 에러 나는데 왜 에러가 나는지 도저히 모르겠음 //	
-
+			
+			rttr.addFlashAttribute("msg","success");
 			
 			return "redirect:qview";
 		}

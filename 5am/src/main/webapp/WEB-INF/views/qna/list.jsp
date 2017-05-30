@@ -203,6 +203,16 @@
 	
 	$(document).ready(function() {
 		
+		var msg="${msg}";
+		if(msg=="success"){
+			history.pushState(null,null);
+			alert("등록이 완료되었습니다 . ")
+			window.onpopstate=function(e){
+				history.go(1);
+			}
+		}
+		
+		
 		
 		$("#btnn").on("click", function(e) {
 			e.preventDefault();
