@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
@@ -76,8 +77,8 @@
                                             <td class="center ">${list.mage}</td>
                                             <td class="center ">${list.mgender}</td>
                                             <td class="center " style="font-size: 11px;">${list.maddr}</td>
-                                            <td class="center ">${list.regdate}</td>
-                                            <td class="center ">${list.updatedate}</td>
+                                            <td class="center "><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
+                                            <td class="center "><fmt:formatDate value="${list.updatedate}" pattern="yyyy-MM-dd HH:mm"/></td>
                                             <td class="center" data-mname="${list.mname}" data-mage="${list.mage}" data-mgender="${list.mgender}" data-mid="${list.mid}" data-maddr="${list.maddr}">
                                             <a class="membermodi" href="" data-toggle="modal" data-target="#exampleModal"><i class="glyphicon glyphicon-wrench"></i></a>
                                             <a class="memberdel" href=""><i class="glyphicon glyphicon-remove"></i></a>
@@ -186,8 +187,8 @@
 	                                            <td class="sorting_1">${qlist.mqno}</td>
 	                                            <td class="center ">${qlist.mid}</td>
 	                                            <td class="center "><a class="qtitle" href="${qlist.mqno}">${qlist.title}</a></td>
-	                                            <td class="center ">${qlist.regdate}</td>
-	                                            <td class="center ">${qlist.updatedate}</td>
+	                                            <td class="center "><fmt:formatDate value="${qlist.regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
+	                                            <td class="center "><fmt:formatDate value="${qlist.updatedate}" pattern="yyyy-MM-dd HH:mm"/></td>	                                            
 	                                            <td class="center ">${qlist.checked}</td>
 	                                    </tr>
                                      </c:forEach>   

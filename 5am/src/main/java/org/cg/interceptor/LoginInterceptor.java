@@ -1,6 +1,5 @@
 package org.cg.interceptor;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,18 +26,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 			logger.info("new login success");
 			session.setAttribute(LOGIN, storeVO);
-			logger.info("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-			logger.info("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-
-			logger.info(request.getParameter("useCookie"));
-
-			/*if (request.getParameter("useCookie") != null) {
-				logger.info("remember me");
-				Cookie loginCookie = new Cookie("loginCookie", session.getId());
-				loginCookie.setPath("/index");
-				loginCookie.setMaxAge(5);
-				logger.info(loginCookie);
-			}*/
 			response.sendRedirect("/index");
 
 		}
