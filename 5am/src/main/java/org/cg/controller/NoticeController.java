@@ -55,6 +55,7 @@ public class NoticeController {
 			}
 			
 			NoticeVO read = nservice.getRead(vo);
+			
 			nservice.updateHit(vo);
 			model.addAttribute("vo",vo);
 			model.addAttribute("read", read);
@@ -71,13 +72,7 @@ public class NoticeController {
 	public String registerPost(@ModelAttribute("vo")NoticeVO vo, RedirectAttributes rttr, @RequestParam("file")MultipartFile file) throws Exception {
 		
 			
-			
-			if (vo.getNtitle() == "" || vo.getNcontent() == "" || vo.getNwriter() == ""|| vo.getNimage() =="") {
-				rttr.addFlashAttribute("fail", "fail");
-				
-				return "redirect:regi";
-				
-			} else {
+			 
 				
 				
 				UUID uid = UUID.randomUUID();
@@ -108,7 +103,7 @@ public class NoticeController {
 				
 				rttr.addFlashAttribute("msg", "success");
 
-			}
+			
 		
 		return "redirect:list?page=1";
 

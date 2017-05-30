@@ -63,7 +63,7 @@ where rnum >= #{skip}
   </update>
   
   <update id="updateImg" parameterType="org.cg.domain.NoticeVO">
-  update TBL_NOTICE set nimage=#{nimage},updatedate=sysdate where nno = #{nno}
+  update TBL_NOTICE set nimage=#{nimage} where nno = #{nno}
   </update>
   
   <select id="index" parameterType="org.cg.domain.NoticeVO" resultType="org.cg.domain.NoticeVO">

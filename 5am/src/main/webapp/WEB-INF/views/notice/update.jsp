@@ -82,7 +82,11 @@ $(document).ready(function(e) {
 	
 	$("#btnRegi").on("click",function(event){
 		
-		
+		history.pushState(null, null);
+		alert("글이 수정되었습니다.");
+		window.onpopstate = function(e) {
+			history.go(1);
+		};
 		$(".updateForm").submit();
 		
 	

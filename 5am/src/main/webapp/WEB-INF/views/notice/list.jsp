@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
 
@@ -50,20 +50,20 @@
                                 </div></div></div><table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
                                     <thead>
                                         <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" aria-sort="ascending" style="width: 189px;">번호</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 291px;">글제목</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 264px;">글쓴이</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 160px;">동록일자</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 50px;">조회수</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width 291px; text-align: center;">글제목</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 264px; text-align: center;">글쓴이</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 160px; text-align: center;">동록일자</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 50px; text-align: center;">조회수</th>
                                     </thead>
                                     <tbody>
                                         
                                      <c:forEach var="list" items="${list}">
                                     <tr class="gradeA odd">
-                                            <td class="sorting_1">${list.nno}</td>
-                                            <td><a class="tt" href="${list.nno}">${list.ntitle}</a></td>
-                                            <td class="center ">${list.nwriter}</td>
-                                            <td class="center ">${list.regdate}</td>
-                                            <td class="center ">${list.hit}</td>
+                                            <td class="sorting_1" style="width: 5%; text-align: center;">${list.nno}</td>
+                                            <td class="center " style="width: 60%; text-align: center;"><a class="tt" href="${list.nno}" style="width: 60%; text-align: center;">${list.ntitle}</a></td>
+                                            <td class="center " style="width: 15%; text-align: center;">${list.nwriter} </td>
+                                            <td class="center " style="width: 10%; text-align: center;" ><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
+                                            <td class="center "style="width: 10%; text-align: center;">${list.hit}</td>
                                          
                                         </tr>
                                         </c:forEach>   
@@ -132,7 +132,7 @@ $(document).ready(function(e) {
 	var result3 = '${msg}';
 	if (result3 == "success") {
 		history.pushState(null, null);
-		alert("글이 등록되었습니다.");
+	
 		window.onpopstate = function(e) {
 			history.go(1);
 		};

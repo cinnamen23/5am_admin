@@ -20,16 +20,17 @@ public class UploadController {
 	@ResponseBody
 	public byte[] display(String fName) throws Exception {
 		
-		if(fName !=null){
+		if(fName ==""){
+			
+			fName = "1.jpg";
+		
+		
+	}
 		FileInputStream fin = new FileInputStream("C:\\zzz\\5am\\" + fName);
 
 		byte[] arr = IOUtils.toByteArray(fin);
 
 		return arr;
-		}else{
-			return null;
-		}
-			
-	}
 
+}
 }

@@ -7,8 +7,8 @@
 
     <%@ include file="/WEB-INF/views/header.jsp" %>
 <style>
-.img{
-width: auto;
+.imgr{
+width: 500px auto;
 height: auto;
 max-width: 1000px;
 max-height: 500px;
@@ -31,7 +31,7 @@ max-height: 500px;
                       <div class="alert alert-success back-widget-set text-center">
                             <i class="fa fa-bars fa-5x"></i>
                             <h3>${totalCount} 명</h3>
-                           내 광고를 찜 한 고객 수
+                           찜 한 고객 수
                         </div>
                     </div>
                     
@@ -436,9 +436,9 @@ src="https://code.jquery.com/jquery-3.2.1.min.js"
 integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 crossorigin="anonymous"></script>
 <script>
-var str0 = "<img class='img' src='/display?fName="+"${list[0].nimage}"+"' alt=''>";
-var str1 = "<img class='img' src='/display?fName="+"${list[1].nimage}"+"' alt=''>";
-var str2 = "<img class='img' src='/display?fName="+"${list[2].nimage}"+"' alt=''>";
+var str0 = "<a href='/notice/list'><img class='imgr' style='width: 900px; height: 370px;' src='/display?fName="+"${list[0].nimage}"+"' alt=''></a>";
+var str1 = "<a href='/notice/list'><img class='imgr' style='width: 900px; height: 370px;' src='/display?fName="+"${list[1].nimage}"+"' alt=''></a>";
+var str2 = "<a href='/notice/list'><img class='imgr' style='width: 900px; height: 370px;' src='/display?fName="+"${list[2].nimage}"+"' alt=''></a>";
 
 $("#index0").append(str0);
 $("#index1").append(str1);

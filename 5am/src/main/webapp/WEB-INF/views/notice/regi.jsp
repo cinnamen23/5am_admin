@@ -23,20 +23,20 @@
 							<form role="form" method="post" action="/notice/regi" class="regiform" enctype="multipart/form-data">
 								<div class="form-group">
 									<label>제목</label> <input class="form-control"
-										type="text" name="ntitle" value="공지사항 제목을 작성해주세요" />
+										type="text" name="ntitle" placeholder="제목을 작성해주세요" id="title"/>
 									
 								</div>
 								<div class="form-group">
 									<label>내용</label>
-									<textarea class="form-control" rows="12" name="ncontent">내용을 작성해주세요</textarea>
+									<textarea class="form-control" rows="12" name="ncontent" id="content" placeholder="내용을 작성해주세요"></textarea>
 								</div>
 								<div class="form-group">
 									<label>글쓴이</label> <input class="form-control"
-										type="text" name="nwriter" value="작성자를 작성해주세요"/>
+										type="text" name="nwriter" placeholder="작성자를 작성해주세요" id="writer"/>
 									
 								</div>
 								<div class="form-group">
-									<label>이미지 첨부파일</label> 
+									<label>이미지 첨부파일(900*370 px로 맞춰주세요)</label> 
 									<input class="form-control" type="file" name="file" id="file"/>
 									
 								</div>
@@ -45,7 +45,7 @@
 								
 
 							
-							<button type="submit" class="btn btn-info" id="regi">등록</button>
+							<button class="btn btn-info" id="regi">등록</button>
 							<button class="btn btn-info"><a href="/notice/list">취소</a></button>
 							
 						
@@ -78,21 +78,23 @@ $(document).ready(function(e) {
 		alert("빈칸을 채워주세요")
 	}
 	
-	$("#regi").on("click",function(e){
-		
-		var result3 = '${msg}';
-		if (result3 == "success") {
-			history.pushState(null, null);
-			alert("새글이 등록되었습니다.");
-			window.onpopstate = function(e) {
-				history.go(1);
-			};
-		}
-	})
+
 	
 	$("#regi").on("click",function(e){
 		
-		$(".regiform").submit();
+		if($("#title").val()=="" || $("#content").val()=="" || $("#writer").val()=="" ){
+			
+			alert("빈칸을 채워주세요");
+		}else{
+			history.pushState(null, null);
+			alert("글이 등록되었습니다.");
+			window.onpopstate = function(e) {
+				history.go(1);
+			};
+			 $(".regiform").submit(); 
+			
+		}
+		
 		
 	})
 	
