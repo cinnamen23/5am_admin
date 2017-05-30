@@ -65,23 +65,26 @@ public class MemberController {
 
 		service.update(vo);
 		
-		rttr. addAttribute("page",cri.getPage());
-		rttr. addAttribute("type",cri.getType());
-		rttr. addAttribute("keyword",cri.getKeyword());
-		rttr. addAttribute("page2",cri2.getPage2());
-		rttr. addAttribute("type2",cri2.getType2());
-		rttr. addAttribute("keyword2",cri2.getKeyword2());
+		rttr.addAttribute("page",cri.getPage());
+		rttr.addAttribute("type",cri.getType());
+		rttr.addAttribute("keyword",cri.getKeyword());
+		rttr.addAttribute("page2",cri2.getPage2());
+		rttr.addAttribute("type2",cri2.getType2());
+		rttr.addAttribute("keyword2",cri2.getKeyword2());
+		rttr.addFlashAttribute("msg","success");
 
 		return "redirect:list";
 	}
 
 	@PostMapping("/del")
-	public String memberDel(MemberVO vo) {
+	public String memberDel(MemberVO vo,RedirectAttributes rttr) {
 
 		logger.info(".......member delete .......");
 		
 		
 		service.delete(vo);
+		rttr.addFlashAttribute("msg","success");
+
 
 		return "redirect:list";
 	}
@@ -101,12 +104,14 @@ public class MemberController {
 
 	@Transactional
 	@PostMapping("/mquestiondel")
-	public String mquestiondel(MQuestionVO vo) {
+	public String mquestiondel(MQuestionVO vo,RedirectAttributes rttr) {
 
 		logger.info(".......mquestion delete .......");
 
 		service.adeleteall(vo);
 		service.qdelete(vo);
+		rttr.addFlashAttribute("msg","success");
+
 
 		return "redirect:list";
 	}
@@ -124,6 +129,8 @@ public class MemberController {
 		rttr.addAttribute("page2",cri2.getPage2());
 		rttr.addAttribute("type2",cri2.getType2());
 		rttr.addAttribute("keyword2",cri2.getKeyword2());
+		rttr.addFlashAttribute("msg","success");
+
 		
 		return "redirect:mquestionview";
 	
@@ -143,6 +150,8 @@ public class MemberController {
 		rttr.addAttribute("page2",cri2.getPage2());
 		rttr.addAttribute("type2",cri2.getType2());
 		rttr.addAttribute("keyword2",cri2.getKeyword2());
+		rttr.addFlashAttribute("msg","success");
+
 		
 		return "redirect:mquestionview";
 	
@@ -164,6 +173,8 @@ public class MemberController {
 		rttr.addAttribute("page2",cri2.getPage2());
 		rttr.addAttribute("type2",cri2.getType2());
 		rttr.addAttribute("keyword2",cri2.getKeyword2());
+		rttr.addFlashAttribute("msg","success");
+
 		
 		return "redirect:mquestionview";
 		

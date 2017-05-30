@@ -14,7 +14,7 @@
 			<div class="row pad-botm">
 				<div class="col-md-12">
 					<h4 class="header-line">고객 질문/답변</h4>
-					${vo }
+					
 				</div>
 
 			</div>
@@ -211,6 +211,16 @@
 <script>
 $(document).ready(function(e) {
 	
+		var result3 = '${msg}';
+		if (result3 == "success") {
+			history.pushState(null, null);
+			alert("작업이 완료 되었습니다.");
+			window.onpopstate = function(e) {
+				history.go(1);
+			};
+		}
+	
+	
 		$("#modifyBtn").on("click", function(e) {
 			
 			e.preventDefault();
@@ -257,7 +267,7 @@ $(document).ready(function(e) {
 					formObj.attr('action','/member/manswerdel');
 					formObj.attr('method','get');
 					formObj.submit();
-				}else{   //취소
+				}else{   
 				    return;
 				}
 				

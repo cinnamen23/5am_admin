@@ -308,6 +308,16 @@
 
 	<script>
 	$(document).ready(function(e) { 
+		
+		var result = '${msg}';
+		if (result == "success") {
+			history.pushState(null, null);
+			alert("작업이 완료 되었습니다.");
+			window.onpopstate = function(e) {
+				history.go(1);
+			};
+		}
+		
 	
 		$(".pagination .a1").on("click", function(e) {
 		

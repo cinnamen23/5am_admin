@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/store")
@@ -48,9 +49,9 @@ public class StoreController {
 	}
 	
 	@GetMapping("/logout")
-	public String logoutGet(HttpSession session ){
+	public String logoutGet(HttpSession session, RedirectAttributes rttr ){
 		
-		logger.info("logout get !!!!!");
+		logger.info("logout ......");
 		
 		Object obj = session.getAttribute("login");
 		
@@ -58,7 +59,7 @@ public class StoreController {
 			StoreVO vo = (StoreVO) obj;
 			session.removeAttribute("login");
 			session.invalidate();
-			
+			rttr.addFlashAttribute("logoutmsg","success");
 		
 		}
 		return "redirect:login";
@@ -73,7 +74,7 @@ public class StoreController {
 	
 	@PostMapping("/storeregi")
 
-	public String storeregiPost(StoreVO vo,@RequestParam("saddr1") String saddr1,@RequestParam("saddr3") String saddr3,@RequestParam("lat")String lat,@RequestParam("lng")String lng){
+	public String storeregiPost(StoreVO vo,@RequestParam("saddr1") String saddr1,@RequestParam("saddr3") String saddr3,@RequestParam("lat")String lat,@RequestParam("lng")String lng, RedirectAttributes rttr){
 		logger.info(lat);
 
 		logger.info("store register post!!!");
@@ -87,6 +88,7 @@ public class StoreController {
 		vo.setSaddr(saddr);		
 		
 		service.storeregister(vo);
+		rttr.addFlashAttribute("sregimsg","success");
 		
 		return "redirect:login";
 		
@@ -104,7 +106,7 @@ public class StoreController {
 	}
 	
 	@PostMapping("/storemodi")
-	public String storemodiPost(HttpSession session ,StoreVO vo,@RequestParam("saddr1") String saddr1,@RequestParam("saddr3") String saddr3){
+	public String storemodiPost(HttpSession session ,StoreVO vo,@RequestParam("saddr1") String saddr1,@RequestParam("saddr3") String saddr3, RedirectAttributes rttr){
 		logger.info("----------------------------------------------------------");
 		logger.info("storemodi post !!!!!!!!!!!!!!!!!!!!!!!");
 		String saddr = saddr1+" "+saddr3;	
@@ -114,6 +116,7 @@ public class StoreController {
 		
 		service.storemodify(vo);
 		session.setAttribute(LOGIN, vo);
+		rttr.addFlashAttribute("msg","success");
 		
 		return "redirect:../index";
 	}

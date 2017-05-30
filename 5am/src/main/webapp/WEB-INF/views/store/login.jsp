@@ -87,5 +87,29 @@
             </p>
         </div>
     </div>
+    <script>
+	$(document).ready(function(e) { 
+		
+		var result = '${sregimsg}';
+		if (result == "success") {
+			history.pushState(null, null);
+			alert("회원가입이 왼료 되었습니다. 로그인 하세요.");
+			window.onpopstate = function(e) {
+				history.go(1);
+			};
+		}
+		
+		var result2 = '${logoutmsg}';
+		if (result2 == "success") {
+			history.pushState(null, null);
+			alert("로그아웃 되었습니다. 다시 로그인 하세요.");
+			window.onpopstate = function(e) {
+				history.go(1);
+			};
+		}
+		
+		
+	});
+	</script>
 </body>
 </html>

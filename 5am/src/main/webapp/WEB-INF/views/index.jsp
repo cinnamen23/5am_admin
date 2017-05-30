@@ -445,4 +445,19 @@ $("#index1").append(str1);
 $("#index2").append(str2);
 
 </script>	
+
+
+<script>
+	$(document).ready(function(e) { 
+		
+		var result = '${msg}';
+		if (result == "success") {
+			history.pushState(null, null);
+			alert("정보 수정이 완료 되었습니다.");
+			window.onpopstate = function(e) {
+				history.go(1);
+			};
+		}
+	});
+</script>
 <%@ include file="/WEB-INF/views/footer.jsp" %>
