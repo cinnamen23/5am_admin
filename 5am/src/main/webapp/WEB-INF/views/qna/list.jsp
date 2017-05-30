@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
@@ -106,7 +107,7 @@
                                         	<td class="sorting_1" >${QuestionVO.qno} </td>
                                             <td><a class="goQview" href="${QuestionVO.qno}">${QuestionVO.title}</a></td>
                                             <td class=" ">${QuestionVO.writer}</td>
-                                            <td class="center "> <fmt:formatDate value="${QuestionVO.regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
+                                            <td class="center "><fmt:formatDate value="${QuestionVO.regdate}" pattern="yyyy-MM-dd"/></td>
                                             <td class="center "><fmt:formatDate value="${QuestionVO.updatedate}" pattern="yyyy-MM-dd HH:mm"/></td>
                                        
                                         
