@@ -35,6 +35,7 @@
                                 <label>
                                 
                                 </div></div><div class="col-sm-6"><div id="dataTables-example_filter" class="dataTables_filter">
+                <div class="col-md-12">
                 <label>
                 <form class="form" method="get" action="/library/list">
 					<input class="hopage" type="hidden" name="page"value="${pageMaker.current}"> 
@@ -47,18 +48,19 @@
 				    <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keyword" value="${cri.keyword}">
 				    <button id="btnn" class="btn btn-info">Search</button>
 				</label>    
+                </div>
 				    
 
 				    
                                
                                 </div></div></div><table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
-                                    <thead>
+                                    <div><thead>
                                         <tr role="row">
-                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" aria-sort="ascending" style="width: 80px;">번호</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 291px;">글제목</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 50px;">조회수</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 160px;">등록일자</th>
-                                    </thead>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" aria-sort="ascending" style="width: 10%;">번호</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 60%;">글제목</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 10%;">조회수</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 20%;">등록일자</th>
+                                    </thead></div>
                                     <tbody>
                    
                                      <c:forEach var="list" items="${list}">

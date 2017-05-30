@@ -20,26 +20,25 @@
 <body style="background: url('images/bg/bg.png') center center fixed;">
     
     <div class="page-form">
-                        <div class="col-md-3">
-                            <img src="images/avatar/profile-pic.png" class="img-responsive" style=" margin-top: 50px;" />
-                        </div>
+    
+    
         <div class="panel panel-blue">
             <div class="panel-body pan">
                 <form action="/store/loginPost" method="post" class="form-horizontal">
                 <div class="form-body pal">
-                    <div class="col-md-9 text-center">
-                        <br />
-                    </div>
                     <div class="form-group">
-
-                        <div class="col-md-6 text-center">
+                        <div class="col-md-3"> </div>
+                         <div class="col-md-6" style="margin-top: -100px; ">
+                         	<img src="images/avatar/profile-pic.png" class="img-responsive" />
+                         </div>
+						<div class="col-md-3"> </div>
+                        <div class="col-md-12 text-center">
                             <h1>
                                 L O G I N</h1>
                             <br />
                             <p>
                                5AM이 당신의 꿈을 응원합니다</p>
                         </div>
-                         <div class="col-md-3 text-center"></div>
                     </div>
                     <div class="form-group">
 
