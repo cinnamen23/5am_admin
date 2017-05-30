@@ -29,5 +29,11 @@
 	<select id="findPw" resultType="org.cg.domain.StoreVO">
 		select * from tbl_store where sid = #{sid} and semail = #{semail}
 	</select>
+	
+	<select id="checkSessionKey" resultType="org.cg.domain.StoreVO">
+
+	select * from tbl_store where sessionKey = #{value} and sessionlimit > sysdate	
+
+	</select>
 
 </mapper>

@@ -58,8 +58,7 @@ public class StoreController {
 		
 		if(dto.isUseCookie()){
 			
-			int amount = 20;
-			
+			int amount = 60*60*24*7;			
 			Date sessionLimit = new Date(System.currentTimeMillis()+(1000*amount));
 			
 			service.keepLogin(vo.getSid(), session.getId(), sessionLimit);

@@ -16,6 +16,23 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
 	private static final Logger logger = Logger.getLogger(AuthInterceptor.class);
 	
+	private void saveDest(HttpServletRequest req){
+		String uri = req.getRequestURI();
+		
+		String query = req.getQueryString();
+		
+		if(query == null || query.equals("null")){
+			query = "";
+		}else{
+			query = "?"+query;
+		}
+		
+		if(req.getMethod().equals("GET")){
+			req.getSession().setAttribute("dest", uri+query);
+		}
+	}
+	
+	
 	@Inject
 	private StoreService service;
 	
@@ -30,6 +47,8 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		if (session.getAttribute("login")==null) {
 			
 			logger.info("current user is not logined");
+			
+			saveDest(request);
 			
 			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
 			if (loginCookie != null) {

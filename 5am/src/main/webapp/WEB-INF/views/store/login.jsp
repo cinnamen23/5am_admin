@@ -63,7 +63,11 @@
                                     &nbsp;
                                 </div>
                                 <div class="col-lg-9">
-                                
+                                     <div >
+                                	<label>
+                                	<input type="checkbox" name="useCookie"> Remember Me
+                                	</label>
+                                </div>
                                     <a href="/store/storeregi" class="btn btn-default">회원 가입</a>&nbsp;&nbsp;
                                     <button type="submit" class="btn btn-default">
                                         로그인</button>
