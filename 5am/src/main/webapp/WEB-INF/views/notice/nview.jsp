@@ -13,8 +13,8 @@
 .img{
 width: auto;
 height: auto;
-max-width: 100%;
-max-height: 100%;
+width: 100%;
+height: 100%;
 }
 .list{
 list-style: none;
@@ -143,7 +143,7 @@ $(document).ready(function(e) {
 		if (confirm("정말 삭제하시겠습니까??") == true){   
 		    $("#deleteForm").submit();
 		}else{   //취소
-		    return;
+		    return false;
 		}
 
 
