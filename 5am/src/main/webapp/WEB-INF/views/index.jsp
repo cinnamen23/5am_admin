@@ -60,6 +60,7 @@ max-height: 500px;
         </div>              
              <div class="row">
 
+<<<<<<< Upstream, based on branch 'master' of https://github.com/kick07230723/5AM.git
               <div class="col-md-8 col-sm-8 col-xs-12">
                     <div id="carousel-example" class="carousel slide slide-bdr" data-ride="carousel" >
                    
@@ -94,6 +95,71 @@ max-height: 500px;
                 </div>
               </div>
                  
+=======
+			<div class="col-md-8 col-sm-8 col-xs-12">
+				<div id="carousel-example" class="carousel slide slide-bdr"
+					data-ride="carousel">
+
+					<div class="carousel-inner">
+						<div class="item active">
+
+							<img src="assets/img/1.jpg" alt="" />
+
+						</div>
+						<div class="item">
+							<img src="assets/img/2.jpg" alt="" />
+
+						</div>
+						<div class="item">
+							<img src="assets/img/3.jpg" alt="" />
+
+						</div>
+					</div>
+					<!--INDICATORS-->
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-example" data-slide-to="0"
+							class="active"></li>
+						<li data-target="#carousel-example" data-slide-to="1"></li>
+						<li data-target="#carousel-example" data-slide-to="2"></li>
+					</ol>
+					<!--PREVIUS-NEXT BUTTONS-->
+					<a class="left carousel-control" href="#carousel-example"
+						data-slide="prev"> <span
+						class="glyphicon glyphicon-chevron-left"></span>
+					</a> <a class="right carousel-control" href="#carousel-example"
+						data-slide="next"> <span
+						class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				</div>
+			</div>
+
+			<div class="col-md-4 col-sm-4 col-xs-12">
+
+
+				<div class="alert alert-info text-center" style="height: 380px">
+					<h3>
+						현재 ${login.sid} 님이</br> 로그인 되었습니다.
+					</h3>
+					<hr />
+					<p>${login.sname }</br>
+					 ${login.saddr }</br> 
+					 ${login.sphone }</br> 
+					 ${login.semail }</br>
+
+					</p>
+					<hr />
+					<button type="button" class="btn btn-info"
+						onclick="location.href='/store/storemodi' ">정보 수정</button>
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+		<div class="row">
+>>>>>>> f9911e3 hy
                  <div class="col-md-4 col-sm-4 col-xs-12">
                  
                     
