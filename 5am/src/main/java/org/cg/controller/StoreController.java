@@ -56,15 +56,15 @@ public class StoreController {
 		
 		model.addAttribute("storeVO", vo);
 		
-		/*if(dto.isUseCookie()){
+		if(dto.isUseCookie()){
 			
-			int amount = 5;
+			int amount = 20;
 			
 			Date sessionLimit = new Date(System.currentTimeMillis()+(1000*amount));
 			
 			service.keepLogin(vo.getSid(), session.getId(), sessionLimit);
 			
-		}*/
+		}
 		
 	}
 	

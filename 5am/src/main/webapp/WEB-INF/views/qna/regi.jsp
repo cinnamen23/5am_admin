@@ -55,7 +55,7 @@
 						<div class="panel-heading">질문 등록</div>
 						<div class="panel-body">
 							
-							<form role="form" method="post" action="/qna/regi" class="regiform" enctype="multipart/form-data">
+							<form id="f1" role="form" class="regiform" method="post" action="/qna/regi" enctype="multipart/form-data">
 								<div class="form-group">
 									<label>제목</label> <input class="form-control"
 										id="qtitle" type="text" name="title" value="궁금한 사항을 작성해주세요" onfocus="this.value=''"/>
@@ -84,7 +84,7 @@
 
 								
 								
-							<button id="qregibtn" type="submit" class="btn btn-success">등록</button>
+							<button id="qregibtn" class="btn btn-success">등록</button>
 							<button class="btn btn-success"><a href="/qna/list" style="color: white">취소</a></button>
 							</form>
 			
@@ -108,6 +108,23 @@ $(document).ready(function(e) {
 		alert("빈칸을 채워주세요")
 	}
 
+	$('#qregibtn').on("click", function(e) {
+			e.preventDefault();	
+
+			console.log("들어왔으 ");
+			console.log($('#qtitle').val());				
+			if ($('#qtitle').val().length == 0) {
+				alert("제목을 입력해주세요....");
+			}else if($('#qcontent').val().length == 0){
+				alert("내용을 입력해주세요....");
+			}else if($('#qwriter').val().length == 0){
+				alert("작성자를 입력해주세요....");
+			}else{
+				$('#f1').submit();
+			}
+		
+	});
+	
 	
 	/* 멀티파트처리 하는거  */
 	$('.file_input input[type=file]').change(function() {
@@ -121,25 +138,6 @@ $(document).ready(function(e) {
 	    }
 	}); 
 
-	
-	$('#qregibtn').on("click", function(e) {
-
-			console.log($('#qTitle').val().length)
-			
-			if ($('#qTitle').val().length == 0) {
-				alert("제목을 입력해주세요....");
-			}else if($('#qcontent').val().length == 0){
-				alert("내용을 입력해주세요....");
-			}else if($('#qwriter').val().length == 0){
-				alert("작성자를 입력해주세요....");
-
-			}
-	
-			
-		
-		
-		
-	});
 
 	
 
