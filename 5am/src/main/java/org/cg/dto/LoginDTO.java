@@ -5,6 +5,7 @@ public class LoginDTO {
 	private String sid,spw,sname,saddr,sphone,semail,regdate,updatedate;
 	private Double lat, lng;
 	private boolean useCookie;
+	
 	public String getSid() {
 		return sid;
 	}

@@ -17,5 +17,10 @@
 	<update id="storemodi" parameterType="org.cg.domain.StoreVO">
 		UPDATE TBL_STORE SET spw='${spw}',sname='${sname}',saddr='${saddr}',lat='${lat}',lng='${lng}',sphone='${sphone}',semail='${semail}',saddrm='${saddrm}' WHERE sid ='${sid}' 
 	</update>
+	
+	<update id="keepLogin">
+		update tbl_store set sessionKey = #{sessionID}, sessionLimit = #{next} where sid = #{sid}
+	
+	</update>
 
 </mapper>

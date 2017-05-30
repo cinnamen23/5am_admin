@@ -1,7 +1,13 @@
 package org.cg.controller;
 
 
+
+import java.util.Date;
+
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -16,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.WebUtils;
 
 @Controller
 @RequestMapping("/store")
@@ -30,12 +37,16 @@ public class StoreController {
 	@GetMapping("/login")
 	public void loginGET(@ModelAttribute("dto") LoginDTO dto){
 		
+		
+		
 	}
 	
 	@PostMapping("/loginPost")
-	public void loginPOST(LoginDTO dto,HttpSession session,Model model) throws Exception{
+	public void loginPOST(LoginDTO dto,HttpSession session, Model model) throws Exception{
 		
+		logger.info("==============================================================================");
 		logger.info("Login Post !!!!!!!!");
+		logger.info(dto);
 		
 		StoreVO vo = service.login(dto);
 		
@@ -45,22 +56,39 @@ public class StoreController {
 		
 		model.addAttribute("storeVO", vo);
 		
+		/*if(dto.isUseCookie()){
+			
+			int amount = 5;
+			
+			Date sessionLimit = new Date(System.currentTimeMillis()+(1000*amount));
+			
+			service.keepLogin(vo.getSid(), session.getId(), sessionLimit);
+			
+		}*/
 		
 	}
 	
 	@GetMapping("/logout")
-	public String logoutGet(HttpSession session, RedirectAttributes rttr ){
+	public String logoutGet(HttpSession session, RedirectAttributes rttr, HttpServletRequest request, HttpServletResponse response ){
 		
 		logger.info("logout ......");
 		
-		Object obj = session.getAttribute("login");
+		Object obj = session.getAttribute(LOGIN);
 		
 		if (obj != null) {
 			StoreVO vo = (StoreVO) obj;
-			session.removeAttribute("login");
+			session.removeAttribute(LOGIN);
 			session.invalidate();
+			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");			
+			
+			if (loginCookie !=null) {
+				
+				loginCookie.setPath("/");
+				loginCookie.setMaxAge(0);
+				response.addCookie(loginCookie);
+				service.keepLogin(vo.getSid(), session.getId(), new Date());
+			}
 			rttr.addFlashAttribute("logoutmsg","success");
-		
 		}
 		return "redirect:login";
 		
@@ -97,7 +125,7 @@ public class StoreController {
 	@GetMapping("/storemodi")
 	public void imodiGet(HttpSession session, Model model){
 		
-		Object obj = session.getAttribute("login");
+		Object obj = session.getAttribute(LOGIN);
 		StoreVO vo = (StoreVO) obj;
 		
 		model.addAttribute("vo", vo);
