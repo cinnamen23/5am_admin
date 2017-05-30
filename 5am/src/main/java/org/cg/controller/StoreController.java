@@ -34,8 +34,27 @@ public class StoreController {
 	@Inject
 	private StoreService service;
 	
+	@GetMapping("/forgotpw")
+	public void forgotpwGet (@ModelAttribute("dto") LoginDTO dto)throws Exception{
+		
+	}
+	
+	@PostMapping("/forgotid")
+	public String forgotidPost (String sname, String semail )throws Exception{
+		logger.info("forgotid@@");
+		logger.info(sname);
+		logger.info(semail);
+		
+		return "redirect:/store/login";
+	}
+	
+	@GetMapping("/forgotid")
+	public void forgotidGet ()throws Exception{
+		
+	}
+	
 	@GetMapping("/login")
-	public void loginGET(@ModelAttribute("dto") LoginDTO dto){
+	public void loginGET(){
 		
 		
 		

@@ -33,11 +33,8 @@
                     <div class="form-group">
 
                         <div class="col-md-6 text-center">
-                            <h1>
-                                L O G I N</h1>
+                            <h4>비밀번호를 잊어버렸군요</h4>
                             <br />
-                            <p>
-                               5AM이 당신의 꿈을 응원합니다</p>
                         </div>
                          <div class="col-md-3 text-center"></div>
                     </div>
@@ -64,7 +61,11 @@
                                     &nbsp;
                                 </div>
                                 <div class="col-lg-9">
-                                
+                                <div >
+                                	<label>
+                                	<input type="checkbox" name="useCookie"> Remember Me
+                                	</label>
+                                </div>
                                     <a href="/store/storeregi" class="btn btn-default">회원 가입</a>&nbsp;&nbsp;
                                     <button type="submit" class="btn btn-default">
                                         로그인</button>

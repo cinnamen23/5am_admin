@@ -25,7 +25,7 @@
                         </div>
         <div class="panel panel-blue">
             <div class="panel-body pan">
-                <form action="/store/loginPost" method="post" class="form-horizontal">
+                <form id ="f1" class="form-horizontal">
                 <div class="form-body pal">
                     <div class="col-md-9 text-center">
                         <br />
@@ -33,11 +33,8 @@
                     <div class="form-group">
 
                         <div class="col-md-6 text-center">
-                            <h1>
-                                L O G I N</h1>
+                             <h4>아이디를 잊어버렸군요</h4>
                             <br />
-                            <p>
-                               5AM이 당신의 꿈을 응원합니다</p>
                         </div>
                          <div class="col-md-3 text-center"></div>
                     </div>
@@ -46,15 +43,15 @@
                         <div class="col-md-12">
                             <div class="input-icon right">
                                 <i class="fa fa-user"></i>
-                                <input id="inputName" type="text" placeholder="아이디를 입력하세요" class="form-control" name="sid" /></div>
+                                <input id="inputSname" type="text" placeholder="상점 이름을 입력해주세요" class="form-control" name="sname" /></div>
                         </div>
                     </div>
                     <div class="form-group">
 
                         <div class="col-md-12">
                             <div class="input-icon right">
-                                <i class="fa fa-lock"></i>
-                                <input id="inputPassword" type="password"  placeholder="비밀번호를 입력하세요" class="form-control" name="spw" /></div>
+                                <i class="fa fa-user"></i>
+                                <input id="inputSemail" type="text"  placeholder="이메일 주소를 입력해주세요" class="form-control" name="semail" /></div>
                         </div>
                     </div>
                     <div class="form-group mbn">
@@ -64,10 +61,10 @@
                                     &nbsp;
                                 </div>
                                 <div class="col-lg-9">
-                                
-                                    <a href="/store/storeregi" class="btn btn-default">회원 가입</a>&nbsp;&nbsp;
-                                    <button type="submit" class="btn btn-default">
-                                        로그인</button>
+                                <div >
+         
+                                </div>
+                                    <button id="idSearch" class="btn btn-default"> 아이디 찾기</button>
                                 </div>
                             </div>
                         </div>
@@ -82,27 +79,19 @@
             </p>
         </div>
     </div>
+    
+    	<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
     <script>
 	$(document).ready(function(e) { 
-		
-		var result = '${sregimsg}';
-		if (result == "success") {
-			history.pushState(null, null);
-			alert("회원가입이 왼료 되었습니다. 로그인 하세요.");
-			window.onpopstate = function(e) {
-				history.go(1);
-			};
-		}
-		
-		var result2 = '${logoutmsg}';
-		if (result2 == "success") {
-			history.pushState(null, null);
-			alert("로그아웃 되었습니다. 다시 로그인 하세요.");
-			window.onpopstate = function(e) {
-				history.go(1);
-			};
-		}
-		
+		 $("#idSearch").on("click", function(e) {
+				e.preventDefault();
+				$("#f1").attr("method", "post").attr("action", "/store/forgotid").submit();
+		 })
+
+
 		
 	});
 	</script>
