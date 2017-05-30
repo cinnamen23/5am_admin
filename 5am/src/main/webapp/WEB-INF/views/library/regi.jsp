@@ -32,12 +32,12 @@
 							<form  method="post" action="/library/regi" class="form" enctype="multipart/form-data" name="form">
 								<div class="form-group">
 									<label>제목</label> 
-									<input class="form-control ltitle" type="text " name="ltitle" value="자료의 제목을 작성해주세요 " onfocus="this.value=''">
+									<input class="form-control ltitle" type="text " name="ltitle" placeholder="자료의 제목을 작성해주세요 ">
 									
 								</div>
 								<div class="form-group">
 									<label>내용</label>
-									<textarea class="form-control lcontent" rows="7" name="lcontent" onfocus="this.value=''">업로드한 자료를 설명하는 내용을 길게 써보아요~ </textarea>
+									<textarea class="form-control lcontent" rows="7" name="lcontent" placeholder="업로드한 자료를 설명하는 내용을 길게 써보아요~ "></textarea>
 								</div>
 								<div class="form-group">
 									<label>파일</label>

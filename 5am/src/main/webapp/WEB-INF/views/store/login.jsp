@@ -18,44 +18,42 @@
     <link type="text/css" rel="stylesheet" href="styles/style-responsive.css">
 </head>
 <body style="background: url('images/bg/bg.png') center center fixed;">
+    
     <div class="page-form">
+                        <div class="col-md-3">
+                            <img src="images/avatar/profile-pic.png" class="img-responsive" style=" margin-top: -130px;" />
+                        </div>
         <div class="panel panel-blue">
             <div class="panel-body pan">
                 <form action="/store/loginPost" method="post" class="form-horizontal">
                 <div class="form-body pal">
                     <div class="col-md-12 text-center">
-                        <h2 style="margin-top: -90px; font-size: 48px;">
-                            5"AM LOGIN</h2>
                         <br />
                     </div>
                     <div class="form-group">
-                        <div class="col-md-3">
-                            <img src="images/avatar/profile-pic.png" class="img-responsive" style="margin-top: -35px;" />
-                        </div>
-                        <div class="col-md-9 text-center">
+
+                        <div class="col-md-12 text-center">
                             <h1>
-                                Hello</h1>
+                                L O G I N</h1>
                             <br />
                             <p>
-                                Just sign in and we all send you on your way</p>
+                               5AM이 당신의 꿈을 응원합니다</p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputName" class="col-md-3 control-label">
-                            UserID:</label>
-                        <div class="col-md-9">
+
+                        <div class="col-md-12">
                             <div class="input-icon right">
                                 <i class="fa fa-user"></i>
-                                <input id="inputName" type="text" placeholder="" class="form-control" name="sid" /></div>
+                                <input id="inputName" type="text" placeholder="아이디를 입력하세요" class="form-control" name="sid" /></div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword" class="col-md-3 control-label">
-                            Password:</label>
-                        <div class="col-md-9">
+
+                        <div class="col-md-12">
                             <div class="input-icon right">
                                 <i class="fa fa-lock"></i>
-                                <input id="inputPassword" type="password" placeholder="" class="form-control" name="spw" /></div>
+                                <input id="inputPassword" type="password"  placeholder="비밀번호를 입력하세요" class="form-control" name="spw" /></div>
                         </div>
                     </div>
                     <div class="form-group mbn">
@@ -72,7 +70,7 @@
                                 </div>
                                     <a href="/store/storeregi" class="btn btn-default">회원 가입</a>&nbsp;&nbsp;
                                     <button type="submit" class="btn btn-default">
-                                        Sign In</button>
+                                        로그인</button>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +81,7 @@
         </div>
         <div class="col-lg-12 text-center">
             <p>
-                Forgot Something ?
+                아이디/ 비밀번호를 잊어버렸다면 ?
             </p>
         </div>
     </div>

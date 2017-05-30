@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+​<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
 
@@ -65,7 +66,9 @@
                                             <td class="sorting_1">${list.lno}</td>
                                             <td><a class="tt" href="${list.lno}">${list.ltitle}  	(${list.lfile})</a></td>
                                             <td class="center ">${list.hit}</td>
-                                            <td class="center ">${list.regdate}</td>
+                                            <td class="center " ><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
+                                            
+      
                                         </tr>
                                         </c:forEach>   
                                         </tbody>

@@ -111,6 +111,15 @@ $(document).ready(function(e) {
 		
 		if(confirm("정말 삭제하시겠습니까??") == true){    //확인
 			$(".form").attr("method","post").attr("action","/library/delete").submit();
+			 alert("삭제가 완료되었습니다.")
+
+		     history.pushState(null, null,"/library/list");
+
+		     window.onpopstate = function(e){
+		     history.go(1);}
+		
+		
+		
 		}else{   //취소
 		    return;
 		}
