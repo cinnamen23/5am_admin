@@ -33,8 +33,8 @@
                                 <label>
                                 
                                 </div></div>
-                                <div class="col-sm-6" style="float: right;">
-				                                등록시간 : ${lib.regdate} <br>
+                                <div class="col-md-12" style="text-align: right;">
+				                                등록시간 : ${lib.regdate}<br>
 				                                수정시간 : ${lib.updatedate}<br>
 				                                조회수 : ${lib.hit} 
 				                                </div></div>
@@ -53,7 +53,7 @@
 			                            <h3><strong>다운로드 파일</strong></h3>
 			                            <div class="alert alert-info">
 			                                <h3>${lib.lcontent} <br></h3>
-			                                <a href="http://localhost:8080/library/download?lfileid=${lib.lfileid}" class="alert-link ">${lib.lfile}<br></a>
+			                                <a href="/library/download?lfileid=${lib.lfileid}" class="alert-link ">${lib.lfile}<br></a>
 			                            	파일을 다운 받으려면 위의 링크를 클릭하세요
 			                            </div>
 			                           <br>
@@ -96,8 +96,6 @@
 <script>
 $(document).ready(function(e) {
 	
-	
-
 	
 //수정
 	$(".modifyBtn").on("click", function(e){

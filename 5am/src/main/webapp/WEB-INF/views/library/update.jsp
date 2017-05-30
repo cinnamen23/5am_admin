@@ -31,6 +31,10 @@
 							
 							<form role="form" method="post" action="/notice/regi" class="form" enctype="multipart/form-data">
 							<input type="hidden" name="lno" value="${lib.lno}">
+							<input type="hidden" name="page" value="${cri.page}" >
+							<input type="hidden" name="lno" value="${lib.lno}">
+							<input type="hidden" name="type" value="${cri.type}" >
+							<input type="hidden" name="keyword" value="${cri.keyword}" >
 								<div class="form-group">
 									<label>수정할 제목</label> 
 									<input class="form-control ltitle" type="text " name="ltitle" value="${lib.ltitle }" />
@@ -55,7 +59,6 @@
 									<input type="hidden" name="type" value="${cri.type}" >
 									<input type="hidden" name="keyword" value="${cri.keyword}" >
                                </form>
-						${lib }
 						</div>
 					</div>
 				</div>
@@ -102,7 +105,7 @@ $(document).ready(function(e) {
 		 if($file.val()!="" && $content.val()!="" && $title.val()!=""){
 			 alert("수정이 완료되었습니다.")
 
-			 $(".form").attr("method", "post").attr("action", "/library/update").submit();
+			 $(".form").attr("method", "post").attr("action", "/library/view").submit();
 		     history.pushState(null, null,"/library/list");
 
 		     window.onpopstate = function(e){

@@ -49,7 +49,10 @@ public class LibraryController {
 		HttpHeaders headers = new HttpHeaders();
 		
 		InputStream in = new FileInputStream("C:\\zzz\\upload\\" + lfileid);
+<<<<<<< Upstream, based on branch 'master' of https://github.com/kick07230723/5AM.git
 	
+=======
+>>>>>>> 8fb6c07 library - final
 		
      	lfileid = lfileid.substring(lfileid.indexOf("_") + 1);
      	headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
@@ -61,13 +64,36 @@ public class LibraryController {
 	
 	
 	
-	@PostMapping("/update")
-	public String postUpdate( Model model, LibraryVO vo, @RequestParam("file")MultipartFile file) throws Exception{
+//	@PostMapping("/update")
+//	public String postUpdate( Model model, LibraryVO vo, @RequestParam("file")MultipartFile file, @ModelAttribute("cri") Criteria cri) throws Exception{
+//		LibraryVO vo1=  service.read(vo.getLno());
+//		String lfileid = vo1.getLfileid();
+//		logger.info("vo1"+vo1);
+//		logger.info("lfileid"+lfileid);
+//		logger.info(vo);
+//		File file1 = new File("C:\\zzz\\upload\\"+lfileid);
+//		file1.delete();
+//		
+//		vo.setLfile(file.getOriginalFilename());
+//		UUID uid = UUID.randomUUID();
+//		String uidStr= uid.toString();
+//	    String saveName= uidStr+"_"+file.getOriginalFilename();
+//	    	logger.info( "getName: "+file.getName());
+//	    	logger.info( "getOriginalFilename: "+file.getOriginalFilename());
+//	    	logger.info( "size: "+file.getSize());
+//		IOUtils.copy(file.getInputStream(), new FileOutputStream("C:\\zzz\\upload\\"+saveName));
+//		vo.setLfileid(saveName);
+//		service.update(vo);
+//		return "redirect:/library/list"+cri;
+//	}
+	
+	@PostMapping("/view")
+	public String PostView( Model model, LibraryVO vo, @RequestParam("file")MultipartFile file, @ModelAttribute("cri") Criteria cri, Integer lno)throws Exception{
+logger.info(cri);
+logger.info(vo);
+		
 		LibraryVO vo1=  service.read(vo.getLno());
 		String lfileid = vo1.getLfileid();
-		logger.info("vo1"+vo1);
-		logger.info("lfileid"+lfileid);
-		logger.info(vo);
 		File file1 = new File("C:\\zzz\\upload\\"+lfileid);
 		file1.delete();
 		
@@ -81,8 +107,10 @@ public class LibraryController {
 		IOUtils.copy(file.getInputStream(), new FileOutputStream("C:\\zzz\\upload\\"+saveName));
 		vo.setLfileid(saveName);
 		service.update(vo);
-		return "redirect:/library/list";
+		
+		return "redirect:/library/list?page="+cri.getPage()+"&bno="+vo.getLno()+"&type="+cri.getType();
 	}
+	
 	
 	@GetMapping("/update")
 	public void getUpdate(@ModelAttribute("cri") Criteria cri, Model model, Integer lno) throws Exception{

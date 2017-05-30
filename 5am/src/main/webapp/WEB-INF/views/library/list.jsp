@@ -40,8 +40,8 @@
 					<input class="view"type="hidden" name="lno"> 
 	                <select name="type" class="type">
 						<option value="n" ${cri.type eq null?'selected':''}>---</option>
-						<option value="t" ${cri.type eq 't'?'selected':''}>title</option>
-						<option value="c" ${cri.type eq 'c'?'selected':''}>content</option>
+						<option value="t" ${cri.type eq 't'?'selected':''}>제목</option>
+						<option value="c" ${cri.type eq 'c'?'selected':''}>내용</option>
 				    </select> 
 				    <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keyword" value="${cri.keyword}">
 				    <button id="btnn" class="btn btn-info">Search</button>
