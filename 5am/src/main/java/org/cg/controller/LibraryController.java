@@ -78,7 +78,7 @@ public class LibraryController {
 		service.deleteFile(lno);
 		
     	//글등록
-    	service.create(vo);
+    	service.update(vo);
 		
     	//파일등록
 		for(int i=0;i<file.length;i++){
