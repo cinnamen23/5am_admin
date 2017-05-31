@@ -38,7 +38,16 @@
 		<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 		
-		<interceptor>
+		<interceptor> 
+	 	<mapping path="/admaker/**"/>
+		<mapping path="/library/**"/>
+		<mapping path="/member/**"/>
+		<mapping path="/notice/**"/>
+		<mapping path="/statistics/**"/>
+		<mapping path="/qna/**"/> 
+		<!-- <mapping path="/**"/> 원래 이걸로 한방에 막아야하느데  -->
+		<!--<mapping path="/store/**"/> -->		
+		
 		<mapping path="/index"/>	
 		<beans:ref bean="authInterceptor"/>
 		</interceptor>
