@@ -69,8 +69,11 @@
                                 <div class="row">
                                 <div class="col-md-12">
                                 <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
-                                <a href="#" class="btn btn-info modifyBtn">수정</a>
-                                <a href="#" class="btn btn-info deleteBtn">삭제</a></div>
+                                
+								<c:if test="${login.gubun=='admin'}"> 
+	                                <a href="#" class="btn btn-info modifyBtn">수정</a>
+	                                <a href="#" class="btn btn-info deleteBtn">삭제</a></div>
+							    </c:if>
                                 </div>
                                 <div class="col-md-12">
                                 <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">

@@ -70,27 +70,29 @@
                                             <td class="center ">${list.hit}</td>
                                             <td class="center " ><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
                                             
+			    </form>
       
                                         </tr>
                                         </c:forEach>   
                                         </tbody>
                                 </table>
                                 <div class="row">
-	                                <div class="col-sm-6">
 	                                	<div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
 			     <c:if test ="${fn:length(list) eq 0}" >
 	                 	<h2>검색 내용이 없습니다</h2>
 	             </c:if> 
 	                                
 	                                <!-- 관리자& 고객 분기 -->	
+	                                 <div class="col-sm-6" >
+	                                 
 	                                					${login.gubun}	   
 							    <c:if test="${login.gubun=='admin'}"> 
-	                                	 <button type="submit" class="btn btn-info regiBtn">등록</button> </div>
+	                                	 <button type="submit" class="btn btn-info regiBtn">등록</button> 
 							    </c:if>
+	                                 
 									<!-- 관리자& 고객 분기 끝 -->		
 	                     
 	                                
-			    </form>
 	                                </div>
 	                                <div class="col-sm-6" >
 		                                <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
@@ -106,7 +108,6 @@
 			                                </ul>
 		                                </div>
 	                                </div>
-                                </div>
                                 </div>
                             </div>
                             
