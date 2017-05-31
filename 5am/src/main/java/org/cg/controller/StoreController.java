@@ -159,15 +159,22 @@ public class StoreController {
 		logger.info(sname);
 		logger.info(semail);
 		
-		vo = service.findId(sname, semail);
-		
-		SendEmail mail = new SendEmail();
-		
-		mail.send("5AM에서 요청하신 아이디 입니다.", vo.getSemail(), vo.getSid());
-		
-		rttr.addFlashAttribute("sendId","success");
-		
-		return "redirect:login";
+		try {
+			vo = service.findId(sname, semail);
+			
+			SendEmail mail = new SendEmail();
+			
+			mail.send("5AM에서 요청하신 아이디 입니다.", vo.getSemail(), vo.getSid());
+			
+			rttr.addFlashAttribute("sendId","success");
+			return "redirect:login";
+			
+		} catch (Exception e) {
+			
+			rttr.addFlashAttribute("sendId","fail");
+			return "redirect:forgotid";
+
+		}
 	}
 	
 	@GetMapping("/forgotpw")
@@ -180,16 +187,21 @@ public class StoreController {
 		logger.info("forgotpw@@");
 		logger.info(sid);
 		logger.info(semail);
+		try {
+			vo = service.findPw(sid, semail);
+			
+			SendEmail mail = new SendEmail();
+			
+			mail.send("5AM에서 요청하신 비밀번호 입니다.", vo.getSemail(), vo.getSpw());
+			
+			rttr.addFlashAttribute("sendPw","success");
+			return "redirect:login";
+			
+		} catch (Exception e) {
+			rttr.addFlashAttribute("sendPw","fail");
+			return "redirect:forgotpw";
+		}
 		
-		vo = service.findPw(sid, semail);
-		
-		SendEmail mail = new SendEmail();
-		
-		mail.send("5AM에서 요청하신 비밀번호 입니다.", vo.getSemail(), vo.getSpw());
-		
-		rttr.addFlashAttribute("sendPw","success");
-		
-		return "redirect:login";
 	}
 	
 //	for admin

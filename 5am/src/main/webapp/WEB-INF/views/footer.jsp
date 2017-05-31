@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                   &copy; 당신의 꿈을 여는 시간 5am |<a href="http://www.binarytheme.com/" target="_blank"  >  by CODING GEARS</a> 
+                   &copy; 당신의 꿈을 여는 시간 5am |<a href="/index" target="_blank"  > copyright by CODING GEARS</a> 
                 </div>
 
             </div>
