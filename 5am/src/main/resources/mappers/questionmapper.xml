@@ -85,7 +85,7 @@ where rnum >=#{skip}
   
   
 	<update id="aupdate" parameterType="org.cg.domain.QAnswerVO">
-		UPDATE tbl_answer SET aCONTENT='${acontent}',aUPDATEDATE=sysdate WHERE aano ='${aano}'
+		UPDATE tbl_answer SET aCONTENT='${acontent}',aUPDATEDATE=sysdate WHERE aano =${aano}
 	</update>
 
   <delete id="adelete" parameterType="org.cg.domain.QAnswerVO">

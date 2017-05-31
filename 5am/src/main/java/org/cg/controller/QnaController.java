@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -221,14 +222,21 @@ public class QnaController {
 	
 //	======================================ANSWER=========================//
 	
-		@PostMapping("/amodi")
-		public String modiAnswer(Criteria cri,QuestionVO vo,RedirectAttributes rttr){
+		@PostMapping("/amodi")		
+		public String modiAnswer(Criteria cri,QuestionVO vo,QAnswerVO avo,RedirectAttributes rttr){
 			
 			logger.info("amodi post.........");
-			
+			logger.info(vo);
+			logger.info(cri);
+			logger.info(avo);
 		// QAnswerVO 를 받는순간 에러 나는데 왜 에러가 나는지 도저히 모르겠음 //	
+			qservice.aUpdate(avo);
 			
 			rttr.addFlashAttribute("msg","success");
+			rttr.addAttribute("qno",vo.getQno());
+			rttr.addAttribute("keyword",cri.getKeyword());
+			rttr.addAttribute("type",cri.getType());
+			
 			
 			return "redirect:qview";
 		}

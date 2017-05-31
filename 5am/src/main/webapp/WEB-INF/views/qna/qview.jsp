@@ -81,7 +81,7 @@ li{
 		<input type="hidden" name="title" value="${vo.title}">
 		<input type="hidden" name="content" value="${vo.content}">
 		
-		<input type="hidden" name="aano">
+		<input id="aano" type="hidden" name="aano">
 
       <div class="modal-body">
       
@@ -177,12 +177,11 @@ li{
                          
                                   <div id="uploadList">
 
-
                                   <c:forEach items="${flist}" var="file">
-                                  
-                                  <li><img id="img" src="/display?fName=${file.filename}" style="height: 400px"><button id="fdelBtn" class="btn btn-success" data-fname="${file.filename}">삭제</button></li>
+								  <li>
+                                  <img id="img" src="/display?fName=${file.filename}" style="height: 400px; width: 300px"><br/><button style="width: 300px; text-align: center;" id="fdelBtn" class="btn btn-success" data-fname="${file.filename}">삭제</button>
+                                  </li>
                                   </c:forEach>
-                                  
                                   
                                   <p style="line-height:300%; letter-spacing: 2px; margin: auto" >  ${vo.content}</p>
                                   </div>   
@@ -227,10 +226,10 @@ li{
 
 		
 		<!-- /. AnswerROW 2 -->
+		<div id="amodimodi" class="row">
 		<c:forEach items="${alist}" var="AnswerVO">
 		
 
-		<div class="row">
 				<div class="col-md-12">
 				
 				<div class="row">
@@ -290,9 +289,9 @@ li{
                     <!--End Advanced Tables -->
                 </div>
             </div>
-		</div>
 		
 		</c:forEach>
+		</div>
 		<!-- /. AnswerROW 2 -->		
 		
 		
@@ -406,7 +405,7 @@ $(document).ready(function() {
 		
 	});
 	
-	$('#amodifyIcon').on("click", function(e) {
+	$('#amodimodi #amodifyIcon').on("click", function(e) {
 
 		console.log("AmodifyIcon in-----------------------------------");
 		

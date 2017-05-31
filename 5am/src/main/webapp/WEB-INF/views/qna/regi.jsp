@@ -36,6 +36,7 @@
 }
 
 
+
 </style>
 
 
@@ -75,11 +76,13 @@
 								<div class="file_input">
 								    <label>
 								        File Attach
-								        <input type="file" name="file" multiple="multiple">
+								        <input id="file" type="file" name="file" multiple="multiple">
 								    </label>
 								    <input type="text" readonly="readonly" title="File Route">
 								</div>
-
+								<div id="uploadPreview">
+								
+								</div>
 
 
 								
@@ -100,13 +103,47 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
+
+
 $(document).ready(function(e) {
+	
+	
 	
 	var result = '${fail}';
 	if (result == 'fail') {
 		
 		alert("빈칸을 채워주세요")
 	}
+	
+	function readImage(file) {
+	    var reader = new FileReader();
+	    var image  = new Image();
+	    reader.readAsDataURL(file);  
+	    reader.onload = function(_file) {
+	        image.src    = _file.target.result;              // url.createObjectURL(file);
+	        image.onload = function() {
+	            var w = this.width,
+	                h = this.height,
+	                t = file.type,                           // ext only: // file.type.split('/')[1],
+	                n = file.name,
+	                s = ~~(file.size/1024) +'KB';
+	            if(w > 10000 || h >5000){
+	                alert("1000*500px 이하로 맞춰주세요(비율2:1)");
+	                $("#file").val("");
+	                
+	            }else{
+	                  $('#uploadPreview').append('<img src="'+ this.src +'" width="200" height="100">');  
+	            }
+	          
+	        };
+	        image.onerror= function() {
+	            alert('해당형식은 지원하지 않습니다. 파일형식:JPG,PNG');
+	            $("#file").val("");
+	        };      
+	    };
+	}
+	
+	
 
 	$('#qregibtn').on("click", function(e) {
 			e.preventDefault();	
@@ -139,6 +176,16 @@ $(document).ready(function(e) {
 	}); 
 
 
+	$("#file").change(function (e) {
+		
+		$("#uploadPreview img").remove();
+		
+	    if(this.disabled) return alert('File upload not supported!');
+	    console.log(this.files);
+	    var F = this.files;
+	    if(F && F[0]) for(var i=0; i<F.length; i++) readImage( F[i] );
+	});  
+	
 	
 
 
