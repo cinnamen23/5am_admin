@@ -3,13 +3,22 @@ package org.cg.persistence;
 import java.util.List;
 
 import org.cg.domain.Criteria;
+import org.cg.domain.LibraryFileVO;
 import org.cg.domain.LibraryVO;
-import org.cg.domain.NoticeVO;
-import org.springframework.stereotype.Repository;
 
 
 
 public interface LibraryDAO {
+	
+	public void deleteFile(int lno);
+	
+	public List<LibraryFileVO> readFile(int lno);
+	
+	public void createFile(LibraryFileVO vo);
+	
+	public LibraryFileVO searchFile(String lfileid);
+	
+	
 	
 	public void updateHit(LibraryVO vo);
 	

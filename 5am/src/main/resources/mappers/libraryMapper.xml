@@ -4,14 +4,34 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="library">
+<!--파일  -->
 
+	  <select id="searchFile" parameterType="Integer" resultType="org.cg.domain.LibraryFileVO">
+		  select * from tbl_library_file where fileid = #{fileid}
+	  </select>
+
+	<select id="deleteFile" parameterType="Integer">
+		delete from tbl_library_file where lno= #{lno}
+	</select>
+
+	  <select id="readFile" parameterType="Integer" resultType="org.cg.domain.LibraryFileVO">
+		  select * from tbl_library_file where lno = #{lno}
+	  </select>
+	  
+
+	<insert id="createFile" parameterType="org.cg.domain.LibraryFileVO">
+		insert into tbl_library_file(lno, lfilename, lfileid) values(#{lno}, #{lfilename}, #{lfileid} )
+
+	</insert>
+
+<!--글  -->
 
 	  <update id="updateHit" parameterType="org.cg.domain.LibraryVO">
 		update tbl_library set hit = hit+1 where lno = #{lno}
 	  </update>
 
 	<select id="update" resultType="org.cg.domain.LibraryVO" parameterType="org.cg.domain.LibraryVO">
-		update tbl_library set ltitle=#{ltitle}, lcontent=#{lcontent}, lfile=#{lfile}, lfileid=#{lfileid}, updatedate=sysdate where lno= #{lno}
+		update tbl_library set ltitle=#{ltitle}, lcontent=#{lcontent}, updatedate=sysdate where lno= #{lno}
 	</select>
 
 
@@ -25,8 +45,8 @@
 	  
 
 	 <select id="getList" parameterType="org.cg.domain.Criteria" resultType="org.cg.domain.LibraryVO">
-		select * from (SELECT rownum rnum ,lno, ltitle, lcontent, lfile,regdate, updatedate,hit FROM
-		( SELECT lno, ltitle, lcontent,lfile, regdate, UPDATEDATE,hit FROM tbl_library where lno>0
+		select * from (SELECT rownum rnum ,lno, ltitle, lcontent, regdate, updatedate,hit FROM
+		( SELECT lno, ltitle, lcontent, regdate, UPDATEDATE,hit FROM tbl_library where lno>0
 		  <choose>
 			  <when test='type=="t"'>
 			  and (ltitle like '%'|| #{keyword} ||'%')
@@ -43,7 +63,9 @@
 	]]>
 	</select>
 	  
-		<select id="getTotal" resultType="int" parameterType="org.cg.domain.Criteria">
+	  
+	  
+	<select id="getTotal" resultType="int" parameterType="org.cg.domain.Criteria">
 		  select count(lno) from tbl_library where lno>0
 		   <choose>
 			  <when test='type=="t"'>
@@ -53,12 +75,15 @@
 			  and (lcontent like '%'|| #{keyword} ||'%')
 			  </when>
 		  </choose>
-	  </select>
+	 </select>
 	  
 
-	<select id="create" parameterType="org.cg.domain.LibraryVO">
-		insert into tbl_library(lno, ltitle, lcontent, lfile, lfileid) values(seq_library_lno.nextval, #{ltitle}, #{lcontent}, #{lfile}, #{lfileid} )
-	</select>
+	<insert id="create" parameterType="org.cg.domain.LibraryVO">
+		insert into tbl_library(lno, ltitle, lcontent) values(seq_library_lno.nextval, #{ltitle}, #{lcontent} )
+		<selectKey keyProperty="lno" resultType="int" order="AFTER">  
+			SELECT seq_library_lno.currval FROM dual
+		</selectKey>
+	</insert>
 
 </mapper>
   

@@ -3,8 +3,8 @@ package org.cg.service;
 import java.util.List;
 
 import org.cg.domain.Criteria;
+import org.cg.domain.LibraryFileVO;
 import org.cg.domain.LibraryVO;
-import org.cg.domain.NoticeVO;
 
 
 public interface LibraryService {
@@ -19,5 +19,10 @@ public interface LibraryService {
 	
 	public void updateHit(LibraryVO vo)throws Exception;
 	
+	
+	public void createFile(LibraryFileVO vo) throws Exception;
+	public List<LibraryFileVO> readFile(Integer lno) throws Exception;
+	public void deleteFile(Integer lno) throws Exception;
+	public LibraryFileVO searchFile(String lfileid)throws Exception;
 
 }

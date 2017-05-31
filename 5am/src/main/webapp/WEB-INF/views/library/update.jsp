@@ -45,8 +45,8 @@
 									<textarea class="form-control lcontent" rows="7" name="lcontent">${lib.lcontent}</textarea>
 								</div>
 								<div class="form-group">
-									<label>수정할 파일</label>
-									<input class="form-control lfile" type="file" name="file" value="${lib.lfile}">
+									<label>파일</label>
+									<input class="form-control lfile" type="file" name="file"  multiple="multiple" accept=".jpg,.jpeg,.png,.gif,.bmp">
 								</div>
 								
                                 <a href="#" class="btn btn-primary saveBtn">저장</a>

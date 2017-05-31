@@ -44,7 +44,6 @@
 									<input type="hidden" name="lno" value="${lib.lno}">
 									<input type="hidden" name="type" value="${cri.type}" >
 									<input type="hidden" name="keyword" value="${cri.keyword}" >
-			                        <input type="hidden" class="lfid" value="${lib.lfileid}">
                                
 	                                <div id="dataTables-example_filter" class="dataTables_filter">
 	
@@ -53,7 +52,11 @@
 			                            <h3><strong>다운로드 파일</strong></h3>
 			                            <div class="alert alert-info">
 			                                <h3>${lib.lcontent} <br></h3>
-			                                <a href="/library/download?lfileid=${lib.lfileid}" class="alert-link ">${lib.lfile}<br></a>
+			                                
+			                                <c:forEach var="file" items="${file}">
+			                               		<a href="/library/download?lfileid=${file.lfileid}" class="alert-link ">${file.lfilename}<br></a>
+			                                </c:forEach>
+			                                
 			                            	파일을 다운 받으려면 위의 링크를 클릭하세요
 			                            </div>
 			                           <br>

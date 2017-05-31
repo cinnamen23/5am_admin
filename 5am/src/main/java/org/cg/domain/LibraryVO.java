@@ -9,7 +9,7 @@ public class LibraryVO {
 
 	
 	private int lno, hit;
-	private String ltitle, lcontent, lfile, lfileid;
+	private String ltitle, lcontent;
 	private Timestamp regdate, updatedate;
 	public int getLno() {
 		return lno;
@@ -35,18 +35,6 @@ public class LibraryVO {
 	public void setLcontent(String lcontent) {
 		this.lcontent = lcontent;
 	}
-	public String getLfile() {
-		return lfile;
-	}
-	public void setLfile(String lfile) {
-		this.lfile = lfile;
-	}
-	public String getLfileid() {
-		return lfileid;
-	}
-	public void setLfileid(String lfileid) {
-		this.lfileid = lfileid;
-	}
 	public Timestamp getRegdate() {
 		return regdate;
 	}
@@ -61,9 +49,10 @@ public class LibraryVO {
 	}
 	@Override
 	public String toString() {
-		return "LibraryVO [lno=" + lno + ", hit=" + hit + ", ltitle=" + ltitle + ", lcontent=" + lcontent + ", lfile="
-				+ lfile + ", lfileid=" + lfileid + ", regdate=" + regdate + ", updatedate=" + updatedate + "]";
+		return "LibraryVO [lno=" + lno + ", hit=" + hit + ", ltitle=" + ltitle + ", lcontent=" + lcontent + ", regdate="
+				+ regdate + ", updatedate=" + updatedate + "]";
 	}
+	
 	
 	
 	

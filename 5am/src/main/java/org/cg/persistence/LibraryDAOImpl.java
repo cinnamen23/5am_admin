@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.cg.domain.Criteria;
+import org.cg.domain.LibraryFileVO;
 import org.cg.domain.LibraryVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -50,6 +51,26 @@ public class LibraryDAOImpl implements LibraryDAO {
 	@Override
 	public void updateHit(LibraryVO vo) {
 		sess.selectOne(namespace+".updateHit", vo);
+	}
+
+	@Override
+	public void deleteFile(int lno) {
+		sess.delete(namespace+".deleteFile", lno);
+	}
+
+	@Override
+	public List<LibraryFileVO> readFile(int lno) {
+		return sess.selectList(namespace+".readFile", lno);
+	}
+
+	@Override
+	public void createFile(LibraryFileVO vo) {
+		sess.insert(namespace+".createFile", vo);
+	}
+
+	@Override
+	public LibraryFileVO searchFile(String lfileid) {
+		return sess.selectOne(namespace+".searchFile", lfileid);
 	}
 
 

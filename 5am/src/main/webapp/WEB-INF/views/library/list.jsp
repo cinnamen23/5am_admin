@@ -66,7 +66,7 @@
                                      <c:forEach var="list" items="${list}">
                                     <tr class="gradeA odd">
                                             <td class="sorting_1">${list.lno}</td>
-                                            <td><a class="tt" href="${list.lno}">${list.ltitle}  	(${list.lfile})</a></td>
+                                            <td><a class="tt" href="${list.lno}">${list.ltitle} </a></td>
                                             <td class="center ">${list.hit}</td>
                                             <td class="center " ><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
                                             
