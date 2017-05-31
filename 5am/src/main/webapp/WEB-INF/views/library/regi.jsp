@@ -41,7 +41,7 @@
 								</div>
 								<div class="form-group">
 									<label>파일</label>
-									<input class="form-control lfile" type="file" name="file"  multiple="multiple" accept=".jpg,.jpeg,.png,.gif,.bmp">
+									<input class="form-control lfile" type="file" name="file" id="file"  multiple="multiple" accept=".jpg,.jpeg,.png,.gif,.bmp">
 								</div>
 								
                                 <a href="#" class="btn btn-primary saveBtn">저장</a>
@@ -66,6 +66,48 @@
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
+    <script>
+function readImage(file) {
+
+    var reader = new FileReader();
+    var image  = new File();
+
+    reader.readAsDataURL(file);  
+    reader.onload = function(_file) {
+        image.src    = _file.target.result;              // url.createObjectURL(file);
+        image.onload = function() {
+            var w = this.width,
+                h = this.height,
+                t = file.type,                           // ext only: // file.type.split('/')[1],
+                n = file.name,
+                s = ~~(file.size/1024) +'KB';
+            if( t!=txt){
+            	console.log(t);
+            	alert("1000*500px로 맞춰주세요");
+            	$("#file").val("");
+            	
+            }else{
+            	console.log(t);
+            	  $('#uploadPreview').html('<img src="'+ this.src +'" width="200" height="100">'); 	
+            }
+          
+        };
+        image.onerror= function() {
+            alert('해당형식은 지원하지 않습니다. 파일형식:JPG,PNG');
+            $("#file").val("");
+        };      
+    };
+
+}
+
+$("#file").change(function (e) {
+    if(this.disabled) return alert('File upload not supported!');
+    var F = this.files;
+    if(F && F[0]) for(var i=0; i<F.length; i++) readImage( F[i] );
+});  
+  
+</script>
+
 <script>
 $(document).ready(function(e) {
 
@@ -83,21 +125,23 @@ $(document).ready(function(e) {
 			 alert("제목을 입력해주세요");
 		 }
 		 
-		 if($content.val()==""){
+		else if($content.val()==""){
 			 alert("내용을 입력해주세요");
 		 }
 		 
-		 if($file.val()==""){
+		else if($file.val()==""){
 			 alert("업로드할 파일을 찾아주세요");
 		 }
-		 if($file.val()!="" && $content.val()!="" && $title.val()!=""){
-
-			 $(".form").attr("method", "post").attr("action", "/library/regi").submit();
+		else{
+			console.log("in...");
+			console.log($file.val());
+			
+			/*  $(".form").attr("method", "post").attr("action", "/library/regi").submit();
 		     history.pushState(null, null,"/library/list");
 			 alert("처리가 완료되었습니다.")
 
 		     window.onpopstate = function(e){
-		     history.go(1);}
+		     history.go(1);} */
 			 }
 		
 		
