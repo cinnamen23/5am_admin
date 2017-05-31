@@ -24,14 +24,14 @@ public class StoreServiceImple implements StoreService {
 	}
 
 	@Override
-	public void storeregister(StoreVO vo) {
+	public void storeRegister(StoreVO vo) {
 
-		dao.storeregister(vo);
+		dao.storeRegister(vo);
 	}
 
 	@Override
-	public void storemodify(StoreVO vo) {
-		dao.storemodify(vo);
+	public void storeModify(StoreVO vo) {
+		dao.storeModify(vo);
 
 	}
 
@@ -63,6 +63,17 @@ public class StoreServiceImple implements StoreService {
 	@Override
 	public List<StoreVO> storeList(Criteria cri) {
 		return dao.storeList(cri);
+	}
+
+	@Override
+	public StoreVO storeRead(String sid) {
+		return dao.storeRead(sid);
+	}
+
+	@Override
+	public void storeDel(String sid) {
+		dao.storeDel(sid);
+		
 	}
 
 

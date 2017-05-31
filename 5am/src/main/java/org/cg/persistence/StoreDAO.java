@@ -11,10 +11,6 @@ public interface StoreDAO {
 	
 	public StoreVO login(LoginDTO dto) throws Exception;
 	
-	public void storeregister(StoreVO vo);
-
-	public void storemodify(StoreVO vo);
-	
 	public void keepLogin(String sid, String sessionID, Date next);
 	
 	public StoreVO checkSessionKey(String value);
@@ -27,5 +23,12 @@ public interface StoreDAO {
 	
 	public List<StoreVO> storeList(Criteria cri);
 	
+	public void storeRegister(StoreVO vo);
+	
+	public StoreVO storeRead(String sid);
+	
+	public void storeModify(StoreVO vo);
+	
+	public void storeDel(String sid);
 	
 }

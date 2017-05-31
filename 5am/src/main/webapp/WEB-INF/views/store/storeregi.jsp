@@ -1,136 +1,216 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="ko">
 
-    <%@ include file="/WEB-INF/views/header.jsp" %>
 <head>
-    <title>Mask, Layer popup</title>
-    <style>
-       
-      
+<base href="/resources/login/">
+<title>Register</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800">
+<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
+<link type="text/css" rel="stylesheet" href="styles/font-awesome.min.css">
+<link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="styles/animate.css">
+<link type="text/css" rel="stylesheet" href="styles/all.css">
+<link type="text/css" rel="stylesheet" href="styles/main.css">
+<link type="text/css" rel="stylesheet" href="styles/style-responsive.css">
+	
+	
+	<style>       
         .window {
             display: none;
-            left:25%;
+            left:0%;
             top:20%;
             background-color: #ffffff;
-            width:50%;
+            width:100%;
             z-index:8000;
             position:absolute;
-        }
-        
-        
-        .window2 {
-            display: none;
-            left:25%;
-            top:20%;
-            background-color: #ffffff;
-            width:50%;
-            z-index:9000;
-            position:absolute;
-        }
+        }           
+      
     </style>
+	
+	
+	
 </head>
-<body>
-<div class="setDiv">
-    <a href="#" class="showMask">검은 마스크와 레이어 팝업 띄우기</a>
- 
-    <div class="mask"></div>
-    <div class="mask2"></div>
+<body style="background: url('images/bg/bg.png') center center fixed;">
+	<div class="page-form" style="margin-top: 100px;">
+		<div class="panel panel-blue">
+			<div class="panel-body pan">
+				<form id="f1" action="/store/storeregi" method="post"
+					class="form-horizontal">
+					<div class="form-body pal">
+						<div class="col-md-12 text-center"></div>
+						<div class="form-group">
+							<div class="col-md-3">
+								<img src="images/avatar/profile-pic.png" class="img-responsive"
+									style="margin-top: -35px;" />
+							</div>
+							<div class="col-md-9 text-center">
+								<h2 style="margin-top: -1px; font-size: 40px;">5"AM 회원 등록</h2>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputName" class="col-md-3 control-label">
+								UserID:</label>
+							<div class="col-md-9">
+								<div class="input-icon right">
+									<input id="inputName" type="text"
+										placeholder="로그인에 사용 할 ID를 입력하세요" class="form-control"
+										name="sid" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword" class="col-md-3 control-label">
+								Password:</label>
+							<div class="col-md-9">
+								<div class="input-icon right">
+
+									<input id="inputPassword" type="password"
+										placeholder="로그인에 사용 할  비밀번호를 입력하세요" class="form-control"
+										name="spw" />
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="inputName" class="col-md-3 control-label"> 가게
+								이름:</label>
+							<div class="col-md-9">
+								<div class="input-icon right">
+
+									<input id="inputName" type="text" placeholder="가게 이름을 입력하세요"
+										class="form-control" name="sname" />
+								</div>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+                        <label for="inputName" class="col-md-3 control-label">
+                            가게 주소:</label>
+                        <div class="col-md-9">
+                            <div class="input-icon right">
+                            <button id="showMask" type="submit" class="btn btn-default">주소 검색</button>
+                            
+<!-- 주소 검색 div 시작 -->
+							
+				<div class="mask"></div>
+    				<div class="mask2"></div>
     
-    <!-- 1번 창 보여짐   -->
-		<div class="window">
-			<div class="col-md-14 col-sm-14 col-xs-14">
-					<div class="panel panel-danger">
-						<div class="panel-heading">SINGUP FORM</div>
-						<div class="panel-body">
-							<form role="form">
-
-								<div class="form-group">
-									<label>Enter Email</label> <input class="form-control"
-										type="text" />
-									<p class="help-block">Help text here.</p>
-									<a href="#" class="showMask2">검은 마스크와 레이어 팝업 띄우기</a>
-									<input class="form-control" type="text" name="saddr1"
-													id="address" value="" readonly="readonly" />
-								</div>
-								<div class="form-group">
-									<label>Enter Password</label> <input class="form-control"
-										type="password" />
-									<p class="help-block">Help text here.</p>
-								</div>
-								<div class="form-group">
-									<label>Re Type Password </label> <input class="form-control"
-										type="password" />
-									<p class="help-block">Help text here.</p>
-								</div>
-
-								<button type="submit" class="btn btn-danger">Register
-									Now</button>
-
-							</form>
+<!-- 1번 창 보여짐   -->
+				<div class="window">
+					<div class="col-md-12 col-sm-12 col-xs-12" style="margin: 0;padding: 0">
+						<div class="panel panel-danger"style="margin: 0;padding: 0">
+							<div class="panel-heading">
+								<h5>주소검색</h5>
+								
+							</div>
+							<div class="panel-body"style="margin: 0;padding: 0">
+								
+							<div id="postcodify"></div>
+							</div>
 						</div>
 					</div>
 				</div>
-		</div>
 
-		<!-- 1번 창 보여짐  끝  -->
-    
-    <!-- 2번 창 보여짐   -->
-    <div class="window2">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-					<div class="panel panel-danger">
-						<div class="panel-heading">주소검색<button id="close2" class="btn btn-danger" style="float:right">선 택</button></div>
-					<div class="panel-body">
-						<form role="form">
-						<label for="inputName" class="col-md-3 control-label"> 주
-									소:</label>
-							<input class="form-control" type="text" name="saddr1"
-								id="address2" value="" readonly="readonly" />
-							<!-- 검색 기능을 표시할 <div>를 생성한다 -->
+<!-- 1번 창 보여짐  끝  -->
+  								
+<!-- 주소 검색 div 끝  -->								
+								<!-- 주소와 우편번호를 입력할 <input>들을 생성하고 적당한 name과 id를 부여한다 -->
+							
+						<div class="form-group">
+                        <label for="inputName" class="col-md-3 control-label">
+                            주 소:</label>
+                        <div class="col-md-9">
+                            <div class="input-icon right">		
+								<input class="form-control" type="text" name="saddr1" id="address2" value="${vo.saddrm}" /><br />
+								</div>
+                        </div>
+                    </div>
+                    		
+						<div class="form-group">
+                        <label for="inputName" class="col-md-3 control-label">
+                            상세 주소:</label>
+                        <div class="col-md-9">
+                            <div class="input-icon right">		
+								<input class="form-control" type="text" name="saddr3" id="details" value="" /><br />
+								</div>
+                        </div>
+                    </div>
+				
+                    
+                    <div class="form-group">
+                        <label for="inputName" class="col-md-3 control-label">
+                            가게 전화 번호:</label>
+                        <div class="col-md-9">
+                            <div class="input-icon right">
 
-							<!-- 주소와 우편번호를 입력할 <input>들을 생성하고 적당한 name과 id를 부여한다 -->
+                                <input id="inputName" type="text" value="${vo.sphone}" class="form-control" name="sphone" /></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-md-3 control-label">
+                            가게 e-mail:</label>
+                        <div class="col-md-9">
+                            <div class="input-icon right">
 
-							<div class="form-group">
-								
-								<div class="col-md-9">
-									<div class="input-icon right "></div>
+                                <input id="inputName" type="text" value="${vo.semail}" class="form-control" name="semail" /></div>
+                        </div>
+                    </div>
+
+						<div class="form-group mbn">
+							<div class="col-lg-12" align="right">
+								<div class="form-group mbn">
+									<div class="col-lg-3">&nbsp;</div>
+									<div>
+										<input type="hidden" class="lat" name="lat">
+										 <input	type="hidden" class="lng" name="lng">
+
+									</div>
+									<div class="col-lg-9">
+
+
+										<button id="regiBtn" type="submit" class="btn btn-default">회원
+											가입</button>
+
+
+										<button type="button" class="btn btn-default"
+											onclick="location.href='/store/login' ">취 소</button>
+
+
+									</div>
 								</div>
 							</div>
-
-
-
-							
-
-						</form>
+						</div>
 					</div>
-							<div id="postcodify"></div>
-				</div>
-				</div>
-    </div>
-    
-    <!-- 2번 창 보여짐  끝  -->
-</div>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript">
+				</form>
+			</div>
+		</div>
+		<div class="col-lg-12 text-center">
+			<p>Forgot Something ?</p>
+		</div>
+	</div>
+
+	<!-- jQuery와 Postcodify를 로딩한다 -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+
+	<!-- "검색" 단추를 누르면 팝업 레이어가 열리도록 설정한다 -->
+	<script type="text/javascript">
 	
     function wrapWindowByMask(){
 
         $('.window').show();
     }
     
-    function wrapWindowByMask2(){
-	 
-	    $('.window2').show();
-	}
- 
     $(document).ready(function(){
         // showMask를 클릭시 작동하며 검은 마스크 배경과 레이어 팝업을 띄웁니다.
-        $('.showMask').click(function(e){
+        $('#showMask').click(function(e){
             // preventDefault는 href의 링크 기본 행동을 막는 기능입니다.
             e.preventDefault();
             wrapWindowByMask();
@@ -139,36 +219,14 @@
         // 닫기(close)를 눌렀을 때 작동합니다.
         $('.window #close').click(function (e) {
             e.preventDefault();
-            $('.mask, .window').hide();
+            $('.window').hide();
         });
  
-        
-        // showMask를 클릭시 작동하며 검은 마스크 배경과 레이어 팝업을 띄웁니다.
-        $('.showMask2').click(function(e){
-            // preventDefault는 href의 링크 기본 행동을 막는 기능입니다.
-            e.preventDefault();
-            wrapWindowByMask2();
-        });
- 
-        // 선택(close)를 눌렀을 때 작동합니다.
-        $('.window2 #close2').click(function (e) {
-            e.preventDefault();
-            console.log($("#address2").val());
-            $('#address').val($('#address2').val());
-            $('.window2').hide();
-        });
- 
-    
         
     });
 </script>
 
-	<!-- jQuery와 Postcodify를 로딩한다 -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-
-	<!-- "검색" 단추를 누르면 팝업 레이어가 열리도록 설정한다 -->
-	<script>
+<script>
     $(function() { $("#postcodify").postcodify({
         insertPostcode5 : "#postcode",
         insertAddress : "#address",
@@ -176,11 +234,13 @@
         insertDetails : "#details",
         insertExtraInfo : "#extra_info",
         hideOldAddresses : false,
-        success : function(result){
-        	
-        	console.log("result: " );
-        	console.log(result);
+        afterSelect : function(selectedEntry) {
+            $("#postcodify div.postcode_search_result").remove();
+            $("#postcodify div.postcode_search_status.summary").hide();
+            
+            $('.window').hide();
         }
+       
         
     }); });
     
@@ -215,4 +275,6 @@
 
    
 </script>
+
+</body>
 </html>
