@@ -89,11 +89,19 @@ list-style: none;
                              <input type="hidden" name="nno" value="${read.nno}">
                              <input type="hidden" name="type" value="${cri.type}">
                              <input type="hidden" name="keyword" value="${cri.keyword}">
-                            <button type="submit" class="btn btn-info" style="float: right; margin: 5px;;" >수정</button> 
+                             <!-- 관리자& 고객 분기 -->							   
+							<c:if test="${login.gubun=='admin'}"> 
+                            <button type="submit" class="btn btn-info" style="float: right; margin: 5px;;" >수정</button>
+                            </c:if>
+							<!-- 관리자& 고객 분기 끝 -->	 
                              </form>
                             <form action="/notice/delete" method="get" id="deleteForm">
                             <input type="hidden" name="nno" value="${read.nno}">
+                             <!-- 관리자& 고객 분기 -->
+                            <c:if test="${login.gubun=='admin'}"> 
                              <button class="btn btn-info" id="deleteBtn" style="float: right; margin: 5px;">삭제</button>   
+                              </c:if>
+							<!-- 관리자& 고객 분기 끝 -->	 
                              </form>
                             </div>
                             

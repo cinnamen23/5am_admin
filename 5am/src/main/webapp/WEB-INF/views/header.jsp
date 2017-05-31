@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
 <head>
@@ -49,7 +50,11 @@
             <div class="col-md-12">
                 <div class="navbar-collapse collapse ">
                     <ul id="menu-top" class="nav navbar-nav navbar-right">
+                     <!-- 관리자& 고객 분기 -->
+                            <c:if test="${login.gubun=='admin'}"> 
                     	<li><a href="/store/list">상점관리</a></li>
+                    	 </c:if>
+							<!-- 관리자& 고객 분기 끝 -->
                         <li><a href="/member/list">고객관리</a></li>
                         <!--  class="menu-top-active"  활성화 -->
 
