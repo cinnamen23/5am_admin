@@ -75,7 +75,11 @@
                                 <div class="col-sm-6">
                                 <div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
                                 <form action="/notice/regi" method="get">
+			<!-- 관리자& 고객 분기 -->							   
+							    <c:if test="${login.gubun=='admin'}"> 
 							    <button type="submit" class="btn btn-info">등록</button>
+							    </c:if>
+			<!-- 관리자& 고객 분기 끝 -->	
 							    </form>
 							    </div>
                                 </div>

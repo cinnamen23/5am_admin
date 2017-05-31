@@ -295,7 +295,8 @@ li{
 		<!-- /. AnswerROW 2 -->		
 		
 		
-		
+	<!-- 관리자& 고객 분기 -->							   
+    <c:if test="${login.gubun=='admin'}"> 
 		<h2>등록창</h2>
 		
 		 <div class="row">
@@ -330,7 +331,8 @@ li{
 	                </div>
 		
 		
-		
+						    </c:if>
+			<!-- 관리자& 고객 분기 끝 -->	
 		
 		
 		

@@ -81,12 +81,20 @@
 			     <c:if test ="${fn:length(list) eq 0}" >
 	                 	<h2>검색 내용이 없습니다</h2>
 	             </c:if> 
+	                                
+	                                <!-- 관리자& 고객 분기 -->	
+	                                					${login.gubun}	   
+							    <c:if test="${login.gubun=='admin'}"> 
 	                                	 <button type="submit" class="btn btn-info regiBtn">등록</button> </div>
-	                                </div>
+							    </c:if>
+									<!-- 관리자& 고객 분기 끝 -->		
+	                     
+	                                
 			    </form>
-	                                <div class="col-sm-6">
+	                                </div>
+	                                <div class="col-sm-6" >
 		                                <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
-			                                <ul class="pagination">
+			                                <ul class="pagination"  >
 			                                <li class="paginate_button" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous"><c:if test="${pageMaker.prev}"><a href="${pageMaker.start-1}">이전</a></c:if></li>
 			                                <c:forEach begin="${pageMaker.start}" end="${pageMaker.end}" 
 			                                var="pagege">
