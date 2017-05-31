@@ -157,20 +157,7 @@ $(document).ready(function(e) {
 						$(".uploadList").append(str);
 						
 						
-						$.ajax({
-							url:"/notice/nview",
-							data: text,
-							type:'get',
-							success: function(result){
-							
-								var hit = "${read.hit}+1"
-								$("#hit").append(hit);
-								
-							}
 						
-
-
-						})
 						
 				
 				

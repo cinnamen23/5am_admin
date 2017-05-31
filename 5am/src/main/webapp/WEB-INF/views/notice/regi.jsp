@@ -36,10 +36,12 @@
 									
 								</div>
 								<div class="form-group">
-									<label>이미지 첨부파일(900*370 px로 맞춰주세요)</label> 
+									<label>이미지 첨부파일(1000*500 px로 맞춰주세요)</label> 
 									<input class="form-control" type="file" name="file" id="file"/>
+								
 									
 								</div>
+								<div id="uploadPreview"></div>
 								
 								</form>
 								
@@ -69,7 +71,46 @@
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
-<script>
+  <script>
+function readImage(file) {
+
+    var reader = new FileReader();
+    var image  = new Image();
+
+    reader.readAsDataURL(file);  
+    reader.onload = function(_file) {
+        image.src    = _file.target.result;              // url.createObjectURL(file);
+        image.onload = function() {
+            var w = this.width,
+                h = this.height,
+                t = file.type,                           // ext only: // file.type.split('/')[1],
+                n = file.name,
+                s = ~~(file.size/1024) +'KB';
+            if(w != 1000 || h !=500){
+            	alert("1000*500px로 맞춰주세요");
+            	$("#file").val("");
+            	
+            }else{
+            	  $('#uploadPreview').html('<img src="'+ this.src +'" width="200" height="100">'); 	
+            }
+          
+        };
+        image.onerror= function() {
+            alert('해당형식은 지원하지 않습니다. 파일형식:JPG,PNG');
+            $("#file").val("");
+        };      
+    };
+
+}
+
+$("#file").change(function (e) {
+    if(this.disabled) return alert('File upload not supported!');
+    var F = this.files;
+    if(F && F[0]) for(var i=0; i<F.length; i++) readImage( F[i] );
+});  
+  
+</script>
+  <script>
 $(document).ready(function(e) {
 	
 	var result = '${fail}';
@@ -105,7 +146,7 @@ $(document).ready(function(e) {
 })
 
             
- </script>          
+ </script>        
 
     
 

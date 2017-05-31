@@ -46,7 +46,7 @@
 								<div class="form-group">
 									<label>첨부파일</label> <input class="form-control" type="file" name="file" id="file"/>
 									<input type="hidden" name="nno" value="${read.nno}">
-									
+									<div id="uploadPreview"></div>
 								</div>	
 							</form>
 							<button type="submit" class="btn btn-info" style="float: left; margin: 5px" id="btnRegi">등록</button>
@@ -95,31 +95,69 @@ $(document).ready(function(e) {
 	
 		})
 		
-		$("#file").change(function(event){
-			
-			event.preventDefault();
-			console.log("droped...");
-			var formData = new FormData();
-			formData.append("nno", $("input[name=nno]").val());
-			formData.append("file", $("input[name=file]")[0].files[0]);
+	function readImage(file) {
 
+    var reader = new FileReader();
+    var image  = new Image();
+
+    reader.readAsDataURL(file);  
+    reader.onload = function(_file) {
+        image.src    = _file.target.result;              // url.createObjectURL(file);
+        image.onload = function() {
+            var w = this.width,
+                h = this.height,
+                t = file.type,                           // ext only: // file.type.split('/')[1],
+                n = file.name,
+                s = ~~(file.size/1024) +'KB';
+            if(w != 1000 || h != 500){
+            	alert("1000*500px로 맞춰주세요");
+            	$("#file").val("");
+            	
+            }else{
+            	$('#uploadPreview').html('<img src="'+ this.src +'" width="200" height="100">'); 
+            	 	
+            			
+            			
+            			console.log("upload......");
+            			var formData = new FormData();
+            			formData.append("nno", $("input[name=nno]").val());
+            			formData.append("file", $("input[name=file]")[0].files[0]);
+
+            		
+            			$.ajax({
+            				url:"/notice/update",
+            				data: formData,
+            				processData:false,
+            				contentType:false,
+            				type:'post',
+            				success: function(result){
+            	            alert("업로드 성공!!");
+            	                }
+
+
+
+            			})
+            			
+            			
+            		 
+            }
+          
+        };
+        image.onerror= function() {
+            alert('해당형식은 지원하지 않습니다. 파일형식:JPG,PNG');
+            $("#file").val("");
+        };      
+    };
+
+}
+	
+	$("#file").change(function (e) {
+	    if(this.disabled) return alert('File upload not supported!');
+	    var F = this.files;
+	    if(F && F[0]) for(var i=0; i<F.length; i++) readImage( F[i] );
+	}); 
 		
-			$.ajax({
-				url:"/notice/update",
-				data: formData,
-				processData:false,
-				contentType:false,
-				type:'post',
-				success: function(result){
-	            alert("업로드 성공!!");
-	                }
-
-
-
-			})
-			
-			
-		})
+	
 	
 })
  </script>          
