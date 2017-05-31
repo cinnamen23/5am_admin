@@ -1,186 +1,218 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="ko">
+
+    <%@ include file="/WEB-INF/views/header.jsp" %>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+    <title>Mask, Layer popup</title>
+    <style>
+       
+      
+        .window {
+            display: none;
+            left:25%;
+            top:20%;
+            background-color: #ffffff;
+            width:50%;
+            z-index:8000;
+            position:absolute;
+        }
+        
+        
+        .window2 {
+            display: none;
+            left:25%;
+            top:20%;
+            background-color: #ffffff;
+            width:50%;
+            z-index:9000;
+            position:absolute;
+        }
+    </style>
 </head>
 <body>
-<style type="text/css">
-* {
-  margin: 0;
-  padding: 0;
-}
+<div class="setDiv">
+    <a href="#" class="showMask">검은 마스크와 레이어 팝업 띄우기</a>
+ 
+    <div class="mask"></div>
+    <div class="mask2"></div>
+    
+    <!-- 1번 창 보여짐   -->
+		<div class="window">
+			<div class="col-md-14 col-sm-14 col-xs-14">
+					<div class="panel panel-danger">
+						<div class="panel-heading">SINGUP FORM</div>
+						<div class="panel-body">
+							<form role="form">
 
-body {
-  margin: 100px;
-}
+								<div class="form-group">
+									<label>Enter Email</label> <input class="form-control"
+										type="text" />
+									<p class="help-block">Help text here.</p>
+									<a href="#" class="showMask2">검은 마스크와 레이어 팝업 띄우기</a>
+									<input class="form-control" type="text" name="saddr1"
+													id="address" value="" readonly="readonly" />
+								</div>
+								<div class="form-group">
+									<label>Enter Password</label> <input class="form-control"
+										type="password" />
+									<p class="help-block">Help text here.</p>
+								</div>
+								<div class="form-group">
+									<label>Re Type Password </label> <input class="form-control"
+										type="password" />
+									<p class="help-block">Help text here.</p>
+								</div>
 
-.pop-layer .pop-container {
-  padding: 20px 25px;
-}
+								<button type="submit" class="btn btn-danger">Register
+									Now</button>
 
-.pop-layer p.ctxt {
-  color: #666;
-  line-height: 25px;
-}
+							</form>
+						</div>
+					</div>
+				</div>
+		</div>
 
-.pop-layer .btn-r {
-  width: 100%;
-  margin: 10px 0 20px;
-  padding-top: 10px;
-  border-top: 1px solid #DDD;
-  text-align: right;
-}
+		<!-- 1번 창 보여짐  끝  -->
+    
+    <!-- 2번 창 보여짐   -->
+    <div class="window2">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="panel panel-danger">
+						<div class="panel-heading">주소검색<button id="close2" class="btn btn-danger" style="float:right">선 택</button></div>
+					<div class="panel-body">
+						<form role="form">
+						<label for="inputName" class="col-md-3 control-label"> 주
+									소:</label>
+							<input class="form-control" type="text" name="saddr1"
+								id="address2" value="" readonly="readonly" />
+							<!-- 검색 기능을 표시할 <div>를 생성한다 -->
 
-.pop-layer {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 410px;
-  height: auto;
-  background-color: #fff;
-  border: 5px solid #3571B5;
-  z-index: 10;
-}
+							<!-- 주소와 우편번호를 입력할 <input>들을 생성하고 적당한 name과 id를 부여한다 -->
 
-.dim-layer {
-  display: none;
-  position: fixed;
-  _position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-}
+							<div class="form-group">
+								
+								<div class="col-md-9">
+									<div class="input-icon right "></div>
+								</div>
+							</div>
 
-.dim-layer .dimBg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  opacity: .5;
-  filter: alpha(opacity=50);
-}
 
-.dim-layer .pop-layer {
-  display: block;
-}
 
-a.btn-layerClose {
-  display: inline-block;
-  height: 25px;
-  padding: 0 14px 0;
-  border: 1px solid #304a8a;
-  background-color: #3f5a9d;
-  font-size: 13px;
-  color: #fff;
-  line-height: 25px;
-}
+							
 
-a.btn-layerClose:hover {
-  border: 1px solid #091940;
-  background-color: #1f326a;
-  color: #fff;
-}
-
-</style>
-	<div style="height: 300px;"></div>
-<a href="#layer1" class="btn-example">일반 팝업레이어</a>
-<div id="layer1" class="pop-layer">
-    <div class="pop-container">
-        <div class="pop-conts">
-            <!--content //-->
-            <p class="ctxt mb20">Thank you.<br>
-                Your registration was submitted successfully.<br>
-                Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
-                Hope to see you soon!
-            </p>
-
-            <div class="btn-r">
-                <a href="#" class="btn-layerClose">Close</a>
-            </div>
-            <!--// content-->
-        </div>
+						</form>
+					</div>
+							<div id="postcodify"></div>
+				</div>
+				</div>
     </div>
+    
+    <!-- 2번 창 보여짐  끝  -->
 </div>
-<br/><br/>
-<a href="#layer2" class="btn-example">딤처리 팝업레이어 1</a>
-<div class="dim-layer">
-    <div class="dimBg"></div>
-    <div id="layer2" class="pop-layer">
-        <div class="pop-container">
-            <div class="pop-conts">
-                <!--content //-->
-                <p class="ctxt mb20">Thank you.<br>
-                    Your registration was submitted successfully.<br>
-                    Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
-                    Hope to see you soon!
-                </p>
-
-                <div class="btn-r">
-                    <a href="#" class="btn-layerClose">Close</a>
-                </div>
-                <!--// content-->
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-	$(document).ready(function(e) { 
-
-$('.btn-example').click(function(){
-        var $href = $(this).attr('href');
-        layer_popup($href);
-    });
-    function layer_popup(el){
-
-        var $el = $(el);        //레이어의 id를 $el 변수에 저장
-        var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
-
-        isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
-
-        var $elWidth = ~~($el.outerWidth()),
-            $elHeight = ~~($el.outerHeight()),
-            docWidth = $(document).width(),
-            docHeight = $(document).height();
-
-        // 화면의 중앙에 레이어를 띄운다.
-        if ($elHeight < docHeight || $elWidth < docWidth) {
-            $el.css({
-                marginTop: -$elHeight /2,
-                marginLeft: -$elWidth/2
-            })
-        } else {
-            $el.css({top: 0, left: 0});
-        }
-
-        $el.find('a.btn-layerClose').click(function(){
-            isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
-            return false;
-        });
-
-        $('.layer .dimBg').click(function(){
-            $('.dim-layer').fadeOut();
-            return false;
-        });
-
-    }
-	})
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript">
 	
+    function wrapWindowByMask(){
+
+        $('.window').show();
+    }
+    
+    function wrapWindowByMask2(){
+	 
+	    $('.window2').show();
+	}
+ 
+    $(document).ready(function(){
+        // showMask를 클릭시 작동하며 검은 마스크 배경과 레이어 팝업을 띄웁니다.
+        $('.showMask').click(function(e){
+            // preventDefault는 href의 링크 기본 행동을 막는 기능입니다.
+            e.preventDefault();
+            wrapWindowByMask();
+        });
+ 
+        // 닫기(close)를 눌렀을 때 작동합니다.
+        $('.window #close').click(function (e) {
+            e.preventDefault();
+            $('.mask, .window').hide();
+        });
+ 
+        
+        // showMask를 클릭시 작동하며 검은 마스크 배경과 레이어 팝업을 띄웁니다.
+        $('.showMask2').click(function(e){
+            // preventDefault는 href의 링크 기본 행동을 막는 기능입니다.
+            e.preventDefault();
+            wrapWindowByMask2();
+        });
+ 
+        // 선택(close)를 눌렀을 때 작동합니다.
+        $('.window2 #close2').click(function (e) {
+            e.preventDefault();
+            console.log($("#address2").val());
+            $('#address').val($('#address2').val());
+            $('.window2').hide();
+        });
+ 
+    
+        
+    });
 </script>
 
+	<!-- jQuery와 Postcodify를 로딩한다 -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 
+	<!-- "검색" 단추를 누르면 팝업 레이어가 열리도록 설정한다 -->
+	<script>
+    $(function() { $("#postcodify").postcodify({
+        insertPostcode5 : "#postcode",
+        insertAddress : "#address",
+        insertAddress : "#address2",
+        insertDetails : "#details",
+        insertExtraInfo : "#extra_info",
+        hideOldAddresses : false,
+        success : function(result){
+        	
+        	console.log("result: " );
+        	console.log(result);
+        }
+        
+    }); });
+    
 
+    $("#regiBtn").on("click",function(e){
+    	e.preventDefault();
+    	
+    	$.ajax({
+	    	url:'http://apis.daum.net/local/geo/addr2coord',
+	    	type:'post',
+	    	dataType : 'jsonp',
+	    	data : {
+	    		apikey: '175962b9a13ff23b6ba95789998c261c',
+	    			q: $("#address").val(),
+	    			output:'json'
+	    		
+	    	},
+	    	success : function(result){
+	    			
+	    			console.log(result)
+	    			result = result.channel;
+	        		console.log(result.item[0].point_x)
+	        		$(".lat").val(result.item[0].point_x)
+	        		$(".lng").val(result.item[0].point_y)
+	        		$("#f1").submit();
 
+	    	}
+	    	
+	    })
+    })	
+    	 
 
-
-
-</body>
+   
+</script>
 </html>
