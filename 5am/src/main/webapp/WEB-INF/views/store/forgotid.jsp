@@ -89,6 +89,16 @@
   crossorigin="anonymous"></script>
     <script>
 	$(document).ready(function(e) { 
+		
+		var result = '${sendId}';
+		if (result == "fail") {
+			history.pushState(null, null);
+			alert("상점이름과 이메일을 확인해주세요.");
+			window.onpopstate = function(e) {
+				history.go(1);
+			};
+		}
+		
 		 
 		$("#idSearch").on("click", function(e) {
 				e.preventDefault();

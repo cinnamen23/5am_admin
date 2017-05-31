@@ -119,7 +119,6 @@
 				history.go(1);
 			};
 		}
-		
 		var result3 = '${sendPw}';
 		if (result3 == "success") {
 			history.pushState(null, null);

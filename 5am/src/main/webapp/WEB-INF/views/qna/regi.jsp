@@ -59,7 +59,7 @@
 							<form id="f1" role="form" class="regiform" method="post" action="/qna/regi" enctype="multipart/form-data">
 								<div class="form-group">
 									<label>제목</label> <input class="form-control"
-										id="qtitle" type="text" name="title" value="궁금한 사항을 작성해주세요" onfocus="this.value=''"/>
+										id="qtitle" type="text" name="title" value="궁금한 사항을 작성해주세요" placeholder="this.value=''"/>
 									
 								</div>
 								<div class="form-group">

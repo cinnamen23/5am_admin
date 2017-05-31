@@ -86,7 +86,15 @@
 
 <script>
 		$(document).ready(function(e) { 
-			 
+			
+			var result3 = '${sendPw}';
+			if (result3 == "fail") {
+				history.pushState(null, null);
+				alert("아이디와 이메일을 확인해주세요.");
+				window.onpopstate = function(e) {
+					history.go(1);
+				};
+			}
 			$("#findpw").on("click", function(e) {
 					e.preventDefault();
 					$("#f1").attr("method", "post").attr("action", "/store/forgotpw").submit();
