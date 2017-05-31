@@ -17,8 +17,7 @@ max-height: 500px;
  <div class="content-wrapper">
          <div class="container">
 	        <div class="row pad-botm">
-	            <div class="col-md-12">
-	               
+	            <div class="col-md-12">	               
 	                     
 	                <h4 class="header-line">당신의 꿈을 여는 시간 </h4> 
 	            </div>

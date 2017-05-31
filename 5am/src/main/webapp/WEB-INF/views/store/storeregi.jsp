@@ -1,239 +1,186 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-	<base href="/resources/login/">
-    <title>Register</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800">
-    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
-    <link type="text/css" rel="stylesheet" href="styles/font-awesome.min.css">
-    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="styles/animate.css">
-    <link type="text/css" rel="stylesheet" href="styles/all.css">
-    <link type="text/css" rel="stylesheet" href="styles/main.css">
-    <link type="text/css" rel="stylesheet" href="styles/style-responsive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 </head>
-<body style="background: url('images/bg/bg.png') center center fixed;">
-    <div class="page-form" style="margin-top: 100px;" >
-        <div class="panel panel-blue">
-            <div class="panel-body pan">
-                <form id="f1" action="/store/storeregi" method="post" class="form-horizontal">
-                <div class="form-body pal">
-                    <div class="col-md-12 text-center">
-                        
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-3">
-                            <img src="images/avatar/profile-pic.png" class="img-responsive" style="margin-top: -35px;" />
-                        </div>
-                        <div class="col-md-9 text-center">
-                             <h2 style="margin-top: -1px; font-size: 40px;">
-                            5"AM 회원 등록</h2>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputName" class="col-md-3 control-label">
-                            UserID:</label>
-                        <div class="col-md-9">
-                            <div class="input-icon right">
-                                <input id="inputName" type="text" placeholder="로그인에 사용 할 ID를 입력하세요" class="form-control" name="sid" />
-                                </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword" class="col-md-3 control-label">
-                            Password:</label>
-                        <div class="col-md-9">
-                            <div class="input-icon right">
+<body>
+<style type="text/css">
+* {
+  margin: 0;
+  padding: 0;
+}
 
-                                <input id="inputPassword" type="password" placeholder="로그인에 사용 할  비밀번호를 입력하세요" class="form-control" name="spw" /></div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="inputName" class="col-md-3 control-label">
-                            가게 이름:</label>
-                        <div class="col-md-9">
-                            <div class="input-icon right">
+body {
+  margin: 100px;
+}
 
-                                <input id="inputName" type="text" placeholder="가게 이름을 입력하세요" class="form-control" name="sname" /></div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="form-group">
-                        <label for="inputName" class="col-md-3 control-label">
-                            가게 주소:</label>
-                        <div class="col-md-9">
-                            <div class="input-icon right">
-							
-								<!-- 검색 기능을 표시할 <div>를 생성한다 -->
-								<div id="postcodify"></div>
-								
-								<!-- 주소와 우편번호를 입력할 <input>들을 생성하고 적당한 name과 id를 부여한다 -->
-							<div class="form-group">
-                        <label for="inputName" class="col-md-3 control-label">
-                            우편 번호:</label>
-                        <div class="col-md-9">
-                            <div class="input-icon right">	
-								<input class="form-control" type="text" name="" id="postcode" value="" /><br />
-								</div>
-                        </div>
-                    </div>
-						<div class="form-group">
-                        <label for="inputName" class="col-md-3 control-label">
-                            주 소:</label>
-                        <div class="col-md-9">
-                            <div class="input-icon right">		
-								<input class="form-control" type="text" name="saddr1" id="address" value="" /><br />
-							
-								</div>
-                        </div>
-                    </div>
-                    		<div class="form-group">
-                        <label for="inputName" class="col-md-3 control-label">
-                            상세 주소:</label>
-                        <div class="col-md-9">
-                            <div class="input-icon right">		
-								<input class="form-control" type="text" name="saddr2" id="extra_info" value="" /><br />
-								</div>
-                        </div>
-                    </div>
-						<div class="form-group">
-                        <label for="inputName" class="col-md-3 control-label">
-                            상세 주소:</label>
-                        <div class="col-md-9">
-                            <div class="input-icon right">		
-								<input class="form-control" type="text" name="saddr3" id="details" value="" /><br />
-								</div>
-                        </div>
-                    </div>
-				
-								
-                               
-                                
-                           </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="form-group">
-                        <label for="inputName" class="col-md-3 control-label">
-                            가게 전화 번호:</label>
-                        <div class="col-md-9">
-                            <div class="input-icon right">
+.pop-layer .pop-container {
+  padding: 20px 25px;
+}
 
-                                <input id="inputName" type="text" placeholder="연락 가능한 전화 번호를 입력하세요" class="form-control" name="sphone" /></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputName" class="col-md-3 control-label">
-                            가게 e-mail:</label>
-                        <div class="col-md-9">
-                            <div class="input-icon right">
+.pop-layer p.ctxt {
+  color: #666;
+  line-height: 25px;
+}
 
-                                <input id="inputName" type="text" placeholder="연락 가능한 e-mail 주소를 입력하세요" class="form-control" name="semail" />
-                              	
-                                </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group mbn">
-                        <div class="col-lg-12" align="right">
-                            <div class="form-group mbn">
-                                <div class="col-lg-3">
-                                    &nbsp;
-                                </div>
-                                <div>
-                                <input type="hidden" class="lat" name="lat">
-                                <input type="hidden" class="lng" name="lng">
-                                
-                                </div>
-                                <div class="col-lg-9">
-                                
+.pop-layer .btn-r {
+  width: 100%;
+  margin: 10px 0 20px;
+  padding-top: 10px;
+  border-top: 1px solid #DDD;
+  text-align: right;
+}
 
-                                    <button id="regiBtn"  type="submit" class="btn btn-default" >회원 가입</button>
+.pop-layer {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 410px;
+  height: auto;
+  background-color: #fff;
+  border: 5px solid #3571B5;
+  z-index: 10;
+}
 
-                                  
-                                    <button type="button" class="btn btn-default" onclick="location.href='/store/login' ">취 소</button>
-                                    
+.dim-layer {
+  display: none;
+  position: fixed;
+  _position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </form>
-            </div>
-        </div>
-        <div class="col-lg-12 text-center">
-            <p>
-                Forgot Something ? 
+.dim-layer .dimBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .5;
+  filter: alpha(opacity=50);
+}
+
+.dim-layer .pop-layer {
+  display: block;
+}
+
+a.btn-layerClose {
+  display: inline-block;
+  height: 25px;
+  padding: 0 14px 0;
+  border: 1px solid #304a8a;
+  background-color: #3f5a9d;
+  font-size: 13px;
+  color: #fff;
+  line-height: 25px;
+}
+
+a.btn-layerClose:hover {
+  border: 1px solid #091940;
+  background-color: #1f326a;
+  color: #fff;
+}
+
+</style>
+	<div style="height: 300px;"></div>
+<a href="#layer1" class="btn-example">일반 팝업레이어</a>
+<div id="layer1" class="pop-layer">
+    <div class="pop-container">
+        <div class="pop-conts">
+            <!--content //-->
+            <p class="ctxt mb20">Thank you.<br>
+                Your registration was submitted successfully.<br>
+                Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
+                Hope to see you soon!
             </p>
+
+            <div class="btn-r">
+                <a href="#" class="btn-layerClose">Close</a>
+            </div>
+            <!--// content-->
         </div>
     </div>
-    
-<!-- jQuery와 Postcodify를 로딩한다 -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+</div>
+<br/><br/>
+<a href="#layer2" class="btn-example">딤처리 팝업레이어 1</a>
+<div class="dim-layer">
+    <div class="dimBg"></div>
+    <div id="layer2" class="pop-layer">
+        <div class="pop-container">
+            <div class="pop-conts">
+                <!--content //-->
+                <p class="ctxt mb20">Thank you.<br>
+                    Your registration was submitted successfully.<br>
+                    Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
+                    Hope to see you soon!
+                </p>
 
-<!-- "검색" 단추를 누르면 팝업 레이어가 열리도록 설정한다 -->
+                <div class="btn-r">
+                    <a href="#" class="btn-layerClose">Close</a>
+                </div>
+                <!--// content-->
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
-    $(function() { $("#postcodify").postcodify({
-        insertPostcode5 : "#postcode",
-        insertAddress : "#address",
-        insertDetails : "#details",
-        insertExtraInfo : "#extra_info",
-        hideOldAddresses : false,
-        success : function(result){
-        	
-        	console.log("result: " );
-        	console.log(result);
+	$(document).ready(function(e) { 
+
+$('.btn-example').click(function(){
+        var $href = $(this).attr('href');
+        layer_popup($href);
+    });
+    function layer_popup(el){
+
+        var $el = $(el);        //레이어의 id를 $el 변수에 저장
+        var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
+
+        isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
+
+        var $elWidth = ~~($el.outerWidth()),
+            $elHeight = ~~($el.outerHeight()),
+            docWidth = $(document).width(),
+            docHeight = $(document).height();
+
+        // 화면의 중앙에 레이어를 띄운다.
+        if ($elHeight < docHeight || $elWidth < docWidth) {
+            $el.css({
+                marginTop: -$elHeight /2,
+                marginLeft: -$elWidth/2
+            })
+        } else {
+            $el.css({top: 0, left: 0});
         }
-        
-       
-        
-    }); });
-    
 
-    $("#regiBtn").on("click",function(e){
-    	e.preventDefault();
-    	
-    	$.ajax({
-	    	url:'http://apis.daum.net/local/geo/addr2coord',
-	    	type:'post',
-	    	dataType : 'jsonp',
-	    	data : {
-	    		apikey: '175962b9a13ff23b6ba95789998c261c',
-	    			q: $("#address").val(),
-	    			output:'json'
-	    		
-	    	},
-	    	success : function(result){
-	    			
-	    			console.log(result)
-	    			result = result.channel;
-	        		console.log(result.item[0].point_x)
-	        		$(".lat").val(result.item[0].point_x)
-	        		$(".lng").val(result.item[0].point_y)
-	        		$("#f1").submit();
+        $el.find('a.btn-layerClose').click(function(){
+            isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+            return false;
+        });
 
-	    	
-	    		
-	    		    		
-	    	}
-	    	
-	    })
-    })	
-    	 
+        $('.layer .dimBg').click(function(){
+            $('.dim-layer').fadeOut();
+            return false;
+        });
 
-   
+    }
+	})
+	
 </script>
 
-    
+
+
+
+
+
+
 </body>
 </html>

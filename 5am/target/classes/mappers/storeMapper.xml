@@ -31,9 +31,55 @@
 	</select>
 	
 	<select id="checkSessionKey" resultType="org.cg.domain.StoreVO">
-
-	select * from tbl_store where sessionKey = #{value} and sessionlimit > sysdate	
-
+		select * from tbl_store where sessionKey = #{value} and sessionlimit > sysdate	
 	</select>
+	
+	<select id="storeList" resultType="org.cg.domain.StoreVO" parameterType="org.cg.domain.Criteria">
+		select * from (SELECT rownum rnum, sid,spw,sname,saddr,sphone,semail,gubun, regdate,updatedate FROM 
+		(SELECT sid,spw,sname,saddr,sphone,semail,gubun, regdate,updatedate FROM tbl_store where sid IS NOT NULL
+		<choose>
+			  <when test='type=="i"'>
+			  and (sid like '%'|| #{keyword} ||'%')
+			  </when>
+			  <when test='type=="n"'>
+			  and (sname like '%'|| #{keyword} ||'%')
+			  </when>
+			  <when test='type=="a"'>
+			  and (saddr) like '%'|| #{keyword} ||'%')
+			  </when>
+			  <when test='type=="p"'>
+			  and (sphone) like '%'|| #{keyword} ||'%')
+			  </when>
+			  <when test='type=="e"'>
+			  and (semail) like '%'|| #{keyword} ||'%')
+			  </when>
+		</choose>
+	 
+			 order by updatedate desc) 
+			<![CDATA[tbl_store where rownum <= 10) where rnum >= 0]]>
+	</select>
+	
+	<select id="storeTotal" resultType="int" parameterType="org.cg.domain.Criteria">
+		select count(sid) from tbl_store where sid IS NOT NULL
+		<choose>
+				  <when test='type=="i"'>
+				  and (sid like '%'|| #{keyword} ||'%')
+				  </when>
+				  <when test='type=="n"'>
+				  and (sname like '%'|| #{keyword} ||'%')
+				  </when>
+				  <when test='type=="a"'>
+				  and (saddr) like '%'|| #{keyword} ||'%')
+				  </when>
+				  <when test='type=="p"'>
+				  and (sphone) like '%'|| #{keyword} ||'%')
+				  </when>
+				  <when test='type=="e"'>
+				  and (semail) like '%'|| #{keyword} ||'%')
+				  </when>
+		</choose>
+	</select>
+	
+	
 
 </mapper>

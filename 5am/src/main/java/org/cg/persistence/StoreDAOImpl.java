@@ -2,10 +2,12 @@ package org.cg.persistence;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.cg.domain.Criteria;
 import org.cg.domain.StoreVO;
 import org.cg.dto.LoginDTO;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -70,5 +72,16 @@ public class StoreDAOImpl implements StoreDAO {
 		
 		return session.selectOne(namespace+".findPw", map);
 	}
+
+	@Override
+	public int storeTotal(Criteria cri) {
+		return session.selectOne(namespace+".storeTotal", cri);
+	}
+
+	@Override
+	public List<StoreVO> storeList(Criteria cri) {
+		return session.selectList(namespace+".storeList", cri);
+	}
+
 
 }

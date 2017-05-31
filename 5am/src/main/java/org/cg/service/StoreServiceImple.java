@@ -1,9 +1,11 @@
 package org.cg.service;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
+import org.cg.domain.Criteria;
 import org.cg.domain.StoreVO;
 import org.cg.dto.LoginDTO;
 import org.cg.persistence.StoreDAO;
@@ -52,5 +54,16 @@ public class StoreServiceImple implements StoreService {
 	public StoreVO findPw(String sid, String semail) {
 		return dao.findPw(sid, semail);
 	}
+
+	@Override
+	public int storeTotal(Criteria cri) {
+		return dao.storeTotal(cri);
+	}
+
+	@Override
+	public List<StoreVO> storeList(Criteria cri) {
+		return dao.storeList(cri);
+	}
+
 
 }

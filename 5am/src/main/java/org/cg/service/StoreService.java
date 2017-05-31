@@ -1,7 +1,9 @@
 package org.cg.service;
 
 import java.util.Date;
+import java.util.List;
 
+import org.cg.domain.Criteria;
 import org.cg.domain.StoreVO;
 import org.cg.dto.LoginDTO;
 
@@ -20,6 +22,11 @@ public interface StoreService {
 	public StoreVO findId(String sname, String semail);
 	
 	public StoreVO findPw(String sid, String semail);
+	
+	public int storeTotal(Criteria cri);
+	
+	public List<StoreVO> storeList(Criteria cri);
+
 
 
 }

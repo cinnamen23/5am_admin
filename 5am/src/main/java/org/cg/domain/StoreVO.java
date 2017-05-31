@@ -4,8 +4,10 @@ import java.sql.Timestamp;
 
 public class StoreVO {
 	
-	private String sid,spw,sname,saddr,sphone,semail,saddrm,lat,lng;
+	private String sid,spw,sname,saddr,sphone,semail,saddrm,lat,lng,gubun;
 	private Timestamp regdate,updatedate;
+	
+	
 	public String getSid() {
 		return sid;
 	}
@@ -72,11 +74,17 @@ public class StoreVO {
 	public void setUpdatedate(Timestamp updatedate) {
 		this.updatedate = updatedate;
 	}
+	public String getGubun() {
+		return gubun;
+	}
+	public void setGubun(String gubun) {
+		this.gubun = gubun;
+	}
 	@Override
 	public String toString() {
 		return "StoreVO [sid=" + sid + ", spw=" + spw + ", sname=" + sname + ", saddr=" + saddr + ", sphone=" + sphone
-				+ ", semail=" + semail + ", saddrm=" + saddrm + ", lat=" + lat + ", lng=" + lng + ", regdate=" + regdate
-				+ ", updatedate=" + updatedate + "]";
+				+ ", semail=" + semail + ", saddrm=" + saddrm + ", lat=" + lat + ", lng=" + lng + ", gubun=" + gubun
+				+ ", regdate=" + regdate + ", updatedate=" + updatedate + "]";
 	}
 	
 	

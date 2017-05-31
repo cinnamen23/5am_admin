@@ -1,8 +1,6 @@
 package org.cg.controller;
-
-
-
 import java.util.Date;
+import java.util.HashMap;
 
 import javax.inject.Inject;
 import javax.servlet.http.Cookie;
@@ -11,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.cg.domain.Criteria;
+import org.cg.domain.PageMaker;
 import org.cg.domain.StoreVO;
 import org.cg.dto.LoginDTO;
 import org.cg.service.StoreService;
@@ -190,6 +190,32 @@ public class StoreController {
 		rttr.addFlashAttribute("sendPw","success");
 		
 		return "redirect:login";
+	}
+	
+//	for admin
+	
+	@GetMapping("/list")
+	public void mainGet(@ModelAttribute("cri") Criteria cri, Model model, HttpSession session) {
+
+		logger.info(".......store list .....");
+		logger.info(cri);
+		
+		
+		Object obj = session.getAttribute("login");
+		StoreVO vo = (StoreVO) obj;
+		logger.info("================================================================");
+		logger.info("================================================================");
+		
+		logger.info(vo);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("cri", cri);
+		map.put("vo", vo);
+		
+		model.addAttribute("list", service.storeList(cri));
+		model.addAttribute("pageMaker", new PageMaker(cri, service.storeTotal(cri)));
+		
+		
+		
 	}
 	
 	

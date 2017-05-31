@@ -49,6 +49,7 @@
             <div class="col-md-12">
                 <div class="navbar-collapse collapse ">
                     <ul id="menu-top" class="nav navbar-nav navbar-right">
+                    	<li><a href="/store/list">상점관리</a></li>
                         <li><a href="/member/list">고객관리</a></li>
                         <!--  class="menu-top-active"  활성화 -->
 
