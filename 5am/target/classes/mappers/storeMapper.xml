@@ -80,6 +80,14 @@
 		</choose>
 	</select>
 	
+	<select id="storeRead" resultType="org.cg.domain.StoreVO">
+	select * from tbl_store where sid=#{sid}
+	</select>
+	
+	<delete id="storeDel">
+	delete from tbl_store where sid=#{sid}
+	</delete>
+	
 	
 
 </mapper>

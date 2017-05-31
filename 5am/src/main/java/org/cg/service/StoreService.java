@@ -9,11 +9,7 @@ import org.cg.dto.LoginDTO;
 
 public interface StoreService {
 
-	public StoreVO login(LoginDTO dto) throws Exception;
-
-	public void storeregister(StoreVO vo);
-
-	public void storemodify(StoreVO vo);
+	public StoreVO login(LoginDTO dto) throws Exception;	
 
 	public void keepLogin(String sid, String sessionID, Date next);
 
@@ -26,6 +22,16 @@ public interface StoreService {
 	public int storeTotal(Criteria cri);
 	
 	public List<StoreVO> storeList(Criteria cri);
+	
+	public void storeRegister(StoreVO vo);
+	
+	public StoreVO storeRead(String sid);
+	
+	public void storeModify(StoreVO vo);
+	
+	public void storeDel(String sid);
+	
+	
 
 
 
