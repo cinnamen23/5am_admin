@@ -107,12 +107,9 @@ public class StoreController {
 		logger.info("store register post!!!");
 		
 		logger.info(vo);
-		logger.info(saddr1+" "+saddr3);
-		
-		String saddr = saddr1+" "+saddr3;	
 		
 		vo.setSaddrm(saddr1);
-		vo.setSaddr(saddr);		
+		vo.setSaddr(saddr3);		
 		
 		service.storeRegister(vo);
 		rttr.addFlashAttribute("sregimsg","success");
@@ -135,10 +132,9 @@ public class StoreController {
 	public String storemodiPost(HttpSession session ,StoreVO vo,@RequestParam("saddr1") String saddr1,@RequestParam("saddr3") String saddr3, RedirectAttributes rttr){
 		logger.info("----------------------------------------------------------");
 		logger.info("storemodi post !!!!!!!!!!!!!!!!!!!!!!!");
-		String saddr = saddr1+" "+saddr3;	
 		
 		vo.setSaddrm(saddr1);
-		vo.setSaddr(saddr);	
+		vo.setSaddr(saddr3);	
 		
 		service.storeModify(vo);
 		session.setAttribute(LOGIN, vo);
@@ -203,7 +199,7 @@ public class StoreController {
 		
 	}
 	
-//	for admin
+
 	
 	@GetMapping("/list")
 	public void listGet(@ModelAttribute("cri") Criteria cri, Model model, HttpSession session) {
@@ -237,26 +233,34 @@ public class StoreController {
 	}
 	
 	@GetMapping("/modi")
-	public void modiGet(String sid, Model model){
+	public void modiGet(String sid, Model model, Criteria cri){
 		
 		logger.info("modi store get");
+		
 		StoreVO vo = service.storeRead(sid);
 		model.addAttribute("vo", vo);
+		model.addAttribute("cri",cri);
 		
 	}
 	
+	
 	@PostMapping("/modi")
-	public String modiPost(Criteria cri, StoreVO vo, RedirectAttributes rttr){
+	public String modiPost(StoreVO vo,@RequestParam("saddr1") String saddr1, @RequestParam("saddr3") String saddr3, Criteria cri, RedirectAttributes rttr){
 		
 		logger.info("modi store post");
+				
+		vo.setSaddrm(saddr1);
+		vo.setSaddr(saddr3);
+
 		service.storeModify(vo);
+		
 		rttr.addAttribute("page",cri.getPage());
 		rttr.addAttribute("type",cri.getType());
 		rttr.addAttribute("keyword",cri.getKeyword());
 		rttr.addFlashAttribute("msg","success");
-
-
+		
 		return "redirect:list";
+		
 	}
 	
 	

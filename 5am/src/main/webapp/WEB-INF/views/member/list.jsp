@@ -159,6 +159,11 @@
 									<option value="x" ${cri2.type2 eq null?'selected':''}>---</option>
 									<option value="i" ${cri2.type2 eq 'i'?'selected':''}>ID</option>
 									<option value="t" ${cri2.type2 eq 't'?'selected':''}>제목</option>
+									
+									<c:if test="${login.gubun=='admin'}"> 
+									<option value="s" ${cri2.type2 eq 's'?'selected':''}>상점</option>
+									</c:if>
+									
 									<option value="c" ${cri2.type2 eq 'c'?'selected':''}>내용</option>
 								</select> 
 							    <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keyword2" value="${cri2.keyword2}">
@@ -173,7 +178,13 @@
                                      <tr role="row">
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 5px;">#</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 30px;">id</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 400px;">제목</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 200px;">제목</th>
+                                        
+                                        <c:if test="${login.gubun=='admin'}"> 
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width:200px;">상점</th>
+							    		</c:if>
+                                        
+                                        
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 100px;">등록날짜</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 100px;">최근수정날짜</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 50px;">답변 갯수</th>
@@ -187,6 +198,11 @@
 	                                            <td class="sorting_1">${qlist.mqno}</td>
 	                                            <td class="center ">${qlist.mid}</td>
 	                                            <td class="center "><a class="qtitle" href="${qlist.mqno}">${qlist.title}</a></td>
+	                                            
+	                                            <c:if test="${login.gubun=='admin'}"> 	                                            
+	                                            <td class="center ">${qlist.sid}</td>
+	                                            </c:if>
+	                                            
 	                                            <td class="center "><fmt:formatDate value="${qlist.regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
 	                                            <td class="center "><fmt:formatDate value="${qlist.updatedate}" pattern="yyyy-MM-dd HH:mm"/></td>	                                            
 	                                            <td class="center ">${qlist.checked}</td>

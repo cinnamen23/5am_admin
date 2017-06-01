@@ -49,7 +49,7 @@
                     <div class="col-md-12 text-center">
                         <h5 style="margin-top: -90px; font-size: 35px;">
                             정보 수정  </h5>
-                        
+                        ${vo}
                     </div>
                     
                     <div class="form-group">
@@ -122,7 +122,7 @@
                             상세 주소:</label>
                         <div class="col-md-9">
                             <div class="input-icon right">		
-								<input class="form-control" type="text" name="saddr3" id="details" value="" /><br />
+								<input class="form-control" type="text" name="saddr3" id="details" value="${vo.saddr}" /><br />
 								</div>
                         </div>
                     </div>

@@ -108,7 +108,7 @@
 											<tr class="gradeA odd" id="membertable">
 												<td class="sorting_1">${list.sid}</td>
 												<td class="center ">${list.sname}</td>
-												<td class="center ""font-size: 11px;">${list.saddr}</td>
+												<td class="center ""font-size: 11px;">${list.saddrm}${list.saddr}</td>
 												<td class="center ">${list.sphone}</td>
 												<td class="center " style=>${list.semail}</td>
 												<td class="center "><fmt:formatDate
@@ -165,11 +165,10 @@
 				<input class="hpage" type="hidden" name="page" value="${pageMaker.current}">
 				<input class="htype" type="hidden" name="type" value="${cri.type}">
 				<input class="hkeyword" type="hidden" name="keyword" value="${cri.keyword}">
+				<input type="hidden" id="dsid" name="sid" value="">
  			</form>
 
-<form class="fd">
-	<input type="hidden" id="dsid" name="sid" value="">
-</form>
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
 	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -197,17 +196,20 @@
 		})
 
 		$(".storemodi").on("click", function(e) {
+			
+			e.preventDefault();
+			console.log("상점 수정 중 ??")
 			console.dir(this);
 			console.log($(this).parent());
 
 			var pass = $(this).parent();
 			var passsid = pass.attr("data-sid");
-			
+			console.log(passsid);
 			$("#dsid").val(passsid);
-			var formObj = $(".fm");
+			var formObj = $(".form");
 
 			formObj.attr('action', '/store/modi');
-			formObj.attr('method', 'post');
+			formObj.attr('method', 'get');
 			formObj.submit();	
 		})
 
@@ -222,7 +224,7 @@
 				var passsid = pass.attr("data-sid");
 				$("#dsid ").val(passsid);
 
-				var formObj = $(".fd");
+				var formObj = $(".form");
 
 				formObj.attr('action', '/store/del');
 				formObj.attr('method', 'post');

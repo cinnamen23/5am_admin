@@ -38,7 +38,7 @@ max-height: 500px;
                     <div class="col-md-3 col-sm-3 col-xs-6">
                       <div class="alert alert-info back-widget-set text-center">
                             <i class="fa fa-history fa-5x"></i>
-                            <h3>50일&nbsp; <i class="fa fa-dollar"></i></h3>
+                            <h3>50 일  </h3>
                            광고 남은 기간
                         </div>
                     </div>
