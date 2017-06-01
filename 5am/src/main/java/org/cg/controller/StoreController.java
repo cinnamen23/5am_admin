@@ -114,7 +114,7 @@ public class StoreController {
 		vo.setSaddrm(saddr1);
 		vo.setSaddr(saddr);		
 		
-		service.storeregister(vo);
+		service.storeRegister(vo);
 		rttr.addFlashAttribute("sregimsg","success");
 		
 		return "redirect:login";
@@ -128,8 +128,7 @@ public class StoreController {
 		StoreVO vo = (StoreVO) obj;
 		
 		model.addAttribute("vo", vo);
-		
-		
+	
 	}
 	
 	@PostMapping("/storemodi")
@@ -141,7 +140,7 @@ public class StoreController {
 		vo.setSaddrm(saddr1);
 		vo.setSaddr(saddr);	
 		
-		service.storemodify(vo);
+		service.storeModify(vo);
 		session.setAttribute(LOGIN, vo);
 		rttr.addFlashAttribute("msg","success");
 		
@@ -207,7 +206,7 @@ public class StoreController {
 //	for admin
 	
 	@GetMapping("/list")
-	public void mainGet(@ModelAttribute("cri") Criteria cri, Model model, HttpSession session) {
+	public void listGet(@ModelAttribute("cri") Criteria cri, Model model, HttpSession session) {
 
 		logger.info(".......store list .....");
 		logger.info(cri);
@@ -215,8 +214,6 @@ public class StoreController {
 		
 		Object obj = session.getAttribute("login");
 		StoreVO vo = (StoreVO) obj;
-		logger.info("================================================================");
-		logger.info("================================================================");
 		
 		logger.info(vo);
 		HashMap<String, Object> map = new HashMap<String, Object>();
@@ -225,9 +222,41 @@ public class StoreController {
 		
 		model.addAttribute("list", service.storeList(cri));
 		model.addAttribute("pageMaker", new PageMaker(cri, service.storeTotal(cri)));
+	}
+	
+	@PostMapping("/del")
+	public String delPost(String sid, RedirectAttributes rttr){
 		
+		logger.info("del store");
+		service.storeDel(sid);
+		rttr.addFlashAttribute("msg","success");
+
+
+		return "redirect:list";
 		
+	}
+	
+	@GetMapping("/modi")
+	public void modiGet(String sid, Model model){
 		
+		logger.info("modi store get");
+		StoreVO vo = service.storeRead(sid);
+		model.addAttribute("vo", vo);
+		
+	}
+	
+	@PostMapping("/modi")
+	public String modiPost(Criteria cri, StoreVO vo, RedirectAttributes rttr){
+		
+		logger.info("modi store post");
+		service.storeModify(vo);
+		rttr.addAttribute("page",cri.getPage());
+		rttr.addAttribute("type",cri.getType());
+		rttr.addAttribute("keyword",cri.getKeyword());
+		rttr.addFlashAttribute("msg","success");
+
+
+		return "redirect:list";
 	}
 	
 	

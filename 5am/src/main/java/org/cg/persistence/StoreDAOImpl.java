@@ -28,12 +28,12 @@ public class StoreDAOImpl implements StoreDAO {
 	}
 
 	@Override
-	public void storeregister(StoreVO vo) {
+	public void storeRegister(StoreVO vo) {
 		session.insert(namespace + ".storeregi", vo);
 	}
 
 	@Override
-	public void storemodify(StoreVO vo) {
+	public void storeModify(StoreVO vo) {
 		session.update(namespace+".storemodi", vo);
 	}
 
@@ -81,6 +81,17 @@ public class StoreDAOImpl implements StoreDAO {
 	@Override
 	public List<StoreVO> storeList(Criteria cri) {
 		return session.selectList(namespace+".storeList", cri);
+	}
+
+	@Override
+	public StoreVO storeRead(String sid) {
+		return session.selectOne(namespace+".storeRead", sid);
+	}
+
+	@Override
+	public void storeDel(String sid) {
+		session.delete(namespace+".storeDel", sid);
+		
 	}
 
 
