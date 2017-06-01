@@ -43,7 +43,7 @@
 
                         <div class="col-md-12">
                             <div class="input-icon right">
-                                <i class="fa fa-user"></i>
+                                <i class="fa fa-tags" aria-hidden="true"></i>
                                 <input id="inputSname" type="text" placeholder="상점 이름을 입력해주세요" class="form-control" name="sname" /></div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
 
                         <div class="col-md-12">
                             <div class="input-icon right">
-                                <i class="fa fa-user"></i>
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
                                 <input id="inputSemail" type="text"  placeholder="이메일 주소를 입력해주세요" class="form-control" name="semail" /></div>
                         </div>
                     </div>
