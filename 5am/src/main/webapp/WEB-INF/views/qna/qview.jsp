@@ -41,7 +41,16 @@ li{
           
            <input type="hidden" id="qno" name="qno" value="${vo.qno}">
             <input type="hidden" id="qwriter" name="writer" value="${vo.writer}">
-        
+            
+            
+            <label>
+	 			File Attach
+		        <input id="file" type="file" name="file" multiple="multiple">
+		    </label>
+                    
+                    <div id="uploadPreview">
+								
+								</div>
       </div>
         </form>
 
@@ -135,6 +144,14 @@ li{
 			<div class="col-md-12">
 				<h4 class="header-line"><a href="/qna/list" style="color: black">Q&A</a></h4>
 
+${vo}
+${cri}
+${alist}
+${flist}
+		
+
+
+
 			</div>
 
 		</div>
@@ -192,10 +209,10 @@ li{
                                 <button id="golist" class="btn btn-danger">Go List </button>
                              
                             <!--Q 수정 (모달) -->
-                              <a href="" data-toggle="modal" data-target="#exampleModal" style="float: right; margin: 5px;"><i class="glyphicon glyphicon-wrench"></i></a>
+                              <a href="" id="qmodiIcon" data-toggle="modal" data-target="#exampleModal" style="float: right; margin: 5px;"><i style="margin: 5px;width: 51px; height:51px; font-size: 3em;" class="fa fa-pencil-square-o"></i></a>
                             	 
                            	<!--Q 삭제 아이콘-->
-                             <a id="qdelIcon" href="/qna/delete?qno=${vo.qno}" style="float: right; margin: 5px;"><i class="glyphicon glyphicon-trash" style="float: right; margin: 5px;"></i></a>
+                             <a id="qdelIcon" href="/qna/delete?qno=${vo.qno}" style="float: right; margin: 5px;"><i class="fa fa-trash-o" style="float: right; margin: 5px; width: 51px; height:51px; font-size: 3em;""></i></a>
                              
                             </div>
                             
@@ -270,10 +287,10 @@ li{
                                   
                              
                             <!--A 수정 (모달) -->
-                              <a href="" id="amodifyIcon" data-aano="${AnswerVO.aano}" data-content="${AnswerVO.acontent}" data-writer="${AnswerVO.awriter}"  data-toggle="modal" data-target="#exampleModal2" style="float: right; margin: 5px;"><i class="glyphicon glyphicon-wrench"></i></a>
+                              <a href="" id="amodifyIcon" data-aano="${AnswerVO.aano}" data-content="${AnswerVO.acontent}" data-writer="${AnswerVO.awriter}"  data-toggle="modal" data-target="#exampleModal2" style="float: right; margin: 5px;"><i style="margin: 5px;width: 51px; height:51px; font-size: 3em;" class="fa fa-pencil-square-o"></i></a>
                             	 
                            	<!--A 삭제 아이콘-->
-                             <a id="adelIcon" href="/qna/adelete?aano=${AnswerVO.aano}&qno=${vo.qno}" style="float: right; margin: 5px;"><i class="glyphicon glyphicon-trash" style="float: right; margin: 5px;"></i></a>
+                             <a id="adelIcon" href="/qna/adelete?aano=${AnswerVO.aano}&qno=${vo.qno}" style="float: right; margin: 5px;"><i class="fa fa-trash-o" style="float: right; margin: 5px; width: 51px; height:51px; font-size: 3em;""></i></a>
                              
                             </div>
                             </div>
@@ -359,6 +376,104 @@ $(document).ready(function() {
 			history.go(1);
 		}
 	}
+	
+	
+	function readImage(file) {
+	    var reader = new FileReader();
+	    var image  = new Image();
+	    reader.readAsDataURL(file);  
+	    reader.onload = function(_file) {
+	        image.src    = _file.target.result;              // url.createObjectURL(file);
+	        image.onload = function() {
+	            var w = this.width,
+	                h = this.height,
+	                t = file.type,                           // ext only: // file.type.split('/')[1],
+	                n = file.name,
+	                s = ~~(file.size/1024) +'KB';
+	            if(w > 10000 || h >5000){
+	                alert("1000*500px 이하로 맞춰주세요(비율2:1)");
+	                $("#file").val("");
+	                
+	            }else{
+	            	console.log("===========================");
+	            	console.log(this.src);
+	                  $('#uploadPreview').append('<img src="'+ this.src +'" width="200" height="100">');  
+	            }
+	          
+	        };
+	        image.onerror= function() {
+	            alert('해당형식은 지원하지 않습니다. 파일형식:JPG,PNG');
+	            $("#file").val("");
+	        };      
+	    };
+	}
+	
+	
+	/* 여기서 파일 네임을 ㅇ떻게 가지고 오지 ? */
+$("#file").on("click",function(e){
+	var result=confirm("파일 수정을 하시면 이전 등록된 사진이 모두 지워집니다.")
+	
+	console.log('${flist[0].filename}');
+	
+	var fnamelist='${flist}';
+	console.log(fnamelist.length)
+	
+	for(var i=0; i<fnamelist.size; i++) {
+		console.log(fnamelist[i]);
+	}
+	
+	
+	if(result==false){
+	e.preventDefault();		
+	}
+	
+	$.ajax({
+		type:'post',
+		url:'/qna/falldelete',
+		data:{fname:$(this).attr("data-fname")},
+		success:function(re){
+			if(re=='delete')
+			alert("deleted");
+		}
+	}); 
+	
+})	
+$("#file").change(function (e) {
+	
+		
+		$("#uploadPreview img").remove();
+		
+		console.log("===========================");
+		console.log($('#file'));
+		
+		
+	    if(this.disabled) return alert('File upload not supported!');
+	    console.log(this.files);
+	    var F = this.files;
+	    if(F && F[0]) for(var i=0; i<F.length; i++) readImage( F[i] );
+	});  
+	
+
+
+
+
+
+	$('#qregibtn').on("click", function(e) {
+			e.preventDefault();	
+
+			console.log("들어왔으 ");
+			console.log($('#qtitle').val());				
+			if ($('#qtitle').val().length == 0) {
+				alert("제목을 입력해주세요....");
+			}else if($('#qcontent').val().length == 0){
+				alert("내용을 입력해주세요....");
+			}else if($('#qwriter').val().length == 0){
+				alert("작성자를 입력해주세요....");
+			}else{
+				$('#f1').submit();
+			}
+		
+	});
 	
 	
 	

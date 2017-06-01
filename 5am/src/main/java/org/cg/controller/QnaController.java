@@ -317,6 +317,13 @@ public class QnaController {
 			return new ResponseEntity<String>("delete", HttpStatus.OK) ;
 		}
 		
+		@PostMapping("/falldelete")
+		public void deleteFileAll(int qno,String[] fnamelist){
+			
+			
+			
+		}
+		
 		
 		
 

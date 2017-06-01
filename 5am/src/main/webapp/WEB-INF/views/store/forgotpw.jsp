@@ -33,7 +33,8 @@
                     <div class="form-group">
 
                         <div class="col-md-6 text-center">
-                            <h4>비밀번호를 잊어버렸군요</h4>
+                            <h3>비밀번호를 잊어버렸군요</h3> <br />
+                            <p>등록하신 이메일로 비밀번호가 전송 됩니다. </p>
                             <br />
                         </div>
                          <div class="col-md-3 text-center"></div>
@@ -50,7 +51,7 @@
 
                         <div class="col-md-12">
                             <div class="input-icon right">
-                                <i class="fa fa-lock"></i>
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
                                 <input id="inputEmail" type="test"  placeholder="등록하신 이메일을 입력하세요" class="form-control" name="semail" /></div>
                         </div>
                     </div>

@@ -14,7 +14,7 @@
 	<div class="container">
 		<div class="row pad-botm">
 			<div class="col-md-12">
-				${list} ${pageMaker }
+				
 				<h4 class="header-line">등록 상점</h4>
 
 			</div>
