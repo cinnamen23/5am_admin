@@ -45,9 +45,9 @@
             <div class="panel-body pan">
                 <form id="f1" action="/store/modi" method="post"  class="form-horizontal">
                 <div class="form-body pal">
-             ${cri}
+             
                     <div class="col-md-12 text-center">
-                        <h5 style="margin-top: -90px; font-size: 35px;">
+                        <h5 style="margin-top: -70px; font-size: 35px;">
                             정보 수정  </h5>
                         
                     </div>

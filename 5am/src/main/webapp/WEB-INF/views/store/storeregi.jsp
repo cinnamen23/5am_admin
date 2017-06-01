@@ -50,7 +50,7 @@
 									style="margin-top: -35px;" />
 							</div>
 							<div class="col-md-9 text-center">
-								<h2 style="margin-top: -1px; font-size: 40px;">5"AM 회원 등록</h2>
+								<h2 style="margin-top: -1px; font-size: 30px;">5"AM 회원 등록</h2>
 							</div>
 						</div>
 						<div class="form-group">
@@ -95,7 +95,7 @@
                             가게 주소:</label>
                         <div class="col-md-9">
                             <div class="input-icon right">
-                            <button id="showMask" type="submit" class="btn btn-default">주소 검색</button>
+                            <button id="showMask" type="submit" class="btn btn-default">주소 검색</button></div></div></div>
                             
 <!-- 주소 검색 div 시작 -->
 							
@@ -107,7 +107,8 @@
 					<div class="col-md-12 col-sm-12 col-xs-12" style="margin: 0;padding: 0">
 						<div class="panel panel-danger"style="margin: 0;padding: 0">
 							<div class="panel-heading">
-								<h5>주소검색</h5>
+								<i id="close" class="fa fa-times" aria-hidden="true" style="float: right"></i><h5>주소검색</h5>
+								
 								
 							</div>
 							<div class="panel-body"style="margin: 0;padding: 0">
@@ -121,14 +122,14 @@
 <!-- 1번 창 보여짐  끝  -->
   								
 <!-- 주소 검색 div 끝  -->								
-								<!-- 주소와 우편번호를 입력할 <input>들을 생성하고 적당한 name과 id를 부여한다 -->
+<!-- 주소와 우편번호를 입력할 <input>들을 생성하고 적당한 name과 id를 부여한다 -->
 							
 						<div class="form-group">
                         <label for="inputName" class="col-md-3 control-label">
                             주 소:</label>
                         <div class="col-md-9">
                             <div class="input-icon right">		
-								<input class="form-control" type="text" name="saddr1" id="address2" value="${vo.saddrm}" /><br />
+								<input class="form-control" type="text" name="saddr1" id="address2" value="${vo.saddrm}" placeholder="주소를 검색하세요"/><br />
 								</div>
                         </div>
                     </div>
@@ -150,7 +151,7 @@
                         <div class="col-md-9">
                             <div class="input-icon right">
 
-                                <input id="inputName" type="text" value="${vo.sphone}" class="form-control" name="sphone" /></div>
+                                <input id="inputName" type="text" value="${vo.sphone}" class="form-control" name="sphone" placeholder="가게 전화 번호를 입력하세요" /></div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -159,7 +160,7 @@
                         <div class="col-md-9">
                             <div class="input-icon right">
 
-                                <input id="inputName" type="text" value="${vo.semail}" class="form-control" name="semail" /></div>
+                                <input id="inputName" type="text" value="${vo.semail}" class="form-control" name="semail" placeholder="이메일 주소를 입력하세요" /></div>
                         </div>
                     </div>
 
