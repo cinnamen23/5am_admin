@@ -186,7 +186,7 @@
 	</select>
 	
 	<select id="qzeroCount" resultType="Int" parameterType="map">
-		SELECT count(mqno) FROM TBL_MQUESTION where CHECKED=0 and 
+		SELECT count(mqno) FROM TBL_MQUESTION where CHECKED=0
 		<choose><when test='vo.sid!="admin"'>
 		
 		and sid='${vo.sid}'</when></choose>
