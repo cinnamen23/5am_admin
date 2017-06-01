@@ -27,7 +27,7 @@ li{
       </div>
       
       
-        <form id="f1">
+        <form id="f1" enctype="multipart/form-data">
       <div class="modal-body">
       
           <div class="form-group">
@@ -143,13 +143,6 @@ li{
 		<div class="row pad-botm">
 			<div class="col-md-12">
 				<h4 class="header-line"><a href="/qna/list" style="color: black">Q&A</a></h4>
-
-${vo}
-${cri}
-${alist}
-${flist}
-		
-
 
 
 			</div>
@@ -413,14 +406,10 @@ $(document).ready(function() {
 $("#file").on("click",function(e){
 	var result=confirm("파일 수정을 하시면 이전 등록된 사진이 모두 지워집니다.")
 	
-	console.log('${flist[0].filename}');
+	console.log('${vo.qno}');
 	
-	var fnamelist='${flist}';
-	console.log(fnamelist.length)
 	
-	for(var i=0; i<fnamelist.size; i++) {
-		console.log(fnamelist[i]);
-	}
+	
 	
 	
 	if(result==false){
@@ -430,7 +419,7 @@ $("#file").on("click",function(e){
 	$.ajax({
 		type:'post',
 		url:'/qna/falldelete',
-		data:{fname:$(this).attr("data-fname")},
+		data:{qno:${vo.qno}},
 		success:function(re){
 			if(re=='delete')
 			alert("deleted");

@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -85,24 +84,70 @@ public class QnaController {
 	}
 	
 	@PostMapping("/qview")
-	public String modiQuestion(QuestionVO vo,Criteria cri,RedirectAttributes rttr){
+	public String modiQuestion(QuestionVO vo,Criteria cri,MultipartFile[] file,RedirectAttributes rttr) throws IOException{
 		
 		
 		logger.info("qna/qview post..........");
 		
 		
 		logger.info(vo);
-		
+		logger.info(file);
 		
 		qservice.qUpdate(vo);
 		
+		
+		
+		
+		
+		List<String> flist = new ArrayList<String>();
+		
+		
+		if(file.length==1&file[0].getSize()==0){
+			
+		}else{
+		
+		//파일업로드 부분
+		for(int i=0;i<file.length;i++){
+		
+			logger.info("=====2======");
+			logger.info("=====2======");
+			
+		logger.info(file);
+			
+			
+		QfileVO fvo = new QfileVO();
+		
+		logger.info("originalName: " + file[i].getOriginalFilename());
+		logger.info("size: " + file[i].getSize());
+		logger.info("contentType: "+file[i].getContentType());
+		UUID uid = UUID.randomUUID();
+		
+		String saveName = uid.toString() +"_"+file[i].getOriginalFilename();
+		
+		File target = new File("c:\\zzz\\5am",saveName);
+		
+		FileCopyUtils.copy(file[i].getBytes(), target);
+		
+		flist.add(saveName);
+
+		fvo.setFilename(saveName);
+		fvo.setFqno(vo.getQno());
+		
+		logger.info("월요일아침=================================================");
+		logger.info(fvo);
+		
+		qservice.fInsert(fvo);
+		
+		}
+		//파일업로드 부분
+		
+		}//ifelse 끝
 		
 		rttr. addAttribute("qno",vo.getQno());
 		rttr. addAttribute("page",cri.getPage());
 		rttr. addAttribute("type",cri.getType());       //없어서 안가나보다   
 		rttr. addAttribute("keyword",cri.getKeyword()); //없어서 안가나보다
 		rttr.addFlashAttribute("msg","success");
-		
 		
 		return "redirect:qview";
 		
@@ -244,18 +289,19 @@ public class QnaController {
 		
 		
 		@GetMapping("/adelete")
-		public String delAnswer(QuestionVO vo,Criteria cri,int aano,RedirectAttributes rttr){
+		public String delAnswer(QuestionVO vo,Criteria cri,QAnswerVO avo,RedirectAttributes rttr){
 			
 			logger.info("AnswerDelete get................");
 			
 			logger.info(vo);
-			logger.info(aano);
+//			logger.info(aano);
 			logger.info(cri);
+			logger.info(avo);
 			
 			//QAnswerVO 를 받으면 에러가 나기때문에 이방법으로 한것 //
-			//에러가 왜나는지 정말 궁금함 //
-			QAnswerVO avo = new QAnswerVO();
-			avo.setAano(aano);
+			//에러가 왜나는지 정말 궁금함 이거 값을 안받아놓고 쓸라고 해서 그런데 이상하게 안갔음  //
+//			QAnswerVO avo = new QAnswerVO();
+//			avo.setAano(aano);
 			
 			
 			qservice.aDelete(avo);
@@ -309,7 +355,9 @@ public class QnaController {
 			logger.info("fdelete post...........");
 			
 				new File("c:\\zzz\\5am\\"+fname.replace('/', File.separatorChar)).delete();
-			
+				File deleteFile = new File("C:\\zzz\\upload\\"+fname);
+				deleteFile.delete();
+				
 				qservice.delOneFile(fname);
 				
 				
@@ -318,8 +366,30 @@ public class QnaController {
 		}
 		
 		@PostMapping("/falldelete")
-		public void deleteFileAll(int qno,String[] fnamelist){
+		public void deleteFileAll(int qno){
 			
+			logger.info(qno);
+			
+			QuestionVO vo = new QuestionVO();
+			vo.setQno(qno);
+			
+			List<QfileVO> flist=qservice.getFileList(vo);
+			
+			logger.info(flist);
+			logger.info(flist.size());
+			logger.info(flist.get(0).getFilename());
+			logger.info(flist.get(1).getFilename());
+			logger.info(flist.get(2).getFilename());
+			
+//			수정하기전 파일시스템에 저장된 사진 삭제  
+			for(int i=0;i<flist.size();i++){
+				new File("c:\\zzz\\5am\\"+flist.get(i).getFilename().replace('/', File.separatorChar)).delete();
+				
+				File deleteFile = new File("C:\\zzz\\upload\\"+flist.get(i).getFilename());
+				deleteFile.delete();
+			}
+//			수정하기전 db에 저장된 사진 삭제 			
+			qservice.delAllFile(vo);
 			
 			
 		}
