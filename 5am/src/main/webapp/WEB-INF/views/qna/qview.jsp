@@ -160,7 +160,9 @@ li{
                     <!-- Advanced Tables -->
                     <div class="panel panel-success">
                         <div class="panel-heading panel">글번호: ${vo.qno} 제목: ${vo.title}
-                        <p  style="float: right; font: 8px">작성자: ${vo.writer}</p>
+                        <div>
+                        <p  style="float: right; font: 8px; margin: 20px; margin-top: 0px">작성자: ${vo.writer}</p>
+                        </div>
                         </div>
                         <div class="panel-body" >
                             <div class="table-responsive">
@@ -198,14 +200,17 @@ li{
                                   <div style="height: 150px">
                                   </div>
                                   
+                                  <div>
                                   <!-- 리스트가기 -->
-                                <button id="golist" class="btn btn-danger">Go List </button>
+                                <button id="golist" class="btn btn-danger" style="float: left; margin: 5px;">Go List </button>
                              
                             <!--Q 수정 (모달) -->
-                              <a href="" id="qmodiIcon" data-toggle="modal" data-target="#exampleModal" style="float: right; margin: 5px;"><i style="margin: 5px;width: 51px; height:51px; font-size: 3em;" class="fa fa-pencil-square-o"></i></a>
+                              <a href="" id="qmodiIcon" data-toggle="modal" data-target="#exampleModal" style="float: right; margin: 3px;"><i style="margin: 5px;width: 51px; height:51px; font-size: 2em;" class="fa fa-pencil-square-o"></i></a>
                             	 
                            	<!--Q 삭제 아이콘-->
-                             <a id="qdelIcon" href="/qna/delete?qno=${vo.qno}" style="float: right; margin: 5px;"><i class="fa fa-trash-o" style="float: right; margin: 5px; width: 51px; height:51px; font-size: 3em;""></i></a>
+                             <a id="qdelIcon" href="/qna/delete?qno=${vo.qno}" style="float: right; margin: 3px;"><i class="fa fa-trash-o" style="float: right; margin: 5px; width: 51px; height:51px; font-size: 2em;""></i></a>
+                             </div>
+                             
                              
                             </div>
                             
@@ -415,6 +420,7 @@ $("#file").on("click",function(e){
 	if(result==false){
 	e.preventDefault();		
 	}
+	$("#uploadPreview img").remove();
 	
 	$.ajax({
 		type:'post',
@@ -430,7 +436,7 @@ $("#file").on("click",function(e){
 $("#file").change(function (e) {
 	
 		
-		$("#uploadPreview img").remove();
+		
 		
 		console.log("===========================");
 		console.log($('#file'));
