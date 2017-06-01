@@ -23,10 +23,10 @@
 	<style>       
         .window {
             display: none;
-            left:0%;
+            left:35%;
             top:20%;
             background-color: #ffffff;
-            width:100%;
+            width:101%;
             z-index:8000;
             position:absolute;
         }           
@@ -98,7 +98,9 @@
                             <button id="showMask" type="submit" class="btn btn-default">주소 검색</button></div></div></div>
                             
 <!-- 주소 검색 div 시작 -->
-							
+					<div class="form-group">
+					<div class="col-md-9">
+                            <div class="input-icon right">		
 				<div class="mask"></div>
     				<div class="mask2"></div>
     
@@ -116,6 +118,9 @@
 							<div id="postcodify"></div>
 							</div>
 						</div>
+					</div>
+				</div>
+					</div>
 					</div>
 				</div>
 
@@ -255,7 +260,7 @@
 	    	dataType : 'jsonp',
 	    	data : {
 	    		apikey: '175962b9a13ff23b6ba95789998c261c',
-	    			q: $("#address").val(),
+	    			q: $("#address2").val(),
 	    			output:'json'
 	    		
 	    	},
