@@ -6,6 +6,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
 <style>
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
 .submitLink {
     background-color: transparent;
     border: none;
@@ -91,17 +108,21 @@
 				<div class="tab-content" style="padding:10px ">
 					<!-- 1번째 -->
 					<div role="tabpanel" class="tab-pane active" id="home">
-							<form id="form1" runat="server">
-								<div class="file_input">
-									<label> 배경사진 선택 <input id="imgInp" type="file" name="file"></label>
+							<form id="form1" runat="server">								
+								<div class="fileUpload btn btn-primary">
+								    <span>배경사진 선택</span>
+								    <input id="imgInp" type="file" name="file" class="upload" />
 								</div>
+								
 								<div id="preview"></div>
 							</form>
-							<button id="confirm" class="btn btn-default">배경사진 적용</button>
+							<button id="confirm" class="btn btn-info" style="margin:10px">배경사진 적용</button>
+							
 
 							<form id="uploadImg" runat="server">
-								<div class="file_input">
-									<label style="margin-top:10px;">삽입사진 선택 <input id="uploadedImg" type="file" name="file"></label>
+								<div class="fileUpload btn btn-primary">
+								    <span>사진 추가</span>
+								    <input id="uploadedImg" type="file" name="file" class="upload" />
 								</div>
 							</form>
 					</div>
@@ -109,15 +130,15 @@
 					<!-- 2번째 -->
 					<div role="tabpanel" class="tab-pane" id="profile">
 
-						<button id="addtext" style="margin:5px" class="btn btn-default">문구 넣기</button>
+						<button id="addtext" style="margin:5px" class="btn btn-default">문구 넣기</button><hr />
 						<p style="margin:5px">
 							<button id="bold" class="btn btn-default">진하게</button>
 							<button id="italic" class="btn btn-default">기울이기</button>
-							<button id="underline" class="btn btn-default">밑줄</button>
-							<label>글자색</label><input type="color" id="color"> 
-							<label>배경색</label><input type="color"id="text-bg-color"> 
-							<input type="range" min="5"max="150" value="40" id="text-font-size"> 
-							<label for="font-family" style="display: inline-block">글자체:</label> 
+							<button id="underline" class="btn btn-default">밑줄</button></br>
+							<label>글자색:&nbsp;</label><input type="color" id="color"> </br>
+							<label>배경색:&nbsp;</label><input type="color"id="text-bg-color"></br> 
+							<label>글자크기:&nbsp;</label><input type="range" min="5"max="150" value="30" id="text-font-size"> 
+							<label for="font-family" style="display: inline-block">글자체:&nbsp;</label> 
 							<select id="font-family">
 								<option value="arial">Arial</option>
 								<option value="helvetica" selected>Helvetica</option>
@@ -141,10 +162,12 @@
 					</div>
 
 					<div role="tabpanel" class="tab-pane" id="messages">
-						<label>도형색</label><input type="color" id="rectcolor" >
+						
 						<button id="rect" class=" btn btn-default">사각형</button>
 						<button id="circle" class=" btn btn-default">원</button>
 						<button id="triangle"  class=" btn btn-default">삼각형</button>
+						<label>도형색&nbsp;</label><input type="color" id="rectcolor" >
+						<hr />
 						<ul class="svg-shapes" style="list-style: none; padding:0px; " >
 						<c:forEach begin="1" end="35" var="i" >
 					         <li style="float: left; margin:5px;"><button class="btn btn-default  icon" id="shape${i }"><img src="svg/${i }.svg" style="width: 30px; height:30px; "></button></li> 
@@ -217,6 +240,14 @@
 							}
 
 						})();
+						
+						 document.getElementById("rectcolor").onchange=(function(){
+						        var activeObject = canvas.getActiveObject();        
+						       activeObject.set("fill", $(this)[0].value);
+						        console.log($(this)[0].value)
+						        canvas.renderAll();
+						        
+						   })
 
 						document.getElementById('uploadedImg').onchange = function handleImage(e) {
 							var reader = new FileReader();
@@ -355,15 +386,7 @@
 						                  })
 						}
 
-						$("#addtext").click(function(e) {
-							e.preventDefault();
-							canvas.deactivateAll();
-							canvas.renderAll()
-
-							addtext2();
-							canvas.renderAll();
-
-						});
+						
 
 						function readURL(input) {
 							if (input.files && input.files[0]) {
@@ -385,6 +408,16 @@
 							console.log("213123"+this[1]);
 							
 							
+						});
+ 						
+ 						$("#addtext").click(function(e) {
+							e.preventDefault();
+							canvas.deactivateAll();
+							canvas.renderAll()
+
+							addtext2();
+							canvas.renderAll();
+
 						});
 						 
 
@@ -448,8 +481,16 @@
 						$(document).keydown(function(event) {
 						if (event.keyCode == '46') {
 						    canvas.remove(canvas.getActiveObject());
-						}   
-						    }) 
+							}   
+						})
+						
+						$("#delete").click(function() {
+							canvas.remove(canvas.getActiveObject());
+							canvas.renderAll()
+
+						})
+						
+						
 
 						$("#deactive").click(function() {
 							console.log("test1")
@@ -467,9 +508,7 @@
 							var giffile = $("#img1")[0].src;
 							var sid = "${login.sid}";
 							var str = giffile.split(",")[1]
-
 						
-
 							$.ajax({
 					            url : "/admaker/adgif",
 					            type : "post",
@@ -487,89 +526,68 @@
 						})
 
 						$("#start").click(function() {
-								console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~iscr");
-								console.log(iscr);
 								gifshot.createGIF({
-																gifWidth : 680,
-																gifHeight : 1000,
-																images : iscr,
-																interval : 1.5,
-															},
-															function(obj) {
-																if (!obj.error) {
-																	var image = obj.image;
+								gifWidth : 680,
+								gifHeight : 1000,
+								images : iscr,
+								interval : 1.5,
+							},
+							function(obj) {
+								if (!obj.error) {
+									var image = obj.image;
 
-																	$("#d2").append("<img id='img1' src='' style='width: 80% ;height:auto;'>")
-																	animatedImage = document.getElementById('img1');
-																	animatedImage.src = image;
-																	console.dir($(this).parent())
-																}
-															});
-										})
-	$("#rect").click(function(){
-        
-       
-       var rect = new fabric.Rect({
-            width: 200, height: 100, left: 20, top: 200, angle: 0,
-            fill: 'rgba(255,0,3,1)'
-        });        
-       canvas.add(rect);
-        
-   })
-    
-    $("#circle").click(function(){
-        
-           var circle = new fabric.Circle({
-            radius: 50, left: 275, top: 75, fill: '#aac'
-        });
-           canvas.add(circle);
-        
-     })
-
-    $("#triangle").click(function(){
-        
-       var triangle = new fabric.Triangle({
-            width: 100, height: 100, left: 50, top: 300, fill: '#cca'
-        });
-       canvas.add(triangle);
-    
-     })
-    
-   
-   
-   document.getElementById("rectcolor").onchange=(function(){
-        console.log("색 바꾸기")
-        var activeObject = canvas.getActiveObject();        
-       activeObject.set("fill", $(this)[0].value);
-        console.log($(this)[0].value)
-        canvas.renderAll();
-        
-   })			
-   
-   $(".icon").each(function(e){
-	   console.log(e)
-	   $(this).on("click",function(f){
-		   addStickers(e+1)  
-	   })
-	   
-   })
-   for(var i=1; i<=30; i++) {
-	   var a="#shape"+i;
-	   	
-	   var b=i+".svg";
-/* 	   console.log(a);
-	   console.log(b);
-	   console.log(c); */
-
-		/* $(a).click(function(e){
-			console.log("aaaaa")
-         addStickers('b'); 
-	    
-   });*/
-}
-
-
-										
+									$("#d2").append("<img id='img1' src='' style='width: 80% ;height:auto;'>")
+									animatedImage = document.getElementById('img1');
+									animatedImage.src = image;
+									console.dir($(this).parent())
+								}
+							});
+						})
+						
+						
+						$("#rect").click(function(){        
+					       
+					       var rect = new fabric.Rect({
+					            width: 200, height: 100, left: 20, top: 200, angle: 0,
+					            fill: 'rgba(255,0,3,1)'
+					        });        
+					       canvas.add(rect);
+					        
+					   })
+					    
+					    $("#circle").click(function(){
+					        
+					           var circle = new fabric.Circle({
+					            radius: 50, left: 275, top: 75, fill: '#aac'
+					        });
+					           canvas.add(circle);
+					        
+					     })
+					
+					    $("#triangle").click(function(){
+					        
+					       var triangle = new fabric.Triangle({
+					            width: 100, height: 100, left: 50, top: 300, fill: '#cca'
+					        });
+					       canvas.add(triangle);
+					    
+					     })
+					    
+					   
+					   
+					  			
+					   
+					   $(".icon").each(function(e){
+						   console.log(e)
+						   $(this).on("click",function(f){
+							   addStickers(e+1)  
+						   })
+						   
+					   })
+					   
+					   
+					   
+					   	
 })
 </script>
 	
