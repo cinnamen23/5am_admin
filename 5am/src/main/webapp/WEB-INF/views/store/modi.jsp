@@ -43,11 +43,11 @@
     <div class="page-form" style="margin-top: 100px;">
         <div class="panel panel-blue">
             <div class="panel-body pan">
-                <form id="f1" action="/store/modi"  class="form-horizontal">
+                <form id="f1" action="/store/modi" method="post"  class="form-horizontal">
                 <div class="form-body pal">
-              
+             
                     <div class="col-md-12 text-center">
-                        <h5 style="margin-top: -90px; font-size: 35px;">
+                        <h5 style="margin-top: -70px; font-size: 35px;">
                             정보 수정  </h5>
                         
                     </div>
@@ -122,7 +122,7 @@
                             상세 주소:</label>
                         <div class="col-md-9">
                             <div class="input-icon right">		
-								<input class="form-control" type="text" name="saddr3" id="details" value="" /><br />
+								<input class="form-control" type="text" name="saddr3" id="details" value="${vo.saddr}" /><br />
 								</div>
                         </div>
                     </div>
@@ -154,14 +154,18 @@
                                     &nbsp;
                                 </div>
                                 <div class="col-lg-9">
-                         <input type="hidden" name="sid" value="${vo.sid}">       
-                                    <button id="regiBtn" class="btn btn-default">정보 수정</button>
-                                    <button type="button" class="btn btn-default" onclick="location.href='/index' ">취 소</button>
+			                        <input type="hidden" name="sid" value="${vo.sid}">
+			                        <input class="hpage" type="hidden" name="page" value="${cri.page}">
+									<input class="htype" type="hidden" name="type" value="${cri.type}">
+									<input class="hkeyword" type="hidden" name="keyword" value="${cri.keyword}">    
+		                                <button id="regiBtn" class="btn btn-default">정보 수정</button>
+		                                <button type="button" class="btn btn-default" onclick="location.href='/index' ">취 소</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                
                 </form>
             </div>
         </div>

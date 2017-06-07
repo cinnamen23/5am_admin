@@ -1,584 +1,579 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
-
+<style>
+.submitLink {
+    background-color: transparent;
+    border: none;
+	color:white;
+    cursor: pointer;
+}
+.file_input label {
+    position:relative;
+    cursor:pointer;
+    display:inline-block;
+    vertical-align:middle;
+    overflow:hidden;
+    width:100px;
+    height:30px;
+    background:#777;
+    color:#fff;
+    text-align:center;
+    line-height:30px;
+}
+.file_input label input {
+    position:absolute;
+    width:0;
+    height:0;
+    overflow:hidden;
+}
+.file_input input[type=text] {
+    vertical-align:middle;
+    display:inline-block;
+    width:400px;
+    height:28px;
+    line-height:28px;
+    font-size:11px;
+    padding:0;
+    border:0;
+    border:1px solid #777;
+}
+</style>
     <%@ include file="/WEB-INF/views/header.jsp" %>
-
-     <!-- MENU SECTION END-->
-  	<div class="content-wrapper">
-		<div class="container">
-			<div class="row pad-botm">
-				<div class="col-md-12">
-					<h4 class="header-line">FORM EXAMPLES</h4>
-
-				</div>
-
-			</div>
-			<div class="row">
-				<div class="col-md-6 col-sm-6 col-xs-12">
-					<div class="panel panel-info">
-						<div class="panel-heading">BASIC FORM</div>
-						<div class="panel-body">
-							<form role="form">
-								<div class="form-group">
-									<label>Enter Name</label> <input class="form-control"
-										type="text" />
-									<p class="help-block">Help text here.</p>
-								</div>
-								<div class="form-group">
-									<label>Enter Email</label> <input class="form-control"
-										type="text" />
-									<p class="help-block">Help text here.</p>
-								</div>
-								<div class="form-group">
-									<label>Text area</label>
-									<textarea class="form-control" rows="3"></textarea>
-								</div>
-
-
-								<button type="submit" class="btn btn-info">Send Message
-								</button>
-
-							</form>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-sm-6 col-xs-12">
-					<div class="panel panel-danger">
-						<div class="panel-heading">SINGUP FORM</div>
-						<div class="panel-body">
-							<form role="form">
-
-								<div class="form-group">
-									<label>Enter Email</label> <input class="form-control"
-										type="text" />
-									<p class="help-block">Help text here.</p>
-								</div>
-								<div class="form-group">
-									<label>Enter Password</label> <input class="form-control"
-										type="password" />
-									<p class="help-block">Help text here.</p>
-								</div>
-								<div class="form-group">
-									<label>Re Type Password </label> <input class="form-control"
-										type="password" />
-									<p class="help-block">Help text here.</p>
-								</div>
-
-								<button type="submit" class="btn btn-danger">Register
-									Now</button>
-
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--/.ROW-->
-			<div class="row">
-				<div class="col-md-6 col-sm-6 col-xs-12">
-					<div class="panel panel-primary">
-						<div class="panel-heading">FORM ELEMENTS</div>
-						<div class="panel-body">
-							<div class="form-group">
-								<label>Select Example</label> <select class="form-control">
-									<option>One Vale</option>
-									<option>Two Vale</option>
-									<option>Three Vale</option>
-									<option>Four Vale</option>
-								</select>
-							</div>
-							<hr />
-							<div class="form-group">
-								<label>Multiple Select Example</label> <select multiple=""
-									class="form-control">
-									<option>One Vale</option>
-									<option>Two Vale</option>
-									<option>Three Vale</option>
-									<option>Four Vale</option>
-								</select>
-							</div>
-							<hr />
-							<div class="form-group">
-								<label>Checkboxes</label>
-								<div class="checkbox">
-									<label> <input type="checkbox" value="" />Checkbox
-										Example One
-									</label>
-								</div>
-								<div class="checkbox">
-									<label> <input type="checkbox" value="" />Checkbox
-										Example Two
-									</label>
-								</div>
-								<div class="checkbox">
-									<label> <input type="checkbox" value="" />Checkbox
-										Example Three
-									</label>
-								</div>
-								<div class="checkbox">
-									<label> <input type="checkbox" value="" />Checkbox
-										Example Four
-									</label>
-								</div>
-							</div>
-							<hr />
-							<div class="form-group">
-								<label>Radio Button Examples</label>
-								<div class="radio">
-									<label> <input type="radio" name="optionsRadios"
-										id="optionsRadios1" value="option1" checked="">Radio
-										Example One
-									</label>
-								</div>
-								<div class="radio">
-									<label> <input type="radio" name="optionsRadios"
-										id="optionsRadios2" value="option2">Radio Example Two
-									</label>
-								</div>
-								<div class="radio">
-									<label> <input type="radio" name="optionsRadios"
-										id="optionsRadios3" value="option3">Radio Example
-										Three
-									</label>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-sm-6 col-xs-12">
-					<div class="panel panel-default">
-						<div class="panel-heading">ADVANCE ELEMENTS FORM</div>
-						<div class="panel-body">
-
-							<form role="form">
-								Some Message Examples <br />
-								<div class="form-group has-success">
-									<label class="control-label" for="success">SUCCESS
-										EXAMPLE</label> <input type="text" class="form-control" id="success" />
-								</div>
-								<div class="form-group has-warning">
-									<label class="control-label" for="warning">WARNING
-										EXAMPLE</label> <input type="text" class="form-control" id="warning" />
-								</div>
-								<div class="form-group has-error">
-									<label class="control-label" for="error">ERROR EXAMPLE</label>
-									<input type="text" class="form-control" id="error" />
-								</div>
-							</form>
-							<hr />
-							Other Group Examples <br />
-							<form role="form">
-								<div class="input-group">
-									<span class="form-group input-group-btn">
-										<button class="btn btn-default" type="button">Go!</button>
-									</span> <input type="text" class="form-control">
-								</div>
-								<br />
-								<div class="input-group">
-
-									<input type="text" class="form-control"> <span
-										class="form-group input-group-btn">
-										<button class="btn btn-default" type="button">Go!</button>
-									</span>
-								</div>
-							</form>
-							<hr />
-							<form role="form">
-								<div class="form-group">
-									<label for="disabledInput">Disabled input</label> <input
-										class="form-control" id="disabledInput" type="text"
-										placeholder="Disabled input" disabled="" />
-								</div>
-
-
-							</form>
-							<hr />
-							For more customization for this template or its components please
-							visit official bootstrap website i.e getbootstrap.com or <a
-								href="http://getbootstrap.com/components/" target="_blank">click
-								here</a>
-						</div>
-					</div>
-				</div>
+<link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+	<div class="content-wrapper" style=" margin-top:0px;">
+	<div class="container">
+		<div class="row pad-botm" style="padding-bottom: 0px;">
+			<div class="col-md-12">
+				<h3 class="header-line">
+					<a href="/admaker/list" style="color: black">5초 광고 만들기 <small> 5AM</small></a>
+				</h3>
 
 			</div>
+
 		</div>
+
+
+		<!-- /.row -->
+		<div class="col-md-12" style="margin-bottom: 15px;">
+			<div class="col-lg-7 col-md-8 col-sm-12">
+				<div style="padding: 10px;">
+					<button id="reset" class=" btn btn-default">초기화</button>
+					<button id="delete" class="btn btn-default">선택삭제</button>
+					<button id="deactive" class="btn btn-default">선택취소</button>
+					<button id="save-jpeg" class="btn btn-default">편집완료</button>
+				</div>
+
+				<canvas id="c" width="544" height="800"
+					style="border: 1px solid #000000;"></canvas>
+			</div>
+			<!-- /.end col-md-6 row -->
+
+
+			<!-- Nav tabs -->
+			<div style="margin-bottom: 1px;" class="col-lg-5 col-md-4 col-sm-12">
+				<ul class="nav nav-tabs " role="tablist" style="margin: 5px">
+					<li role="presentation" class="active"><a href="#home"
+						aria-controls="home" role="tab" data-toggle="tab">사진추가</a></li>
+					<li role="presentation"><a href="#profile"
+						aria-controls="profile" role="tab" data-toggle="tab">문구추가</a></li>
+					<li role="presentation"><a href="#messages"
+						aria-controls="messages" role="tab" data-toggle="tab">스티커추가</a></li>
+					<li role="presentation"><a href="#settings"
+						aria-controls="settings" role="tab" data-toggle="tab">변환</a></li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content" style="padding:10px ">
+					<!-- 1번째 -->
+					<div role="tabpanel" class="tab-pane active" id="home">
+							<form id="form1" runat="server">
+								<div class="file_input">
+									<label> 배경사진 선택 <input id="imgInp" type="file" name="file"></label>
+								</div>
+								<div id="preview"></div>
+							</form>
+							<button id="confirm" class="btn btn-default">배경사진 적용</button>
+
+							<form id="uploadImg" runat="server">
+								<div class="file_input">
+									<label style="margin-top:10px;">삽입사진 선택 <input id="uploadedImg" type="file" name="file"></label>
+								</div>
+							</form>
+					</div>
+
+					<!-- 2번째 -->
+					<div role="tabpanel" class="tab-pane" id="profile">
+
+						<button id="addtext" style="margin:5px" class="btn btn-default">문구 넣기</button>
+						<p style="margin:5px">
+							<button id="bold" class="btn btn-default">진하게</button>
+							<button id="italic" class="btn btn-default">기울이기</button>
+							<button id="underline" class="btn btn-default">밑줄</button>
+							<label>글자색</label><input type="color" id="color"> 
+							<label>배경색</label><input type="color"id="text-bg-color"> 
+							<input type="range" min="5"max="150" value="40" id="text-font-size"> 
+							<label for="font-family" style="display: inline-block">글자체:</label> 
+							<select id="font-family">
+								<option value="arial">Arial</option>
+								<option value="helvetica" selected>Helvetica</option>
+								<option value="myriad pro">Myriad Pro</option>
+								<option value="delicious">Delicious</option>
+								<option value="verdana">Verdana</option>
+								<option value="georgia">Georgia</option>
+								<option value="courier">Courier</option>
+								<option value="comic sans ms">Comic Sans MS</option>
+								<option value="impact">Impact</option>
+								<option value="monaco">Monaco</option>
+								<option value="optima">Optima</option>
+								<option value="hoefler text">Hoefler Text</option>
+								<option value="plaster">Plaster</option>
+								<option value="engagement">Engagement</option>
+							</select>
+
+
+
+						</p>
+					</div>
+
+					<div role="tabpanel" class="tab-pane" id="messages">
+						<label>도형색</label><input type="color" id="rectcolor" >
+						<button id="rect" class=" btn btn-default">사각형</button>
+						<button id="circle" class=" btn btn-default">원</button>
+						<button id="triangle"  class=" btn btn-default">삼각형</button>
+						<ul class="svg-shapes" style="list-style: none; padding:0px; " >
+						<c:forEach begin="1" end="35" var="i" >
+					         <li style="float: left; margin:5px;"><button class="btn btn-default  icon" id="shape${i }"><img src="svg/${i }.svg" style="width: 30px; height:30px; "></button></li> 
+					    
+						</c:forEach>
+				
+					    </ul>
+					</div>
+
+					<div  class="tab-pane" id="settings">
+						<div id="d2">
+							
+						</div>
+						<div style="margin:10px " >
+							<button id="start" class="btn btn-default">변환</button>
+							<button id="down" class="btn btn-default">저장</button>
+						</div>
+					</div>
+				</div>
+
+			<!-- 미리보기 사진목록 -->
+			<div class='uploadedList2 col-md-12 col-sm-12' style="padding: 2px;"></div>
+
+
+		</div>
+
+			</div>
+			<!--End Nav tabs -->
+
+
 	</div>
 	<!-- CONTENT-WRAPPER SECTION END-->
-                        </div>
-                    </div>
-               <div class="col-md-3 col-sm-3 col-xs-6">
-                      <div class="alert alert-danger back-widget-set text-center">
-                            <i class="fa fa-briefcase fa-5x"></i>
-                            <h3>30+ Issues </h3>
-                            That Should Be Resolved Now
-                        </div>
-                    </div>
+	
+	
+	
+	
+	
+	
 
-        </div>              
-             <div class="row">
+	<script src='../resources/gifshot.js'></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.11/fabric.min.js"></script>
+<script>
+	$(document).ready(function() {
 
-              <div class="col-md-8 col-sm-8 col-xs-12">
-                    <div id="carousel-example" class="carousel slide slide-bdr" data-ride="carousel" >
-                   
-                    <div class="carousel-inner">
-                        <div class="item active">
+						var i = 0;
+						var bg = "";
+						var iscr = new Array();
+						var canvas = this.__canvas = new fabric.Canvas('c');
+						fabric.Object.prototype.transparentCorners = false;
 
-                            <img src="assets/img/1.jpg" alt="" />
-                           
-                        </div>
-                        <div class="item">
-                            <img src="assets/img/2.jpg" alt="" />
-                          
-                        </div>
-                        <div class="item">
-                            <img src="assets/img/3.jpg" alt="" />
-                           
-                        </div>
-                    </div>
-                    <!--INDICATORS-->
-                     <ol class="carousel-indicators">
-                        <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-example" data-slide-to="1"></li>
-                        <li data-target="#carousel-example" data-slide-to="2"></li>
-                    </ol>
-                    <!--PREVIUS-NEXT BUTTONS-->
-                     <a class="left carousel-control" href="#carousel-example" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
-                </div>
-              </div>
-                 
-                 <div class="col-md-4 col-sm-4 col-xs-12">
-                 <div class="panel panel-primary ">
-                        <div class="panel-heading">
-                            Recent Chat History
-                        </div>
-                        <div class="panel-body chat-widget-main">
-                            <div class="chat-widget-left">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                           Lorem ipsum dolor.
-                            </div>
-                            <div class="chat-widget-name-left">
-                                <img class="media-object img-circle img-left-chat" src="assets/img/user2.png" />
-                                <h4>  Amanna Seiar</h4>
-                                <h5>Time 2:00 pm at 25th july</h5>
-                            </div>
-                            <hr />
-                            <div class="chat-widget-right">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                           Lorem ipsum dolor sit amet.
-                            </div>
-                            <div class="chat-widget-name-right">
-                                 <img class="media-object img-circle img-right-chat" src="assets/img/user2.png" />
-                                <h4>  Amanna Seiar</h4>
-                                <h5>Time 2:00 pm at 25th july</h5>
-                            </div>
-                            <hr />
-                            <div class="chat-widget-left">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                           Lorem ipsum dolor sit amet.
-                            </div>
-                            <div class="chat-widget-name-left">
-                                 <img class="media-object img-circle img-left-chat" src="assets/img/user2.png" />
-                                <h4>  Amanna Seiar</h4>
-                                <h5>Time 2:00 pm at 25th july</h5>
-                            </div>
-                            <hr />
-                            <div class="chat-widget-right">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                           Lorem ipsum dolor sit amet.
-                            </div>
-                            <div class="chat-widget-name-right">
-                               <img class="media-object img-circle img-right-chat" src="assets/img/user2.png" />
-                                <h4>  Amanna Seiar</h4>
-                                <h5>Time 2:00 pm at 25th july</h5>
-                            </div>
-                            <hr />
-                        </div>
+						(function() {
 
-                    </div>
-             </div>
-             
-                 </div>
-            
+							
 
-             <div class="row">
-                 <div class="col-md-4 col-sm-4 col-xs-12">
- <div class="panel panel-default">
-                        <div class="panel-heading">
-                           Recent Users
-                        </div>
-                        <div class="panel-body text-center recent-users-sec">
-<img class="img-thumbnail" src="assets/img/user.gif" />
-                            <img class="img-thumbnail" src="assets/img/user2.png" />
-                            <img class="img-thumbnail" src="assets/img/user.gif" />
-                            <img class="img-thumbnail" src="assets/img/user2.png" />
-                            <img class="img-thumbnail" src="assets/img/user.gif" />
-                               <img class="img-thumbnail" src="assets/img/user2.png" />
-                            <img class="img-thumbnail" src="assets/img/user.gif" />
-                            <img class="img-thumbnail" src="assets/img/user2.png" />
-                            <img class="img-thumbnail" src="assets/img/user.gif" />
-                        </div>
-     </div>
-             </div>
-                  <div class="col-md-8 col-sm-8 col-xs-12">
-                      <div class="panel panel-success">
-                        <div class="panel-heading">
-                           Responsive Table Example
-                        </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Username</th>
-                                             <th>User No.</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>100090</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>100090</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>100090</td>
-                                        </tr>
-                                         <tr>
-                                            <td>4</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>100090</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>100090</td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>100090</td>
-                                        </tr>
-                                          <tr>
-                                            <td>7</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>100090</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-             </div>
-             
-             </div>
-             <div class="row">
-                 
-                 <div class="col-md-8 col-sm-8 col-xs-12">
-                     <div class="panel panel-warning">
-                        <div class="panel-heading">
-                           Recent Comments
-                        </div>
-                        <div class="panel-body">
-                            <ul class="media-list">
-                        
-      <li class="media">
-        <a class="pull-left" href="#">
-          <img class="media-object img-circle img-comments" src="assets/img/user.gif" />
-        </a>
-        <div class="media-body">
-          <h4 class="media-heading">Lorem ipsum dolor sit amet</h4>
-          <p>
-              Donec sit amet ligula enim. Duis vel condimentum massa.
-               Maecenas eget congue dui
-               interdum nibh et, volutpat dolor.
-          </p>
-          <!-- Nested media object -->
-          <div class="media">
-            <a class="pull-left" href="#">
-              <img class="media-object img-circle img-comments" src="assets/img/user2.png">
-            </a>
-            <div class="media-body">
-              <h4 class="media-heading">Nulla gravida vitae neque </h4>
-             Donec sit amet ligula enim. Duis vel condimentum massa.
-               Maecenas eget congue dui. Vestibulum et eros consectetur,
-               interdum nibh et, volutpat dolor.
-              <!-- Nested media object -->
-              <div class="media">
-                <a class="pull-left" href="#">
-                 <img class="media-object img-circle img-comments" src="assets/img/user.gif" />
-                </a>
-                <div class="media-body">
-                  <h4 class="media-heading">Donec sit amet ligula enim</h4>
-                     Donec sit amet ligula enim. Duis vel condimentum massa.
-               Maecenas eget congue dui. Vestibulum et eros consectetur,
-               interdum nibh et, volutpat dolor.
-                </div>
-              </div>
-            </div>
-          </div>
+							canvas.on({
+								'object:moving' : onChange,
+								'object:scaling' : onChange,
+								'object:rotating' : onChange,
+							});
+
+							function onChange(options) {
+								options.target.setCoords();
+								canvas.forEachObject(function(obj) {
+									if (obj === options.target)
+										return;
+									//     obj.setOpacity(options.target.intersectsWithObject(obj) ? 0.5 : 1);
+								});
+							}
+
+						})();
+
+						document.getElementById('uploadedImg').onchange = function handleImage(e) {
+							var reader = new FileReader();
+							reader.onload = function(event) {
+								var imgObj = new Image();
+								imgObj.src = event.target.result;
+								imgObj.onload = function() {
+									var image = new fabric.Image(imgObj);
+									image.set({
+										angle : 0,
+										cornersize : 10,
+										height : 170,
+										width : 250,
+									});
+									canvas.centerObject(image);
+									canvas.add(image);
+									canvas.renderAll();
+								}
+							}
+							reader.readAsDataURL(e.target.files[0]);
+						}
+
+						function setStyle(object, styleName, value) {
+							if (object.setSelectionStyles && object.isEditing) {
+								var style = {};
+								style[styleName] = value;
+								object.setSelectionStyles(style).setCoords();
+							} else {
+								object[styleName] = value;
+							}
+							canvas.renderAll();
+						}
+						;
+						function getStyle(object, styleName) {
+							return (object.getSelectionStyles && object.isEditing) ? object
+									.getSelectionStyles()[styleName]
+									: object[styleName];
+						}
+						function addHandler(id, fn, eventName) {
+							document.getElementById(id)[eventName || 'onclick'] = function() {
+								var el = this;
+								if (obj = canvas.getActiveObject()) {
+									fn.call(el, obj);
+									canvas.renderAll();
+								}
+							};
+						}
+
+						addHandler('underline',
+								function(obj) {
+									var isUnderline = (getStyle(obj,
+											'textDecoration') || '')
+											.indexOf('underline') > -1;
+									setStyle(obj, 'textDecoration',
+											isUnderline ? '' : 'underline');
+								});
+
+						addHandler('bold', function(obj) {
+							var isBold = (getStyle(obj, 'fontWeight') || '')
+									.indexOf('bold') > -1;
+							setStyle(obj, 'fontWeight', isBold ? '' : 'bold');
+						});
+
+						addHandler(
+								'italic',function(obj) {
+									var isItalic = (getStyle(obj, 'fontStyle') || '').indexOf('italic') > -1;
+									setStyle(obj, 'fontStyle', isItalic ? '': 'italic');
+								});
+
+						addHandler('color', function(obj) {
+							setStyle(obj, 'fill', this.value);
+						}, 'onchange');
+
+						addHandler('font-family', function(obj) {
+							setStyle(obj, 'fontFamily', this.value);
+						}, 'onchange');
+
+						addHandler('text-bg-color', function(obj) {
+							setStyle(obj, 'textBackgroundColor', this.value);
+						}, 'onchange');
+						addHandler('text-font-size', function(obj) {
+							setStyle(obj, 'fontSize', this.value);
+						}, 'onchange');
+
+						function addtext(puttext) {
+							var text = new fabric.Text(puttext, {
+								left : 100,
+								top : 100
+							});
+							canvas.add(text);
+
+						}
+
+						function addtext2() {
+							var iTextSample = new fabric.IText(
+									"input Text",
+									{
+										left : 50,
+										top : 50,
+										fontFamily : 'Helvetica',
+										fill : '#333',
+										lineHeight : 1.1,
+										styles : {0 : {0 : {textDecoration : 'underline',fontSize : 80},1 : {textBackgroundColor : 'red'}},1 : {0 : {textBackgroundColor : 'rgba(0,255,0,0.5)'},4 : {fontSize : 20}}
+										}
+									});
+							canvas.add(iTextSample);
+						}
+
+						function backg(bg) {
+
+							var imgElement = document.getElementById(bg);
+							console.log("element@@"+imgElement);
+
+							var imgInstance = new fabric.Image(imgElement, {
+								left : 0,
+								top : 0,
+
+								opacity : 1
+							});
+							imgInstance.setWidth(canvas.width);
+							imgInstance.setHeight(canvas.height);
+							canvas.setBackgroundImage(imgInstance);
+							canvas.renderAll();
+
+						}; 
+						 var svgName= '';
+						
+						function addStickers(svgName){
+						       var site_url = 'svg/'+svgName+'.svg';
+						       
+						        fabric.loadSVGFromURL(site_url, function(objects, options) {
+						            var obj = fabric.util.groupSVGElements(objects, options);
+						            obj.scale(0.2);
+						            canvas.add(obj);
+						            canvas.renderAll();
+						                  })
+						}
+
+						$("#addtext").click(function(e) {
+							e.preventDefault();
+							canvas.deactivateAll();
+							canvas.renderAll()
+
+							addtext2();
+							canvas.renderAll();
+
+						});
+
+						function readURL(input) {
+							if (input.files && input.files[0]) {
+								var reader = new FileReader();
+
+								reader.onload = function(e) {
+
+									$('#preview').html("<img id='blah' src=''  style='height: 450px; width: 340px;' />")
+									
+									$('#blah').attr('src', e.target.result);
+								}
+
+								reader.readAsDataURL(input.files[0]);
+							}
+						}
+
+ 						$("#imgInp").change(function() {
+							readURL(this);
+							console.log("213123"+this[1]);
+							
+							
+						});
+						 
+
+						$("#confirm").click(function() {
+							backg("blah");
+						})
+
+						$("#save-jpeg").click(
+							function() {
+								canvas.deactivateAllWithDispatch();
+								canvas.renderAll();
+								var image = document.getElementById("c").toDataURL("image/jpeg");
+								console.log("save")
+								image = image.replace(
+								'data:image/jpeg;base64,','');
+								var formData = new FormData();
+								var sid = "${login.sid}";
+								formData.append("image", image);
+								formData.append("sid", sid);
+								
+								$.ajax({														
+									url : '/admaker/onepage',
+									data : formData,
+									dataType : 'text',
+									processData : false,
+									contentType : false,
+									type : 'post',
+									success : function(re) {
+									console.log("re");
+									console.log(re);
+									var str = "<div class='col-md-1' style='border: 1px solid white; padding:0; width: 20%; background-color: black; float: left;'><div><img id='mybg' src='data:image/jpeg;base64,"
+									+ re+ "' width='100%' ></div><input type='button' value='사진 삭제' class='submitLink'></div></div>"
+									$(".uploadedList2").append(str);
+									iscr.push("data:image/jpeg;base64,"+ re);
+									console.log(iscr);
+									canvas.clear();
+									console.log($(".uploadeList2"))
+									$(".uploadedList2 input").on("click",function(e) {
+										var $this = $(this);
+										console.log($this.parent());
+										$this.parent().remove();
+										console.log($(".uploadeList2"));
+										$.ajax({type : 'post',url : '/admaker/delete',
+											data : re,
+											success : function(data) {
+												console.log(da);
+											}
+										});
+
+									});
+									}
+								});
+							});
+
+						$("#reset").click(function() {
+
+							canvas.clear();
+
+						})
+
+						$(document).keydown(function(event) {
+						if (event.keyCode == '46') {
+						    canvas.remove(canvas.getActiveObject());
+						}   
+						    }) 
+
+						$("#deactive").click(function() {
+							console.log("test1")
+
+							canvas.deactivateAll();
+							canvas.renderAll()
+
+						})
+
+						$("#down").on('click', function() {
+
+							console.log("보내는 중")
+
+
+							var giffile = $("#img1")[0].src;
+							var sid = "${login.sid}";
+							var str = giffile.split(",")[1]
+
+						
+
+							$.ajax({
+					            url : "/admaker/adgif",
+					            type : "post",
+					            data : {
+					                "giffile" : str,
+					                "sid" : sid
+					            },
+					            dataType : "json",
+					            success : function(data) {
+					                alert("success!!!")
+					            }
+
+					       });
+
+						})
+
+						$("#start").click(function() {
+								console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~iscr");
+								console.log(iscr);
+								gifshot.createGIF({
+																gifWidth : 680,
+																gifHeight : 1000,
+																images : iscr,
+																interval : 1.5,
+															},
+															function(obj) {
+																if (!obj.error) {
+																	var image = obj.image;
+
+																	$("#d2").append("<img id='img1' src='' style='width: 80% ;height:auto;'>")
+																	animatedImage = document.getElementById('img1');
+																	animatedImage.src = image;
+																	console.dir($(this).parent())
+																}
+															});
+										})
+	$("#rect").click(function(){
         
-        </div>
-      </li>
        
-    </ul>
-                            </div>
-                         </div>
-                     
-                 </div>
-                 <div class="col-md-4 col-sm-4 col-xs-12" >
-                        <div class="alert alert-info text-center">
-                          <h3> IMPORTANT NOTICE</h3> 
-                          <hr />
-                            <i class="fa fa-warning fa-4x"></i>
-                          <p>
-                         Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-                           Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-                               Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-                               Lorem ipsum dolor sit amet.
-                        </p>
-                          <hr />
-                           <a href="#" class="btn btn-info">Read Full Detalis</a> 
-                        </div>
-                 </div>
-             </div>
-            <div class="row">
-    <div class="col-md-6">
-                          <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Alerts Examples
-                        </div>
-                        <div class="panel-body">
-                            <h5><strong>Simple Alert</strong></h5>
-                            <div class="alert alert-info">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. <a href="#" class="alert-link">Alert Link</a>.
-                            </div>
-                            Info: You can use other classes like <i>alert-success</i> , <i>alert-warning</i> &amp; <i>alert-danger</i> instead of <i>alert-info</i>
-                           <br />
-                              <h5><strong>Dismissable Alert</strong></h5>
-                            <div class="alert alert-success alert-dismissable">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. <a href="#" class="alert-link">Alert Link</a>.
-                            </div>
-                            Info: You can use other classes like <i>alert-info</i> , <i>alert-warning</i> &amp; <i>alert-danger</i> instead of <i>alert-success</i>
-                           <hr />
-                            <h5> <strong> ICON EXAMPLES </strong></h5>
-                             <i class="fa fa-briefcase "></i>
-                            
-                             <i class="fa fa-briefcase fa-2x"></i>
-                              <i class="fa fa-briefcase fa-3x"></i>
-                              <i class="fa fa-briefcase fa-4x"></i>
-                              <i class="fa fa-briefcase fa-5x"></i>
-                              <br />
-                             <br />
-                            <i class="fa fa-recycle "></i>
-                            
-                             <i class="fa fa-recycle fa-2x"></i>
-                              <i class="fa fa-recycle fa-3x"></i>
-                              <i class="fa fa-recycle fa-4x"></i>
-                              <i class="fa fa-recycle fa-5x"></i>
-                              <br />
-                              <p class="alert alert-warning">
-                        For more customization Of icons please visit website : fortawesome.github.io/Font-Awesome/icons/ or  <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">Click here</a> . You will get all font-awesome icons and there classes there.
-                        </p>
+       var rect = new fabric.Rect({
+            width: 200, height: 100, left: 20, top: 200, angle: 0,
+            fill: 'rgba(255,0,3,1)'
+        });        
+       canvas.add(rect);
+        
+   })
+    
+    $("#circle").click(function(){
+        
+           var circle = new fabric.Circle({
+            radius: 50, left: 275, top: 75, fill: '#aac'
+        });
+           canvas.add(circle);
+        
+     })
 
-                             </div>
-                              </div>
-                     </div>
-                <div class="col-md-6">
-                     <div class="panel panel-info">
-                        <div class="panel-heading">
-                            Compose a Message
-                        </div>
-                        <div class="panel-body">
-                            <form role="form">
-                                        <div class="form-group">
-                                            <label>Enter Name</label>
-                                            <input class="form-control" type="text" />
-                                        </div>
-                                 <div class="form-group">
-                                            <label>Enter Email</label>
-                                            <input class="form-control" type="text" />
-                                        </div>
-                                <div class="form-group">
-                                            <label>Subject</label>
-                                            <input class="form-control" type="text" />
-                                        </div>
-                                 <div class="form-group">
-                                            <label>Enter Message</label>
-                                            <input class="form-control" type="text" style="min-height:100px;" />
-                                        </div>
-                                       
-                                        <div class="form-group">
-                                            <label>Attach File </label>
-                                            <input type="file" />
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label>For Role </label>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="" />Webmaster 
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="" />Admin
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="" />Employee
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="" />User
-                                                </label>
-                                            </div>
-                                        </div>
-                                        
-                                       
-                                        <button type="submit" class="btn btn-success">Send Message </button>
-                                        <button type="reset" class="btn btn-primary">Reset Fields</button>
+    $("#triangle").click(function(){
+        
+       var triangle = new fabric.Triangle({
+            width: 100, height: 100, left: 50, top: 300, fill: '#cca'
+        });
+       canvas.add(triangle);
+    
+     })
+    
+   
+   
+   document.getElementById("rectcolor").onchange=(function(){
+        console.log("색 바꾸기")
+        var activeObject = canvas.getActiveObject();        
+       activeObject.set("fill", $(this)[0].value);
+        console.log($(this)[0].value)
+        canvas.renderAll();
+        
+   })			
+   
+   $(".icon").each(function(e){
+	   console.log(e)
+	   $(this).on("click",function(f){
+		   addStickers(e+1)  
+	   })
+	   
+   })
+   for(var i=1; i<=30; i++) {
+	   var a="#shape"+i;
+	   	
+	   var b=i+".svg";
+/* 	   console.log(a);
+	   console.log(b);
+	   console.log(c); */
 
-                                    </form>
-                            </div>
-                        </div>
-                </div>
+		/* $(a).click(function(e){
+			console.log("aaaaa")
+         addStickers('b'); 
+	    
+   });*/
+}
 
-            </div>
 
-    </div>
-    </div>
-
-        <%@ include file="/WEB-INF/views/footer.jsp" %>
+										
+})
+</script>
+	
+	
+	
+	
+<%@ include file="/WEB-INF/views/footer.jsp" %>

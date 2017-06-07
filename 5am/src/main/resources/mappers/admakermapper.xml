@@ -2,9 +2,29 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="time">
-<select id="time" resultType="String">
-select sysdate from dual
-</select>
+<mapper namespace="org.cg.persistence.AdmakerDAO" >
+
+
+<insert id="adimginsert" parameterType="hashmap">
+
+insert into tbl_adImage(imid,sid)values('${vo.imid}','${sid}') 
+
+</insert>
+
+
+
+
+
+<insert id="adgifinsert" parameterType="hashmap">
+
+insert into tbl_adgif(gifid,sid)values('${gifid}','${sid}') 
+
+</insert>
+
+
+
+
+
+
 </mapper>
   

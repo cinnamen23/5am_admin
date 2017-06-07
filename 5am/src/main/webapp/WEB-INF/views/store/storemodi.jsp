@@ -24,10 +24,10 @@
       
         .window {
             display: none;
-            left:-43%;
+            left:0%;
             top:20%;
             background-color: #ffffff;
-            width:150%;
+            width:100%;
             z-index:8000;
             position:absolute;
         }
@@ -47,7 +47,7 @@
                 <div class="form-body pal">
               
                     <div class="col-md-12 text-center">
-                        <h5 style="margin-top: -90px; font-size: 35px;">
+                        <h5 style="margin-top: -100px; font-size: 35px;">
                             정보 수정  </h5>
                         
                     </div>
@@ -79,7 +79,7 @@
                             가게 주소:</label>
                         <div class="col-md-9">
                             <div class="input-icon right">
-                            <button id="showMask" type="submit" class="btn btn-default">주소 검색</button>
+                            <button id="showMask" type="submit" class="btn btn-default">주소 검색</button></div></div></div>
                             
 <!-- 주소 검색 div 시작 -->
 							
@@ -91,7 +91,7 @@
 					<div class="col-md-12 col-sm-12 col-xs-12" style="margin: 0;padding: 0">
 						<div class="panel panel-danger"style="margin: 0;padding: 0">
 							<div class="panel-heading">
-								주소검색
+								<i id="close" class="fa fa-times" aria-hidden="true" style="float: right"></i><h5>주소검색</h5>
 								
 							</div>
 							<div class="panel-body"style="margin: 0;padding: 0">
@@ -122,7 +122,7 @@
                             상세 주소:</label>
                         <div class="col-md-9">
                             <div class="input-icon right">		
-								<input class="form-control" type="text" name="saddr3" id="details" value="" /><br />
+								<input class="form-control" type="text" name="saddr3" id="details" value="${vo.saddr}" /><br />
 								</div>
                         </div>
                     </div>

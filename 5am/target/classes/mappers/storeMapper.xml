@@ -36,7 +36,7 @@
 	
 	<select id="storeList" resultType="org.cg.domain.StoreVO" parameterType="org.cg.domain.Criteria">
 		select * from (SELECT rownum rnum, sid,spw,sname,saddr,sphone,semail,gubun, regdate,updatedate FROM 
-		(SELECT sid,spw,sname,saddr,sphone,semail,gubun, regdate,updatedate FROM tbl_store where sid IS NOT NULL
+		(SELECT sid,spw,sname,saddr,sphone,semail,gubun, regdate,updatedate FROM tbl_store where gubun != 'admin'
 		<choose>
 			  <when test='type=="i"'>
 			  and (sid like '%'|| #{keyword} ||'%')

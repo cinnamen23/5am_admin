@@ -27,7 +27,7 @@ li{
       </div>
       
       
-        <form id="f1">
+        <form id="f1" enctype="multipart/form-data">
       <div class="modal-body">
       
           <div class="form-group">
@@ -41,7 +41,16 @@ li{
           
            <input type="hidden" id="qno" name="qno" value="${vo.qno}">
             <input type="hidden" id="qwriter" name="writer" value="${vo.writer}">
-        
+            
+            
+            <label>
+	 			File Attach
+		        <input id="file" type="file" name="file" multiple="multiple">
+		    </label>
+                    
+                    <div id="uploadPreview">
+								
+								</div>
       </div>
         </form>
 
@@ -135,6 +144,7 @@ li{
 			<div class="col-md-12">
 				<h4 class="header-line"><a href="/qna/list" style="color: black">Q&A</a></h4>
 
+
 			</div>
 
 		</div>
@@ -150,7 +160,9 @@ li{
                     <!-- Advanced Tables -->
                     <div class="panel panel-success">
                         <div class="panel-heading panel">글번호: ${vo.qno} 제목: ${vo.title}
-                        <p  style="float: right; font: 8px">작성자: ${vo.writer}</p>
+                        <div>
+                        <p  style="float: right; font: 8px; margin: 20px; margin-top: 0px">작성자: ${vo.writer}</p>
+                        </div>
                         </div>
                         <div class="panel-body" >
                             <div class="table-responsive">
@@ -188,14 +200,17 @@ li{
                                   <div style="height: 150px">
                                   </div>
                                   
+                                  <div>
                                   <!-- 리스트가기 -->
-                                <button id="golist" class="btn btn-danger">Go List </button>
+                                <button id="golist" class="btn btn-danger" style="float: left; margin: 5px;">Go List </button>
                              
                             <!--Q 수정 (모달) -->
-                              <a href="" data-toggle="modal" data-target="#exampleModal" style="float: right; margin: 5px;"><i class="glyphicon glyphicon-wrench"></i></a>
+                              <a href="" id="qmodiIcon" data-toggle="modal" data-target="#exampleModal" style="float: right; margin: 3px;"><i style="margin: 5px;width: 51px; height:51px; font-size: 2em;" class="fa fa-pencil-square-o"></i></a>
                             	 
                            	<!--Q 삭제 아이콘-->
-                             <a id="qdelIcon" href="/qna/delete?qno=${vo.qno}" style="float: right; margin: 5px;"><i class="glyphicon glyphicon-trash" style="float: right; margin: 5px;"></i></a>
+                             <a id="qdelIcon" href="/qna/delete?qno=${vo.qno}" style="float: right; margin: 3px;"><i class="fa fa-trash-o" style="float: right; margin: 5px; width: 51px; height:51px; font-size: 2em;""></i></a>
+                             </div>
+                             
                              
                             </div>
                             
@@ -270,10 +285,10 @@ li{
                                   
                              
                             <!--A 수정 (모달) -->
-                              <a href="" id="amodifyIcon" data-aano="${AnswerVO.aano}" data-content="${AnswerVO.acontent}" data-writer="${AnswerVO.awriter}"  data-toggle="modal" data-target="#exampleModal2" style="float: right; margin: 5px;"><i class="glyphicon glyphicon-wrench"></i></a>
+                              <a href="" id="amodifyIcon" data-aano="${AnswerVO.aano}" data-content="${AnswerVO.acontent}" data-writer="${AnswerVO.awriter}"  data-toggle="modal" data-target="#exampleModal2" style="float: right; margin: 5px;"><i style="margin: 5px;width: 51px; height:51px; font-size: 3em;" class="fa fa-pencil-square-o"></i></a>
                             	 
                            	<!--A 삭제 아이콘-->
-                             <a id="adelIcon" href="/qna/adelete?aano=${AnswerVO.aano}&qno=${vo.qno}" style="float: right; margin: 5px;"><i class="glyphicon glyphicon-trash" style="float: right; margin: 5px;"></i></a>
+                             <a id="adelIcon" href="/qna/adelete?aano=${AnswerVO.aano}&qno=${vo.qno}" style="float: right; margin: 5px;"><i class="fa fa-trash-o" style="float: right; margin: 5px; width: 51px; height:51px; font-size: 3em;""></i></a>
                              
                             </div>
                             </div>
@@ -359,6 +374,101 @@ $(document).ready(function() {
 			history.go(1);
 		}
 	}
+	
+	
+	function readImage(file) {
+	    var reader = new FileReader();
+	    var image  = new Image();
+	    reader.readAsDataURL(file);  
+	    reader.onload = function(_file) {
+	        image.src    = _file.target.result;              // url.createObjectURL(file);
+	        image.onload = function() {
+	            var w = this.width,
+	                h = this.height,
+	                t = file.type,                           // ext only: // file.type.split('/')[1],
+	                n = file.name,
+	                s = ~~(file.size/1024) +'KB';
+	            if(w > 10000 || h >5000){
+	                alert("1000*500px 이하로 맞춰주세요(비율2:1)");
+	                $("#file").val("");
+	                
+	            }else{
+	            	console.log("===========================");
+	            	console.log(this.src);
+	                  $('#uploadPreview').append('<img src="'+ this.src +'" width="200" height="100">');  
+	            }
+	          
+	        };
+	        image.onerror= function() {
+	            alert('해당형식은 지원하지 않습니다. 파일형식:JPG,PNG');
+	            $("#file").val("");
+	        };      
+	    };
+	}
+	
+	
+	/* 여기서 파일 네임을 ㅇ떻게 가지고 오지 ? */
+$("#file").on("click",function(e){
+	var result=confirm("파일 수정을 하시면 이전 등록된 사진이 모두 지워집니다.")
+	
+	console.log('${vo.qno}');
+	
+	
+	
+	
+	
+	if(result==false){
+	e.preventDefault();		
+	}
+	$("#uploadPreview img").remove();
+	
+	$.ajax({
+		type:'post',
+		url:'/qna/falldelete',
+		data:{qno:${vo.qno}},
+		success:function(re){
+			if(re=='delete')
+			alert("deleted");
+		}
+	}); 
+	
+})	
+$("#file").change(function (e) {
+	
+		
+		
+		
+		console.log("===========================");
+		console.log($('#file'));
+		
+		
+	    if(this.disabled) return alert('File upload not supported!');
+	    console.log(this.files);
+	    var F = this.files;
+	    if(F && F[0]) for(var i=0; i<F.length; i++) readImage( F[i] );
+	});  
+	
+
+
+
+
+
+	$('#qregibtn').on("click", function(e) {
+			e.preventDefault();	
+
+			console.log("들어왔으 ");
+			console.log($('#qtitle').val());				
+			if ($('#qtitle').val().length == 0) {
+				alert("제목을 입력해주세요....");
+			}else if($('#qcontent').val().length == 0){
+				alert("내용을 입력해주세요....");
+			}else if($('#qwriter').val().length == 0){
+				alert("작성자를 입력해주세요....");
+			}else{
+				$('#f1').submit();
+			}
+		
+	});
 	
 	
 	

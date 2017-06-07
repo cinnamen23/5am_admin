@@ -85,7 +85,6 @@
 	                                <!-- 관리자& 고객 분기 -->	
 	                                 <div class="col-sm-6" >
 	                                 
-	                                					${login.gubun}	   
 							    <c:if test="${login.gubun=='admin'}"> 
 	                                	 <button type="submit" class="btn btn-info regiBtn">등록</button> 
 							    </c:if>
