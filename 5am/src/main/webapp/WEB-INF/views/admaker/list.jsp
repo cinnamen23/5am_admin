@@ -145,9 +145,9 @@
 						<button id="rect" class=" btn btn-default">사각형</button>
 						<button id="circle" class=" btn btn-default">원</button>
 						<button id="triangle"  class=" btn btn-default">삼각형</button>
-						<ul class="svg-shapes" style="list-style: none;">
+						<ul class="svg-shapes" style="list-style: none;" >
 						<c:forEach begin="1" end="30" var="i" >
-					         <li><button class="btn btn-default zzz" id="shape${i }"><img src="svg/${i }.svg" style="width: 30px; height:30px;"></button></li> 
+					         <li><button class="btn btn-default  zzz" id="shape${i }"><img src="svg/${i }.svg" style="width: 30px; height:30px; float: left;"></button></li> 
 					    
 						</c:forEach>
 				
@@ -345,7 +345,7 @@
 						 var svgName= '';
 						
 						function addStickers(svgName){
-						       var site_url = 'svg/'+svgName;
+						       var site_url = 'svg/'+svgName+'.svg';
 						       
 						        fabric.loadSVGFromURL(site_url, function(objects, options) {
 						            var obj = fabric.util.groupSVGElements(objects, options);
@@ -548,15 +548,19 @@
    })			
    
    $(".zzz").each(function(e){
-	   console.log(this)
+	   console.log(e)
+	   $(this).on("click",function(f){
+		   addStickers(e+1)  
+	   })
+	   
    })
    for(var i=1; i<=30; i++) {
 	   var a="#shape"+i;
 	   	
 	   var b=i+".svg";
-	   console.log(a);
+/* 	   console.log(a);
 	   console.log(b);
-	   console.log(c);
+	   console.log(c); */
 
 		/* $(a).click(function(e){
 			console.log("aaaaa")
