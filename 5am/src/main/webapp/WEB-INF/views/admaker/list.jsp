@@ -45,11 +45,11 @@
 </style>
     <%@ include file="/WEB-INF/views/header.jsp" %>
 <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet">
-	<div class="content-wrapper" style=" margin-top:0px;">
-	<div class="container">
-		<div class="row pad-botm" style="padding-bottom: 0px;">
+	<div class="content-wrapper" style=" margin-top:0px; ">
+	<div class="container" >
+		<div class="row pad-botm" style="padding-bottom: 0px;margin:0px; ">
 			<div class="col-md-12">
-				<h3 class="header-line">
+				<h3 class="header-line" >
 					<a href="/admaker/list" style="color: black">5초 광고 만들기 <small> 5AM</small></a>
 				</h3>
 
@@ -68,7 +68,7 @@
 					<button id="save-jpeg" class="btn btn-default">편집완료</button>
 				</div>
 
-				<canvas id="c" width="340" height="500"
+				<canvas id="c" width="680" height="1000"
 					style="border: 1px solid #000000;"></canvas>
 			</div>
 			<!-- /.end col-md-6 row -->
