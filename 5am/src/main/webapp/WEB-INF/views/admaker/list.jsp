@@ -555,18 +555,20 @@
 	   
    })
    for(var i=1; i<=30; i++) {
-	   var a="#shape"+i;
+	   var a='"#shape'+i+'"';
 	   	
 	   var b=i+".svg";
 /* 	   console.log(a);
 	   console.log(b);
 	   console.log(c); */
 
-		/* $(a).click(function(e){
+	 $(a).click(function(e){
 			console.log("aaaaa")
-         addStickers('b'); 
+         
 	    
-   });*/
+   }); 
+	
+	
 }
 
 
