@@ -68,7 +68,7 @@
 					<button id="save-jpeg" class="btn btn-default">편집완료</button>
 				</div>
 
-				<canvas id="c" width="340" height="500"
+				<canvas id="c" width="680" height="1000"
 					style="border: 1px solid #000000;"></canvas>
 			</div>
 			<!-- /.end col-md-6 row -->
@@ -145,9 +145,9 @@
 						<button id="rect" class=" btn btn-default">사각형</button>
 						<button id="circle" class=" btn btn-default">원</button>
 						<button id="triangle"  class=" btn btn-default">삼각형</button>
-						<ul class="svg-shapes" style="list-style: none;" >
-						<c:forEach begin="1" end="30" var="i" >
-					         <li><button class="btn btn-default  zzz" id="shape${i }"><img src="svg/${i }.svg" style="width: 30px; height:30px; float: left;"></button></li> 
+						<ul class="svg-shapes" style="list-style: none; padding:0px; " >
+						<c:forEach begin="1" end="35" var="i" >
+					         <li style="float: left; margin:5px;"><button class="btn btn-default  icon" id="shape${i }"><img src="svg/${i }.svg" style="width: 30px; height:30px; "></button></li> 
 					    
 						</c:forEach>
 				
@@ -384,7 +384,6 @@
 							readURL(this);
 							console.log("213123"+this[1]);
 							
-							backg("blah");
 							
 						});
 						 
@@ -494,7 +493,7 @@
 																gifWidth : 680,
 																gifHeight : 1000,
 																images : iscr,
-																interval : 1,
+																interval : 1.5,
 															},
 															function(obj) {
 																if (!obj.error) {
@@ -547,7 +546,7 @@
         
    })			
    
-   $(".zzz").each(function(e){
+   $(".icon").each(function(e){
 	   console.log(e)
 	   $(this).on("click",function(f){
 		   addStickers(e+1)  
