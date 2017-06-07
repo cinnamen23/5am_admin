@@ -60,7 +60,7 @@
 
 		<!-- /.row -->
 		<div class="col-md-12" style="margin-bottom: 15px;">
-			<div class="col-md-6 col-sm-6">
+			<div class="col-lg-7 col-md-8 col-sm-12">
 				<div style="padding: 10px;">
 					<button id="reset" class=" btn btn-default">초기화</button>
 					<button id="delete" class="btn btn-default">선택삭제</button>
@@ -68,14 +68,14 @@
 					<button id="save-jpeg" class="btn btn-default">편집완료</button>
 				</div>
 
-				<canvas id="c" width="680" height="1000"
+				<canvas id="c" width="544" height="800"
 					style="border: 1px solid #000000;"></canvas>
 			</div>
 			<!-- /.end col-md-6 row -->
 
 
 			<!-- Nav tabs -->
-			<div style="margin-bottom: 1px;" class="col-md-6 col-sm-6">
+			<div style="margin-bottom: 1px;" class="col-lg-5 col-md-4 col-sm-12">
 				<ul class="nav nav-tabs " role="tablist" style="margin: 5px">
 					<li role="presentation" class="active"><a href="#home"
 						aria-controls="home" role="tab" data-toggle="tab">사진추가</a></li>
@@ -114,11 +114,11 @@
 							<button id="bold" class="btn btn-default">진하게</button>
 							<button id="italic" class="btn btn-default">기울이기</button>
 							<button id="underline" class="btn btn-default">밑줄</button>
-							<input type="color" id="color"> <input type="color"
-								id="text-bg-color"> <input type="range" min="5"
-								max="150" value="40" id="text-font-size"> <label
-								for="font-family" style="display: inline-block">Font
-								family:</label> <select id="font-family">
+							<label>글자색</label><input type="color" id="color"> 
+							<label>배경색</label><input type="color"id="text-bg-color"> 
+							<input type="range" min="5"max="150" value="40" id="text-font-size"> 
+							<label for="font-family" style="display: inline-block">글자체:</label> 
+							<select id="font-family">
 								<option value="arial">Arial</option>
 								<option value="helvetica" selected>Helvetica</option>
 								<option value="myriad pro">Myriad Pro</option>
@@ -141,7 +141,7 @@
 					</div>
 
 					<div role="tabpanel" class="tab-pane" id="messages">
-						<input type="color" id="rectcolor" >
+						<label>도형색</label><input type="color" id="rectcolor" >
 						<button id="rect" class=" btn btn-default">사각형</button>
 						<button id="circle" class=" btn btn-default">원</button>
 						<button id="triangle"  class=" btn btn-default">삼각형</button>
@@ -165,14 +165,14 @@
 					</div>
 				</div>
 
-			</div>
-			<!--End Nav tabs -->
-
 			<!-- 미리보기 사진목록 -->
-			<div class='uploadedList2 col-md-12' style="padding: 30px;"></div>
+			<div class='uploadedList2 col-md-12 col-sm-12' style="padding: 2px;"></div>
 
 
 		</div>
+
+			</div>
+			<!--End Nav tabs -->
 
 
 	</div>
@@ -415,7 +415,7 @@
 									success : function(re) {
 									console.log("re");
 									console.log(re);
-									var str = "<div class='col-md-3' style='border: 1px solid white; padding:0; width: 25%; background-color: black; float: left;'><div><img id='mybg' src='data:image/jpeg;base64,"
+									var str = "<div class='col-md-1' style='border: 1px solid white; padding:0; width: 20%; background-color: black; float: left;'><div><img id='mybg' src='data:image/jpeg;base64,"
 									+ re+ "' width='100%' ></div><input type='button' value='사진 삭제' class='submitLink'></div></div>"
 									$(".uploadedList2").append(str);
 									iscr.push("data:image/jpeg;base64,"+ re);
