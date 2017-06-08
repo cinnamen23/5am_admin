@@ -465,6 +465,8 @@
 
 
 							var giffile = $("#img1")[0].src;
+							console.log(giffile)
+							
 							var sid = "${login.sid}";
 							var str = giffile.split(",")[1]
 
