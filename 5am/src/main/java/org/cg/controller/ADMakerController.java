@@ -89,7 +89,7 @@ public class ADMakerController {
 
 		        byte[] decodedBytes2 = decoder.decode(giffile);
 
-		        String saveName = sid +".gif";
+		        String saveName = sid +"_"+ uid + ".gif";
 		     
 		        File target1 = new File("c:\\zzz\\5am\\adgif",saveName);
 		        

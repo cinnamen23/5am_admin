@@ -14,5 +14,5 @@ public interface ADMakerService {
 	
 	//gif 저장
 	
-	public void gifInsert(String gifid,String sid);
+	public void gifInsert(String gifname,String sid);
 }

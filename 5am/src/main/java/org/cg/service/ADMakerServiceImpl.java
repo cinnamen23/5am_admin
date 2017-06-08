@@ -20,8 +20,8 @@ public class ADMakerServiceImpl implements ADMakerService {
 	}
 
 	@Override
-	public void gifInsert(String gifid, String sid) {
-		dao.gifInsert(gifid, sid);
+	public void gifInsert(String gifname, String sid) {
+		dao.gifInsert(gifname, sid);
 		
 	}
 

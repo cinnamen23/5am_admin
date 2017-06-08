@@ -5,16 +5,24 @@ import java.sql.Timestamp;
 public class AdGifVO {
 
 	
-	private int gno;
+	private int gifno;
+	private String gifname;
 	private String sid; 
 	private Timestamp regdate;
 	private Timestamp updategdate;
 	
-	public int getGno() {
-		return gno;
+	
+	public int getGifno() {
+		return gifno;
 	}
-	public void setGno(int gno) {
-		this.gno = gno;
+	public void setGifno(int gifno) {
+		this.gifno = gifno;
+	}
+	public String getGifname() {
+		return gifname;
+	}
+	public void setGifname(String gifname) {
+		this.gifname = gifname;
 	}
 	public String getSid() {
 		return sid;
@@ -36,8 +44,10 @@ public class AdGifVO {
 	}
 	@Override
 	public String toString() {
-		return "AddGifVO [gno=" + gno + ", sid=" + sid + ", regdate=" + regdate + ", updategdate=" + updategdate + "]";
+		return "AdGifVO [gifno=" + gifno + ", gifname=" + gifname + ", sid=" + sid + ", regdate=" + regdate
+				+ ", updategdate=" + updategdate + "]";
 	}
+	
 
 	
 	

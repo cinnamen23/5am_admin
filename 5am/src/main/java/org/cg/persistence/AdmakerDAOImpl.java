@@ -31,10 +31,10 @@ public class AdmakerDAOImpl implements AdmakerDAO {
 	
 	
 	@Override
-	public void gifInsert(String gifid,String sid) {
+	public void gifInsert(String gifname,String sid) {
 
 		Map<String,Object> paramMap=new HashMap<String, Object>();
-		paramMap.put("gifid", gifid);
+		paramMap.put("gifname", gifname);
 		paramMap.put("sid", sid);
 		
 		sess.insert(namespace+".adgifinsert",paramMap);
