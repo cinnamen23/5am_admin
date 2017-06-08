@@ -9,6 +9,7 @@ public class AdGifVO {
 	private String sid; 
 	private Timestamp regdate;
 	private Timestamp updategdate;
+	
 	public int getGno() {
 		return gno;
 	}
