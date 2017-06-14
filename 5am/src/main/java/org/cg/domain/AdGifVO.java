@@ -12,6 +12,11 @@ public class AdGifVO {
 	private int Area;
 	private Timestamp regdate;
 	private Timestamp updategdate;
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> branch 'master' of https://github.com/kick07230723/5AM.git
 	public int getGifno() {
 		return gifno;
 	}
@@ -74,13 +79,21 @@ public class AdGifVO {
 	}
 	@Override
 	public String toString() {
+<<<<<<< HEAD
 		return "AdGifVO [gifno=" + gifno + ", gifname=" + gifname + ", sid=" + sid + ", target1=" + target1
 				+ ", target2=" + target2 + ", target3=" + target3 + ", target4=" + target4 + ", Area=" + Area
 				+ ", regdate=" + regdate + ", updategdate=" + updategdate + "]";
+=======
+		return "AdGifVO [gifno=" + gifno + ", gifname=" + gifname + ", sid=" + sid + ", regdate=" + regdate
+				+ ", updategdate=" + updategdate + "]";
+>>>>>>> branch 'master' of https://github.com/kick07230723/5AM.git
 	}
 	
+<<<<<<< HEAD
 	
 	
+=======
+>>>>>>> branch 'master' of https://github.com/kick07230723/5AM.git
 
 	
 	

@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-​<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
+
+
 
 <%@ include file="/WEB-INF/views/header.jsp"%>
 
@@ -28,11 +30,10 @@
                         <div class="panel-heading panel">자료실입니다  </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" >
                                 <div class="row">
                                 <div class="col-sm-6">
                                 <div class="dataTables_length" id="dataTables-example_length">
-                                <label>
                                 
                                 </div></div><div class="col-sm-6"><div id="dataTables-example_filter" class="dataTables_filter">
                 <div class="col-md-12">
@@ -47,6 +48,7 @@
 				    </select> 
 				    <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keyword" value="${cri.keyword}">
 				    <button id="btnn" class="btn btn-info">Search</button>
+			    </form>
 				</label>    
                 </div>
 				    
@@ -70,7 +72,6 @@
                                             <td class="center ">${list.hit}</td>
                                             <td class="center " ><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
                                             
-			    </form>
       
                                         </tr>
                                         </c:forEach>   
@@ -78,17 +79,15 @@
                                 </table>
                                 <div class="row">
 	                                	<div class="dataTables_info" id="dataTables-example_info" role="alert" aria-live="polite" aria-relevant="all">
-			     <c:if test ="${fn:length(list) eq 0}" >
-	                 	<h2>검색 내용이 없습니다</h2>
-	             </c:if> 
+										     <c:if test ="${fn:length(list) eq 0}" >
+								                 	<h2>검색 내용이 없습니다</h2>
+								             </c:if> 
 	                                
 	                                <!-- 관리자& 고객 분기 -->	
 	                                 <div class="col-sm-6" >
-	                                 
-							    <c:if test="${login.gubun=='admin'}"> 
-	                                	 <button type="submit" class="btn btn-info regiBtn">등록</button> 
-							    </c:if>
-	                                 
+									    <c:if test="${login.gubun=='admin'}"> 
+			                                	 <button type="submit" class="btn btn-info regiBtn">등록</button> 
+									    </c:if>
 									<!-- 관리자& 고객 분기 끝 -->		
 	                     
 	                                
@@ -119,8 +118,7 @@
 		</div>
 	</div>
 <!-- CONTENT-WRAPPER SECTION END-->
-	<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
 <script>

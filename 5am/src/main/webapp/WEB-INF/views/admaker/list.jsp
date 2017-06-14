@@ -592,6 +592,4 @@
 	
 	
 	
-	
->>>>>>> branch 'master' of https://github.com/kick07230723/5AM.git
 <%@ include file="/WEB-INF/views/footer.jsp" %>

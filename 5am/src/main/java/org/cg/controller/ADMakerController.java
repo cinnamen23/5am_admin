@@ -2,7 +2,6 @@ package org.cg.controller;
 
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.Base64.Decoder;
@@ -10,7 +9,6 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 
-import org.apache.commons.io.IOUtils;
 import org.cg.domain.AdImageVO;
 import org.cg.service.ADMakerService;
 import org.slf4j.Logger;
@@ -23,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/admaker")
@@ -89,7 +86,7 @@ public class ADMakerController {
 
 		        byte[] decodedBytes2 = decoder.decode(giffile);
 
-		        String saveName = sid +".gif";
+		        String saveName = sid +"_"+ uid + ".gif";
 		     
 		        File target1 = new File("c:\\zzz\\5am\\adgif",saveName);
 		        
