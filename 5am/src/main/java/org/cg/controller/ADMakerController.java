@@ -97,6 +97,16 @@ public class ADMakerController {
 				
 		        service.gifInsert(saveName, sid);
 				
+		        
+		        //-----------
+		        
+		        
+		        
+		        
+		        
+		        
+		        
+		        
 		return giffile;
 
 	}
