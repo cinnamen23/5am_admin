@@ -1,5 +1,6 @@
 package org.cg.service;
 
+import org.cg.domain.AdGifVO;
 import org.cg.domain.AdImageVO;
 
 public interface ADMakerService {
@@ -14,5 +15,5 @@ public interface ADMakerService {
 	
 	//gif 저장
 	
-	public void gifInsert(String gifname,String sid);
+	public void gifInsert(String gifname,AdGifVO vo);
 }

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.cg.domain.AdGifVO;
 import org.cg.domain.AdImageVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -31,11 +32,11 @@ public class AdmakerDAOImpl implements AdmakerDAO {
 	
 	
 	@Override
-	public void gifInsert(String gifname,String sid) {
+	public void gifInsert(String gifname,AdGifVO vo) {
 
 		Map<String,Object> paramMap=new HashMap<String, Object>();
 		paramMap.put("gifname", gifname);
-		paramMap.put("sid", sid);
+		paramMap.put("vo", vo);
 		
 		sess.insert(namespace+".adgifinsert",paramMap);
 	}

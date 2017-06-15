@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 
+import org.cg.domain.AdGifVO;
 import org.cg.domain.AdImageVO;
 import org.cg.service.ADMakerService;
 import org.slf4j.Logger;
@@ -74,10 +75,14 @@ public class ADMakerController {
 
 	@ResponseBody
 	@RequestMapping(value = "/adgif", method = RequestMethod.POST, produces = "application/json")
-	public String adgif(@RequestParam("giffile") String giffile,String sid) throws Exception {		
+	public String adgif(@RequestParam("giffile") String giffile,AdGifVO vo) throws Exception {		
 			
+		
+		
 				logger.info("gif@@@");
 		
+				logger.info(""+vo);
+				
 				UUID uid = UUID.randomUUID();
 				
 				logger.info(giffile);
@@ -86,13 +91,14 @@ public class ADMakerController {
 
 		        byte[] decodedBytes2 = decoder.decode(giffile);
 
-		        String saveName = sid +"_"+ uid + ".gif";
+		        String saveName = vo.getSid()+"_"+ uid + ".gif";
 		     
 		        File target1 = new File("c:\\zzz\\5am\\adgif",saveName);
 		        
 		        FileCopyUtils.copy(decodedBytes2, target1);  
 				
-		        service.gifInsert(saveName, sid);
+		        
+		        service.gifInsert(saveName, vo);
 				
 		        
 		        //-----------

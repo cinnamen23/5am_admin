@@ -2,6 +2,7 @@ package org.cg.service;
 
 import javax.inject.Inject;
 
+import org.cg.domain.AdGifVO;
 import org.cg.domain.AdImageVO;
 import org.cg.persistence.AdmakerDAO;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,8 @@ public class ADMakerServiceImpl implements ADMakerService {
 	}
 
 	@Override
-	public void gifInsert(String gifname, String sid) {
-		dao.gifInsert(gifname, sid);
+	public void gifInsert(String gifname, AdGifVO vo) {
+		dao.gifInsert(gifname, vo);
 		
 	}
 

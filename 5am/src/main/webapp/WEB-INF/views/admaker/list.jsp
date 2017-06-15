@@ -185,7 +185,9 @@
 						</div>
 						<div style="margin:10px " >
 							<button id="start" class="btn btn-default">변환</button>
-							<button id="down" class="btn btn-default">저장</button>
+							<button id="down" class="btn btn-default" data-toggle="modal" data-target="#myModal">저장</button>
+							
+							
 						</div><hr />
 					</div>
 				</div>
@@ -205,6 +207,204 @@
 	
 	
 	
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">광고 보여주고 싶은 사람</h4>
+      </div>
+      
+      
+      <div class="modal-body">
+       <div class="[ col-xs-12 col-sm-6 ]">
+        
+        <form id="f1" action="/admaker/adgif" method="POST">
+        
+        <input type="hidden" name="target1" id="target1" value="">
+        <input type="hidden" name="target2" id="target2" value="">
+        <input type="hidden" name="target3" id="target3" value="">
+        <input type="hidden" name="target4" id="target4" value="">
+        
+        
+        <div class="[ form-group ]">
+            <input type="checkbox" name="favorite" id="fancy-checkbox-default" value="male10" autocomplete="off" onclick="CountChecked(this)" />
+            <div class="[ btn-group ]">
+                <label for="fancy-checkbox-default" class="[ btn btn-default ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                <label for="fancy-checkbox-default" class="[ btn btn-default active ]">
+                    10대 남성
+                </label>
+            </div>
+        </div>
+        <div class="[ form-group ]">
+            <input type="checkbox" name="favorite" id="fancy-checkbox-primary" value="male20" autocomplete="off" onclick="CountChecked(this)" />
+            <div class="[ btn-group ]">
+                <label for="fancy-checkbox-primary" class="[ btn btn-primary ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                <label for="fancy-checkbox-primary" class="[ btn btn-default active ]">
+                    20대 남성
+                </label>
+            </div>
+        </div>
+        <div class="[ form-group ]">
+            <input type="checkbox" name="favorite" id="fancy-checkbox-success" value="male30" autocomplete="off" onclick="CountChecked(this)"/>
+            <div class="[ btn-group ]">
+                <label for="fancy-checkbox-success" class="[ btn btn-success ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                <label for="fancy-checkbox-success" class="[ btn btn-default active ]">
+                    30대 남성
+                </label>
+            </div>
+        </div>
+        <div class="[ form-group ]">
+            <input type="checkbox" name="favorite" id="fancy-checkbox-info" value="male40" autocomplete="off" onclick="CountChecked(this)"/>
+            <div class="[ btn-group ]">
+                <label for="fancy-checkbox-info" class="[ btn btn-info ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                <label for="fancy-checkbox-info" class="[ btn btn-default active ]">
+                   40대 남성
+                </label>
+            </div>
+        </div>
+        <div class="[ form-group ]">
+            <input type="checkbox" name="favorite" id="fancy-checkbox-warning" value="male50" autocomplete="off" onclick="CountChecked(this)"/>
+            <div class="[ btn-group ]">
+                <label for="fancy-checkbox-warning" class="[ btn btn-warning ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                <label for="fancy-checkbox-warning" class="[ btn btn-default active ]">
+                   50대 남성
+                </label>
+            </div>
+        </div>
+        <div class="[ form-group ]">
+            <input type="checkbox" name="favorite" id="fancy-checkbox-danger" value="male60" autocomplete="off" onclick="CountChecked(this)"/>
+            <div class="[ btn-group ]">
+                <label for="fancy-checkbox-danger" class="[ btn btn-danger ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                <label for="fancy-checkbox-danger" class="[ btn btn-default active ]">
+                    60대이상 남성
+                </label>
+            </div>
+        </div>
+    </div>
+     <div class="[ col-xs-12 col-sm-6 ]">
+        <div class="[ form-group ]">
+            <input type="checkbox" name="favorite" id="fancy-checkbox-default2" value="female10" autocomplete="off" onclick="CountChecked(this)" />
+            <div class="[ btn-group ]">
+                <label for="fancy-checkbox-default2" class="[ btn btn-default ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                <label for="fancy-checkbox-default" class="[ btn btn-default active ]">
+                    10대 여성
+                </label>
+            </div>
+        </div>
+        <div class="[ form-group ]">
+            <input type="checkbox" name="favorite" id="fancy-checkbox-primary2" value="female20" autocomplete="off" onclick="CountChecked(this)" />
+            <div class="[ btn-group ]">
+                <label for="fancy-checkbox-primary2" class="[ btn btn-primary ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                <label for="fancy-checkbox-primary" class="[ btn btn-default active ]">
+                    20대 여성
+                </label>
+            </div>
+        </div>
+        <div class="[ form-group ]">
+            <input type="checkbox" name="favorite" id="fancy-checkbox-success2" value="female30" autocomplete="off" onclick="CountChecked(this)"/>
+            <div class="[ btn-group ]">
+                <label for="fancy-checkbox-success2" class="[ btn btn-success ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                <label for="fancy-checkbox-success" class="[ btn btn-default active ]">
+                    30대 여성
+                </label>
+            </div>
+        </div>
+        <div class="[ form-group ]">
+            <input type="checkbox" name="favorite" id="fancy-checkbox-info2" value="female40" autocomplete="off" onclick="CountChecked(this)"/>
+            <div class="[ btn-group ]">
+                <label for="fancy-checkbox-info2" class="[ btn btn-info ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                <label for="fancy-checkbox-info" class="[ btn btn-default active ]">
+                   40대 여성
+                </label>
+            </div>
+        </div>
+        <div class="[ form-group ]">
+            <input type="checkbox" name="favorite" id="fancy-checkbox-warning2" value="female50" autocomplete="off" onclick="CountChecked(this)"/>
+            <div class="[ btn-group ]">
+                <label for="fancy-checkbox-warning2" class="[ btn btn-warning ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                <label for="fancy-checkbox-warning" class="[ btn btn-default active ]">
+                   50대 여성
+                </label>
+            </div>
+        </div>
+        <div class="[ form-group ]">
+            <input type="checkbox" name="favorite" id="fancy-checkbox-danger2" value="female60" autocomplete="off" onclick="CountChecked(this)"/>
+            <div class="[ btn-group ]">
+                <label for="fancy-checkbox-danger2" class="[ btn btn-danger ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                <label for="fancy-checkbox-danger" class="[ btn btn-default active ]">
+                    60대이상 여성
+                </label>
+            </div>
+        </div>
+    </div>
+    
+    </form>
+    <hr />
+		
+	<!-- Example single danger button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="left: 30%;">
+    거리 설정  <i class="fa fa-chevron-down" ></i>
+  </button>
+  <ul class="dropdown-menu">
+    <li>100 M</li>
+    <li>200 M</li>
+    <li><a href="#">300 M</a></li>
+  </ul>
+ 
+</div>
+    
+    
+      </div>
+      <div class="modal-footer">
+        <button id="regiBtn" type="button" class="btn btn-default" data-dismiss="modal">등록</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+      </div>
+    </div>
+
+  </div>
+</div>	
+	
 	
 	
 	
@@ -214,14 +414,63 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.11/fabric.min.js"></script>
 <script>
+
+
+var maxChecked = 4;   //선택가능한 체크박스 갯수
+var totalChecked = 0; // 설정 끝
+ 
+function CountChecked(field) {
+	if (field.checked){
+		totalChecked += 1;
+		console.log(field.value)
+	switch(totalChecked){
+	case 1 : $('#target1').val(field.value)
+	break;
+	case 2 : $('#target2').val(field.value)
+	break;
+	case 3 : $('#target3').val(field.value)
+	break;
+	case 4 : $('#target4').val(field.value)
+	break;
+	}
+	
+	
+	
+	}
+	else
+		totalChecked -= 1;
+ 
+	if (totalChecked > maxChecked) {
+		alert ("최대"+maxChecked+"개 까지만 가능합니다.");
+	field.checked = false;
+	totalChecked -= 1;
+	}
+	
+}
+
+function ResetCount(){
+	totalChecked = 0;
+}
+
+
 	$(document).ready(function() {
 
+		
+		
+		
 						var i = 0;
 						var bg = "";
 						var iscr = new Array();
 						var canvas = this.__canvas = new fabric.Canvas('c');
 						fabric.Object.prototype.transparentCorners = false;
 
+						
+						
+
+						
+						
+						
+						
 						(function() {
 
 							
@@ -404,6 +653,8 @@
 								reader.readAsDataURL(input.files[0]);
 							}
 						}
+						
+					
 
  						$("#imgInp").change(function() {
 							readURL(this);
@@ -502,24 +753,46 @@
 
 						})
 
-						$("#down").on('click', function() {
+						$("#regiBtn").on('click', function() {
 
+							
+							var DATA;
+						      $('input:checkbox[name=favorite]').each(function() {
+						         if($(this).is(':checked'))
+						            DATA += "|"+($(this).val());
+						      });
+						      console.log(DATA);
+						      
+							
+							
 							console.log("보내는 중")
-
-
+							
+							
+							
 							var giffile = $("#img1")[0].src;
 							var sid = "${login.sid}";
 							var str = giffile.split(",")[1]
-						
+							var target1 = $("#target1").val();
+							var target2 = $("#target2").val();
+							var target3 = $("#target3").val();
+							var target4 = $("#target4").val();
+							
+							
 							$.ajax({
 					            url : "/admaker/adgif",
 					            type : "post",
 					            data : {
 					                "giffile" : str,
-					                "sid" : sid
+					                "sid" : sid,
+					                "target1": target1,
+					                "target2": target2,
+					                "target3": target3,
+					                "target4": target4
+					                
 					            },
 					            dataType : "json",
 					            success : function(data) {
+					                
 					                alert("success!!!")
 					            }
 
