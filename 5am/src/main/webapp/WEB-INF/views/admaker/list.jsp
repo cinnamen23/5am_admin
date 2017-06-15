@@ -220,6 +220,10 @@
       
       
       <div class="modal-body">
+      <label>
+                 타겟 설정
+                </label>
+      <div>
        <div class="[ col-xs-12 col-sm-6 ]">
         
         <form id="f1" action="/admaker/adgif" method="POST">
@@ -377,22 +381,26 @@
             </div>
         </div>
     </div>
+    </div>
     
+   
     </form>
-    <hr />
 		
-	<!-- Example single danger button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="left: 30%;">
-    거리 설정  <i class="fa fa-chevron-down" ></i>
-  </button>
-  <ul class="dropdown-menu">
-    <li>100 M</li>
-    <li>200 M</li>
-    <li><a href="#">300 M</a></li>
-  </ul>
- 
-</div>
+<hr>
+
+
+<label>
+                  거리 설정
+                </label>
+    <select id="distance" class="form-control" >
+    <option value="100">100</option>
+    <option value="200">200</option>
+    <option value="300">300</option>
+    <option value="400">400</option>
+    <option value="500">500</option>
+  
+</select>
+
     
     
       </div>
@@ -768,6 +776,10 @@ function ResetCount(){
 							console.log("보내는 중")
 							
 							
+							console.log($("#distance option:selected").val());
+							
+							
+							
 							
 							var giffile = $("#img1")[0].src;
 							var sid = "${login.sid}";
@@ -776,7 +788,7 @@ function ResetCount(){
 							var target2 = $("#target2").val();
 							var target3 = $("#target3").val();
 							var target4 = $("#target4").val();
-							
+							var Area = $("#distance option:selected").val();
 							
 							$.ajax({
 					            url : "/admaker/adgif",
@@ -787,7 +799,8 @@ function ResetCount(){
 					                "target1": target1,
 					                "target2": target2,
 					                "target3": target3,
-					                "target4": target4
+					                "target4": target4,
+					                "Area":Area
 					                
 					            },
 					            dataType : "json",

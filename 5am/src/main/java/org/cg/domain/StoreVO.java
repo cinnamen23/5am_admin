@@ -53,11 +53,19 @@ public class StoreVO {
 	public String getLat() {
 		return lat;
 	}
+	public Double getDLat(){
+		
+		return Double.parseDouble(lat);
+	}
 	public void setLat(String lat) {
 		this.lat = lat;
 	}
 	public String getLng() {
 		return lng;
+	}
+	public Double getDLng(){
+		
+		return Double.parseDouble(lng);
 	}
 	public void setLng(String lng) {
 		this.lng = lng;

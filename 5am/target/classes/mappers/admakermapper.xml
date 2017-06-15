@@ -17,11 +17,17 @@ insert into tbl_adImage(imid,sid)values('${vo.imid}','${sid}')
 
 <insert id="adgifinsert" parameterType="hashmap">
 
-insert into tbl_adgif(gifno,gifname,sid,target1,target2,target3,target4,area)values(seq_adgif_gifno.nextval,'${gifname}','${vo.sid}','${vo.target1}','${vo.target2}','${vo.target3}','${vo.target4}',100) 
+insert into tbl_adgif(gifno,gifname,sid,target1,target2,target3,target4,area)values(seq_adgif_gifno.nextval,'${gifname}','${vo.sid}','${vo.target1}','${vo.target2}','${vo.target3}','${vo.target4}','${vo.Area}') 
 
 </insert>
 
 
+
+<select id="elevator" resultType="org.cg.domain.ElevatorVO" parameterType="hashmap" >
+<![CDATA[
+SELECT * FROM TBL_ELEVATOR where lat <('${svo.Dlat}'+ 0.000015*('${avo.area}')) and lat > ('${svo.Dlat}' - 0.000015*'${avo.area}') and lng <('${svo.Dlng}'+ 0.000015*'${avo.area}') and lng > ('${svo.Dlng}' - 0.000015*'${avo.area}')  
+	]]>
+</select>
 
 
 

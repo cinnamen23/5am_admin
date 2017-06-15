@@ -1,12 +1,15 @@
 package org.cg.persistence;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.cg.domain.AdGifVO;
 import org.cg.domain.AdImageVO;
+import org.cg.domain.ElevatorVO;
+import org.cg.domain.StoreVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 @Repository
@@ -40,7 +43,19 @@ public class AdmakerDAOImpl implements AdmakerDAO {
 		
 		sess.insert(namespace+".adgifinsert",paramMap);
 	}
-	
+
+
+
+	@Override
+	public List<ElevatorVO> getElevator(StoreVO svo, AdGifVO avo) {
+		// TODO Auto-generated method stub
+		Map<String,Object> paramMap=new HashMap<String, Object>();
+		paramMap.put("svo", svo);
+		paramMap.put("avo", avo);
+		return sess.selectList(namespace+".elevator",paramMap);
+	}
+
+
 	
 	
 	

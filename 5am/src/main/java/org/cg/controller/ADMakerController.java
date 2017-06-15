@@ -3,15 +3,20 @@ package org.cg.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Base64.Decoder;
+import java.util.List;
 import java.util.UUID;
 
 import javax.inject.Inject;
 
 import org.cg.domain.AdGifVO;
 import org.cg.domain.AdImageVO;
+import org.cg.domain.ElevatorVO;
+import org.cg.domain.StoreVO;
 import org.cg.service.ADMakerService;
+import org.cg.service.StoreService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -32,6 +37,9 @@ public class ADMakerController {
 	@Inject
 	ADMakerService service;
 
+	@Inject
+	StoreService sservice;
+	
 	@GetMapping("/list")
 	public void list(){
 	}
@@ -77,38 +85,38 @@ public class ADMakerController {
 	@RequestMapping(value = "/adgif", method = RequestMethod.POST, produces = "application/json")
 	public String adgif(@RequestParam("giffile") String giffile,AdGifVO vo) throws Exception {		
 			
-		
-		
-				logger.info("gif@@@");
-		
-				logger.info(""+vo);
 				
-				UUID uid = UUID.randomUUID();
-				
-				logger.info(giffile);
-				
-				Decoder decoder = Base64.getDecoder();
+				ElevatorVO evo = new ElevatorVO();
+		        
+		        StoreVO svo = sservice.storeRead(vo.getSid());
+		        
+		        
+		        List<ElevatorVO> list =  service.getElevator(svo, vo);
+		        
+		        Decoder decoder = Base64.getDecoder();
 
 		        byte[] decodedBytes2 = decoder.decode(giffile);
 
-		        String saveName = vo.getSid()+"_"+ uid + ".gif";
+		        String saveName = vo.getSid()+ ".gif";
+		        
+		        List<String> list2 = new ArrayList<String>();
+		        list2.add(vo.getTarget1());
+		        list2.add(vo.getTarget2());
+		        list2.add(vo.getTarget3());
+		        list2.add(vo.getTarget4());
+		        
+		        for (ElevatorVO elevatorVO : list) {
+		        	
+		        	for(int i=0; i<=3; i++){
+		        		if(list.get(i)!=null){
+		        		File targeti = new File("c:\\zzz\\5am\\"+elevatorVO.getELVNAME()+"\\"+list2.get(i),saveName);
+				        FileCopyUtils.copy(decodedBytes2, targeti);
+		        		}
+		        	}
+					
+				}
 		     
-		        File target1 = new File("c:\\zzz\\5am\\adgif",saveName);
-		        
-		        FileCopyUtils.copy(decodedBytes2, target1);  
-				
-		        
 		        service.gifInsert(saveName, vo);
-				
-		        
-		        //-----------
-		        
-		        
-		        
-		        
-		        
-		        
-		        
 		        
 		return giffile;
 
