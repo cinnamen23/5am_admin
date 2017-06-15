@@ -864,7 +864,6 @@ function ResetCount(){
 					   		
 					   
 					   $(".icon").each(function(e){
-						   console.log(e)
 						   $(this).on("click",function(f){
 							   addStickers(e+1)  
 						   })
