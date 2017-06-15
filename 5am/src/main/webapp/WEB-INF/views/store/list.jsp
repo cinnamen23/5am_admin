@@ -74,7 +74,7 @@
 											<th class="sorting" tabindex="0"
 												aria-controls="dataTables-example" rowspan="1" colspan="1"
 												aria-label="Browser: activate to sort column ascending"
-												style="width: 40px;">상점 이름</th>
+												style="width: 100px;">상점 이름</th>
 											<th class="sorting" tabindex="0"
 												aria-controls="dataTables-example" rowspan="1" colspan="1"
 												aria-label="Platform(s): activate to sort column ascending"
