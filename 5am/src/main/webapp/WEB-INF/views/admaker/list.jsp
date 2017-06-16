@@ -30,36 +30,19 @@
 	color:white;
     cursor: pointer;
 }
-.file_input label {
-    position:relative;
-    cursor:pointer;
-    display:inline-block;
-    vertical-align:middle;
-    overflow:hidden;
-    width:100px;
-    height:30px;
-    background:#777;
-    color:#fff;
-    text-align:center;
-    line-height:30px;
+.form-group input[type="checkbox"] {
+    display: none;
 }
-.file_input label input {
-    position:absolute;
-    width:0;
-    height:0;
-    overflow:hidden;
+.form-group input[type="checkbox"] + .btn-group > label span {
+    width: 15px;
 }
-.file_input input[type=text] {
-    vertical-align:middle;
-    display:inline-block;
-    width:400px;
-    height:28px;
-    line-height:28px;
-    font-size:11px;
-    padding:0;
-    border:0;
-    border:1px solid #777;
+.form-group input[type="checkbox"] + .btn-group > label span:first-child {
+    display: none;
 }
+.form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+    display: inline-block;
+}
+
 </style>
     <%@ include file="/WEB-INF/views/header.jsp" %>
 <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet">
@@ -315,7 +298,7 @@
                     <span class="[ glyphicon glyphicon-ok ]"></span>
                     <span> </span>
                 </label>
-                <label for="fancy-checkbox-default" class="[ btn btn-default active ]">
+                <label for="fancy-checkbox-default2" class="[ btn btn-default active ]">
                     10대 여성
                 </label>
             </div>
@@ -327,7 +310,7 @@
                     <span class="[ glyphicon glyphicon-ok ]"></span>
                     <span> </span>
                 </label>
-                <label for="fancy-checkbox-primary" class="[ btn btn-default active ]">
+                <label for="fancy-checkbox-primary2" class="[ btn btn-default active ]">
                     20대 여성
                 </label>
             </div>
@@ -339,7 +322,7 @@
                     <span class="[ glyphicon glyphicon-ok ]"></span>
                     <span> </span>
                 </label>
-                <label for="fancy-checkbox-success" class="[ btn btn-default active ]">
+                <label for="fancy-checkbox-success2" class="[ btn btn-default active ]">
                     30대 여성
                 </label>
             </div>
@@ -351,7 +334,7 @@
                     <span class="[ glyphicon glyphicon-ok ]"></span>
                     <span> </span>
                 </label>
-                <label for="fancy-checkbox-info" class="[ btn btn-default active ]">
+                <label for="fancy-checkbox-info2" class="[ btn btn-default active ]">
                    40대 여성
                 </label>
             </div>
@@ -363,7 +346,7 @@
                     <span class="[ glyphicon glyphicon-ok ]"></span>
                     <span> </span>
                 </label>
-                <label for="fancy-checkbox-warning" class="[ btn btn-default active ]">
+                <label for="fancy-checkbox-warning2" class="[ btn btn-default active ]">
                    50대 여성
                 </label>
             </div>
@@ -375,7 +358,7 @@
                     <span class="[ glyphicon glyphicon-ok ]"></span>
                     <span> </span>
                 </label>
-                <label for="fancy-checkbox-danger" class="[ btn btn-default active ]">
+                <label for="fancy-checkbox-danger2" class="[ btn btn-default active ]">
                     60대이상 여성
                 </label>
             </div>
@@ -426,11 +409,14 @@
 
 var maxChecked = 4;   //선택가능한 체크박스 갯수
 var totalChecked = 0; // 설정 끝
- 
+
+
+
 function CountChecked(field) {
 	if (field.checked){
 		totalChecked += 1;
 		console.log(field.value)
+	
 	switch(totalChecked){
 	case 1 : $('#target1').val(field.value)
 	break;
