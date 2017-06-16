@@ -97,10 +97,10 @@
 								    <span>배경사진 선택</span>
 								    <input id="imgInp" type="file" name="file" class="upload" />
 								</div>
-								
+								<button id="confirm" class="btn btn-info" style="margin-top:10px">배경사진 적용</button>
 								<div id="preview"></div>
 							</form>
-							<button id="confirm" class="btn btn-info" style="margin:10px">배경사진 적용</button>
+							
 							
 
 							<form id="uploadImg" runat="server">
@@ -220,7 +220,7 @@
         <div class="[ form-group ]">
             <input type="checkbox" name="favorite" id="fancy-checkbox-default" value="male10" autocomplete="off" onclick="CountChecked(this)" />
             <div class="[ btn-group ]">
-                <label for="fancy-checkbox-default" class="[ btn btn-default ]">
+                <label for="fancy-checkbox-default" class="[ btn btn-purple ]">
                     <span class="[ glyphicon glyphicon-ok ]"></span>
                     <span> </span>
                 </label>
@@ -294,7 +294,7 @@
         <div class="[ form-group ]">
             <input type="checkbox" name="favorite" id="fancy-checkbox-default2" value="female10" autocomplete="off" onclick="CountChecked(this)" />
             <div class="[ btn-group ]">
-                <label for="fancy-checkbox-default2" class="[ btn btn-default ]">
+                <label for="fancy-checkbox-default2" class="[ btn btn-purple ]">
                     <span class="[ glyphicon glyphicon-ok ]"></span>
                     <span> </span>
                 </label>
@@ -669,7 +669,8 @@ function ResetCount(){
 						});
 						 
 
-						$("#confirm").click(function() {
+						$("#confirm").click(function(e) {
+							e.preventDefault();
 							backg("blah");
 						})
 
