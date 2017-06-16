@@ -410,36 +410,27 @@
 var maxChecked = 4;   //선택가능한 체크박스 갯수
 var totalChecked = 0; // 설정 끝
 
-
-
+var arr =new Array();
 function CountChecked(field) {
-	if (field.checked){
-		totalChecked += 1;
-		console.log(field.value)
-	
-	switch(totalChecked){
-	case 1 : $('#target1').val(field.value)
-	break;
-	case 2 : $('#target2').val(field.value)
-	break;
-	case 3 : $('#target3').val(field.value)
-	break;
-	case 4 : $('#target4').val(field.value)
-	break;
-	}
-	
-	
-	
-	}
-	else
-		totalChecked -= 1;
+    if (field.checked){
+        totalChecked += 1;
+        arr.push(field.value);
+    
+    
+    }
+    else{
+        totalChecked -= 1;
+        arr.splice(arr.indexOf(field.value),1);
+    }
  
-	if (totalChecked > maxChecked) {
-		alert ("최대"+maxChecked+"개 까지만 가능합니다.");
-	field.checked = false;
-	totalChecked -= 1;
-	}
-	
+    if (totalChecked > maxChecked) {
+        alert ("최대"+maxChecked+"개 까지만 가능합니다.");
+    field.checked = false;
+    totalChecked -= 1;
+    }
+    console.log(arr);
+    
+    
 }
 
 function ResetCount(){
@@ -748,33 +739,36 @@ function ResetCount(){
 						})
 
 						$("#regiBtn").on('click', function() {
-
-							
-							var DATA;
-						      $('input:checkbox[name=favorite]').each(function() {
-						         if($(this).is(':checked'))
-						            DATA += "|"+($(this).val());
-						      });
-						      console.log(DATA);
-						      
-							
-							
-							console.log("보내는 중")
-							
-							
-							console.log($("#distance option:selected").val());
-							
-							
-							
-							
-							var giffile = $("#img1")[0].src;
-							var sid = "${login.sid}";
-							var str = giffile.split(",")[1]
-							var target1 = $("#target1").val();
-							var target2 = $("#target2").val();
-							var target3 = $("#target3").val();
-							var target4 = $("#target4").val();
-							var Area = $("#distance option:selected").val();
+                            $("#target1").val(arr[0]);
+                            $("#target2").val(arr[1]);
+                            $("#target3").val(arr[2]);
+                            $("#target4").val(arr[3]);
+                            
+                            var DATA;
+                              $('input:checkbox[name=favorite]').each(function() {
+                                 if($(this).is(':checked'))
+                                    DATA += "|"+($(this).val());
+                              });
+                              console.log(DATA);
+                              
+                            
+                            
+                            console.log("보내는 중")
+                            
+                            
+                            console.log($("#distance option:selected").val());
+                            
+                            
+                            
+                            
+                            var giffile = $("#img1")[0].src;
+                            var sid = "${login.sid}";
+                            var str = giffile.split(",")[1]
+                            var target1 = $("#target1").val();
+                            var target2 = $("#target2").val();
+                            var target3 = $("#target3").val();
+                            var target4 = $("#target4").val();
+                            var Area = $("#distance option:selected").val();
 							
 							$.ajax({
 					            url : "/admaker/adgif",
