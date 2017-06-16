@@ -451,7 +451,17 @@ function ResetCount(){
 
 						
 						
-
+						Array.prototype.remove = function() {
+                            var what, a = arguments, L = a.length, ax;
+                            while (L && this.length) {
+                                what = a[--L];
+                                while ((ax = this.indexOf(what)) !== -1) {
+                                    this.splice(ax, 1);
+                                }
+                            }
+                            return this;
+                        };
+						
 						
 						
 						
@@ -693,9 +703,16 @@ function ResetCount(){
 									console.log(iscr);
 									canvas.clear();
 									console.log($(".uploadeList2"))
+									
 									$(".uploadedList2 input").on("click",function(e) {
+										
 										var $this = $(this);
 										console.log($this.parent());
+										
+										var index = iscr.indexOf('"'+($this.parent())[0].childNodes[0].childNodes[0].currentSrc+'"');
+                                        console.log(index);
+                                        iscr.remove(($this.parent())[0].childNodes[0].childNodes[0].currentSrc);
+										
 										$this.parent().remove();
 										console.log($(".uploadeList2"));
 										$.ajax({type : 'post',url : '/admaker/delete',
