@@ -446,6 +446,7 @@ function ResetCount(){
 						var i = 0;
 						var bg = "";
 						var iscr = new Array();
+						
 						var canvas = this.__canvas = new fabric.Canvas('c');
 						fabric.Object.prototype.transparentCorners = false;
 
@@ -701,7 +702,7 @@ function ResetCount(){
 									+ re+ "' width='100%' ></div><input type='button' value='사진 삭제' class='submitLink'></div></div>"
 									$(".uploadedList2").append(str);
 									iscr.push("data:image/jpeg;base64,"+ re);
-									console.log(iscr);
+									
 									canvas.clear();
 									console.log($(".uploadeList2"))
 									
@@ -715,7 +716,7 @@ function ResetCount(){
                                         iscr.remove(($this.parent())[0].childNodes[0].childNodes[0].currentSrc);
 										
 										$this.parent().remove();
-										console.log($(".uploadeList2"));
+										
 										$.ajax({type : 'post',url : '/admaker/delete',
 											data : re,
 											success : function(data) {
@@ -768,9 +769,7 @@ function ResetCount(){
                                     DATA += "|"+($(this).val());
                               });
                               console.log(DATA);
-                              
-                            
-                            
+                             
                             console.log("보내는 중")
                             
                             
@@ -812,11 +811,12 @@ function ResetCount(){
 						})
 
 						$("#start").click(function() {
+							console.log(iscr.length);
 								gifshot.createGIF({
 								gifWidth : 650,
 								gifHeight : 950,
 								images : iscr,
-								interval : 1.5,
+								interval : 6.0/iscr.length,
 							},
 							function(obj) {
 								if (!obj.error) {
