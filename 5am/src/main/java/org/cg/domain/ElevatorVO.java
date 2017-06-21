@@ -4,53 +4,54 @@ import java.sql.Timestamp;
 
 public class ElevatorVO {
 
-	private int ENO;
-	private String ELVNAME;
-	private String LAT;
-	private String LNG;
-	private Timestamp REGDATE;
-	private Timestamp UPDATEDATE;
-	public int getENO() {
-		return ENO;
+	private int eno;
+	private String elvname;
+	private String lat;
+	private String lng;
+	private Timestamp regdate;
+	private Timestamp updatedate;
+	public int getEno() {
+		return eno;
 	}
-	public void setENO(int eNO) {
-		ENO = eNO;
+	public void setEno(int eno) {
+		this.eno = eno;
 	}
-	public String getELVNAME() {
-		return ELVNAME;
+	public String getElvname() {
+		return elvname;
 	}
-	public void setELVNAME(String eLVNAME) {
-		ELVNAME = eLVNAME;
+	public void setElvname(String elvname) {
+		this.elvname = elvname;
 	}
-	public String getLAT() {
-		return LAT;
+	public String getLat() {
+		return lat;
 	}
-	public void setLAT(String lAT) {
-		LAT = lAT;
+	public void setLat(String lat) {
+		this.lat = lat;
 	}
-	public String getLNG() {
-		return LNG;
+	public String getLng() {
+		return lng;
 	}
-	public void setLNG(String lNG) {
-		LNG = lNG;
+	public void setLng(String lng) {
+		this.lng = lng;
 	}
-	public Timestamp getREGDATE() {
-		return REGDATE;
+	public Timestamp getRegdate() {
+		return regdate;
 	}
-	public void setREGDATE(Timestamp rEGDATE) {
-		REGDATE = rEGDATE;
+	public void setRegdate(Timestamp regdate) {
+		this.regdate = regdate;
 	}
-	public Timestamp getUPDATEDATE() {
-		return UPDATEDATE;
+	public Timestamp getUpdatedate() {
+		return updatedate;
 	}
-	public void setUPDATEDATE(Timestamp uPDATEDATE) {
-		UPDATEDATE = uPDATEDATE;
+	public void setUpdatedate(Timestamp updatedate) {
+		this.updatedate = updatedate;
 	}
 	@Override
 	public String toString() {
-		return "ElevatorVO [ENO=" + ENO + ", ELVNAME=" + ELVNAME + ", LAT=" + LAT + ", LNG=" + LNG + ", REGDATE="
-				+ REGDATE + ", UPDATEDATE=" + UPDATEDATE + "]";
+		return "ElevatorVO [eno=" + eno + ", elvname=" + elvname + ", lat=" + lat + ", lng=" + lng + ", regdate="
+				+ regdate + ", updatedate=" + updatedate + "]";
 	}
+	
 	
 	
 	

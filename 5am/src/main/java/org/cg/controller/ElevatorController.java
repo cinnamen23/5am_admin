@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/elevator")
@@ -24,27 +25,32 @@ public class ElevatorController {
 		
 	}
 	
-	@PostMapping("/list")
+	@PostMapping("/regi")
+	@ResponseBody
 	public void postRegi(@ModelAttribute("vo")ElevatorVO vo){
+		
+		System.out.println("등록 ~~~~");
+		
+		System.out.println(vo);
 		
 		
 		
 		eservice.insertElevator(vo);
 		
-		File directory = new File("C:\\zzz\\5am\\"+vo.getELVNAME());
+		File directory = new File("C:\\zzz\\5am\\"+vo.getElvname());
 		
-		File directory1 = new File("C:\\zzz\\5am\\"+vo.getELVNAME()+"\\male10");
-		File directory2 = new File("C:\\zzz\\5am\\"+vo.getELVNAME()+"\\male20");
-		File directory3 = new File("C:\\zzz\\5am\\"+vo.getELVNAME()+"\\male30");
-		File directory4 = new File("C:\\zzz\\5am\\"+vo.getELVNAME()+"\\male40");
-		File directory5 = new File("C:\\zzz\\5am\\"+vo.getELVNAME()+"\\male50");
-		File directory6 = new File("C:\\zzz\\5am\\"+vo.getELVNAME()+"\\male60");
-		File directory7 = new File("C:\\zzz\\5am\\"+vo.getELVNAME()+"\\female10");
-		File directory8 = new File("C:\\zzz\\5am\\"+vo.getELVNAME()+"\\female20");
-		File directory9 = new File("C:\\zzz\\5am\\"+vo.getELVNAME()+"\\female30");
-		File directory10 = new File("C:\\zzz\\5am\\"+vo.getELVNAME()+"\\female40");
-		File directory11 = new File("C:\\zzz\\5am\\"+vo.getELVNAME()+"\\female50");
-		File directory12 = new File("C:\\zzz\\5am\\"+vo.getELVNAME()+"\\female60");
+		File directory1 = new File("C:\\zzz\\5am\\"+vo.getElvname()+"\\male10");
+		File directory2 = new File("C:\\zzz\\5am\\"+vo.getElvname()+"\\male20");
+		File directory3 = new File("C:\\zzz\\5am\\"+vo.getElvname()+"\\male30");
+		File directory4 = new File("C:\\zzz\\5am\\"+vo.getElvname()+"\\male40");
+		File directory5 = new File("C:\\zzz\\5am\\"+vo.getElvname()+"\\male50");
+		File directory6 = new File("C:\\zzz\\5am\\"+vo.getElvname()+"\\male60");
+		File directory7 = new File("C:\\zzz\\5am\\"+vo.getElvname()+"\\female10");
+		File directory8 = new File("C:\\zzz\\5am\\"+vo.getElvname()+"\\female20");
+		File directory9 = new File("C:\\zzz\\5am\\"+vo.getElvname()+"\\female30");
+		File directory10 = new File("C:\\zzz\\5am\\"+vo.getElvname()+"\\female40");
+		File directory11 = new File("C:\\zzz\\5am\\"+vo.getElvname()+"\\female50");
+		File directory12 = new File("C:\\zzz\\5am\\"+vo.getElvname()+"\\female60");
 		
 		directory.mkdirs();
 		directory1.mkdirs();

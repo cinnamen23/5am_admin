@@ -109,7 +109,7 @@ public class ADMakerController {
 		        	
 		        	for(int i=0; i<=3; i++){
 		        		if(list.get(i)!=null){
-		        		File targeti = new File("c:\\zzz\\5am\\"+elevatorVO.getELVNAME()+"\\"+list2.get(i),saveName);
+		        		File targeti = new File("c:\\zzz\\5am\\"+elevatorVO.getElvname()+"\\"+list2.get(i),saveName);
 				        FileCopyUtils.copy(decodedBytes2, targeti);
 		        		}
 		        	}

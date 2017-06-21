@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.cg.persistence.ElevatorDAO">
 <insert id="insertel" parameterType="org.cg.domain.ElevatorVO">
-insert into tbl_elevator (eno,elvname, lat, lng) values (seq_elevator_eno.nextval,#{ELVNAME},#{LAT},#{LNG})
+insert into tbl_elevator (eno,elvname, lat, lng) values (seq_elevator_eno.nextval,#{elvname},#{lat},#{lng})
 </insert>
 
 
