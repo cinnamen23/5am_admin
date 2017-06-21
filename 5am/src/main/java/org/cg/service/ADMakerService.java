@@ -9,18 +9,12 @@ import org.cg.domain.StoreVO;
 
 public interface ADMakerService {
 	
-	
-	//img 저장
-
 	public void ImgInsert(AdImageVO vo,String sid);
-	
-	
-	
-	
-	//gif 저장
 	
 	public void gifInsert(String gifname,AdGifVO vo);
 	
 	public List<ElevatorVO> getElevator(StoreVO svo,AdGifVO avo);
+	
+	public int getArea(String string);
 	
 }

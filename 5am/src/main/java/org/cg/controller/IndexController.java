@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.cg.domain.Criteria;
 import org.cg.domain.NoticeVO;
 import org.cg.domain.StoreVO;
+import org.cg.service.ADMakerService;
 import org.cg.service.MemberService;
 import org.cg.service.NoticeService;
 import org.springframework.stereotype.Controller;
@@ -28,11 +29,18 @@ public class IndexController {
 	@Inject
 	NoticeService nservice;
 	
+	@Inject
+	ADMakerService aservice;
+	
 	@GetMapping
 	public void getIndex(HttpSession session, Model model){
 		try{			
 		Object obj = session.getAttribute("login");
 		StoreVO vo = (StoreVO) obj;
+		
+		
+		
+		
 		NoticeVO nvo = new NoticeVO();
 		List<NoticeVO> list = nservice.index(nvo);
 		Criteria cri =  new Criteria();
@@ -43,6 +51,12 @@ public class IndexController {
 		
 		model.addAttribute("totalCount", service.totalCount(map));
 		model.addAttribute("qzeroCount", service.qzeroCount(map));
+		model.addAttribute("getArea", aservice.getArea(vo.getSid()));
+		logger.info("**************************************************************************");
+		logger.info("**************************************************************************");
+		logger.info("**************************************************************************");
+
+		logger.info(aservice.getArea(vo.getSid()));
 
 		model.addAttribute("list", list);
 		}catch(Exception e){

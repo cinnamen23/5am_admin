@@ -177,7 +177,6 @@ $(document).ready(function(){
 	    	e.preventDefault();
 	    	
 	    	var elvname_v = $("#elvname").val();
-	    	console.log(elvname_v);
 	    	var lng_v = $("#lng").val();
 	    	var lat_v = $("#lat").val();
 	    	

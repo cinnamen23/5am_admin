@@ -56,6 +56,14 @@ public class AdmakerDAOImpl implements AdmakerDAO {
 	}
 
 
+
+	@Override
+	public int getArea(String str) {
+		
+		return sess.selectOne(namespace+".getArea", str);
+	}
+
+
 	
 	
 	

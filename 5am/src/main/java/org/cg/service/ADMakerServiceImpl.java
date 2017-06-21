@@ -32,8 +32,13 @@ public class ADMakerServiceImpl implements ADMakerService {
 
 	@Override
 	public List<ElevatorVO> getElevator(StoreVO svo, AdGifVO avo) {
-		// TODO Auto-generated method stub
 		return dao.getElevator(svo, avo);
+	}
+
+	@Override
+	public int getArea(String str) {
+		
+		return dao.getArea(str);
 	}
 
 }

@@ -183,8 +183,32 @@ max-height: 500px;
 					
 					        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 					        map.setCenter(coords);
-					    } 
-					});    
+					        
+					        
+					        var sw = new daum.maps.LatLng(result.addr[0].lat-0.000015*${getArea}, result.addr[0].lng-0.000015*${getArea}), // 사각형 영역의 남서쪽 좌표
+					        ne = new daum.maps.LatLng(result.addr[0].lat+0.000015*${getArea}, result.addr[0].lng+0.000015*${getArea}); // 사각형 영역의 북동쪽 좌표
+
+						    // 사각형을 구성하는 영역정보를 생성합니다
+						    // 사각형을 생성할 때 영역정보는 LatLngBounds 객체로 넘겨줘야 합니다
+						    var rectangleBounds = new daum.maps.LatLngBounds(sw, ne);
+	
+						    // 지도에 표시할 사각형을 생성합니다
+						    var rectangle = new daum.maps.Rectangle({
+						        bounds: rectangleBounds, // 그려질 사각형의 영역정보입니다
+						        strokeWeight: 4, // 선의 두께입니다
+						        strokeColor: '#FF3DE5', // 선의 색깔입니다
+						        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+						        strokeStyle: 'shortdashdot', // 선의 스타일입니다
+						        fillColor: '#FF8AEF', // 채우기 색깔입니다
+						        fillOpacity: 0.7 // 채우기 불투명도 입니다
+						    });
+	
+						    // 지도에 사각형을 표시합니다
+						    rectangle.setMap(map);
+						    } 
+					});
+					
+					
 					</script>
 					                      
                       

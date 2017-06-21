@@ -29,6 +29,10 @@ SELECT * FROM TBL_ELEVATOR where lat <('${svo.Dlat}'+ 0.000015*('${avo.area}')) 
 	]]>
 </select>
 
+<select id="getArea" resultType="int" >
+select area from(SELECT ROWNUM, area FROM TBL_ADGIF where sid =#{sid} ORDER BY updatedate DESC) where rownum =1
+</select>
+
 
 
 
