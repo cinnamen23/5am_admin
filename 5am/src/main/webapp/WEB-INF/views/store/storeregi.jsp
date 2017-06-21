@@ -260,7 +260,7 @@
 	    	dataType : 'jsonp',
 	    	data : {
 	    		apikey: '175962b9a13ff23b6ba95789998c261c',
-	    			q: $("#address").val(),
+	    			q: $("#address2").val(),
 	    			output:'json'
 	    		
 	    	},

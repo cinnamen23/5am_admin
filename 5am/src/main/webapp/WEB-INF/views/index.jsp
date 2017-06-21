@@ -104,7 +104,7 @@ max-height: 500px;
                  <div class="col-md-4 col-sm-4 col-xs-12">
                  
                     
-                    <div class="alert alert-info text-center" style="height: 380px">
+                    <div class="alert alert-info text-center" style="height: 371px;">
                           <h3> 현재 ${login.sid}님이</br> 로그인 되었습니다.</h3> 
                           <hr />
                           <p>
@@ -132,12 +132,7 @@ max-height: 500px;
                            Recent Users
                         </div>
                         <div class="panel-body text-center recent-users-sec" style="height: 300px;">
-							<img class="img-thumbnail" src="assets/img/user.gif" />
-                            <img class="img-thumbnail" src="assets/img/user2.png" />
-                            <img class="img-thumbnail" src="assets/img/user.gif" />
-                            <img class="img-thumbnail" src="assets/img/user2.png" />
-                            <img class="img-thumbnail" src="assets/img/user.gif" />
-                               <img class="img-thumbnail" src="assets/img/user2.png" />
+							
                             
                         </div>
      				</div>

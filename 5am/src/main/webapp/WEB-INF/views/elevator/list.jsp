@@ -17,6 +17,7 @@
 
 
 		<div class="row">
+		<div class="col-md-12">
 			<div class="col-md-4 col-sm-4 col-xs-12"
 				style="padding: 0; margin: 0;">
 				
@@ -70,13 +71,11 @@
 
 			</div>
 
-		</div>
+		</div></div>
 
 
 
-<div class="row">
 
-				<div class="col-md-12">
 				
 				<div class="row">
                 <div class="col-md-12">
@@ -107,11 +106,11 @@
                                
                                 </div></div></div><table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
                                     <thead>
-                                        <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" aria-sort="ascending" style="width: 189px;">번호</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width 291px; text-align: center;">건물 이름</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 264px; text-align: center;">위도</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 160px; text-align: center;">경도</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 50px; text-align: center;">등록일자</th>
+                                        <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" aria-sort="ascending" style="width: 50px;">번호</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 300px; text-align: center;">건물 이름</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 300px; text-align: center;">위도</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 300px; text-align: center;">경도</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 300px; text-align: center;">등록일자</th>
                                     </thead>
                                     <tbody>
                                         
@@ -160,8 +159,7 @@
                     <!--End Advanced Tables -->
                 </div>
             </div>
-		</div>
-	</div>
+	
 
 
 
