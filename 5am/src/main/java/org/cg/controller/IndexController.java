@@ -38,25 +38,24 @@ public class IndexController {
 		Object obj = session.getAttribute("login");
 		StoreVO vo = (StoreVO) obj;
 		
-		
-		
-		
 		NoticeVO nvo = new NoticeVO();
 		List<NoticeVO> list = nservice.index(nvo);
 		Criteria cri =  new Criteria();
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("cri", cri);
-		map.put("vo", vo);
+		map.put("vo", vo);	
 		
 		model.addAttribute("totalCount", service.totalCount(map));
 		model.addAttribute("qzeroCount", service.qzeroCount(map));
-		model.addAttribute("getArea", aservice.getArea(vo.getSid()));
-		logger.info("**************************************************************************");
-		logger.info("**************************************************************************");
-		logger.info("**************************************************************************");
-
-		logger.info(aservice.getArea(vo.getSid()));
+		try{
+			
+			model.addAttribute("getArea", aservice.getArea(vo.getSid()));
+		}catch(Exception e){
+			
+			model.addAttribute("getArea", 0);
+			
+		}
 
 		model.addAttribute("list", list);
 		}catch(Exception e){
