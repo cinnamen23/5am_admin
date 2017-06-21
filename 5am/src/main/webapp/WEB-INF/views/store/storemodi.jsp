@@ -43,7 +43,7 @@
     <div class="page-form" style="margin-top: 100px;">
         <div class="panel panel-blue">
             <div class="panel-body pan">
-                <form action="/store/storemodi" method="post" class="form-horizontal">
+                <form id="f1" action="/store/storemodi" method="post" class="form-horizontal">
                 <div class="form-body pal">
               
                     <div class="col-md-12 text-center">
@@ -155,13 +155,16 @@
                                 </div>
                                 <div class="col-lg-9">
                          <input type="hidden" name="sid" value="${vo.sid}">       
-                                    <button type="submit" class="btn btn-default">정보 수정</button>
+                                    <button id="regiBtn" type="button" class="btn btn-default">정보 수정</button>
                                     <button type="button" class="btn btn-default" onclick="location.href='/index' ">취 소</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                <input type="hidden" class="lat" name="lat">
+				<input	type="hidden" class="lng" name="lng">
                 </form>
             </div>
         </div>
@@ -169,8 +172,8 @@
     </div>
     
 <!-- jQuery와 Postcodify를 로딩한다 -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 
 
 
@@ -228,7 +231,7 @@
 	    	dataType : 'jsonp',
 	    	data : {
 	    		apikey: '175962b9a13ff23b6ba95789998c261c',
-	    			q: $("#address").val(),
+	    			q: $("#address2").val(),
 	    			output:'json'
 	    		
 	    	},

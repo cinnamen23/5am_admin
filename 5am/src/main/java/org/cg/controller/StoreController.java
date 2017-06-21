@@ -129,7 +129,7 @@ public class StoreController {
 	}
 	
 	@PostMapping("/storemodi")
-	public String storemodiPost(HttpSession session ,StoreVO vo,@RequestParam("saddr1") String saddr1,@RequestParam("saddr3") String saddr3, RedirectAttributes rttr){
+	public String storemodiPost(HttpSession session ,StoreVO vo,@RequestParam("saddr1") String saddr1,@RequestParam("saddr3") String saddr3,@RequestParam("lat")String lat,@RequestParam("lng")String lng, RedirectAttributes rttr){
 		logger.info("----------------------------------------------------------");
 		logger.info("storemodi post !!!!!!!!!!!!!!!!!!!!!!!");
 		

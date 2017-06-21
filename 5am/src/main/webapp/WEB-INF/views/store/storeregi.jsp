@@ -260,7 +260,7 @@
 	    	dataType : 'jsonp',
 	    	data : {
 	    		apikey: '175962b9a13ff23b6ba95789998c261c',
-	    			q: $("#address2").val(),
+	    			q: $("#address").val(),
 	    			output:'json'
 	    		
 	    	},
@@ -269,14 +269,14 @@
 	    			console.log(result)
 	    			result = result.channel;
 	        		console.log(result.item[0].point_x)
-	        		$(".lat").val(result.item[0].point_y)
-	        		$(".lng").val(result.item[0].point_x)
+	        		$(".lat").val(result.item[0].point_x)
+	        		$(".lng").val(result.item[0].point_y)
 	        		$("#f1").submit();
 
 	    	}
 	    	
 	    })
-    })	
+    })
     	 
 
    
