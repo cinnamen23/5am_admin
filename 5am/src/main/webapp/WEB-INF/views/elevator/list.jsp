@@ -191,6 +191,10 @@ $(document).ready(function(){
 		    		lat : lat_v,
 		    	},
 		    	success : function(result){
+		    		
+		    		$("#elvname").val("");
+		    		$("#lat").val("");
+		    		$("#lng").val("");
 		    			
 		    			console.log(result);
 		    			alert("등록 되었습니다.");
