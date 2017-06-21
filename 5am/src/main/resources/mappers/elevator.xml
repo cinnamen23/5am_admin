@@ -7,5 +7,30 @@
 insert into tbl_elevator (eno,elvname, lat, lng) values (seq_elevator_eno.nextval,#{elvname},#{lat},#{lng})
 </insert>
 
+<select id="elvlist" resultType="org.cg.domain.ElevatorVO" parameterType="org.cg.domain.Criteria">
+select * from (SELECT rownum rnum,eno, elvname,lat,lng,regdate,updatedate FROM 
+( SELECT eno, elvname, lat, lng, regdate,UPDATEDATE FROM tbl_elevator where eno>0
+  <choose>
+  <when test='type=="t"'>
+  and (elvname like '%'|| #{keyword} ||'%')
+  </when>
+ 
+  </choose>
+ order by eno desc) 
+<![CDATA[
+tbl_elevator where rownum <= #{pageNum}) 
+where rnum >= #{skip}
+  ]]>
+</select>
+
+<select id="elvcount" resultType="int">
+select count(eno) from TBL_elevator where eno>0
+   <choose>
+  <when test='type=="t"'>
+  and (elvname like '%'|| #{keyword} ||'%')
+  </when>
+  </choose>
+</select>
+
 
 </mapper>

@@ -1,7 +1,10 @@
 package org.cg.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import org.cg.domain.Criteria;
 import org.cg.domain.ElevatorVO;
 import org.cg.persistence.ElevatorDAO;
 
@@ -16,6 +19,18 @@ public class ElevatorServiceImpl implements ElevatorService {
 	public void insertElevator(ElevatorVO vo) {
 		dao.insertElevator(vo);
 
+	}
+
+
+	@Override
+	public List<ElevatorVO> getelvList(Criteria cri) {
+		return dao.getelvList(cri);
+	}
+
+
+	@Override
+	public int getElvCount(Criteria cri) {
+		return dao.getElvCount(cri);
 	}
 
 }

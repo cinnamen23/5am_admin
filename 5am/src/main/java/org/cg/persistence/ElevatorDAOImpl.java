@@ -1,7 +1,10 @@
 package org.cg.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import org.cg.domain.Criteria;
 import org.cg.domain.ElevatorVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -19,5 +22,20 @@ private static final String namespace = "org.cg.persistence.ElevatorDAO";
 		sess.insert(namespace+".insertel", vo);
 
 	}
+
+	@Override
+	public List<ElevatorVO> getelvList(Criteria cri) {
+		
+		return sess.selectList(namespace+".elvlist",cri);
+	}
+
+	@Override
+	public int getElvCount(Criteria cri) {
+		return sess.selectOne(namespace+".elvcount",cri);
+	}
+
+
+
+	
 
 }

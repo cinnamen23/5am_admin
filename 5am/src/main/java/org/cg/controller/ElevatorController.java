@@ -1,12 +1,17 @@
 package org.cg.controller;
 
 import java.io.File;
+import java.util.List;
 
 import javax.inject.Inject;
 
+import org.cg.domain.Criteria;
 import org.cg.domain.ElevatorVO;
+import org.cg.domain.NoticeVO;
+import org.cg.domain.PageMaker;
 import org.cg.service.ElevatorService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +26,18 @@ public class ElevatorController {
 	ElevatorService eservice;
 	
 	@GetMapping("/list")
-	public void getRegi(){
+	public void getRegi(@ModelAttribute("cri") Criteria cri, Model model){
 		
+		System.out.println("엘베리스트 ~~~~");
+		
+		List<ElevatorVO> list = eservice.getelvList(cri);
+		model.addAttribute("list", list);
+		model.addAttribute("pageMaker", new PageMaker(cri, eservice.getElvCount(cri)));
+		model.addAttribute("count", eservice.getElvCount(cri));
 	}
+	
+	
+	
 	
 	@PostMapping("/regi")
 	@ResponseBody
