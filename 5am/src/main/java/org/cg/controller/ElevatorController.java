@@ -19,12 +19,12 @@ public class ElevatorController {
 	@Inject
 	ElevatorService eservice;
 	
-	@GetMapping("/regi")
+	@GetMapping("/list")
 	public void getRegi(){
 		
 	}
 	
-	@PostMapping("/regi")
+	@PostMapping("/list")
 	public void postRegi(@ModelAttribute("vo")ElevatorVO vo){
 		
 		

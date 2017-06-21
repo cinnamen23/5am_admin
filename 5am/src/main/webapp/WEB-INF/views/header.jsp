@@ -51,7 +51,8 @@
                 <div class="navbar-collapse collapse ">
                     <ul id="menu-top" class="nav navbar-nav navbar-right">
                      <!-- 관리자& 고객 분기 -->
-                            <c:if test="${login.gubun=='admin'}"> 
+                            <c:if test="${login.gubun=='admin'}">
+                        <li><a href="/elevator/list">엘레베이터 관리</a></li> 
                     	<li><a href="/store/list">상점관리</a></li>
                     	 </c:if>
 							<!-- 관리자& 고객 분기 끝 -->
