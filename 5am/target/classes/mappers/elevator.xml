@@ -32,5 +32,9 @@ select count(eno) from TBL_elevator where eno>0
   </choose>
 </select>
 
+<select id="listAll" resultType="org.cg.domain.ElevatorVO">
+SELECT * FROM TBL_ELEVATOR
+</select>
+
 
 </mapper>

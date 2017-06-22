@@ -12,4 +12,6 @@ public interface ElevatorDAO {
 	public List<ElevatorVO> getelvList(Criteria cri);
 	
 	public int getElvCount(Criteria cri);
+	
+	public List<ElevatorVO> listAll();
 }

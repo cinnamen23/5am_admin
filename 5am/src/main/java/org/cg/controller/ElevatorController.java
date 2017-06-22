@@ -7,7 +7,6 @@ import javax.inject.Inject;
 
 import org.cg.domain.Criteria;
 import org.cg.domain.ElevatorVO;
-import org.cg.domain.NoticeVO;
 import org.cg.domain.PageMaker;
 import org.cg.service.ElevatorService;
 import org.springframework.stereotype.Controller;

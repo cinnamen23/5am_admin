@@ -1,16 +1,13 @@
 package org.cg.controller;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.List;
 import java.util.UUID;
-import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
-import org.apache.tomcat.jni.Library;
 import org.cg.domain.Criteria;
 import org.cg.domain.LibraryFileVO;
 import org.cg.domain.LibraryVO;
@@ -131,7 +128,7 @@ public class LibraryController {
 		service.deleteFile(lno);
 		
 		//글삭제
-		LibraryVO vo=  service.read(lno);
+		
 		service.delete(lno);
 		return "redirect:/library/list";
 	}

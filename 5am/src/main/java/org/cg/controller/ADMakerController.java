@@ -84,10 +84,7 @@ public class ADMakerController {
 	@ResponseBody
 	@RequestMapping(value = "/adgif", method = RequestMethod.POST, produces = "application/json")
 	public String adgif(@RequestParam("giffile") String giffile,AdGifVO vo) throws Exception {		
-			
-				
-				ElevatorVO evo = new ElevatorVO();
-		        
+			    
 		        StoreVO svo = sservice.storeRead(vo.getSid());
 		        
 		        
@@ -104,6 +101,10 @@ public class ADMakerController {
 		        list2.add(vo.getTarget2());
 		        list2.add(vo.getTarget3());
 		        list2.add(vo.getTarget4());
+		        
+		        File savegif = new File("c:\\zzz\\5am\\ad_gif_all",saveName);
+		        FileCopyUtils.copy(decodedBytes2, savegif);
+		        
 		        
 		        for (ElevatorVO elevatorVO : list) {
 		        	

@@ -8,9 +8,11 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.cg.domain.Criteria;
+import org.cg.domain.ElevatorVO;
 import org.cg.domain.NoticeVO;
 import org.cg.domain.StoreVO;
 import org.cg.service.ADMakerService;
+import org.cg.service.ElevatorService;
 import org.cg.service.MemberService;
 import org.cg.service.NoticeService;
 import org.springframework.stereotype.Controller;
@@ -32,6 +34,9 @@ public class IndexController {
 	@Inject
 	ADMakerService aservice;
 	
+	@Inject
+	ElevatorService eservice;
+	
 	@GetMapping
 	public void getIndex(HttpSession session, Model model){
 		try{			
@@ -42,6 +47,8 @@ public class IndexController {
 		List<NoticeVO> list = nservice.index(nvo);
 		Criteria cri =  new Criteria();
 		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		List<ElevatorVO> elvlist = eservice.listAll();
 		
 		map.put("cri", cri);
 		map.put("vo", vo);	
@@ -58,6 +65,7 @@ public class IndexController {
 		}
 
 		model.addAttribute("list", list);
+		model.addAttribute("elvlist", elvlist);
 		}catch(Exception e){
 			
 		}

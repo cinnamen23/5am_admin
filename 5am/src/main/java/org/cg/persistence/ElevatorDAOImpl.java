@@ -34,6 +34,11 @@ private static final String namespace = "org.cg.persistence.ElevatorDAO";
 		return sess.selectOne(namespace+".elvcount",cri);
 	}
 
+	@Override
+	public List<ElevatorVO> listAll() {
+		return sess.selectList(namespace+".listAll");
+	}
+
 
 
 	
