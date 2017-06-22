@@ -66,14 +66,11 @@ public class IndexController {
 			model.addAttribute("getArea", 0);
 			
 		}
-		//Gson을 이용해서 엘베vo를 json으로 만들기
+		
 		Gson gson= new Gson();
 		String objJson = gson.toJson(elvlist);
-		logger.info("@@@@"+objJson);
-		model.addAttribute("Gelvlist", objJson);
-		
+		model.addAttribute("Gelvlist", objJson);		
 		model.addAttribute("list", list);
-		model.addAttribute("elvlist", elvlist);
 		
 		}catch(Exception e){
 			

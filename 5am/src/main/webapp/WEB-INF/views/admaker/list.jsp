@@ -669,8 +669,6 @@ function ResetCount(){
 
  						$("#imgInp").change(function() {
 							readURL(this);
-							console.log("213123"+this[1]);
-							
 							
 						});
  						
@@ -711,8 +709,7 @@ function ResetCount(){
 									contentType : false,
 									type : 'post',
 									success : function(re) {
-									console.log("re");
-									console.log(re);
+									
 									var str = "<div class='col-md-1' style='border: 1px solid white; padding:0; width: 20%; background-color: black; float: left;'><div><img id='mybg' src='data:image/jpeg;base64,"
 									+ re+ "' width='100%' ></div><input type='button' value='사진 삭제' class='submitLink'></div></div>"
 									$(".uploadedList2").append(str);
@@ -732,12 +729,7 @@ function ResetCount(){
 										
 										$this.parent().remove();
 										
-										$.ajax({type : 'post',url : '/admaker/delete',
-											data : re,
-											success : function(data) {
-												console.log(da);
-											}
-										});
+										
 
 									});
 									}

@@ -125,29 +125,6 @@ public class ADMakerController {
 	}
 	
 	
-	
-	
-	
-	@ResponseBody
-	@PostMapping("/delete")
-	public String onepagedelete(@RequestParam("image") String image ) {		
-			
-				logger.info("delete one page!!!!!");
-				//실제파일 지우기
-		
-				
-				
-		return image;
-
-	}
-	
-	
-	
-	
-
-	
-
-
 }
 
 

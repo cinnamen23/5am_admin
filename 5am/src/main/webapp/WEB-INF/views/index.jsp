@@ -204,31 +204,11 @@ max-height: 500px;
 						    rectangle.setMap(map);
 						    } 
 					});
-					
-
-					
-					var positions = [
-					    {
-					        title: '카카오', 
-					        latlng: new daum.maps.LatLng(33.450705, 126.570677)
-					    },
-					    {
-					        title: '생태연못', 
-					        latlng: new daum.maps.LatLng(33.450936, 126.569477)
-					    },
-					    {
-					        title: '텃밭', 
-					        latlng: new daum.maps.LatLng(33.450879, 126.569940)
-					    },
-					    {
-					        title: '근린공원',
-					        latlng: new daum.maps.LatLng(37.49764383051696, 127.0284694173542)
-					    }
-					];
+												
 					
 					function getlatlng(lat,lng){
 						
-						return new daum.maps.LatLng(lat,lng)
+						return new daum.maps.LatLng(lat,lng);
 					}
 
 					// 마커 이미지의 이미지 주소입니다
