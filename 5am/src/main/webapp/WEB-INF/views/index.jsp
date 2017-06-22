@@ -183,7 +183,7 @@ max-height: 500px;
 					        
 					        
 					        var sw = new daum.maps.LatLng(result.addr[0].lat-0.000015*${getArea}, result.addr[0].lng-0.000015*${getArea}), // 사각형 영역의 남서쪽 좌표
-					        ne = new daum.maps.LatLng(result.addr[0].lat+0.000015*${getArea}, result.addr[0].lng+0.000015*${getArea}); // 사각형 영역의 북동쪽 좌표
+					        ne = new daum.maps.LatLng(result.addr[0].lat+0.000015* ${getArea}, result.addr[0].lng+0.000015*${getArea}); // 사각형 영역의 북동쪽 좌표
 
 						    // 사각형을 구성하는 영역정보를 생성합니다
 						    // 사각형을 생성할 때 영역정보는 LatLngBounds 객체로 넘겨줘야 합니다
@@ -205,7 +205,7 @@ max-height: 500px;
 						    } 
 					});
 					
-					
+
 					
 					var positions = [
 					    {
@@ -233,40 +233,34 @@ max-height: 500px;
 
 					// 마커 이미지의 이미지 주소입니다
 					var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-					    
-					for (var i = 0; i < '${elvlist.size()}'; i ++) {
+					for(var j=0;j<${Gelvlist}.length; j++){
 						
-						console.log(i);
-						console.log('${elvlist[i]}');
-						
-						console.log('${elvlist[1]}');
-						console.log('${elvlist[1].elvname}');
-					    
-					    // 마커 이미지의 이미지 크기 입니다
-					    var imageSize = new daum.maps.Size(24, 35); 
-					    
-					    // 마커 이미지를 생성합니다    
-					    var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
-					    
-					    // 마커를 생성합니다
-					    var marker = new daum.maps.Marker({
-					        map: map, // 마커를 표시할 지도
-					        position: getlatlng('${elvlist[i].lat}','${elvlist[i].lat}'), // 마커를 표시할 위치
-					        title : '${elvlist[i].elvname}', // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-					        image : markerImage // 마커 이미지 
-					    });
-					}
+					console.log(${Gelvlist}[j].elvname);
+					console.log(${Gelvlist}[j].lat);
+					console.log(${Gelvlist}[j].lng);
+					// 마커 이미지의 이미지 크기 입니다
+				    var imageSize = new daum.maps.Size(24, 35); 
+				    
+				    // 마커 이미지를 생성합니다    
+				    var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
+				    
+				    // 마커를 생성합니다
+				    var marker = new daum.maps.Marker({
+				        map: map, // 마커를 표시할 지도
+				        position: getlatlng(${Gelvlist}[j].lat,${Gelvlist}[j].lng), // 마커를 표시할 위치
+				        title : ${Gelvlist}[j].elvname, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+				        image : markerImage // 마커 이미지 
+					})}
 					
-					
-					
-					
+
+
 					</script>
+
 				        
     <!-- 지도 끝  -->                  
                       
              </div>
-         </div>
-    </div>
+         </div> 
 </div>
 
 <script
@@ -286,13 +280,10 @@ $("#index2").append(str2);
 
 
 <script>
-	$(document).ready(function(e) { 
+	$(document).ready(function(e) {
 		
 		console.log("start!!");	
-	 	console.log('${elvlist.size()}');
-		console.log('${elvlist[0].elvname}');
-		console.log('${elvlist[0].lat}');
-		
+
 	 	var result = '${msg}';
 		if (result == "success") {
 			history.pushState(null, null);
