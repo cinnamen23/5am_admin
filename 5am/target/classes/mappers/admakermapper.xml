@@ -25,7 +25,7 @@ insert into tbl_adgif(gifno,gifname,sid,target1,target2,target3,target4,area)val
 
 <select id="elevator" resultType="org.cg.domain.ElevatorVO" parameterType="hashmap" >
 <![CDATA[
-SELECT * FROM TBL_ELEVATOR where lat <('${svo.Dlat}'+ 0.000015*('${avo.area}')) and lat > ('${svo.Dlat}' - 0.000015*'${avo.area}') and lng <('${svo.Dlng}'+ 0.000015*'${avo.area}') and lng > ('${svo.Dlng}' - 0.000015*'${avo.area}')  
+SELECT * FROM TBL_ELEVATOR where lng <('${svo.Dlat}'+ 0.000015*('${avo.area}')) and lng > ('${svo.Dlat}' - 0.000015*'${avo.area}') and lat <('${svo.Dlng}'+ 0.000015*'${avo.area}') and lat > ('${svo.Dlng}' - 0.000015*'${avo.area}')  
 	]]>
 </select>
 
