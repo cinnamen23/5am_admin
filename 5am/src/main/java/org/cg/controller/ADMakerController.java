@@ -86,7 +86,7 @@ public class ADMakerController {
 	public String adgif(@RequestParam("giffile") String giffile,AdGifVO vo) throws Exception {		
 			    
 		        StoreVO svo = sservice.storeRead(vo.getSid());
-		        
+		        logger.info("광고 등록 ");
 		        
 		        List<ElevatorVO> list =  service.getElevator(svo, vo);
 		        
@@ -119,7 +119,7 @@ public class ADMakerController {
 		     
 		        service.gifInsert(saveName, vo);
 		        
-		return giffile;
+		return "success";
 
 	}
 	
