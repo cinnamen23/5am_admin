@@ -159,10 +159,10 @@ li{
                 <div class="col-md-12" >
                     <!-- Advanced Tables -->
                     <div class="panel panel-success">
-                        <div class="panel-heading panel">글번호: ${vo.qno} 제목: ${vo.title}
-                        <div>
+                        <div class="panel-heading panel" style="margin:0;">글번호: ${vo.qno} 제목: ${vo.title}
+                        
                         <p  style="float: right; font: 8px; margin: 20px; margin-top: 0px">작성자: ${vo.writer}</p>
-                        </div>
+                        
                         </div>
                         <div class="panel-body" >
                             <div class="table-responsive">
