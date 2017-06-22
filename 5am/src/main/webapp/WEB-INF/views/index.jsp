@@ -127,7 +127,7 @@ max-height: 500px;
              <div class="row">
                  <div class="col-md-4 col-sm-4 col-xs-12" style="height: 400px;">
  					<div class="panel panel-info"style="height: 400px;">
-                        <div class="panel-heading">
+                        <div class="panel-heading text-center">
                            등록하신 광고
                         </div>
                         <div class="panel-body text-center" style="height: 300px;">

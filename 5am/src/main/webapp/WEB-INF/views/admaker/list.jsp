@@ -800,10 +800,11 @@ function ResetCount(){
 					                "Area":Area
 					                
 					            },
-					            dataType : "json",
+					            dataType : "text",
 					            success : function(data) {
 					                
-					                alert("success!!!")
+					                alert("등록이 완료 되었습니다.");
+					                location.href= "/index"
 					            }
 
 					       });
