@@ -87,6 +87,7 @@ public class ADMakerController {
 			    
 		        StoreVO svo = sservice.storeRead(vo.getSid());
 		        logger.info("광고 등록 ");
+		        logger.info(""+vo);
 		        
 		        List<ElevatorVO> list =  service.getElevator(svo, vo);
 		        
