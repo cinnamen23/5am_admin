@@ -65,8 +65,13 @@ public class AdmakerDAOImpl implements AdmakerDAO {
 
 
 	@Override
+<<<<<<< Upstream, based on branch 'master' of https://github.com/kick07230723/5AM.git
 	public int dueDate(String sid) {
 		return sess.selectOne(namespace+".dueDate", sid);
+=======
+	public List<AdGifVO> deladdlist() {
+		return sess.selectList(namespace+".deladlist");
+>>>>>>> d219a14 gif폴더 삭제
 	}
 
 

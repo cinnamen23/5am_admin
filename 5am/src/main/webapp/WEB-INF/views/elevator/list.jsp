@@ -124,7 +124,7 @@
                                             <td>${list.lat} </td>
                                             <td>${list.lng} </td>
                                             <td>${list.regdate}</td>
-                                            <td data-eno="${list.eno}">
+                                            <td data-eno="${list.eno}" data-elvname="${list.elvname}">
 												<a class="elvdel" href="#" ><i class="glyphicon glyphicon-remove"></i></a>
 											</td>
                                          
@@ -326,11 +326,13 @@ $(document).ready(function(){
 
 				var elve = $(this).parent();
 				var elveno = elve.attr("data-eno");
+				var elvname = elve.attr("data-elvname");				
+				
 				console.log(elveno);
 				
 				var formData = new FormData();
 				formData.append("eno",elveno);
-				
+				formData.append("elvname",elvname);
 				
 				
 				

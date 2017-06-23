@@ -17,6 +17,11 @@ public interface ADMakerService {
 	
 	public int getArea(String string);
 	
+<<<<<<< Upstream, based on branch 'master' of https://github.com/kick07230723/5AM.git
 	public int dueDate(String sid);
+=======
+	public List<AdGifVO> deladdlist();
+	
+>>>>>>> d219a14 gif폴더 삭제
 	
 }

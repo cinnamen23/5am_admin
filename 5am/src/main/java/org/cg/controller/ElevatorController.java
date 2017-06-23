@@ -24,6 +24,22 @@ public class ElevatorController {
 
 	Logger logger= Logger.getLogger(IndexController.class);
 	
+	 public static void deleteDir(File file) {  
+
+		  if (!file.exists())
+		   return;
+
+		  File[] files = file.listFiles();
+		  for (int i = 0; i < files.length; i++) {
+		   if (files[i].isDirectory()) {
+		    deleteDir(files[i]);
+		   } else {
+		    files[i].delete();
+		   }
+		  }
+		  file.delete();
+		 }
+	
 	@Inject
 	ElevatorService eservice;
 	
@@ -84,6 +100,8 @@ public class ElevatorController {
 		
 		logger.info(vo);
 		eservice.elvdelete(vo);
+		
+		  deleteDir(new File("C:\\zzz\\5am\\"+vo.getElvname()));
 		
 		
 		return "삭제되었습니다.";

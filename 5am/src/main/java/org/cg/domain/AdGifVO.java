@@ -14,7 +14,16 @@ public class AdGifVO {
 	private String enddate;
 	private Timestamp regdate;
 	private Timestamp updategdate;
+	private String elvname;
 	
+	public String getElvname() {
+		return elvname;
+	}
+
+	public void setElvname(String elvname) {
+		this.elvname = elvname;
+	}
+
 	public String getStartdate() {
 		return startdate;
 	}
@@ -98,9 +107,10 @@ public class AdGifVO {
 		return "AdGifVO [gifno=" + gifno + ", gifname=" + gifname + ", sid=" + sid + ", target1=" + target1
 				+ ", target2=" + target2 + ", target3=" + target3 + ", target4=" + target4 + ", Area=" + Area
 				+ ", startdate=" + startdate + ", enddate=" + enddate + ", regdate=" + regdate + ", updategdate="
-				+ updategdate + "]";
+				+ updategdate + ", elvname=" + elvname + "]";
 	}
-	
+
+
 
 
 	

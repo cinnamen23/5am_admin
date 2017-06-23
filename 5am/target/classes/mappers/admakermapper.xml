@@ -24,9 +24,25 @@ SELECT * FROM TBL_ELEVATOR where lng <('${svo.Dlat}'+ 0.000015*('${avo.area}')) 
 select area from(SELECT ROWNUM, area FROM TBL_ADGIF where sid =#{sid} ORDER BY updatedate DESC) where rownum =1
 </select>
 
+<<<<<<< Upstream, based on branch 'master' of https://github.com/kick07230723/5AM.git
 <select id="dueDate" resultType="int">
 select extract(day from enddate-sysdate) dd  from TBL_ADGIF where sid=#{sid} and rownum=1 order by gifno desc 
 </select>
+=======
+
+<select id="deladlist" resultType="org.cg.domain.AdGifVO">
+<![CDATA[
+SELECT * 
+from (
+  SELECT ad.GIFNAME, ad.AREA, ad.TARGET1, ad.TARGET2, ad.TARGET3, ad.TARGET4, st.LAT lat, st.LNG lng, ad.ENDDATE enddate
+  FROM TBL_ADGIF ad, TBL_STORE st
+  where ad.sid= st.sid and sysdate-1 < enddate and enddate < sysdate  ) jo, TBL_ELEVATOR elv
+where jo.lat +jo.AREA*0.000015 > elv.LAT and jo.lat -jo.AREA*0.000015 < elv.LAT 
+and jo.lng +jo.AREA*0.000015 > elv.lng and jo.lng -jo.AREA*0.000015 < elv.lng
+]]>
+</select>
+
+>>>>>>> d219a14 gif폴더 삭제
 
 
 </mapper>

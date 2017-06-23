@@ -42,8 +42,14 @@ public class ADMakerServiceImpl implements ADMakerService {
 	}
 
 	@Override
+<<<<<<< Upstream, based on branch 'master' of https://github.com/kick07230723/5AM.git
 	public int dueDate(String sid) {
 		return dao.dueDate(sid);
+=======
+	public List<AdGifVO> deladdlist() {
+		
+		return dao.deladdlist();
+>>>>>>> d219a14 gif폴더 삭제
 	}
 
 }
