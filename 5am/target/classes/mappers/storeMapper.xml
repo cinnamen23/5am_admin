@@ -56,7 +56,7 @@
 		</choose>
 	 
 			 order by updatedate desc) 
-			<![CDATA[tbl_store where rownum <= 10) where rnum >= 0]]>
+			<![CDATA[tbl_store where rownum <= #{pageNum}) where rnum >= #{skip}]]>
 	</select>
 	
 	<select id="storeTotal" resultType="int" parameterType="org.cg.domain.Criteria">
