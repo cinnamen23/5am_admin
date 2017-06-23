@@ -1,6 +1,5 @@
 package org.cg.persistence;
 
-import java.util.Date;
 import java.util.List;
 
 import org.cg.domain.AdGifVO;

@@ -6,22 +6,13 @@
 
 
 <insert id="adimginsert" parameterType="hashmap">
-
-insert into tbl_adImage(imid,sid)values('${vo.imid}','${sid}') 
-
+insert into tbl_adImage(imid,sid)values('${vo.imid}','${sid}')
 </insert>
-
-
-
-
 
 <insert id="adgifinsert" parameterType="hashmap">
-
-insert into tbl_adgif(gifno,gifname,sid,target1,target2,target3,target4,area,startdate,enddate)values(seq_adgif_gifno.nextval,'${gifname}','${vo.sid}','${vo.target1}','${vo.target2}','${vo.target3}','${vo.target4}','${vo.Area}','${vo.startdate}','${vo.enddate}') 
+insert into tbl_adgif(gifno,gifname,sid,target1,target2,target3,target4,area,startdate,enddate)values(seq_adgif_gifno.nextval,'${gifname}','${vo.sid}','${vo.target1}','${vo.target2}','${vo.target3}','${vo.target4}','${vo.Area}','${vo.startdate}','${vo.enddate}')
 
 </insert>
-
-
 
 <select id="elevator" resultType="org.cg.domain.ElevatorVO" parameterType="hashmap" >
 <![CDATA[
@@ -34,7 +25,6 @@ select area from(SELECT ROWNUM, area FROM TBL_ADGIF where sid =#{sid} ORDER BY u
 </select>
 
 <select id="dueDate" resultType="int">
- <!-- select REGDATE from(SELECT ROWNUM rno ,REGDATE FROM TBL_ADGIF where sid =#{sid} ORDER BY REGDATE DESC)where rno = 1  -->
 select extract(day from enddate-sysdate) dd  from TBL_ADGIF where sid=#{sid} and rownum=1 order by gifno desc 
 </select>
 

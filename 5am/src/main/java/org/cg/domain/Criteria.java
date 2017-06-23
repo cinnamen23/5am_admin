@@ -1,6 +1,7 @@
 package org.cg.domain;
 
 public class Criteria {
+	
 	private int skip;
 	private int page;
 	private int pageNum;

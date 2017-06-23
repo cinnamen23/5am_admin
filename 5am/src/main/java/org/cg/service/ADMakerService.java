@@ -1,6 +1,5 @@
 package org.cg.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.cg.domain.AdGifVO;

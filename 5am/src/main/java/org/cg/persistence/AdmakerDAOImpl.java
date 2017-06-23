@@ -1,6 +1,5 @@
 package org.cg.persistence;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,7 +48,6 @@ public class AdmakerDAOImpl implements AdmakerDAO {
 
 	@Override
 	public List<ElevatorVO> getElevator(StoreVO svo, AdGifVO avo) {
-		// TODO Auto-generated method stub
 		Map<String,Object> paramMap=new HashMap<String, Object>();
 		paramMap.put("svo", svo);
 		paramMap.put("avo", avo);

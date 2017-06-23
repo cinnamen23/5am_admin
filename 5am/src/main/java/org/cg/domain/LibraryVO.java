@@ -2,7 +2,6 @@ package org.cg.domain;
 
 import java.sql.Timestamp;
 
-import javax.annotation.processing.SupportedSourceVersion;
 
 
 public class LibraryVO {
