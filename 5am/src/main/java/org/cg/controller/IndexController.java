@@ -64,10 +64,6 @@ public class IndexController {
 			model.addAttribute("dueDate","등록 광고 없음");
 		}
 		
-
-		
-
-		
 		NoticeVO nvo = new NoticeVO();
 		List<NoticeVO> list = nservice.index(nvo);
 		Criteria cri =  new Criteria();
@@ -80,9 +76,6 @@ public class IndexController {
 		
 		model.addAttribute("totalCount", service.totalCount(map));
 		model.addAttribute("qzeroCount", service.qzeroCount(map));
-
-		
-	
 
 		try{
 			
@@ -101,14 +94,7 @@ public class IndexController {
 		}catch(Exception e){
 			
 		}
-		
-		
-
-
 
 	}
-	
-	
-	
 
 }
