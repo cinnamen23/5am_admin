@@ -16,14 +16,12 @@ import org.springframework.scheduling.annotation.Scheduled;
 public class scheduler {
 	private static final Logger logger = LoggerFactory.getLogger(scheduler.class);
 
-<<<<<<< Upstream, based on branch 'master' of https://github.com/kick07230723/5AM.git
-	@Scheduled(cron = "00 0 1 * * *")
-=======
+
 	@Inject
 	ADMakerService service;
 
 	@Scheduled(cron = "*/30 * * * * *")
->>>>>>> d219a14 gif폴더 삭제
+
 	public void scheduleRun() {
 		Calendar calendar = Calendar.getInstance();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
