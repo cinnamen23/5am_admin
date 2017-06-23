@@ -390,7 +390,7 @@
 
 
 <div class="form-group" style="margin: 0px;top: 5px;">
-    <label for="exampleInputEmail1">광고 등록 기간 설정</label>
+    <label >광고 등록 기간 설정</label>
    <p><input class="flatpickr form-control" id="date" type="text" placeholder="Select Date.." data-id="range"></p>
   </div>
     
@@ -823,7 +823,7 @@ function ResetCount(){
 					                
 					                alert("등록이 완료 되었습니다.");
 					                location.href= "/index"
-					            }
+				date         }
 
 					       });
 
