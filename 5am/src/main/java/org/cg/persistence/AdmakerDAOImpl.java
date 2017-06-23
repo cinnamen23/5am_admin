@@ -1,5 +1,6 @@
 package org.cg.persistence;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,6 +62,13 @@ public class AdmakerDAOImpl implements AdmakerDAO {
 	public int getArea(String str) {
 		
 		return sess.selectOne(namespace+".getArea", str);
+	}
+
+
+
+	@Override
+	public int dueDate(String sid) {
+		return sess.selectOne(namespace+".dueDate", sid);
 	}
 
 

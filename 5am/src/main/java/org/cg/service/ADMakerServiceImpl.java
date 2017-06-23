@@ -1,5 +1,6 @@
 package org.cg.service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -39,6 +40,11 @@ public class ADMakerServiceImpl implements ADMakerService {
 	public int getArea(String str) {
 		
 		return dao.getArea(str);
+	}
+
+	@Override
+	public int dueDate(String sid) {
+		return dao.dueDate(sid);
 	}
 
 }

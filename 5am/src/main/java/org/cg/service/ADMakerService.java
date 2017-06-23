@@ -1,5 +1,6 @@
 package org.cg.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.cg.domain.AdGifVO;
@@ -16,5 +17,7 @@ public interface ADMakerService {
 	public List<ElevatorVO> getElevator(StoreVO svo,AdGifVO avo);
 	
 	public int getArea(String string);
+	
+	public int dueDate(String sid);
 	
 }

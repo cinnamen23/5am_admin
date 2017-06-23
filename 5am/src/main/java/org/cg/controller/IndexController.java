@@ -1,6 +1,8 @@
 package org.cg.controller;
 
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -42,9 +44,29 @@ public class IndexController {
 	
 	@GetMapping
 	public void getIndex(HttpSession session, Model model){
+
+		
 		try{			
 		Object obj = session.getAttribute("login");
 		StoreVO vo = (StoreVO) obj;
+		
+		try {
+			int due = aservice.dueDate(vo.getSid());
+			logger.info("날짜계산"+due);
+			if(due<=0){
+				model.addAttribute("dueDate","기간 만료");
+			}else {
+				model.addAttribute("dueDate",due +" 일");
+			}
+			
+		} catch (Exception e) {
+			logger.info("날짜계산 에러");
+			model.addAttribute("dueDate","등록 광고 없음");
+		}
+		
+
+		
+
 		
 		NoticeVO nvo = new NoticeVO();
 		List<NoticeVO> list = nservice.index(nvo);
@@ -58,6 +80,10 @@ public class IndexController {
 		
 		model.addAttribute("totalCount", service.totalCount(map));
 		model.addAttribute("qzeroCount", service.qzeroCount(map));
+
+		
+	
+
 		try{
 			
 			model.addAttribute("getArea", aservice.getArea(vo.getSid()));

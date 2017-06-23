@@ -33,7 +33,10 @@ SELECT * FROM TBL_ELEVATOR where lng <('${svo.Dlat}'+ 0.000015*('${avo.area}')) 
 select area from(SELECT ROWNUM, area FROM TBL_ADGIF where sid =#{sid} ORDER BY updatedate DESC) where rownum =1
 </select>
 
-
+<select id="dueDate" resultType="int">
+ <!-- select REGDATE from(SELECT ROWNUM rno ,REGDATE FROM TBL_ADGIF where sid =#{sid} ORDER BY REGDATE DESC)where rno = 1  -->
+select extract(day from enddate-sysdate) dd  from TBL_ADGIF where sid=#{sid} and rownum=1 order by gifno desc 
+</select>
 
 
 </mapper>

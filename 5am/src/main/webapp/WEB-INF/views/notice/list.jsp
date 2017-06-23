@@ -49,10 +49,10 @@
                                
                                 </div></div></div><table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
                                     <thead>
-                                        <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" aria-sort="ascending" style="width: 50px; text-align: center;">번호</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width 200px; text-align: center;">글제목</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px; text-align: center;">글쓴이</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 200px; text-align: center;">동록일자</th>
+                                        <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" aria-sort="ascending" style="width: 50px;text-align: center;">번호</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width 200px; ">글제목</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px; ">글쓴이</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 200px; ">동록일자</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 50px; text-align: center;">조회수</th>
                                     </thead>
                                     <tbody>
@@ -60,10 +60,10 @@
                                      <c:forEach var="list" items="${list}">
                                     <tr class="gradeA odd">
                                             <td class="sorting_1" style=" text-align: center;">${list.nno}</td>
-                                            <td class="center " style=" text-align: center;"><a class="tt" href="${list.nno}" style="width: 60%; text-align: center;">${list.ntitle}</a></td>
-                                            <td class="center " style=" text-align: center;">${list.nwriter} </td>
-                                            <td class="center " style=" text-align: center;" ><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
-                                            <td class="center "style=" text-align: center;">${list.hit}</td>
+                                            <td class="center " ><a class="tt" href="${list.nno}" style="width: 60%; ">${list.ntitle}</a></td>
+                                            <td class="center " >${list.nwriter} </td>
+                                            <td class="center "  ><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
+                                            <td class="center "style="text-align: center;">${list.hit}</td>
                                          
                                         </tr>
                                         </c:forEach>   

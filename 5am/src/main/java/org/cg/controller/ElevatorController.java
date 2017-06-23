@@ -31,8 +31,6 @@ public class ElevatorController {
 	@GetMapping("/list")
 	public void getRegi(@ModelAttribute("cri") Criteria cri, Model model){
 		
-		System.out.println("엘베리스트 ~~~~");
-		
 		List<ElevatorVO> list = eservice.getelvList(cri);
 		model.addAttribute("list", list);
 		model.addAttribute("pageMaker", new PageMaker(cri, eservice.getElvCount(cri)));
@@ -45,13 +43,7 @@ public class ElevatorController {
 	@PostMapping("/regi")
 	@ResponseBody
 	public void postRegi(@ModelAttribute("vo")ElevatorVO vo){
-		
-		System.out.println("등록 ~~~~");
-		
-		System.out.println(vo);
-		
-		
-		
+	
 		eservice.insertElevator(vo);
 		
 		File directory = new File("C:\\zzz\\5am\\"+vo.getElvname());
@@ -88,7 +80,7 @@ public class ElevatorController {
 	
 	@PostMapping(value = "/delete", produces = "application/text; charset=utf8")
 	@ResponseBody
-	public String elvdel(ElevatorVO vo, RedirectAttributes rttr){
+	public String elvdel(ElevatorVO vo){
 		logger.info("들왓서요");
 		
 		logger.info(vo);
