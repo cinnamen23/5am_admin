@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.log4j.Logger;
 import org.cg.domain.Criteria;
 import org.cg.domain.ElevatorVO;
 import org.cg.domain.PageMaker;
@@ -16,11 +17,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/elevator")
 public class ElevatorController {
 
+	Logger logger= Logger.getLogger(IndexController.class);
+	
 	@Inject
 	ElevatorService eservice;
 	
@@ -79,6 +83,19 @@ public class ElevatorController {
 		directory11.mkdirs();
 		directory12.mkdirs();
 		
+		
+	}
+	
+	@PostMapping(value = "/delete", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String elvdel(ElevatorVO vo, RedirectAttributes rttr){
+		logger.info("들왓서요");
+		
+		logger.info(vo);
+		eservice.elvdelete(vo);
+		
+		
+		return "삭제되었습니다.";
 		
 	}
 	

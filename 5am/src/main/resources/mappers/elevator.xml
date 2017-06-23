@@ -36,5 +36,10 @@ select count(eno) from TBL_elevator where eno>0
 SELECT * FROM TBL_ELEVATOR
 </select>
 
+<delete id="elvdelete" parameterType="org.cg.domain.ElevatorVO">
+delete from tbl_elevator where eno='${eno}'
+</delete>
+
+
 
 </mapper>

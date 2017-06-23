@@ -14,4 +14,6 @@ public interface ElevatorDAO {
 	public int getElvCount(Criteria cri);
 	
 	public List<ElevatorVO> listAll();
+	
+	public void elvdelete(ElevatorVO vo);
 }

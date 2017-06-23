@@ -39,4 +39,11 @@ public class ElevatorServiceImpl implements ElevatorService {
 		return dao.listAll();
 	}
 
+
+	@Override
+	public void elvdelete(ElevatorVO vo) {
+		dao.elvdelete(vo);
+		
+	}
+
 }

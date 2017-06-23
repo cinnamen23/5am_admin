@@ -39,6 +39,12 @@ private static final String namespace = "org.cg.persistence.ElevatorDAO";
 		return sess.selectList(namespace+".listAll");
 	}
 
+	@Override
+	public void elvdelete(ElevatorVO vo) {
+		sess.delete(namespace+".elvdelete",vo);
+		
+	}
+
 
 
 	

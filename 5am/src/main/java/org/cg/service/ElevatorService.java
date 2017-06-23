@@ -15,4 +15,5 @@ public interface ElevatorService {
 	
 	public List<ElevatorVO> listAll();
 
+	public void elvdelete(ElevatorVO vo);
 }
