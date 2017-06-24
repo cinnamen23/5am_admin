@@ -10,11 +10,40 @@ public class AdGifVO {
 	private String sid; 
 	private String target1,target2,target3,target4;
 	private int Area;
+	private String startdate;
+	private String enddate;
 	private Timestamp regdate;
 	private Timestamp updategdate;
+	private String elvname;
+	
+	public String getElvname() {
+		return elvname;
+	}
+
+	public void setElvname(String elvname) {
+		this.elvname = elvname;
+	}
+
+	public String getStartdate() {
+		return startdate;
+	}
+
+	public void setStartdate(String startdate) {
+		this.startdate = startdate;
+	}
+
+	public String getEnddate() {
+		return enddate;
+	}
+
+	public void setEnddate(String enddate) {
+		this.enddate = enddate;
+	}
+
 	public int getGifno() {
 		return gifno;
 	}
+	
 	public void setGifno(int gifno) {
 		this.gifno = gifno;
 	}
@@ -72,12 +101,16 @@ public class AdGifVO {
 	public void setUpdategdate(Timestamp updategdate) {
 		this.updategdate = updategdate;
 	}
+
 	@Override
 	public String toString() {
 		return "AdGifVO [gifno=" + gifno + ", gifname=" + gifname + ", sid=" + sid + ", target1=" + target1
 				+ ", target2=" + target2 + ", target3=" + target3 + ", target4=" + target4 + ", Area=" + Area
-				+ ", regdate=" + regdate + ", updategdate=" + updategdate + "]";
+				+ ", startdate=" + startdate + ", enddate=" + enddate + ", regdate=" + regdate + ", updategdate="
+				+ updategdate + ", elvname=" + elvname + "]";
 	}
+
+
 
 
 	

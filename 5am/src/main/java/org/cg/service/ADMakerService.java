@@ -17,4 +17,9 @@ public interface ADMakerService {
 	
 	public int getArea(String string);
 	
+	public int dueDate(String sid);
+	
+	public List<AdGifVO> deladdlist();
+	
+	
 }

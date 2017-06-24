@@ -84,12 +84,10 @@ public class ADMakerController {
 	@ResponseBody
 	@RequestMapping(value = "/adgif", method = RequestMethod.POST, produces = "application/json")
 	public String adgif(@RequestParam("giffile") String giffile,AdGifVO vo) throws Exception {		
-			
-				
-				ElevatorVO evo = new ElevatorVO();
-		        
+			    
 		        StoreVO svo = sservice.storeRead(vo.getSid());
-		        
+		        logger.info("광고 등록 ");
+		        logger.info(""+vo);
 		        
 		        List<ElevatorVO> list =  service.getElevator(svo, vo);
 		        
@@ -99,17 +97,21 @@ public class ADMakerController {
 
 		        String saveName = vo.getSid()+ ".gif";
 		        
-		        List<String> list2 = new ArrayList<String>();
-		        list2.add(vo.getTarget1());
-		        list2.add(vo.getTarget2());
-		        list2.add(vo.getTarget3());
-		        list2.add(vo.getTarget4());
+		        List<String> targetList = new ArrayList<String>();
+		        targetList.add(vo.getTarget1());
+		        targetList.add(vo.getTarget2());
+		        targetList.add(vo.getTarget3());
+		        targetList.add(vo.getTarget4());
+		        
+		        File savegif = new File("c:\\zzz\\5am\\ad_gif_all",saveName);
+		        FileCopyUtils.copy(decodedBytes2, savegif);
+		        
 		        
 		        for (ElevatorVO elevatorVO : list) {
 		        	
 		        	for(int i=0; i<=3; i++){
-		        		if(list.get(i)!=null){
-		        		File targeti = new File("c:\\zzz\\5am\\"+elevatorVO.getElvname()+"\\"+list2.get(i),saveName);
+		        		if(targetList.get(i)!=null){
+		        		File targeti = new File("c:\\zzz\\5am\\"+elevatorVO.getElvname()+"\\"+targetList.get(i),saveName);
 				        FileCopyUtils.copy(decodedBytes2, targeti);
 		        		}
 		        	}
@@ -118,34 +120,11 @@ public class ADMakerController {
 		     
 		        service.gifInsert(saveName, vo);
 		        
-		return giffile;
+		return "success";
 
 	}
 	
 	
-	
-	
-	
-	@ResponseBody
-	@PostMapping("/delete")
-	public String onepagedelete(@RequestParam("image") String image ) {		
-			
-				logger.info("delete one page!!!!!");
-				//실제파일 지우기
-		
-				
-				
-		return image;
-
-	}
-	
-	
-	
-	
-
-	
-
-
 }
 
 

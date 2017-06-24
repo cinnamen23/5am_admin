@@ -48,7 +48,6 @@ public class AdmakerDAOImpl implements AdmakerDAO {
 
 	@Override
 	public List<ElevatorVO> getElevator(StoreVO svo, AdGifVO avo) {
-		// TODO Auto-generated method stub
 		Map<String,Object> paramMap=new HashMap<String, Object>();
 		paramMap.put("svo", svo);
 		paramMap.put("avo", avo);
@@ -61,6 +60,19 @@ public class AdmakerDAOImpl implements AdmakerDAO {
 	public int getArea(String str) {
 		
 		return sess.selectOne(namespace+".getArea", str);
+	}
+
+
+
+	@Override
+
+	public int dueDate(String sid) {
+		return sess.selectOne(namespace+".dueDate", sid);
+
+	}	
+		public List<AdGifVO> deladdlist() {
+		return sess.selectList(namespace+".deladlist");
+
 	}
 
 

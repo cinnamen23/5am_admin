@@ -6,26 +6,17 @@
 
 
 <insert id="adimginsert" parameterType="hashmap">
-
-insert into tbl_adImage(imid,sid)values('${vo.imid}','${sid}') 
-
+insert into tbl_adImage(imid,sid)values('${vo.imid}','${sid}')
 </insert>
-
-
-
-
 
 <insert id="adgifinsert" parameterType="hashmap">
-
-insert into tbl_adgif(gifno,gifname,sid,target1,target2,target3,target4,area)values(seq_adgif_gifno.nextval,'${gifname}','${vo.sid}','${vo.target1}','${vo.target2}','${vo.target3}','${vo.target4}','${vo.Area}') 
+insert into tbl_adgif(gifno,gifname,sid,target1,target2,target3,target4,area,startdate,enddate)values(seq_adgif_gifno.nextval,'${gifname}','${vo.sid}','${vo.target1}','${vo.target2}','${vo.target3}','${vo.target4}','${vo.Area}','${vo.startdate}','${vo.enddate}')
 
 </insert>
-
-
 
 <select id="elevator" resultType="org.cg.domain.ElevatorVO" parameterType="hashmap" >
 <![CDATA[
-SELECT * FROM TBL_ELEVATOR where lat <('${svo.Dlat}'+ 0.000015*('${avo.area}')) and lat > ('${svo.Dlat}' - 0.000015*'${avo.area}') and lng <('${svo.Dlng}'+ 0.000015*'${avo.area}') and lng > ('${svo.Dlng}' - 0.000015*'${avo.area}')  
+SELECT * FROM TBL_ELEVATOR where lng <('${svo.Dlat}'+ 0.000015*('${avo.area}')) and lng > ('${svo.Dlat}' - 0.000015*'${avo.area}') and lat <('${svo.Dlng}'+ 0.000015*'${avo.area}') and lat > ('${svo.Dlng}' - 0.000015*'${avo.area}')  
 	]]>
 </select>
 
@@ -33,6 +24,21 @@ SELECT * FROM TBL_ELEVATOR where lat <('${svo.Dlat}'+ 0.000015*('${avo.area}')) 
 select area from(SELECT ROWNUM, area FROM TBL_ADGIF where sid =#{sid} ORDER BY updatedate DESC) where rownum =1
 </select>
 
+<select id="dueDate" resultType="int">
+select extract(day from enddate-sysdate) dd  from TBL_ADGIF where sid=#{sid} and rownum=1 order by gifno desc 
+</select>
+
+<select id="deladlist" resultType="org.cg.domain.AdGifVO">
+<![CDATA[
+SELECT * 
+from (
+  SELECT ad.GIFNAME, ad.AREA, ad.TARGET1, ad.TARGET2, ad.TARGET3, ad.TARGET4, st.LAT lat, st.LNG lng, ad.ENDDATE enddate
+  FROM TBL_ADGIF ad, TBL_STORE st
+  where ad.sid= st.sid and sysdate-1 < enddate and enddate < sysdate  ) jo, TBL_ELEVATOR elv
+where jo.lat +jo.AREA*0.000015 > elv.LAT and jo.lat -jo.AREA*0.000015 < elv.LAT 
+and jo.lng +jo.AREA*0.000015 > elv.lng and jo.lng -jo.AREA*0.000015 < elv.lng
+]]>
+</select>
 
 
 

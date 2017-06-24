@@ -5,9 +5,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.log4j.Logger;
 import org.cg.domain.Criteria;
 import org.cg.domain.ElevatorVO;
-import org.cg.domain.NoticeVO;
 import org.cg.domain.PageMaker;
 import org.cg.service.ElevatorService;
 import org.springframework.stereotype.Controller;
@@ -22,13 +22,29 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/elevator")
 public class ElevatorController {
 
+	Logger logger= Logger.getLogger(IndexController.class);
+	
+	 public static void deleteDir(File file) {  
+
+		  if (!file.exists())
+		   return;
+
+		  File[] files = file.listFiles();
+		  for (int i = 0; i < files.length; i++) {
+		   if (files[i].isDirectory()) {
+		    deleteDir(files[i]);
+		   } else {
+		    files[i].delete();
+		   }
+		  }
+		  file.delete();
+		 }
+	
 	@Inject
 	ElevatorService eservice;
 	
 	@GetMapping("/list")
 	public void getRegi(@ModelAttribute("cri") Criteria cri, Model model){
-		
-		System.out.println("엘베리스트 ~~~~");
 		
 		List<ElevatorVO> list = eservice.getelvList(cri);
 		model.addAttribute("list", list);
@@ -42,13 +58,7 @@ public class ElevatorController {
 	@PostMapping("/regi")
 	@ResponseBody
 	public void postRegi(@ModelAttribute("vo")ElevatorVO vo){
-		
-		System.out.println("등록 ~~~~");
-		
-		System.out.println(vo);
-		
-		
-		
+	
 		eservice.insertElevator(vo);
 		
 		File directory = new File("C:\\zzz\\5am\\"+vo.getElvname());
@@ -80,6 +90,21 @@ public class ElevatorController {
 		directory11.mkdirs();
 		directory12.mkdirs();
 		
+		
+	}
+	
+	@PostMapping(value = "/delete", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String elvdel(ElevatorVO vo){
+		logger.info("들왓서요");
+		
+		logger.info(vo);
+		eservice.elvdelete(vo);
+		
+		  deleteDir(new File("C:\\zzz\\5am\\"+vo.getElvname()));
+		
+		
+		return "삭제되었습니다.";
 		
 	}
 	

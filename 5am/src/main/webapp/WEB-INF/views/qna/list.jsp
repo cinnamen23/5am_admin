@@ -65,9 +65,9 @@
 				                
 				                <select name="type" class="type" >
 								<option value="n" ${cri.type eq null?'selected':''}>---</option>
-								<option value="t" ${cri.type eq 't'?'selected':''}>title</option>
-								<option value="c" ${cri.type eq 'c'?'selected':''}>content</option>
-								<option value="w" ${cri.type eq 'w'?'selected':''}>writer</option>
+								<option value="t" ${cri.type eq 't'?'selected':''}>제목</option>
+								<option value="c" ${cri.type eq 'c'?'selected':''}>내용</option>
+								<option value="w" ${cri.type eq 'w'?'selected':''}>작성자</option>
 							    </select> 
 							    
 							    <input type="search" class="form-control input-sm" aria-controls="dataTables-example" name="keyword" value="${cri.keyword}">

@@ -269,8 +269,8 @@
 	    			console.log(result)
 	    			result = result.channel;
 	        		console.log(result.item[0].point_x)
-	        		$(".lat").val(result.item[0].point_x)
-	        		$(".lng").val(result.item[0].point_y)
+	        		$(".lat").val(result.item[0].point_y)
+	        		$(".lng").val(result.item[0].point_x)
 	        		$("#f1").submit();
 
 	    	}

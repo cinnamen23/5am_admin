@@ -86,7 +86,7 @@ function readImage(file) {
                 t = file.type,                           // ext only: // file.type.split('/')[1],
                 n = file.name,
                 s = ~~(file.size/1024) +'KB';
-            if(w != 1000 || h !=500){
+            if(w !>= 1000 || h !>=500){
             	alert("1000*500px로 맞춰주세요");
             	$("#file").val("");
             	

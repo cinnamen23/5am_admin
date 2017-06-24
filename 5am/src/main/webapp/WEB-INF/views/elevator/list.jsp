@@ -95,7 +95,7 @@
                 <label>
                 <form class="form" method="get" action="/elevator/list">
 				<input class="hopage" type="hidden" name="page"value="${pageMaker.current}"> 
-				<input class="view"type="hidden" name="nno"> 
+				<input class="view"type="hidden" name="eno"> 
                 <select name="type" class="type">
 				<option value="n" ${cri.type eq null?'selected':''}>---</option>
 				<option value="t" ${cri.type eq 't'?'selected':''}>건물 이름</option>
@@ -111,18 +111,22 @@
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 300px; text-align: center;">위도</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 300px; text-align: center;">경도</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 300px; text-align: center;">등록일자</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 300px; text-align: center;">삭제</th>
                                     </thead>
                                     <tbody>
                                         
                                       
                                        
                                      <c:forEach var="list" items="${list}">
-                                    <tr class="gradeA odd">
+                                    <tr class="gradeA odd" style="text-align: center">
                                             <td >${list.eno}</td>
                                             <td>${list.elvname}</a></td>
                                             <td>${list.lat} </td>
                                             <td>${list.lng} </td>
                                             <td>${list.regdate}</td>
+                                            <td data-eno="${list.eno}" data-elvname="${list.elvname}">
+												<a class="elvdel" href="#" ><i class="glyphicon glyphicon-remove"></i></a>
+											</td>
                                          
                                         </tr>
                                         </c:forEach>   
@@ -261,6 +265,16 @@
 <script>
 $(document).ready(function(){
 	
+
+	$(".pagination a").on("click", function(e) {
+
+		e.preventDefault();
+
+		$(".hopage").val($(this).attr("href"));
+
+		$(".form").submit();
+	})
+	
 	 $("#regiBtn").on("click",function(e){
 	    	e.preventDefault();
 	    	
@@ -291,8 +305,58 @@ $(document).ready(function(){
 		    	
 		    })
 	    })
+	    
+	    
+	    
+			
+			 $("#btnn").on("click", function(e) {
+				e.preventDefault();
+				$(".hopage").val("1");
+			
+				$(".form").submit();
+			
+			}) 
+	    
 	
 	
+	    	$(".elvdel").on("click", function(e) {
+			e.preventDefault();
+			if (confirm("정말 삭제하시겠습니까??") == true) {
+				console.log("delete......");
+
+				var elve = $(this).parent();
+				var elveno = elve.attr("data-eno");
+				var elvname = elve.attr("data-elvname");				
+				
+				console.log(elveno);
+				
+				var formData = new FormData();
+				formData.append("eno",elveno);
+				formData.append("elvname",elvname);
+				
+				
+				
+				
+				$.ajax({ 
+					type: 'post' ,
+					url: '/elevator/delete' ,
+					data : formData ,
+					processData:false,
+    				contentType:false,
+    				dataType : 'text',
+					success: function(data) {
+						alert(data)
+						location.reload();
+						/* location.href= ""; */
+							}
+						})
+
+			
+
+		}
+			})
+	    
+	    
 	
 	
 	
@@ -300,39 +364,6 @@ $(document).ready(function(){
 
 </script>
 
-<script >
-$(document).ready(function(e) {
-	
-	
-	
-
-$(".pagination a").on("click", function(e) {
-
-	e.preventDefault();
-
-	$(".hopage").val($(this).attr("href"));
-
-	$(".form").submit();
-})
-
- $(".tt").on("click", function(e) {
-
-	e.preventDefault();
-
-	$(".view").val($(this).attr("href"));
-
-	$(".form").attr("action", "/elevator/list").submit();
-}) 
-
- $("#btnn").on("click", function(e) {
-	e.preventDefault();
-	$(".hopage").val("1");
-
-	$(".form").submit();
-
-}) 
-})
-</script>
 
 
 

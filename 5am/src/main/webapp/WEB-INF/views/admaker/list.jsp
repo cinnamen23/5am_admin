@@ -4,8 +4,10 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
+  <link rel="stylesheet" href="../resources/dist/flatpickr.css">
 <style>
 .fileUpload {
     position: relative;
@@ -55,7 +57,6 @@
 				</h3>
 
 			</div>
-
 		</div>
 
 
@@ -384,6 +385,14 @@
   
 </select>
 
+
+
+
+
+<div class="form-group" style="margin: 0px;top: 5px;">
+    <label >광고 등록 기간 설정</label>
+   <p><input class="flatpickr form-control" id="date" type="text" placeholder="Select Date.." data-id="range"></p>
+  </div>
     
     
       </div>
@@ -397,7 +406,13 @@
 </div>	
 	
 	
-	
+	 <script src="../resources/dist/flatpickr.js"></script>
+
+    <script src="../resources/dist/plugins/confirmDate/confirmDate.js"></script>
+
+    <script src="../resources/dist/plugins/weekSelect/weekSelect.js"></script>
+
+    <script src="https://chmln.github.io/flatpickr/flatpickr.js"></script>
 	
 
 	<script src='../resources/gifshot.js'></script>
@@ -654,8 +669,6 @@ function ResetCount(){
 
  						$("#imgInp").change(function() {
 							readURL(this);
-							console.log("213123"+this[1]);
-							
 							
 						});
  						
@@ -696,8 +709,7 @@ function ResetCount(){
 									contentType : false,
 									type : 'post',
 									success : function(re) {
-									console.log("re");
-									console.log(re);
+									
 									var str = "<div class='col-md-1' style='border: 1px solid white; padding:0; width: 20%; background-color: black; float: left;'><div><img id='mybg' src='data:image/jpeg;base64,"
 									+ re+ "' width='100%' ></div><input type='button' value='사진 삭제' class='submitLink'></div></div>"
 									$(".uploadedList2").append(str);
@@ -717,12 +729,7 @@ function ResetCount(){
 										
 										$this.parent().remove();
 										
-										$.ajax({type : 'post',url : '/admaker/delete',
-											data : re,
-											success : function(data) {
-												console.log(da);
-											}
-										});
+										
 
 									});
 									}
@@ -763,6 +770,14 @@ function ResetCount(){
                             $("#target3").val(arr[2]);
                             $("#target4").val(arr[3]);
                             
+                          
+      				        
+      				         var term = $("#date")[0].value.split(' to ');
+      				         console.log(term[0]);
+      				      	 console.log(term[1]);
+      				      
+            					
+                            
                             var DATA;
                               $('input:checkbox[name=favorite]').each(function() {
                                  if($(this).is(':checked'))
@@ -787,6 +802,7 @@ function ResetCount(){
                             var target4 = $("#target4").val();
                             var Area = $("#distance option:selected").val();
 							
+                            
 							$.ajax({
 					            url : "/admaker/adgif",
 					            type : "post",
@@ -797,14 +813,17 @@ function ResetCount(){
 					                "target2": target2,
 					                "target3": target3,
 					                "target4": target4,
-					                "Area":Area
+					                "Area":Area,
+					                "startdate":term[0],
+					                "enddate":term[1]
 					                
 					            },
-					            dataType : "json",
+					            dataType : "text",
 					            success : function(data) {
 					                
-					                alert("success!!!")
-					            }
+					                alert("등록이 완료 되었습니다.");
+					                location.href= "/index"
+				date         }
 
 					       });
 
@@ -868,6 +887,8 @@ function ResetCount(){
 						   
 					   })
 					   
+					   
+					  
 					   
 					   	
 })

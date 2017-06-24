@@ -33,4 +33,17 @@ public class ElevatorServiceImpl implements ElevatorService {
 		return dao.getElvCount(cri);
 	}
 
+
+	@Override
+	public List<ElevatorVO> listAll() {
+		return dao.listAll();
+	}
+
+
+	@Override
+	public void elvdelete(ElevatorVO vo) {
+		dao.elvdelete(vo);
+		
+	}
+
 }

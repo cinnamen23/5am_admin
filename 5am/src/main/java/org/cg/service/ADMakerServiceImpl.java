@@ -41,4 +41,13 @@ public class ADMakerServiceImpl implements ADMakerService {
 		return dao.getArea(str);
 	}
 
+	@Override
+	public int dueDate(String sid) {
+		return dao.dueDate(sid);
+	}
+	public List<AdGifVO> deladdlist() {
+		
+		return dao.deladdlist();
+	}
+
 }

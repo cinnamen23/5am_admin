@@ -17,5 +17,11 @@ public interface AdmakerDAO {
 	
 	public int getArea(String str);
 	
+
+	public int dueDate(String sid);
+	
+
+	public List<AdGifVO> deladdlist();
+
 	
 }
