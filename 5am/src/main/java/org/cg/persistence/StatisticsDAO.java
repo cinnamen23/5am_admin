@@ -1,5 +1,10 @@
 package org.cg.persistence;
 
-public interface StatisticsDAO {
+import org.cg.domain.StatisticsVO;
 
+public interface StatisticsDAO {
+	
+	public void insert(StatisticsVO vo); 
+	
+	
 }

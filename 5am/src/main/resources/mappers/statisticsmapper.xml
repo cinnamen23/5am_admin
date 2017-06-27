@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="org.cg.persistence.StatisticsDAO">
+  <insert id="insert" parameterType="org.cg.domain.StatisticsVO">
+ INSERT INTO TBL_STATISTICS(sno, sid,target,surprise,contempt,happiness,scount,neutral,sadness,disgust,anger,fear,sview) VALUES(seq_statistics_sno.nextval, '${sid}','${target}','${surprise}','${contempt}','${happiness}','${scount}','${neutral}','${sadness}','${disgust}','${anger}','${fear}','${sview}')
+  </insert>
+  
+  </mapper>
