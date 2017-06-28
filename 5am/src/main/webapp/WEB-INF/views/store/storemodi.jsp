@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +49,7 @@
               
                     <div class="col-md-12 text-center">
                         <h5 style="margin-top: -100px; font-size: 35px;">
-                            정보 수정  </h5>
+                            정보 수정 ${vo}  </h5>
                         
                     </div>
                     
@@ -147,6 +148,37 @@
                         </div>
                     </div>
                     
+                     <div class="form-group">
+                        <label for="inputName" class="col-md-3 control-label">
+                            사업의 분류:</label>
+                        <div class="col-md-9">
+                            <div class="input-icon right">
+                            <select class="form-control" id="scategory" >
+						      <option value="식음료" ${vo.scategory eq '식음료'?'selected':''}>   식음료    </option>
+						      <option value="화장품" ${vo.scategory eq '화장품'?'selected':''}>화장품</option>
+						      <option value="의약&건강" ${vo.scategory eq '의약&건강'?'selected':''}>의약 &amp;건강   </option>
+						      <option value="교양&오락" ${vo.scategory eq '교양&오락'?'selected':''}>   교양 &amp; 오락    </option>
+						      <option value="생활잡화" ${vo.scategory eq '생활잡화'?'selected':''}>   생활잡화    </option>
+						      <option value="교육&단체" ${vo.scategory eq '교육&단체'?'selected':''}>    교육 & 단체   </option>
+						      <option value="레저&스포츠" ${vo.scategory eq '레저&스포츠'?'selected':''}>    레저 & 스포츠   </option>
+						      <option value="패션" ${vo.scategory eq '패션'?'selected':''}>   패션    </option>
+						      <option value="주택&가구" ${vo.scategory eq '주택&가구'?'selected':''}>   주택 & 가구    </option>
+						      <option value="금융" ${vo.scategory eq '금융'?'selected':''}>    금융   </option>
+						      <option value="컴퓨터&주변기기" ${vo.scategory eq '컴퓨터&주변기기'?'selected':''}>   컴퓨터 & 주변기기    </option>
+						      <option value="전자&통신" ${vo.scategory eq '전자&통신'?'selected':''}>  전자 & 통신     </option>
+						      <option value="유통" ${vo.scategory eq '유통'?'selected':''}>   유통    </option>
+						      <option value="수송" ${vo.scategory eq '수송'?'selected':''}>   수송    </option>
+						      <option value="인터넷" ${vo.scategory eq '인터넷'?'selected':''}>    인터넷   </option>
+						      <option value="서비스&기타" ${vo.scategory eq '서비스&기타'?'selected':''}>   서비스 & 기타    </option>
+						    </select>
+
+                              
+                        </div>
+                    </div>
+                  </div>
+                    
+                    
+                                         
                     <div class="form-group mbn">
                         <div class="col-lg-12" align="right">
                             <div class="form-group mbn">
@@ -165,6 +197,8 @@
                 
                 <input type="hidden" class="lat" name="lat">
 				<input	type="hidden" class="lng" name="lng">
+				<input type="hidden" class="scate" name="scategory" >
+				
                 </form>
             </div>
         </div>
@@ -242,6 +276,10 @@
 	        		console.log(result.item[0].point_x)
 	        		$(".lat").val(result.item[0].point_x)
 	        		$(".lng").val(result.item[0].point_y)
+	        		
+	        		var scate = $("#scategory option:selected").val();
+	        		$(".scate").val(scate);
+	        		
 	        		$("#f1").submit();
 
 	    	}

@@ -168,6 +168,34 @@
                                 <input id="inputName" type="text" value="${vo.semail}" class="form-control" name="semail" placeholder="이메일 주소를 입력하세요" /></div>
                         </div>
                     </div>
+                   <div class="form-group">
+                        <label for="inputName" class="col-md-3 control-label">
+                            사업의 분류:</label>
+                        <div class="col-md-9">
+                            <div class="input-icon right">
+                            <select class="form-control" id="scategory" >
+						      <option value="식음료" >   식음료    </option>
+						      <option value="화장품">화장품</option>
+						      <option value="의약&건강">의약 &건강   </option>
+						      <option value="교양&오락">   교양 & 오락    </option>
+						      <option value="생활잡화">   생활잡화    </option>
+						      <option value="교육&단체">    교육 & 단체   </option>
+						      <option value="레저&스포츠">    레저 & 스포츠   </option>
+						      <option value="패션">   패션    </option>
+						      <option value="주택&가구">   주택 & 가구    </option>
+						      <option value="금융">    금융   </option>
+						      <option value="컴퓨터&주변기기">   컴퓨터 & 주변기기    </option>
+						      <option value="전자&통신">  전자 & 통신     </option>
+						      <option value="유통">   유통    </option>
+						      <option value="수송">   수송    </option>
+						      <option value="인터넷">    인터넷   </option>
+						      <option value="서비스&기타">   서비스 & 기타    </option>
+						    </select>
+
+                              
+                        </div>
+                    </div>
+                  </div>
 
 						<div class="form-group mbn">
 							<div class="col-lg-12" align="right">
@@ -176,6 +204,7 @@
 									<div>
 										<input type="hidden" class="lat" name="lat">
 										 <input	type="hidden" class="lng" name="lng">
+										 <input type="hidden" class="scate" name="scategory" >
 
 									</div>
 									<div class="col-lg-9">
@@ -271,6 +300,10 @@
 	        		console.log(result.item[0].point_x)
 	        		$(".lat").val(result.item[0].point_y)
 	        		$(".lng").val(result.item[0].point_x)
+	        		
+	        		var scate = $("#scategory option:selected").val();
+	        		$(".scate").val(scate);
+	        		
 	        		$("#f1").submit();
 
 	    	}

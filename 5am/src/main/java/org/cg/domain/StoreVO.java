@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class StoreVO {
 	
-	private String sid,spw,sname,saddr,sphone,semail,saddrm,lat,lng,gubun;
+	private String sid,spw,sname,saddr,sphone,semail,saddrm,lat,lng,gubun, scategory;
 	private Timestamp regdate,updatedate;
 	
 	
@@ -88,11 +88,18 @@ public class StoreVO {
 	public void setGubun(String gubun) {
 		this.gubun = gubun;
 	}
+	
+	public String getScategory() {
+		return scategory;
+	}
+	public void setScategory(String scategory) {
+		this.scategory = scategory;
+	}
 	@Override
 	public String toString() {
 		return "StoreVO [sid=" + sid + ", spw=" + spw + ", sname=" + sname + ", saddr=" + saddr + ", sphone=" + sphone
 				+ ", semail=" + semail + ", saddrm=" + saddrm + ", lat=" + lat + ", lng=" + lng + ", gubun=" + gubun
-				+ ", regdate=" + regdate + ", updatedate=" + updatedate + "]";
+				+ ", scategory=" + scategory + ", regdate=" + regdate + ", updatedate=" + updatedate + "]";
 	}
 	
 	
