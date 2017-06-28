@@ -38,7 +38,8 @@
 		<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 		
-		<interceptor> 
+		<interceptor>
+		<mapping path="/"/> 
 	 	<mapping path="/admaker/**"/>
 		<mapping path="/library/**"/>
 		<mapping path="/member/**"/>

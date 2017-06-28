@@ -33,11 +33,9 @@ public class HomeController {
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
-		String formattedDate = dateFormat.format(date);
 		
-		model.addAttribute("serverTime", formattedDate );
 		
-		return "index";
+		return "redirect:/index";
 	}
 	
 	@GetMapping("test2")
