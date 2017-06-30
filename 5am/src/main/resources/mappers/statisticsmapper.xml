@@ -7,4 +7,72 @@
  INSERT INTO TBL_STATISTICS(sno, sid,target,surprise,contempt,happiness,scount,neutral,sadness,disgust,anger,fear,sview) VALUES(seq_statistics_sno.nextval, '${sid}','${target}','${surprise}','${contempt}','${happiness}','${scount}','${neutral}','${sadness}','${disgust}','${anger}','${fear}','${sview}')
   </insert>
   
+  <select id="getStatistics" parameterType="String" resultType="org.cg.domain.StatisticsVO">
+  select * from TBL_STATISTICS where sid=#{sid} 
+  <![CDATA[
+  and REGDATE < sysdate and REGDATE > sysdate-5
+    ]]>
+  </select>
+  
+  <!-- 5일동안 모든 타겟 평균 감정변화 -->
+    <select id="getAvg" parameterType="String" resultType="org.cg.domain.StatisticsVO">
+  select avg(HAPPINESS) HAPPINESS,avg(SURPRISE) SURPRISE, avg(CONTEMPT) CONTEMPT,avg(NEUTRAL) NEUTRAL,avg(ANGER) ANGER,avg(FEAR) FEAR,avg(SADNESS) SADNESS,avg(DISGUST) DISGUST from TBL_STATISTICS where sid=#{sid} 
+  <![CDATA[
+  and REGDATE < sysdate and REGDATE > sysdate-5
+    ]]>
+  </select>
+  
+<!-- 5일동안  타겟별 시청횟수 -->
+  <select id="getScount"  parameterType="String" resultType="org.cg.domain.StatisticsVO">
+  select sum(SCOUNT) scount, max(target) target from TBL_STATISTICS where sid=#{sid} 
+    <![CDATA[
+  and REGDATE < sysdate and REGDATE > sysdate-5 GROUP BY target
+      ]]>
+  </select>
+  
+  <!-- 5일동안 하루당 시청횟수 -->
+  <select id="getScountPerDay"  parameterType="String" resultType="org.cg.domain.StatisticsVO">
+		select max(updatedate) sno, avg(sview) sview
+    <![CDATA[
+		from (select extract(day from sysdate-regdate) REGDATE, to_char(regdate,'yyyymmdd') updatedate, scount, sview, target from TBL_STATISTICS where sid=#{sid} ) 
+		where REGDATE<5
+    ]]>
+		group by regdate
+		ORDER BY REGDATE desc
+  </select>
+  
+  
+  <!--그전에 해당 상점의 타겟 불러오기  -->
+<select id="getTarget" parameterType="org.cg.domain.StatisticsVO" resultType="org.cg.domain.AdGifVO">
+select * from TBL_ADGIF where sid=#{sid} and rownum=1 order by gifno desc 
+</select>
+  
+
+    <!-- 5일동안 하루당 타겟별 시청횟수 -->
+  <select id="getScountPerTarget1"  parameterType="org.cg.domain.AdGifVO" resultType="org.cg.domain.StatisticsVO">
+    <![CDATA[
+		select regdate fear, scount, target from (select regdate, scount, sview, target from TBL_STATISTICS where sid=#{sid}) 
+		where target=#{target1}  and regdate < sysdate and regdate > sysdate-5
+    ]]>
+  </select>
+   <select id="getScountPerTarget2"  parameterType="org.cg.domain.AdGifVO" resultType="org.cg.domain.StatisticsVO">
+    <![CDATA[
+		select regdate fear, scount, target from (select regdate, scount, sview, target from TBL_STATISTICS where sid=#{sid}) 
+		where target=#{target2}  and regdate < sysdate and regdate > sysdate-5
+    ]]>
+  </select>
+    <select id="getScountPerTarget3"  parameterType="org.cg.domain.AdGifVO" resultType="org.cg.domain.StatisticsVO">
+    <![CDATA[
+		select regdate fear, scount, target from (select regdate, scount, sview, target from TBL_STATISTICS where sid=#{sid}) 
+		where target=#{target3}  and regdate < sysdate and regdate > sysdate-5
+    ]]>
+  </select>
+    <select id="getScountPerTarget4"  parameterType="org.cg.domain.AdGifVO" resultType="org.cg.domain.StatisticsVO">
+    <![CDATA[
+		select regdate fear, scount, target from (select regdate, scount, sview, target from TBL_STATISTICS where sid=#{sid}) 
+		where target=#{target4}  and regdate < sysdate and regdate > sysdate-5
+    ]]>
+  </select>
+
+  
   </mapper>
