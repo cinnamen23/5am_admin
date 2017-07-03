@@ -41,7 +41,7 @@
                             <div class="box box-primary">
                                 <div class="box-header">
                                     <h3 class="box-title">타겟별 광고 재생 수</h3>
-                                    <div style="text-align: right; margin:10px;">기간
+                                    <div style="text-align: right; margin:10px;">기간 
                                		<select id="AreaTerm" >
                                     	<option value=7>1주</option>
        									<option value=14>2주</option>
@@ -82,7 +82,7 @@
                         </div><!-- /.col (LEFT) -->
                         <div class="col-md-6">
                             <!-- LINE CHART -->
-                            <div class="box box-info">
+                            <div class="box box-warning">
                                 <div class="box-header">
                                     <h3 class="box-title">총 광고 재생 수</h3>
 	                                <div style="text-align: right; margin:10px;">기간
@@ -181,9 +181,9 @@ function scountPerTarget() {
                     resize: true,
                     data: scountPerTargetArr,
                     xkey: 'y',
-                    ykeys: ['item1', 'item2','item3', 'item4'],
-                    labels: [result[0].target, 'Item 2','Item 3', 'Item 4'],
-                    lineColors:['#77f', '#fa7','#00a65a','#f56954'],
+                    ykeys: ['item1'],
+                    labels: [result[0].target],
+                    lineColors:['#77f'],
                     hideHover: 'auto'
                 });
         	
@@ -229,7 +229,7 @@ function scountPerDay() {
 	                    xkey: 'y',
 	                    ykeys: ['item1'],
 	                    labels: ['재생횟수'],
-	                    lineColors: ['#3c8dbc'],
+	                    lineColors: ['#fa7'],
 	                    hideHover: 'auto'
 	                });
 	
