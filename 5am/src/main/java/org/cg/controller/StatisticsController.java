@@ -37,11 +37,17 @@ public class StatisticsController {
 		Object obj = session.getAttribute("login");
 		StoreVO svo = (StoreVO) obj;
 		String sid= svo.getSid();
+		
+		AdGifVO ad= service.getTarget(sid);
+		model.addAttribute("ad",ad);
+		model.addAttribute("getTotalView", service.getTotalView(sid));
+
 //더미데이터		
 		List<StatisticsVO> list=service.getStatistics(sid);
 		Gson gson= new Gson();
 		String statisticsJson = gson.toJson(list);
 		model.addAttribute("statistics",statisticsJson);
+		
 	}
 	
 	//타겟별 재생횟수
@@ -59,11 +65,11 @@ public class StatisticsController {
 	//평균감정변화
 	@PostMapping("/emotion")
 	@ResponseBody
-	public StatisticsVO emotion(String sid,String BarTerm){
+	public StatisticsVO emotion(String sid,String BarTerm, String BarTarget){
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("sid", sid);
 		map.put("BarTerm", BarTerm);
-		
+		map.put("BarTarget", BarTarget);
 		StatisticsVO voAvg = service.getAvg(map);
 		return voAvg;
 	}
@@ -84,20 +90,15 @@ public class StatisticsController {
 	//일주일간 타겟별 하루의 재생횟수
 	@PostMapping("/scountPerTarget")
 	@ResponseBody
-	public List<StatisticsVO> perTarget(String sid, Model model, String AreaTerm){
+	public List<StatisticsVO> perTarget(String sid, Model model, String AreaTerm,String AreaTarget){
 		AdGifVO ad= service.getTarget(sid);
 		HashMap<String, Object> areaMap = new HashMap<String, Object>();
 		areaMap.put("ad", ad);
 		areaMap.put("AreaTerm", AreaTerm);
+		areaMap.put("AreaTarget", AreaTarget);
 		
 		List<StatisticsVO> scountPerTarget1 = service.getScountPerTarget1(areaMap);
-//		List<StatisticsVO> scountPerTarget2 = service.getScountPerTarget2(ad);
-//		List<StatisticsVO> scountPerTarget3 = service.getScountPerTarget3(ad);
-//		List<StatisticsVO> scountPerTarget4 = service.getScountPerTarget4(ad);
-//		logger.info("@@@1: "+scountPerTarget1);
-//		logger.info("@@@2: "+scountPerTarget2);
-//		logger.info("@@@3: "+scountPerTarget3);
-//		logger.info("@@@4: "+scountPerTarget4);
+		logger.info("scountPerTarget1@@@@ : "+scountPerTarget1);
 
 		return scountPerTarget1;
 	}

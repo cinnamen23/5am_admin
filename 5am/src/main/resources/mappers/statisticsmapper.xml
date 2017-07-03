@@ -17,6 +17,15 @@
   <!-- 5일동안 모든 타겟 평균 감정변화 -->
     <select id="getAvg" parameterType="hashmap" resultType="org.cg.domain.StatisticsVO">
   select avg(HAPPINESS) HAPPINESS,avg(SURPRISE) SURPRISE, avg(CONTEMPT) CONTEMPT,avg(NEUTRAL) NEUTRAL,avg(ANGER) ANGER,avg(FEAR) FEAR,avg(SADNESS) SADNESS,avg(DISGUST) DISGUST from TBL_STATISTICS where sid=#{sid} 
+ 	<choose>
+	  <when test="BarTarget.equals('target')">
+	  and target=target
+	  </when>
+	  <otherwise>
+	  and target=#{BarTarget} 
+	  </otherwise>
+	</choose>
+ 
   <![CDATA[
   and REGDATE > sysdate-#{BarTerm}
     ]]>
@@ -50,29 +59,25 @@ select * from TBL_ADGIF where sid=#{sid} and rownum=1 order by gifno desc
 
     <!-- 5일동안 하루당 타겟별 시청횟수 -->
   <select id="getScountPerTarget1"  parameterType="hashmap" resultType="org.cg.domain.StatisticsVO">
-    <![CDATA[
 		select to_char(regdate,'yyyy-mm-dd') fear, scount, target from (select regdate, scount, sview, target from TBL_STATISTICS where sid=#{ad.sid}) 
-		where target=#{ad.target1}  and regdate < sysdate and regdate > sysdate-#{AreaTerm}
-    ]]>
-  </select>
-   <select id="getScountPerTarget2"  parameterType="org.cg.domain.AdGifVO" resultType="org.cg.domain.StatisticsVO">
+			<choose>
+			  <when test="AreaTarget.equals('target')">
+			  	where target=target
+			  </when>
+			  <otherwise>
+			 	where target=#{AreaTarget} 
+			  </otherwise>
+			</choose>
+		
     <![CDATA[
-		select to_char(regdate,'yyyy-mm-dd') fear, scount, target from (select regdate, scount, sview, target from TBL_STATISTICS where sid=#{sid}) 
-		where target=#{target2}  and regdate < sysdate and regdate > sysdate-5
+		and regdate > sysdate-#{AreaTerm}
     ]]>
   </select>
-    <select id="getScountPerTarget3"  parameterType="org.cg.domain.AdGifVO" resultType="org.cg.domain.StatisticsVO">
-    <![CDATA[
-		select to_char(regdate,'yyyy-mm-dd') fear, scount, target from (select regdate, scount, sview, target from TBL_STATISTICS where sid=#{sid}) 
-		where target=#{target3}  and regdate < sysdate and regdate > sysdate-5
-    ]]>
+
+  <select id="getTotalView" parameterType="String" resultType="String">
+		select sum(scount) from TBL_STATISTICS where sid=#{sid}
   </select>
-    <select id="getScountPerTarget4"  parameterType="org.cg.domain.AdGifVO" resultType="org.cg.domain.StatisticsVO">
-    <![CDATA[
-		select to_char(regdate,'yyyy-mm-dd') fear, scount, target from (select regdate, scount, sview, target from TBL_STATISTICS where sid=#{sid}) 
-		where target=#{target4}  and regdate < sysdate and regdate > sysdate-5
-    ]]>
-  </select>
+
 
   
   </mapper>

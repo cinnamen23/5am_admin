@@ -30,13 +30,8 @@
 			
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>광고 분석 <small>감정변화</small> </h1>
-                    <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li><a href="#">Charts</a></li>
-                        <li class="active">Morris</li>
-<%--                         <li>총 시청횟수 : ${statistics.sview}</li> --%>
-                    </ol>
+                    <h1>광고 분석 <small>총 재생 횟수 : ${getTotalView}번</small> </h1>
+
                 </section>
                 <!-- Main content -->
                 <section class="content">
@@ -52,6 +47,12 @@
        									<option value=14>2주</option>
        									<option value=21>3주</option>
        									<option value=28>4주</option>
+                                    </select> 대상
+                                    <select id="AreaTarget" >
+                                    	<option value=${ad.target1}>${ad.target1}</option>
+       									<option value=${ad.target2}>${ad.target2}</option>
+       									<option value=${ad.target3}>${ad.target3}</option>
+       									<option value=${ad.target4}>${ad.target4}</option>
                                     </select>
                                     </div>
                                 </div>
@@ -83,7 +84,7 @@
                             <!-- LINE CHART -->
                             <div class="box box-info">
                                 <div class="box-header">
-                                    <h3 class="box-title">모든 타겟 광고 재생 수</h3>
+                                    <h3 class="box-title">총 광고 재생 수</h3>
 	                                <div style="text-align: right; margin:10px;">기간
 	                                <select id="LineTerm" >
 	                                    	<option value=7>1주</option>
@@ -108,6 +109,14 @@
        									<option value=14>2주</option>
        									<option value=21>3주</option>
        									<option value=28>4주</option>
+                                    </select> 
+                                    	 대상
+                                    <select id="BarTarget" >
+       									<option value="target">모든 타겟</option>
+                                    	<option value=${ad.target1}>${ad.target1}</option>
+       									<option value=${ad.target2}>${ad.target2}</option>
+       									<option value=${ad.target3}>${ad.target3}</option>
+       									<option value=${ad.target4}>${ad.target4}</option>
                                     </select>
                                     </div>
                                 </div>
@@ -154,11 +163,13 @@ var $sid= ${statistics}[0].sid;
 // scountPerTarget 일주일간 타겟별 시청횟수
 function scountPerTarget() {
 	var $AreaTerm = $("#AreaTerm").val();	
+	var $AreaTarget = $("#AreaTarget").val();	
+	
 		$.ajax({
         	url:'/statistics/scountPerTarget',
         	type:'post',
         	dataType : 'json',
-        	data : {sid: $sid, AreaTerm: $AreaTerm},
+        	data : {sid: $sid, AreaTerm: $AreaTerm, AreaTarget: $AreaTarget},
         	success : function(result){
         		
         		var scountPerTargetArr = [];
@@ -181,6 +192,10 @@ function scountPerTarget() {
         });
 }
 $('#AreaTerm').change(function(){
+	$('#revenue-chart').html('');
+	scountPerTarget();
+});
+$('#AreaTarget').change(function(){
 	$('#revenue-chart').html('');
 	scountPerTarget();
 });
@@ -265,13 +280,14 @@ $('#DonutTerm').change(function(){
 function emotion() {      
 	
         var $BarTerm = $("#BarTerm").val();
+        var $BarTarget = $("#BarTarget").val();
         //emotion 평균 감정변화
         $.ajax({
         	url:'/statistics/emotion',
         	type:'post',
         	dataType : 'json',
         	data : {
-        			sid: $sid, BarTerm: $BarTerm
+        			sid: $sid, BarTerm: $BarTerm, BarTarget: $BarTarget
         	},
         	success : function(result){
         		var emotionArr = [];
@@ -299,6 +315,10 @@ function emotion() {
         });
 }
 $('#BarTerm').change(function(){
+	$('#bar-chart').html('');
+	emotion();
+});
+$('#BarTarget').change(function(){
 	$('#bar-chart').html('');
 	emotion();
 });

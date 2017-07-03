@@ -52,17 +52,10 @@ public class StatisticsDAOImpl implements StatisticsDAO {
 	public List<StatisticsVO> getScountPerTarget1(HashMap<String, Object> areaMap) {
 		return session.selectList(namespace+".getScountPerTarget1", areaMap);
 	}
+
 	@Override
-	public List<StatisticsVO> getScountPerTarget2(AdGifVO ad) {
-		return session.selectList(namespace+".getScountPerTarget2", ad);
-	}
-	@Override
-	public List<StatisticsVO> getScountPerTarget3(AdGifVO ad) {
-		return session.selectList(namespace+".getScountPerTarget3", ad);
-	}
-	@Override
-	public List<StatisticsVO> getScountPerTarget4(AdGifVO ad) {
-		return session.selectList(namespace+".getScountPerTarget4", ad);
+	public String getTotalView(String sid) {
+		return session.selectOne(namespace+".getTotalView", sid);
 	}
 
 

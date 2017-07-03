@@ -21,8 +21,6 @@ public interface StatisticsDAO {
 	public AdGifVO getTarget(String sid);
 	
 	public List<StatisticsVO> getScountPerTarget1(HashMap<String, Object> areaMap);
-	public List<StatisticsVO> getScountPerTarget2(AdGifVO ad);
-	public List<StatisticsVO> getScountPerTarget3(AdGifVO ad);
-	public List<StatisticsVO> getScountPerTarget4(AdGifVO ad);
 
+	public String getTotalView(String sid);
 }

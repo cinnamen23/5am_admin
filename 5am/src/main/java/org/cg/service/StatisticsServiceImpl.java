@@ -50,17 +50,10 @@ public class StatisticsServiceImpl implements StatisticsService {
 	public List<StatisticsVO> getScountPerTarget1(HashMap<String, Object> areaMap) {
 		return dao.getScountPerTarget1(areaMap);
 	}
+
 	@Override
-	public List<StatisticsVO> getScountPerTarget2(AdGifVO ad) {
-		return dao.getScountPerTarget2(ad);
-	}
-	@Override
-	public List<StatisticsVO> getScountPerTarget3(AdGifVO ad) {
-		return dao.getScountPerTarget3(ad);
-	}
-	@Override
-	public List<StatisticsVO> getScountPerTarget4(AdGifVO ad) {
-		return dao.getScountPerTarget4(ad);
+	public String getTotalView(String sid) {
+		return dao.getTotalView(sid);
 	}
 
 }
