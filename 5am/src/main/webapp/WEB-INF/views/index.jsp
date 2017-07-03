@@ -50,8 +50,8 @@ max-height: 500px;
                     </div>
                <div class="col-md-3 col-sm-3 col-xs-6">
                       <div class="alert alert-danger back-widget-set text-center">
-                            <i class="fa fa-briefcase fa-5x"></i>
-                            <h3>${getTotalView } 회</h3>
+                            <i class="fa fa-play-circle fa-5x"></i>
+                            <h3>${getTotalView }</h3>
                             내 광고 재생 횟수
                         </div>
                     </div>

@@ -23,6 +23,8 @@
 <!-- GOOGLE FONT -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans'
     rel='stylesheet' type='text/css' />
+        <!-- Theme style -->
+        <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -62,13 +64,8 @@
                         <li><a href="/statistics/list">통계</a></li>
                         <li><a href="/notice/list">공지 사항</a></li>
                         <li><a href="/qna/list">Q&A</a></li>
-                        <li>
-                                <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">광고제작 <i class="fa fa-angle-down"></i></a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/admaker/list">이미지로 만들기</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/admaker/list2">동영상으로 만들기</a></li>
-                                </ul>
-                         </li>
+                        <li><a href="/admaker/list">광고제작</a></li>
+
                         <li><a href="/library/list">자료실</a></li>
 
                     </ul>

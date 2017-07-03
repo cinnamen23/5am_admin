@@ -79,7 +79,12 @@ public class IndexController {
 		logger.info("@@@@sid : "+sid);
 		model.addAttribute("totalCount", service.totalCount(map));
 		model.addAttribute("qzeroCount", service.qzeroCount(map));
-		model.addAttribute("getTotalView", stservice.getTotalView(sid));
+		
+		String view = stservice.getTotalView(sid);
+			if(view!=null)
+			model.addAttribute("getTotalView", view+"회");
+			else
+			model.addAttribute("getTotalView", "등록 광고 없음");
 
 		try{
 			

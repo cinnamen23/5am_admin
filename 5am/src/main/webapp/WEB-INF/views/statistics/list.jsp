@@ -4,26 +4,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
     <%@ include file="/WEB-INF/views/header.jsp" %>
-<meta charset="UTF-8">
-        <title>AdminLTE | Morris.js Charts</title>
-        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        <!-- bootstrap 3.0.2 -->
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- font Awesome -->
         <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons -->
         <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
-        <!-- Morris charts -->
-        <link href="css/morris/morris.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
+        <!-- Morris charts -->
+        <link href="css/morris/morris.css" rel="stylesheet" type="text/css" />
+        <!-- bootstrap 3.0.2 -->
 
    <div class="content-wrapper">
 		<div class="container">
@@ -31,7 +20,6 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>광고 분석 <small>총 재생 횟수 : ${getTotalView}번</small> </h1>
-
                 </section>
                 <!-- Main content -->
                 <section class="content">
@@ -48,16 +36,16 @@
        									<option value=21>3주</option>
        									<option value=28>4주</option>
                                     </select> 대상
-                                    <select id="AreaTarget" >
-                                    	<option value=${ad.target1}>${ad.target1}</option>
-       									<option value=${ad.target2}>${ad.target2}</option>
-       									<option value=${ad.target3}>${ad.target3}</option>
-       									<option value=${ad.target4}>${ad.target4}</option>
+	                                    <select id="AreaTarget" >
+                                    	<c:if test="${ad.target1!=null}" ><option value=${ad.target1}>${ad.target1}</option></c:if>
+       									<c:if test="${ad.target2!=null}" ><option value=${ad.target2}>${ad.target2}</option></c:if>
+       									<c:if test="${ad.target3!=null}" ><option value=${ad.target3}>${ad.target3}</option></c:if>
+       									<c:if test="${ad.target4!=null}" ><option value=${ad.target4}>${ad.target4}</option></c:if>
                                     </select>
                                     </div>
                                 </div>
                                 <div class="box-body chart-responsive">
-                                    <div class="chart" id="revenue-chart" style="height: 300px;"></div>
+                                    <div class="chart" id="revenue-chart" style="height: 300px;"><h3>데이터가 없습니다</h3></div>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
 
@@ -75,7 +63,7 @@
                                     </div>
                                 </div>
                                 <div class="box-body chart-responsive">
-                                    <div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
+                                    <div class="chart" id="sales-chart" style="height: 300px; position: relative;"><h3>데이터가 없습니다</h3></div>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                             
@@ -95,7 +83,7 @@
 	                                </div>
                                 </div>  	
                                 <div class="box-body chart-responsive">
-                                    <div class="chart" id="line-chart" style="height: 300px;"></div>
+                                    <div class="chart" id="line-chart" style="height: 300px;"><h3>데이터가 없습니다</h3></div>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
 
@@ -113,15 +101,15 @@
                                     	 대상
                                     <select id="BarTarget" >
        									<option value="target">모든 타겟</option>
-                                    	<option value=${ad.target1}>${ad.target1}</option>
-       									<option value=${ad.target2}>${ad.target2}</option>
-       									<option value=${ad.target3}>${ad.target3}</option>
-       									<option value=${ad.target4}>${ad.target4}</option>
+                                    	<c:if test="${ad.target1!=null}" ><option value=${ad.target1}>${ad.target1}</option></c:if>
+       									<c:if test="${ad.target2!=null}" ><option value=${ad.target2}>${ad.target2}</option></c:if>
+       									<c:if test="${ad.target3!=null}" ><option value=${ad.target3}>${ad.target3}</option></c:if>
+       									<c:if test="${ad.target4!=null}" ><option value=${ad.target4}>${ad.target4}</option></c:if>
                                     </select>
                                     </div>
                                 </div>
                                 <div class="box-body chart-responsive">
-                                    <div class="chart" id="bar-chart" style="height: 300px;"></div>
+                                    <div class="chart" id="bar-chart" style="height: 300px;"><h3>데이터가 없습니다</h3></div>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
 
@@ -144,7 +132,6 @@
         <script src="js/plugins/morris/morris.min.js" type="text/javascript"></script>
 
         <!-- AdminLTE App -->
-        <script src="js/AdminLTE/app.js" type="text/javascript"></script>
 
         <!-- page script -->
 <script type="text/javascript">
@@ -160,7 +147,7 @@ var $sid= ${statistics}[0].sid;
     	emotion();
     	scountPerDay();
         
-// scountPerTarget 일주일간 타겟별 시청횟수
+// scountPerTarget 일주일간 타겟별 재생 횟수
 function scountPerTarget() {
 	var $AreaTerm = $("#AreaTerm").val();	
 	var $AreaTarget = $("#AreaTarget").val();	
@@ -182,12 +169,14 @@ function scountPerTarget() {
                     data: scountPerTargetArr,
                     xkey: 'y',
                     ykeys: ['item1'],
-                    labels: [result[0].target],
+                    labels: ['타겟'],
                     lineColors:['#77f'],
                     hideHover: 'auto'
                 });
         	
-
+			if (scountPerTargetArr.length==0){
+				$('#revenue-chart').html('<h3>데이터가 없습니다</h3>');
+			}
         	}
         });
 }
@@ -291,7 +280,6 @@ function emotion() {
         	},
         	success : function(result){
         		var emotionArr = [];
-
         			emotionArr.push({y: 'happiness', a: result.happiness});
         			emotionArr.push({y: 'surprise', a: result.surprise});
         			emotionArr.push({y: 'neutral', a: result.neutral});
@@ -311,7 +299,12 @@ function emotion() {
                     labels: ['감정변화'],
                     hideHover: 'auto'
                 });
+        	},
+        	error:function(request,status,error){
+    				$('#bar-chart').html('<h3>데이터가 없습니다</h3>');
         	}
+
+
         });
 }
 $('#BarTerm').change(function(){
