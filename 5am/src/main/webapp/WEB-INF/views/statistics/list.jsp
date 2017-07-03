@@ -45,7 +45,15 @@
                             <!-- AREA CHART -->
                             <div class="box box-primary">
                                 <div class="box-header">
-                                    <h3 class="box-title">한주간 타겟별 시청 현황</h3>
+                                    <h3 class="box-title">타겟별 광고 재생 수</h3>
+                                    <div style="text-align: right; margin:10px;">기간
+                               		<select id="AreaTerm" >
+                                    	<option value=7>1주</option>
+       									<option value=14>2주</option>
+       									<option value=21>3주</option>
+       									<option value=28>4주</option>
+                                    </select>
+                                    </div>
                                 </div>
                                 <div class="box-body chart-responsive">
                                     <div class="chart" id="revenue-chart" style="height: 300px;"></div>
@@ -56,6 +64,14 @@
                             <div class="box box-danger">
                                 <div class="box-header">
                                     <h3 class="box-title">타겟별 시청 수</h3>
+                                    <div style="text-align: right; margin:10px;">기간
+                                <select id="DonutTerm" >
+                                    	<option value=7>1주</option>
+       									<option value=14>2주</option>
+       									<option value=21>3주</option>
+       									<option value=28>4주</option>
+                                </select>
+                                    </div>
                                 </div>
                                 <div class="box-body chart-responsive">
                                     <div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
@@ -67,8 +83,16 @@
                             <!-- LINE CHART -->
                             <div class="box box-info">
                                 <div class="box-header">
-                                    <h3 class="box-title">하루 광고 재생 수</h3>
-                                </div>
+                                    <h3 class="box-title">모든 타겟 광고 재생 수</h3>
+	                                <div style="text-align: right; margin:10px;">기간
+	                                <select id="LineTerm" >
+	                                    	<option value=7>1주</option>
+	       									<option value=14>2주</option>
+	       									<option value=21>3주</option>
+	       									<option value=28>4주</option>
+	                                </select>
+	                                </div>
+                                </div>  	
                                 <div class="box-body chart-responsive">
                                     <div class="chart" id="line-chart" style="height: 300px;"></div>
                                 </div><!-- /.box-body -->
@@ -78,6 +102,14 @@
                             <div class="box box-success">
                                 <div class="box-header">
                                     <h3 class="box-title">광고 시청후 평균 감정변화</h3>
+                                    <div style="text-align: right; margin:10px;">기간
+                                    <select id="BarTerm" >
+                                    	<option value=7>1주</option>
+       									<option value=14>2주</option>
+       									<option value=21>3주</option>
+       									<option value=28>4주</option>
+                                    </select>
+                                    </div>
                                 </div>
                                 <div class="box-body chart-responsive">
                                     <div class="chart" id="bar-chart" style="height: 300px;"></div>
@@ -114,16 +146,21 @@ var $sid= ${statistics}[0].sid;
 
     $(function() {
         "use strict";
-
-        // scountPerTarget 일주일간 타겟별 시청횟수
-                $.ajax({
+        scountPerTarget();
+        scount();
+    	emotion();
+    	scountPerDay();
+        
+// scountPerTarget 일주일간 타겟별 시청횟수
+function scountPerTarget() {
+	var $AreaTerm = $("#AreaTerm").val();	
+		$.ajax({
         	url:'/statistics/scountPerTarget',
         	type:'post',
         	dataType : 'json',
-        	data : {
-        			sid: $sid
-        	},
+        	data : {sid: $sid, AreaTerm: $AreaTerm},
         	success : function(result){
+        		
         		var scountPerTargetArr = [];
         		for(var j=0;j<result.length; j++){
         			scountPerTargetArr.push({y: result[j].fear, item1: result[j].scount});
@@ -142,59 +179,64 @@ var $sid= ${statistics}[0].sid;
 
         	}
         });
+}
+$('#AreaTerm').change(function(){
+	$('#revenue-chart').html('');
+	scountPerTarget();
+});
 
-                
         
-        // scountPerDay 하루당 재생횟수
-        $.ajax({
-        	url:'/statistics/scountPerDay',
-        	type:'post',
-        	dataType : 'json',
-        	data : {
-        			sid: $sid
-        	},
-        	success : function(result){
-        		var scountDayArr = [];
-        		for(var j=0;j<result.length; j++){
-        			var str = result[j].sno+"";
-            		var yy= str.slice(0,4)+'-';
-            		var mm= str.slice(4,6)+'-';
-            		var dd= str.slice(6,8);
-            		var date=yy+mm+dd;
-        			scountDayArr.push({y: date, item1: result[j].sview});
-                }
-                var line = new Morris.Line({
-                    element: 'line-chart',
-                    resize: true,
-                    data: scountDayArr 
-/*                     	 [
-                        {y: '2011-01-11', item1: 5},
-                        {y: '2011-01-12', item1:4},
-                        {y: '2011-01-13', item1: 0},
-                        {y: '2011-01-14', item1: 3},
-                        {y: '2011-01-15', item1: 3},
-                        {y: '2011-01-16', item1:5},
-                    ]  */
-                ,
-                    xkey: 'y',
-                    ykeys: ['item1'],
-                    labels: ['재생횟수'],
-                    lineColors: ['#3c8dbc'],
-                    hideHover: 'auto'
-                });
+        
+// scountPerDay 하루당 재생횟수
+function scountPerDay() {
+			var $LineTerm = $("#LineTerm").val();
+	        $.ajax({
+	        	url:'/statistics/scountPerDay',
+	        	type:'post',
+	        	dataType : 'json',
+	        	data : {
+	        			sid: $sid, LineTerm: $LineTerm
+	        	},
+	        	success : function(result){
+	        		var scountDayArr = [];
+	        		for(var j=0;j<result.length; j++){
+	        			var str = result[j].sno+"";
+	            		var yy= str.slice(0,4)+'-';
+	            		var mm= str.slice(4,6)+'-';
+	            		var dd= str.slice(6,8);
+	            		var date=yy+mm+dd;
+	        			scountDayArr.push({y:  date, item1: result[j].sview});
+	                }
+	                var line = new Morris.Line({
+	                    element: 'line-chart',
+	                    resize: true,
+	                    data: scountDayArr ,
+	                    xkey: 'y',
+	                    ykeys: ['item1'],
+	                    labels: ['재생횟수'],
+	                    lineColors: ['#3c8dbc'],
+	                    hideHover: 'auto'
+	                });
+	
+	        	}
+	        });
+}
+$('#LineTerm').change(function(){
+	$('#line-chart').html('');
+	scountPerDay();
+});
 
-        	}
-        });
-
-
+        
   
-      //scount 타겟별 시청횟수
+//scount 타겟별 시청횟수
+function scount() {
+	var $donutTerm=  $("#DonutTerm").val();
         $.ajax({
         	url:'/statistics/scount',
         	type:'post',
         	dataType : 'json',
         	data : {
-        			sid: $sid
+        			sid: $sid,  donutTerm: $donutTerm
         	},
         	success : function(result){
         		var scountArr = [];
@@ -212,28 +254,28 @@ var $sid= ${statistics}[0].sid;
                 });
         	}
         });
+}
+$('#DonutTerm').change(function(){
+	$('#sales-chart').html('');
+	scount();
+});
 
-        
+      
+      
+function emotion() {      
+	
+        var $BarTerm = $("#BarTerm").val();
         //emotion 평균 감정변화
         $.ajax({
         	url:'/statistics/emotion',
         	type:'post',
         	dataType : 'json',
         	data : {
-        			sid: $sid
+        			sid: $sid, BarTerm: $BarTerm
         	},
         	success : function(result){
         		var emotionArr = [];
-/*         		for(var j=0;j<result.length; j++){
-        			emotionArr.push({y: happy, a: result[j].happiness});
-        			emotionArr.push({y: surprise, a: result[j].surprise});
-        			emotionArr.push({y: neutral, a: result[j].neutral});
-        			emotionArr.push({y: sadness, a: result[j].sadness});
-        			emotionArr.push({y: disgust, a: result[j].disgust});
-        			emotionArr.push({y: fear, a: result[j].fear});
-        			emotionArr.push({y: anger, a: result[j].anger});
-        			emotionArr.push({y: contempt, a: result[j].contempt});
-                } */
+
         			emotionArr.push({y: 'happiness', a: result.happiness});
         			emotionArr.push({y: 'surprise', a: result.surprise});
         			emotionArr.push({y: 'neutral', a: result.neutral});
@@ -246,18 +288,7 @@ var $sid= ${statistics}[0].sid;
                 var bar = new Morris.Bar({
                     element: 'bar-chart',
                     resize: true,
-                    data: emotionArr
-                    	/* [ 
-        	            {y: 'happy', a: $happy, b: 90, c: $happy+10, d: 70},
-                        {y: 'surprise', a: $surprise, b: 65, c: $surprise-10, d: 60},
-                        {y: 'neutral', a: $neutral, b: 40, c: $neutral+30, d: 90},
-                        {y: 'disgust', a: $disgust, b: 65, c: $disgust-5, d: 50},
-                        {y: 'sadness', a: $sadness, b: 40, c: $sadness-10, d: 45},
-                        {y: 'fear', a: $fear, b: 65, c: $fear-1, d: 40},
-                        {y: 'anger', a: $anger, b: 90, c: $anger+10, d: 47},
-                        {y: 'contempt', a: $contempt, b: 90, c: $happy-10, d: 84} 
-
-                    ] */,
+                    data: emotionArr,
                     barColors: ['#00a65a', '#3c8dbc', '#fa7', '#f56954'],
                     xkey: 'y',
                     ykeys: ['a'],
@@ -266,6 +297,11 @@ var $sid= ${statistics}[0].sid;
                 });
         	}
         });
+}
+$('#BarTerm').change(function(){
+	$('#bar-chart').html('');
+	emotion();
+});
         
 
     });

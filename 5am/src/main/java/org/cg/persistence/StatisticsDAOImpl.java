@@ -1,5 +1,6 @@
 package org.cg.persistence;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -29,18 +30,18 @@ public class StatisticsDAOImpl implements StatisticsDAO {
 	}
 
 	@Override
-	public StatisticsVO getAvg(String sid) {
-		return session.selectOne(namespace+".getAvg", sid);
+	public StatisticsVO getAvg(HashMap<String, String> map) {
+		return session.selectOne(namespace+".getAvg", map);
 	}
 
 	@Override
-	public List<StatisticsVO> getScount(String sid) {
-		return session.selectList(namespace+".getScount", sid);
+	public List<StatisticsVO> getScount(HashMap<String, String> donutMap) {
+		return session.selectList(namespace+".getScount", donutMap);
 	}
 
 	@Override
-	public List<StatisticsVO> getScountPerDay(String sid) {
-		return session.selectList(namespace+".getScountPerDay", sid);
+	public List<StatisticsVO> getScountPerDay(HashMap<String, String> lineMap) {
+		return session.selectList(namespace+".getScountPerDay", lineMap);
 	}
 	@Override
 	public AdGifVO getTarget(String sid) {
@@ -48,8 +49,8 @@ public class StatisticsDAOImpl implements StatisticsDAO {
 	}
 
 	@Override
-	public List<StatisticsVO> getScountPerTarget1(AdGifVO ad) {
-		return session.selectList(namespace+".getScountPerTarget1", ad);
+	public List<StatisticsVO> getScountPerTarget1(HashMap<String, Object> areaMap) {
+		return session.selectList(namespace+".getScountPerTarget1", areaMap);
 	}
 	@Override
 	public List<StatisticsVO> getScountPerTarget2(AdGifVO ad) {

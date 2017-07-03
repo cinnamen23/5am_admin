@@ -1,5 +1,6 @@
 package org.cg.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -26,18 +27,18 @@ public class StatisticsServiceImpl implements StatisticsService {
 	}
 
 	@Override
-	public StatisticsVO getAvg(String sid) {
-		return dao.getAvg(sid);
+	public StatisticsVO getAvg(HashMap<String, String> map) {
+		return dao.getAvg(map);
 	}
 
 	@Override
-	public List<StatisticsVO> getScount(String sid) {
-		return dao.getScount(sid);
+	public List<StatisticsVO> getScount(HashMap<String, String> donutMap) {
+		return dao.getScount(donutMap);
 	}
 
 	@Override
-	public List<StatisticsVO> getScountPerDay(String sid) {
-		return dao.getScountPerDay(sid);
+	public List<StatisticsVO> getScountPerDay(HashMap<String, String> lineMap) {
+		return dao.getScountPerDay(lineMap);
 	}
 
 	@Override
@@ -46,8 +47,8 @@ public class StatisticsServiceImpl implements StatisticsService {
 	}
 	
 	@Override
-	public List<StatisticsVO> getScountPerTarget1(AdGifVO ad) {
-		return dao.getScountPerTarget1(ad);
+	public List<StatisticsVO> getScountPerTarget1(HashMap<String, Object> areaMap) {
+		return dao.getScountPerTarget1(areaMap);
 	}
 	@Override
 	public List<StatisticsVO> getScountPerTarget2(AdGifVO ad) {

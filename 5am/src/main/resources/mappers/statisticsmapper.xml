@@ -10,32 +10,32 @@
   <select id="getStatistics" parameterType="String" resultType="org.cg.domain.StatisticsVO">
   select * from TBL_STATISTICS where sid=#{sid} 
   <![CDATA[
-  and REGDATE < sysdate and REGDATE > sysdate-5
+  and REGDATE > sysdate-5
     ]]>
   </select>
   
   <!-- 5일동안 모든 타겟 평균 감정변화 -->
-    <select id="getAvg" parameterType="String" resultType="org.cg.domain.StatisticsVO">
+    <select id="getAvg" parameterType="hashmap" resultType="org.cg.domain.StatisticsVO">
   select avg(HAPPINESS) HAPPINESS,avg(SURPRISE) SURPRISE, avg(CONTEMPT) CONTEMPT,avg(NEUTRAL) NEUTRAL,avg(ANGER) ANGER,avg(FEAR) FEAR,avg(SADNESS) SADNESS,avg(DISGUST) DISGUST from TBL_STATISTICS where sid=#{sid} 
   <![CDATA[
-  and REGDATE < sysdate and REGDATE > sysdate-5
+  and REGDATE > sysdate-#{BarTerm}
     ]]>
   </select>
   
 <!-- 5일동안  타겟별 시청횟수 -->
-  <select id="getScount"  parameterType="String" resultType="org.cg.domain.StatisticsVO">
+  <select id="getScount"  parameterType="hashmap" resultType="org.cg.domain.StatisticsVO">
   select sum(SCOUNT) scount, max(target) target from TBL_STATISTICS where sid=#{sid} 
     <![CDATA[
-  and REGDATE < sysdate and REGDATE > sysdate-5 GROUP BY target
+  and REGDATE > sysdate-#{donutTerm} GROUP BY target
       ]]>
   </select>
   
   <!-- 5일동안 하루당 시청횟수 -->
-  <select id="getScountPerDay"  parameterType="String" resultType="org.cg.domain.StatisticsVO">
-		select max(updatedate) sno, avg(sview) sview
-    <![CDATA[
+  <select id="getScountPerDay"  parameterType="hashmap" resultType="org.cg.domain.StatisticsVO">
+		select max(updatedate) sno, max(sview) sview
 		from (select extract(day from sysdate-regdate) REGDATE, to_char(regdate,'yyyymmdd') updatedate, scount, sview, target from TBL_STATISTICS where sid=#{sid} ) 
-		where REGDATE<5
+    <![CDATA[
+		where REGDATE<#{LineTerm}
     ]]>
 		group by regdate
 		ORDER BY REGDATE desc
@@ -49,27 +49,27 @@ select * from TBL_ADGIF where sid=#{sid} and rownum=1 order by gifno desc
   
 
     <!-- 5일동안 하루당 타겟별 시청횟수 -->
-  <select id="getScountPerTarget1"  parameterType="org.cg.domain.AdGifVO" resultType="org.cg.domain.StatisticsVO">
+  <select id="getScountPerTarget1"  parameterType="hashmap" resultType="org.cg.domain.StatisticsVO">
     <![CDATA[
-		select regdate fear, scount, target from (select regdate, scount, sview, target from TBL_STATISTICS where sid=#{sid}) 
-		where target=#{target1}  and regdate < sysdate and regdate > sysdate-5
+		select to_char(regdate,'yyyy-mm-dd') fear, scount, target from (select regdate, scount, sview, target from TBL_STATISTICS where sid=#{ad.sid}) 
+		where target=#{ad.target1}  and regdate < sysdate and regdate > sysdate-#{AreaTerm}
     ]]>
   </select>
    <select id="getScountPerTarget2"  parameterType="org.cg.domain.AdGifVO" resultType="org.cg.domain.StatisticsVO">
     <![CDATA[
-		select regdate fear, scount, target from (select regdate, scount, sview, target from TBL_STATISTICS where sid=#{sid}) 
+		select to_char(regdate,'yyyy-mm-dd') fear, scount, target from (select regdate, scount, sview, target from TBL_STATISTICS where sid=#{sid}) 
 		where target=#{target2}  and regdate < sysdate and regdate > sysdate-5
     ]]>
   </select>
     <select id="getScountPerTarget3"  parameterType="org.cg.domain.AdGifVO" resultType="org.cg.domain.StatisticsVO">
     <![CDATA[
-		select regdate fear, scount, target from (select regdate, scount, sview, target from TBL_STATISTICS where sid=#{sid}) 
+		select to_char(regdate,'yyyy-mm-dd') fear, scount, target from (select regdate, scount, sview, target from TBL_STATISTICS where sid=#{sid}) 
 		where target=#{target3}  and regdate < sysdate and regdate > sysdate-5
     ]]>
   </select>
     <select id="getScountPerTarget4"  parameterType="org.cg.domain.AdGifVO" resultType="org.cg.domain.StatisticsVO">
     <![CDATA[
-		select regdate fear, scount, target from (select regdate, scount, sview, target from TBL_STATISTICS where sid=#{sid}) 
+		select to_char(regdate,'yyyy-mm-dd') fear, scount, target from (select regdate, scount, sview, target from TBL_STATISTICS where sid=#{sid}) 
 		where target=#{target4}  and regdate < sysdate and regdate > sysdate-5
     ]]>
   </select>
