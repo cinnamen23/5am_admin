@@ -16,10 +16,11 @@
 
    <div class="content-wrapper">
 		<div class="container">
-			
+
                 <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1>광고 분석 <small>총 재생 횟수 : ${getTotalView}번</small> </h1>
+                <div class="row pad-botm">
+                <section >
+                    <h2>광고 분석 <small>${getTotalView}</small> </h2>
                 </section>
                 <!-- Main content -->
                 <section class="content">
