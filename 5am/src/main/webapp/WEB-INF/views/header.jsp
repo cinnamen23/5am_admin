@@ -24,7 +24,7 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans'
     rel='stylesheet' type='text/css' />
         <!-- Theme style -->
-        <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
+
 
 </head>
 <body>

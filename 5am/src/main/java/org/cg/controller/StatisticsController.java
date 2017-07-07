@@ -40,7 +40,12 @@ public class StatisticsController {
 		
 		AdGifVO ad= service.getTarget(sid);
 		model.addAttribute("ad",ad);
-		model.addAttribute("getTotalView", service.getTotalView(sid));
+		
+		String view= service.getTotalView(sid);
+		if(view!=null)
+		model.addAttribute("getTotalView", "총 재생 횟수 : "+view+"회");
+		else
+		model.addAttribute("getTotalView", "등록 광고 없음");
 
 //더미데이터		
 		List<StatisticsVO> list=service.getStatistics(sid);
