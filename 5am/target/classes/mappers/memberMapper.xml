@@ -9,8 +9,8 @@
 	
 	<select id="listAll" resultType="org.cg.domain.MemberVO" parameterType="hashmap">
 	<choose><when test='vo.sid!="admin"'>
-	select rnum, mid, mname,mage,maddr, mgender, regdate, updatedate, cno, sid, cregdate  from 
-	(SELECT rownum rnum, m.mid, mname,mage,maddr, mgender, m.regdate, m.updatedate, cno, sid, c.regdate cregdate 
+	select rnum, mid, mname,maddr, regdate, updatedate, cno, sid, cregdate  from 
+	(SELECT rownum rnum, m.mid, mname,maddr,  m.regdate, m.updatedate, cno, sid, c.regdate cregdate 
 	FROM TBL_MEMBER m LEFT OUTER JOIN TBL_CHOICE c ON m.mid = c.mid where sid='${vo.sid}' 
   
   		<choose>
@@ -23,20 +23,16 @@
 			<when test='cri.type=="n"'>
 			  and (mname like '%'|| '${cri.keyword}' ||'%')
 			</when>
-			<when test='cri.type=="a"'>
-			  and (mage like '%'|| '${cri.keyword}' ||'%')
-			</when>
-			<when test='cri.type=="g"'>
-			  and (mgender like '%'|| '${cri.keyword}' ||'%')
-			</when>
+			
+			
 			<when test='cri.type=="d"'>
 			  and (maddr like '%'|| '${cri.keyword}' ||'%')
 			</when>
 		</choose> 
 		<![CDATA[and rownum<= ${cri.pageNum} ) mc where rnum>= ${cri.skip} order by regdate desc]]></when>
 		<when test='vo.sid=="admin"'>
-		select * from (SELECT rownum rnum ,mid, mname,mage,maddr, mgender, regdate, updatedate FROM 
-		( SELECT mid, mname,mage,maddr, mgender, regdate, updatedate FROM tbl_member where mage>0
+		select * from (SELECT rownum rnum ,mid, mname,maddr,  regdate, updatedate FROM 
+		( SELECT mid, mname, maddr,  regdate, updatedate FROM tbl_member where 1=1
 		
 		<choose>
 			<when test='cri.type=="x"'>
@@ -48,12 +44,8 @@
 			<when test='cri.type=="n"'>
 			  and (mname like '%'|| '${cri.keyword}' ||'%')
 			</when>
-			<when test='cri.type=="a"'>
-			  and (mage like '%'|| '${cri.keyword}' ||'%')
-			</when>
-			<when test='cri.type=="g"'>
-			  and (mgender like '%'|| '${cri.keyword}' ||'%')
-			</when>
+			
+			
 			<when test='cri.type=="d"'>
 			  and (maddr like '%'|| '${cri.keyword}' ||'%')
 			</when>
@@ -69,7 +61,7 @@
 	<select id="totalCount" resultType="Int" parameterType="hashmap" >
 	
 	<choose><when test='vo.sid!="admin"'>
-		select count(rnum) from (SELECT rownum rnum, m.mid, mname,mage,maddr, mgender, m.regdate, m.updatedate,
+		select count(rnum) from (SELECT rownum rnum, m.mid, mname,maddr,  m.regdate, m.updatedate,
 		 cno, sid, c.regdate cregdate FROM TBL_MEMBER m LEFT OUTER JOIN TBL_CHOICE c ON m.mid = c.mid where sid='${vo.sid}') where rnum>0
 		  <choose>
 			<when test='cri.type=="x"'>
@@ -81,12 +73,8 @@
 			<when test='cri.type=="n"'>
 			  and (mname like '%'|| '${cri.keyword}' ||'%')
 			</when>
-			<when test='cri.type=="a"'>
-			  and (mage like '%'|| '${cri.keyword}' ||'%')
-			</when>
-			<when test='cri.type=="g"'>
-			  and (mgender like '%'|| '${cri.keyword}' ||'%')
-			</when>
+			
+			
 			<when test='cri.type=="d"'>
 			  and (maddr like '%'|| '${cri.keyword}' ||'%')
 			</when>
@@ -104,12 +92,7 @@
 			<when test='cri.type=="n"'>
 			  and (mname like '%'|| '${cri.keyword}' ||'%')
 			</when>
-			<when test='cri.type=="a"'>
-			  and (mage like '%'|| '${cri.keyword}' ||'%')
-			</when>
-			<when test='cri.type=="g"'>
-			  and (mgender like '%'|| '${cri.keyword}' ||'%')
-			</when>
+			
 			<when test='cri.type=="d"'>
 			  and (maddr like '%'|| '${cri.keyword}' ||'%')
 			</when>
@@ -123,7 +106,7 @@
 	</select>
 
 	<insert id="create" parameterType="org.cg.domain.MemberVO">
-		insert into	tbl_Member(mid,mpw,mname,mage,mgender,maddr) values ('${mid}','${mpw}','${mname}','${mage}','${mgender}','${maddr}')
+		insert into	tbl_Member(mid,mpw,mname,maddr) values ('${mid}','${mpw}','${mname}','${maddr}')
 	</insert>
 
 	<delete id="delete" parameterType="org.cg.domain.MemberVO">
@@ -132,7 +115,7 @@
 	</delete>
 	
 	<update id="update" parameterType="org.cg.domain.MemberVO">
-		UPDATE tbl_Member SET mpw = '${mpw}', mname='${mname}',mage='${mage}',mgender='${mgender}', maddr='${maddr}', updatedate=sysdate WHERE mid = '${mid}'
+		UPDATE tbl_Member SET mpw = '${mpw}', mname='${mname}', maddr='${maddr}', updatedate = sysdate WHERE mid = '${mid}'
 	</update>
 	
 	<select id="qlistAll" resultType="org.cg.domain.MQuestionVO" parameterType="map">

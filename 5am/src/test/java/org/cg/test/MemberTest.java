@@ -37,8 +37,7 @@ public class MemberTest {
 		for (int i = 0; i < 300; i++) {	
 		
 		vo.setMaddr("주소"+i);
-		vo.setMage(i%80);
-		vo.setMgender("w");
+		
 		vo.setMid("id"+i);
 		vo.setMname("이름"+i);
 		vo.setMpw("비밀"+i);
@@ -54,7 +53,6 @@ public class MemberTest {
 		vo.setMid("id7");
 		vo.setMname("testupdate");
 		vo.setMpw("password");
-		vo.setMgender("m");
 		vo.setMaddr("NY");
 
 		service.update(vo);
@@ -75,9 +73,7 @@ public class MemberTest {
 		cri2.setPageNum2(10);
 		cri2.setSkip2(0);
 		
-		//service.qlistAll(cri2);
 		
-		//logger.info(service.qlistAll(cri2));
 	}
 	
 

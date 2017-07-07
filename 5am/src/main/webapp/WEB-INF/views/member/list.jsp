@@ -60,8 +60,6 @@
                                     <thead>
                                         <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" aria-sort="ascending" style="width: 70px;">회원ID</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 40px;">이름</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 40px;">나이</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 40px;">성별</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 300px;">주소</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 100px;">등록날짜</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 150px;">최근수정날짜</th>
@@ -74,17 +72,13 @@
                                     <tr class="gradeA odd" id="membertable">
                                             <td class="sorting_1">${list.mid}</td>
                                             <td class="center " >${list.mname}</td>
-                                            <td class="center ">${list.mage}</td>
-                                            <td class="center ">${list.mgender}</td>
-                                            <td class="center " style="font-size: 11px;">${list.maddr}</td>
+                                            <td class="center ">${list.maddr}</td>
                                             <td class="center "><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
                                             <td class="center "><fmt:formatDate value="${list.updatedate}" pattern="yyyy-MM-dd HH:mm"/></td>
-                                            <td class="center" data-mname="${list.mname}" data-mage="${list.mage}" data-mgender="${list.mgender}" data-mid="${list.mid}" data-maddr="${list.maddr}">
+                                            <td class="center" data-mname="${list.mname}" data-mid="${list.mid}" data-maddr="${list.maddr}">
                                             <a class="membermodi" href="" data-toggle="modal" data-target="#exampleModal"><i class="glyphicon glyphicon-wrench"></i></a>
                                             <a class="memberdel" href=""><i class="glyphicon glyphicon-remove"></i></a>
                                             </td>
-                                            
-                                         
                                         </tr>
                                         </c:forEach>   
                                         </tbody>
@@ -268,19 +262,6 @@
 		            <input type="text" class="form-control" id="mname" name="mname" value="">
 		          </div>
 		          <div class="form-group">
-		            <label for="message-text" class="form-control-label">나이</label>
-		            <input type="text" class="form-control" id="mage" name="mage" value="">
-		          </div>
-		          <div class="form-group">
-		            <div class="form-group">
-								<label>성별</label> <select id="mgender" name="mgender" class="form-control">
-									<option value="m">남자</option>
-									<option value="w">여자</option>
-									
-								</select>
-							</div>
-		          </div>
-		          <div class="form-group">
 		            <label for="message-text" class="form-control-label">주소</label>
 		            <input type="text"class="form-control" id="maddr" name="maddr" value="">
 		          </div>
@@ -376,10 +357,10 @@
 			var pass =$(this).parent();
 			var passmid = pass.attr("data-mid");
 			var passmname = pass.attr("data-mname");
-			var passmage = pass.attr("data-mage");
+			
 			var passmaddr = pass.attr("data-maddr");
 			$("#mname").val(passmname);
-			$("#mage").val(passmage);
+		
 			$("#mid").val(passmid);
 			$("#maddr").val(passmaddr);
 			
