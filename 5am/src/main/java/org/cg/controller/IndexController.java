@@ -15,6 +15,7 @@ import org.cg.service.ADMakerService;
 import org.cg.service.ElevatorService;
 import org.cg.service.MemberService;
 import org.cg.service.NoticeService;
+import org.cg.service.StatisticsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,6 +40,9 @@ public class IndexController {
 	@Inject
 	ElevatorService eservice;
 	
+	@Inject
+	StatisticsService stservice;
+	
 	@GetMapping
 	public void getIndex(HttpSession session, Model model){
 
@@ -46,6 +50,8 @@ public class IndexController {
 		try{			
 		Object obj = session.getAttribute("login");
 		StoreVO vo = (StoreVO) obj;
+		String sid= vo.getSid();
+		
 		
 		try {
 			int due = aservice.dueDate(vo.getSid());
@@ -70,9 +76,15 @@ public class IndexController {
 		
 		map.put("cri", cri);
 		map.put("vo", vo);	
-		
+		logger.info("@@@@sid : "+sid);
 		model.addAttribute("totalCount", service.totalCount(map));
 		model.addAttribute("qzeroCount", service.qzeroCount(map));
+		
+		String view = stservice.getTotalView(sid);
+			if(view!=null)
+			model.addAttribute("getTotalView", view+"회");
+			else
+			model.addAttribute("getTotalView", "등록 광고 없음");
 
 		try{
 			

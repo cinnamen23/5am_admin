@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="org.cg.persistence.StatisticsDAO">
+  <insert id="insert" parameterType="org.cg.domain.StatisticsVO">
+ INSERT INTO TBL_STATISTICS(sno, sid,target,surprise,contempt,happiness,scount,neutral,sadness,disgust,anger,fear,sview) VALUES(seq_statistics_sno.nextval, '${sid}','${target}','${surprise}','${contempt}','${happiness}','${scount}','${neutral}','${sadness}','${disgust}','${anger}','${fear}','${sview}')
+  </insert>
+  
+  <select id="getStatistics" parameterType="String" resultType="org.cg.domain.StatisticsVO">
+  select * from TBL_STATISTICS where sid=#{sid} 
+  <![CDATA[
+  and REGDATE > sysdate-5
+    ]]>
+  </select>
+  
+  <!-- 5일동안 모든 타겟 평균 감정변화 -->
+    <select id="getAvg" parameterType="hashmap" resultType="org.cg.domain.StatisticsVO">
+  select avg(HAPPINESS) HAPPINESS,avg(SURPRISE) SURPRISE, avg(CONTEMPT) CONTEMPT,avg(NEUTRAL) NEUTRAL,avg(ANGER) ANGER,avg(FEAR) FEAR,avg(SADNESS) SADNESS,avg(DISGUST) DISGUST from TBL_STATISTICS where sid=#{sid} 
+ 	<choose>
+	  <when test="BarTarget.equals('target')">
+	  and target=target
+	  </when>
+	  <otherwise>
+	  and target=#{BarTarget} 
+	  </otherwise>
+	</choose>
+ 
+  <![CDATA[
+  and REGDATE > sysdate-#{BarTerm}
+    ]]>
+  </select>
+  
+<!-- 5일동안  타겟별 시청횟수 -->
+  <select id="getScount"  parameterType="hashmap" resultType="org.cg.domain.StatisticsVO">
+  select sum(SCOUNT) scount, max(target) target from TBL_STATISTICS where sid=#{sid} 
+    <![CDATA[
+  and REGDATE > sysdate-#{donutTerm} GROUP BY target
+      ]]>
+  </select>
+  
+  <!-- 5일동안 하루당 시청횟수 -->
+  <select id="getScountPerDay"  parameterType="hashmap" resultType="org.cg.domain.StatisticsVO">
+		select max(updatedate) sno, max(sview) sview
+		from (select extract(day from sysdate-regdate) REGDATE, to_char(regdate,'yyyymmdd') updatedate, scount, sview, target from TBL_STATISTICS where sid=#{sid} ) 
+    <![CDATA[
+		where REGDATE<#{LineTerm}
+    ]]>
+		group by regdate
+		ORDER BY REGDATE desc
+  </select>
+  
+  
+  <!--그전에 해당 상점의 타겟 불러오기  -->
+<select id="getTarget" parameterType="org.cg.domain.StatisticsVO" resultType="org.cg.domain.AdGifVO">
+select * from TBL_ADGIF where sid=#{sid} and rownum=1 order by gifno desc 
+</select>
+  
+
+    <!-- 5일동안 하루당 타겟별 시청횟수 -->
+  <select id="getScountPerTarget1"  parameterType="hashmap" resultType="org.cg.domain.StatisticsVO">
+		select to_char(regdate,'yyyy-mm-dd') fear, scount, target from (select regdate, scount, sview, target from TBL_STATISTICS where sid=#{ad.sid}) 
+			<choose>
+			  <when test="AreaTarget.equals('target')">
+			  	where target=target
+			  </when>
+			  <otherwise>
+			 	where target=#{AreaTarget} 
+			  </otherwise>
+			</choose>
+		
+    <![CDATA[
+		and regdate > sysdate-#{AreaTerm}
+    ]]>
+  </select>
+
+  <select id="getTotalView" parameterType="String" resultType="String">
+		select sum(scount) from TBL_STATISTICS where sid=#{sid}
+  </select>
+
+
+  
+  </mapper>

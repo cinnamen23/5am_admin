@@ -17,7 +17,7 @@
 		<div class="container">
 			<div class="row pad-botm">
 				<div class="col-md-12">
-					<h4 class="header-line"><a href="/library/list" >자료를 다운 받는 자료실입니다</a></h4>
+					<h4 class="header-line"><a href="/library/list" >자료실</a></h4>
 					
 				</div>
 
@@ -27,7 +27,7 @@
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
                     <div class="panel panel-primary">
-                        <div class="panel-heading panel">자료실입니다  </div>
+                        <div class="panel-heading panel">목록  </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" >

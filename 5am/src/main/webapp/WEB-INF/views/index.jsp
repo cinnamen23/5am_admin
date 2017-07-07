@@ -19,7 +19,7 @@ max-height: 500px;
 	            <div class="col-md-12">	               
 	                     
 	                     
-	                <h4 class="header-line">당신의 꿈을 여는 시간 </h4> 
+	                <h4 class="header-line">당신의 꿈을 여는 시간,  5 A M </h4>
 	            </div>
 	        </div>
              
@@ -27,8 +27,8 @@ max-height: 500px;
             
                  
               <div class="col-md-3 col-sm-3 col-xs-6">
-                      <div class="alert alert-success back-widget-set text-center">
-                            <i class="fa fa-bars fa-5x"></i>
+                      <div class="alert alert-danger  back-widget-set text-center">
+                            <i class="fa fa-heart fa-5x"></i>
                             <h3>${totalCount} 명</h3>
                            찜 한 고객 수
                         </div>
@@ -49,9 +49,9 @@ max-height: 500px;
                         </div>
                     </div>
                <div class="col-md-3 col-sm-3 col-xs-6">
-                      <div class="alert alert-danger back-widget-set text-center">
-                            <i class="fa fa-briefcase fa-5x"></i>
-                            <h3>30 회</h3>
+                      <div class="alert alert-success back-widget-set text-center">
+                            <i class="fa fa-play-circle fa-5x"></i>
+                            <h3>${getTotalView }</h3>
                             내 광고 재생 횟수
                         </div>
                     </div>
