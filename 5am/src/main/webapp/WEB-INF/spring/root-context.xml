@@ -26,11 +26,7 @@
 		<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property> -->
 		<!-- <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"></property> -->
 		<property name="url"
-<<<<<<< HEAD
 			value="jdbc:log4jdbc:oracle:thin:@192.168.0.17:1521:XE"></property>
-=======
-			value="jdbc:log4jdbc:oracle:thin:@192.168.0.16:1521:XE"></property>
->>>>>>> branch 'master' of https://github.com/kick07230723/5AM.git
 		<property name="username" value="admin5am"></property>
 		<property name="password" value="1234"></property>
 	</bean>
