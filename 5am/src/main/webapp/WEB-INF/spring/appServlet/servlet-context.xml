@@ -29,8 +29,7 @@
 
 	<beans:bean id="loginInterceptor" class="org.cg.interceptor.LoginInterceptor"></beans:bean>
 	<beans:bean id="authInterceptor" class="org.cg.interceptor.AuthInterceptor"></beans:bean>
-	
-	
+
 	<interceptors>	
 	
 		<interceptor>

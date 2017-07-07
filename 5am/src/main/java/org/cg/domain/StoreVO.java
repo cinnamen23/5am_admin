@@ -7,7 +7,6 @@ public class StoreVO {
 	private String sid,spw,sname,saddr,sphone,semail,saddrm,lat,lng,gubun, scategory;
 	private Timestamp regdate,updatedate;
 	
-	
 	public String getSid() {
 		return sid;
 	}

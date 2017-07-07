@@ -20,7 +20,7 @@ public class scheduler {
 	@Inject
 	ADMakerService service;
 
-	@Scheduled(cron = "*/30 * * * * *")
+	@Scheduled(cron = "00 00 03 * * *")
 
 	public void scheduleRun() {
 		Calendar calendar = Calendar.getInstance();
